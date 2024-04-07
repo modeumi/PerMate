@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:petmate/Provider/onboarding_provider.dart';
+import 'package:petmate/View/login_main.dart';
+import 'package:petmate/View/login_select.dart';
 import 'package:provider/provider.dart';
 
 class OnboardingAppBar extends StatefulWidget implements PreferredSizeWidget {
@@ -44,7 +46,15 @@ class _OnboardingAppBarState extends State<OnboardingAppBar> {
           Opacity(
             opacity: 0.50,
             child: GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Provider.of<OnboardingProvider>(context, listen: false)
+                    .page_change(0);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => LoginSelect(),
+                    ));
+              },
               child: Container(
                 child: const Text(
                   '건너뛰기',
@@ -63,45 +73,5 @@ class _OnboardingAppBarState extends State<OnboardingAppBar> {
         leading: Container(),
       ),
     );
-    // Container(
-    //   width: MediaQuery.of(context).size.width,
-    //   child: Stack(
-    //     children: [
-    //       Center(
-    //         child: Row(
-    //           children: [
-    //             for (int i = 0; i < 4; i++)
-    //               Container(
-    //                 width: 8,
-    //                 height: 8,
-    //                 decoration: BoxDecoration(
-    //                     shape: BoxShape.circle,
-    //                     color: Color(
-    //                         context.read<OnboardingProvider>().page == i
-    //                             ? 0xFF316BD5
-    //                             : 0xFFCECECE)),
-    //               ),
-    //           ],
-    //         ),
-    //       ),
-    //       const Positioned(
-    //         right: 20,
-    //         child: Opacity(
-    //           opacity: 0.50,
-    //           child: Text(
-    //             '건너뛰기',
-    //             textAlign: TextAlign.center,
-    //             style: TextStyle(
-    //               color: Colors.black,
-    //               fontSize: 14,
-    //               fontFamily: 'Pretendard',
-    //               fontWeight: FontWeight.w500,
-    //             ),
-    //           ),
-    //         ),
-    //       ),
-    //     ],
-    //   ),
-    // );
   }
 }

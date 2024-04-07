@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:petmate/Provider/onboarding_provider.dart';
+import 'package:petmate/View/login_select.dart';
 import 'package:provider/provider.dart';
 
 class OnboardingBottom extends StatelessWidget {
@@ -20,8 +21,16 @@ class OnboardingBottom extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () {
-              Provider.of<OnboardingProvider>(context, listen: false)
-                  .next_page();
+              bool status =
+                  Provider.of<OnboardingProvider>(context, listen: false)
+                      .next_page();
+              if (!status) {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => LoginSelect(),
+                    ));
+              }
             },
             child: Container(
               width: MediaQuery.of(context).size.width,
