@@ -5,7 +5,7 @@ class OnboardingProvider with ChangeNotifier {
   int get page => _page;
   late PageController pageController = PageController();
 
-  void next_page() {
+  bool next_page() {
     int page = pageController.page!.toInt();
     print(page);
     if (page < 3) {
@@ -13,8 +13,12 @@ class OnboardingProvider with ChangeNotifier {
       pageController.nextPage(
           duration: const Duration(milliseconds: 200),
           curve: Curves.easeInSine);
+      notifyListeners();
+      return true;
+    } else {
+      notifyListeners();
+      return false;
     }
-    notifyListeners();
   }
 
   void page_change(int value) {
