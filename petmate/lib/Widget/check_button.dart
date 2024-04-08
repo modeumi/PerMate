@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class CheckButton extends StatefulWidget {
@@ -15,24 +16,25 @@ class _CheckButtonState extends State<CheckButton> {
     return GestureDetector(
       onTap: widget.event,
       child: Container(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
           color: const Color(0xFF1B6EEE),
           border: Border.all(
             width: 1,
-            color: Colors.white.withOpacity(0.20000000298023224),
+            color: Colors.white.withOpacity(0.2),
           ),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Center(
-          child: Text(
+          child: AutoSizeText(
             widget.content,
             style: const TextStyle(
-              color: Colors.white,
-              fontSize: 14,
               fontFamily: 'Pretendard',
+              color: Colors.white,
               fontWeight: FontWeight.w500,
             ),
+            presetFontSizes: [14],
+            maxLines: 1,
           ),
         ),
       ),

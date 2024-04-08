@@ -28,7 +28,7 @@ class OnboardingBottom extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => LoginSelect(),
+                      builder: (context) => const LoginSelect(),
                     ));
               }
             },
@@ -54,19 +54,24 @@ class OnboardingBottom extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
-                      '다음',
-                      style: TextStyle(
+                    Text(
+                      context.read<OnboardingProvider>().page == 3
+                          ? '펫메이트 시작하기'
+                          : '다음',
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 14,
                         fontFamily: 'Pretendard',
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    const SizedBox(
-                      width: 8,
+                    SizedBox(
+                      width:
+                          context.read<OnboardingProvider>().page == 3 ? 0 : 8,
                     ),
-                    Image.asset('assets/onboarding/icon_1.png'),
+                    context.read<OnboardingProvider>().page == 3
+                        ? Container()
+                        : Image.asset('assets/onboarding/icon_1.png'),
                   ],
                 ),
               ),
