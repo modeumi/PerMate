@@ -46,8 +46,10 @@ class _PassWordFieldState extends State<PassWordCheckField> {
             ),
             Text(
               provider.password_check_fail,
-              style: const TextStyle(
-                color: Color(0xFFFF0000),
+              style: TextStyle(
+                color: provider.password_check_status
+                    ? Colors.white
+                    : Color(0xFFFF0000),
                 fontSize: 12,
                 fontFamily: 'Pretendard',
                 fontWeight: FontWeight.w500,

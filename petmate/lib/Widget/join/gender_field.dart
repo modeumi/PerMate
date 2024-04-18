@@ -1,18 +1,18 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:petmate/Provider/join_provider.dart';
-import 'package:petmate/Widget/check_button.dart';
-import 'package:petmate/Widget/textfield_slot.dart';
+import 'package:petmate/Widget/push_button_b.dart';
 import 'package:provider/provider.dart';
 
-class NickNameField extends StatefulWidget {
-  const NickNameField({super.key});
+class GenderField extends StatefulWidget {
+  const GenderField({super.key});
 
   @override
-  State<NickNameField> createState() => _NickNameFieldState();
+  State<GenderField> createState() => _GenderFieldState();
 }
 
-class _NickNameFieldState extends State<NickNameField> {
+class _GenderFieldState extends State<GenderField> {
   @override
   Widget build(BuildContext context) {
     return Consumer<JoinProvider>(builder: (context, provider, child) {
@@ -22,7 +22,7 @@ class _NickNameFieldState extends State<NickNameField> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              '닉네임',
+              '성별',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 14,
@@ -37,36 +37,33 @@ class _NickNameFieldState extends State<NickNameField> {
             Row(
               children: [
                 Flexible(
-                  flex: 3,
-                  child: TextFieldSlot(
-                    hint: '2~16자 이내로 입력해주세요',
-                    controller: provider.nickname,
-                    status: provider.nickname_status,
-                    action: () {},
-                    password: false,
-                  ),
+                  flex: 5,
+                  child: PushButtonB(
+                      content: '남성',
+                      action: () {
+                        provider.Select_Gender('남성');
+                      }),
                 ),
-                const SizedBox(
+                SizedBox(
                   width: 8,
                 ),
                 Flexible(
-                  flex: 1,
-                  child: CheckButton(
-                      event: () {
-                        provider.NickName_Check();
-                      },
-                      content: '중복 확인'),
+                  flex: 5,
+                  child: PushButtonB(
+                      content: '여성',
+                      action: () {
+                        provider.Select_Gender('여성');
+                      }),
                 )
               ],
             ),
-            const SizedBox(
+            SizedBox(
               height: 8,
             ),
             Text(
-              provider.nickname_fail,
+              ' ',
               style: TextStyle(
-                color:
-                    provider.nickname_status ? Colors.white : Color(0xFFFF0000),
+                color: provider.name_status ? Colors.white : Color(0xFFFF0000),
                 fontSize: 12,
                 fontFamily: 'Pretendard',
                 fontWeight: FontWeight.w500,

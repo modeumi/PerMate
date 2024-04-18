@@ -46,8 +46,8 @@ class _NameFieldState extends State<NameField> {
             ),
             Text(
               provider.name_fail,
-              style: const TextStyle(
-                color: Color(0xFFFF0000),
+              style: TextStyle(
+                color: provider.name_status ? Colors.white : Color(0xFFFF0000),
                 fontSize: 12,
                 fontFamily: 'Pretendard',
                 fontWeight: FontWeight.w500,

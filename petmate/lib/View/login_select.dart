@@ -1,9 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:petmate/DataTools/kakao.dart';
 import 'package:petmate/View/join_main.dart';
 import 'package:petmate/View/login_main.dart';
 import 'package:petmate/Widget/login_button.dart';
+import 'package:petmate/Widget/question_to_push.dart';
 
 class LoginSelect extends StatefulWidget {
   const LoginSelect({super.key});
@@ -21,8 +21,8 @@ class _LoginSelectState extends State<LoginSelect> {
         height: MediaQuery.of(context).size.height,
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/onboarding/Background.png'),
-          ),
+              image: AssetImage('assets/onboarding/Background.png'),
+              fit: BoxFit.fill),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -64,12 +64,15 @@ class _LoginSelectState extends State<LoginSelect> {
               color: const Color(0xFFFEE500),
               image: 'assets/onboarding/kakaotalk_bubble.png',
               contenct: '카카오 로그인',
-              event: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const LoginMain(),
-                    ));
+              event: () async {
+                bool status = await KakaoLogin().Kakao_login();
+                if (status) {
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //       builder: (context) => const LoginMain(),
+                  //     ));
+                }
               },
             ),
             const SizedBox(
@@ -90,49 +93,21 @@ class _LoginSelectState extends State<LoginSelect> {
             const SizedBox(
               height: 62,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  '아직 펫메이트 계정이 없다면?',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 14,
-                    fontFamily: 'Pretendard',
-                    fontWeight: FontWeight.w500,
-                    height: 0,
-                  ),
-                ),
-                const SizedBox(
-                  width: 24,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const JoinMain(),
-                        ));
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.only(bottom: 4),
-                    decoration: const BoxDecoration(
-                        border: Border(
-                            bottom: BorderSide(width: 3, color: Colors.white))),
-                    child: const Text(
-                      '회원가입',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                        fontFamily: 'Pretendard',
-                        fontWeight: FontWeight.w600,
-                      ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 60.0),
+              child: QuestionToPush(
+                question: '아직 펫메이트 계정이 없다면?',
+                pushtext: '회원가입',
+                action: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const JoinMain(),
                     ),
-                  ),
-                )
-              ],
-            )
+                  );
+                },
+              ),
+            ),
           ],
         ),
       ),

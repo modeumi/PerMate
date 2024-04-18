@@ -28,4 +28,8 @@ class Utill {
   bool NickName_Isvalid(String name) {
     return RegExp(r'^[가-힣a-zA-Z1-9]+$').hasMatch(name);
   }
+
+  bool Birth_Isvalid(String birth) {
+    return RegExp(r'^\d{4}\.\d{2}\.\d{2}$').hasMatch(birth);
+  }
 }
