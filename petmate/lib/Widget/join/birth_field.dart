@@ -3,14 +3,14 @@ import 'package:petmate/Provider/join_provider.dart';
 import 'package:petmate/Widget/textfield_slot.dart';
 import 'package:provider/provider.dart';
 
-class PassWordField extends StatefulWidget {
-  const PassWordField({super.key});
+class BrithField extends StatefulWidget {
+  const BrithField({super.key});
 
   @override
-  State<PassWordField> createState() => _PassWordFieldState();
+  State<BrithField> createState() => _BrithFieldState();
 }
 
-class _PassWordFieldState extends State<PassWordField> {
+class _BrithFieldState extends State<BrithField> {
   @override
   Widget build(BuildContext context) {
     return Consumer<JoinProvider>(builder: (context, provider, child) {
@@ -20,7 +20,7 @@ class _PassWordFieldState extends State<PassWordField> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              '비밀번호',
+              '생년월일',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 14,
@@ -33,26 +33,24 @@ class _PassWordFieldState extends State<PassWordField> {
               height: 8,
             ),
             TextFieldSlot(
-              hint: '영문/숫자/특수문자 혼합 8~20자',
-              controller: provider.password,
-              status: provider.password_status,
+              hint: 'YYYY.MM.DD',
+              controller: provider.birth,
+              status: provider.birth_status,
               action: () {
-                provider.Password_Check();
+                provider.Birth_Check();
               },
-              password: true,
+              password: false,
             ),
-            SizedBox(
+            const SizedBox(
               height: 8,
             ),
             Text(
-              provider.password_fail,
+              provider.birth_fail,
               style: TextStyle(
-                color:
-                    provider.password_status ? Colors.white : Color(0xFFFF0000),
+                color: provider.birth_status ? Colors.white : Color(0xFFFF0000),
                 fontSize: 12,
                 fontFamily: 'Pretendard',
                 fontWeight: FontWeight.w500,
-                height: 0,
               ),
             )
           ],

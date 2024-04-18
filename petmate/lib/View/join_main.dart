@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:petmate/Provider/join_provider.dart';
+import 'package:petmate/View/join_success.dart';
 import 'package:petmate/Widget/join/agree_field.dart';
+import 'package:petmate/Widget/join/birth_field.dart';
 import 'package:petmate/Widget/join/email_field.dart';
-import 'package:petmate/Widget/join/join_button.dart';
+import 'package:petmate/Widget/join/gender_field.dart';
 import 'package:petmate/Widget/join/name_field.dart';
 import 'package:petmate/Widget/join/nickname_field.dart';
 import 'package:petmate/Widget/join/password_check_field.dart';
 import 'package:petmate/Widget/join/password_field.dart';
+import 'package:petmate/Widget/push_button_a.dart';
 import 'package:provider/provider.dart';
 
 class JoinMain extends StatefulWidget {
@@ -67,35 +70,54 @@ class _JoinMainState extends State<JoinMain> {
               height: MediaQuery.of(context).size.height,
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/onboarding/Background.png'),
-                ),
+                    image: AssetImage('assets/onboarding/Background.png'),
+                    fit: BoxFit.fill),
               ),
               child: SafeArea(
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      EmailField(),
-                      SizedBox(
+                      const EmailField(),
+                      const SizedBox(
                         height: 12,
                       ),
-                      NameField(),
-                      SizedBox(
+                      const NameField(),
+                      const SizedBox(
                         height: 12,
                       ),
-                      NickNameField(),
-                      SizedBox(
+                      const NickNameField(),
+                      const SizedBox(
                         height: 12,
                       ),
-                      PassWordField(),
-                      SizedBox(
+                      const PassWordField(),
+                      const SizedBox(
                         height: 12,
                       ),
-                      PassWordCheckField(),
-                      SizedBox(
+                      const PassWordCheckField(),
+                      const SizedBox(
+                        height: 12,
+                      ),
+                      const GenderField(),
+                      const SizedBox(
+                        height: 12,
+                      ),
+                      BrithField(),
+                      const SizedBox(
                         height: 32,
                       ),
-                      AgreeField(),
-                      JoinButton(),
+                      const AgreeField(),
+                      PushButtonA(
+                          content: '동의하고 회원가입',
+                          action: () async {
+                            await controller.Join_Success();
+                            print(controller.pass);
+                            if (controller.pass) {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => JoinSuccess()));
+                            }
+                          }),
                     ],
                   ),
                 ),

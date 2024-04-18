@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TextFieldSlot extends StatefulWidget {
@@ -6,19 +7,30 @@ class TextFieldSlot extends StatefulWidget {
   final bool status;
   final VoidCallback action;
   final bool password;
+  final Widget? addwidget;
   const TextFieldSlot(
       {super.key,
       required this.hint,
       required this.controller,
       required this.status,
       required this.action,
-      required this.password});
+      required this.password,
+      this.addwidget});
 
   @override
   State<TextFieldSlot> createState() => _TextFieldSlotState();
 }
 
 class _TextFieldSlotState extends State<TextFieldSlot> {
+  bool? status;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    status = widget.password;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -34,12 +46,12 @@ class _TextFieldSlotState extends State<TextFieldSlot> {
       child: TextField(
         controller: widget.controller,
         onChanged: (value) {
-          print(value);
           widget.action();
         },
         obscureText: widget.password,
         decoration: InputDecoration(
             hintText: widget.hint,
+            suffix: widget.addwidget,
             border: InputBorder.none,
             hintStyle: const TextStyle(
               color: Color(0xFFCCCCCC),

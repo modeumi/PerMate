@@ -40,10 +40,8 @@ class _EmailFieldState extends State<EmailField> {
                   flex: 3,
                   child: TextFieldSlot(
                     hint: 'example@example.com',
-                    controller:
-                        Provider.of<JoinProvider>(context, listen: false).email,
-                    status: Provider.of<JoinProvider>(context, listen: false)
-                        .email_status,
+                    controller: provider.email,
+                    status: provider.email_status,
                     action: () {},
                     password: false,
                   ),
@@ -55,10 +53,9 @@ class _EmailFieldState extends State<EmailField> {
                     flex: 1,
                     child: CheckButton(
                         event: () {
-                          Provider.of<JoinProvider>(context, listen: false)
-                              .Email_Check();
+                          provider.Email_Check();
                         },
-                        content: '인증 요청'))
+                        content: provider.mailsend ? '재전송' : '인증 요청'))
               ],
             ),
             const SizedBox(
@@ -71,12 +68,11 @@ class _EmailFieldState extends State<EmailField> {
                   flex: 3,
                   child: TextFieldSlot(
                     hint: '인증번호를 입력해주세요',
-                    controller:
-                        Provider.of<JoinProvider>(context, listen: false)
-                            .verification_code,
-                    status: Provider.of<JoinProvider>(context, listen: false)
-                        .verification_code_status,
-                    action: () {},
+                    controller: provider.verification_code,
+                    status: provider.verification_code_status,
+                    action: () {
+                      provider.verification_code_status = false;
+                    },
                     password: false,
                   ),
                 ),
@@ -87,25 +83,27 @@ class _EmailFieldState extends State<EmailField> {
                     flex: 1,
                     child: CheckButton(
                         event: () {
-                          Provider.of<JoinProvider>(context, listen: false)
-                              .Verification_Code_Check();
+                          provider.Verification_Code_Check();
                         },
                         content: '확인'))
               ],
             ),
             const SizedBox(
-              height: 8,
+              height: 7,
             ),
             Text(
               Provider.of<JoinProvider>(context, listen: false).email_fail,
-              style: const TextStyle(
-                color: Color(0xFFFF0000),
+              style: TextStyle(
+                color: provider.email_status
+                    ? provider.verification_code_status
+                        ? Colors.white
+                        : Color(0xFFFF0000)
+                    : Color(0xFFFF0000),
                 fontSize: 12,
                 fontFamily: 'Pretendard',
                 fontWeight: FontWeight.w500,
-                height: 0,
               ),
-            )
+            ),
           ],
         ),
       );
