@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:petmate/Model/user_model.dart';
 
 class FirebaseData {
   final FirebaseAuth auth = FirebaseAuth.instance;
@@ -47,6 +47,21 @@ class FirebaseData {
       return true;
     } else {
       return false;
+    }
+  }
+
+  Future<Map<String, dynamic>> Login(String email, String pass) async {
+    try {
+      UserCredential user =
+          await auth.signInWithEmailAndPassword(email: email, password: pass);
+      DocumentSnapshot usersnapshot =
+          await store.collection('user').doc(user.user!.uid).get();
+      Map<String, dynamic> userdata =
+          usersnapshot.data() as Map<String, dynamic>;
+
+      return userdata;
+    } catch (e) {
+      return {};
     }
   }
 }

@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 class PushButtonA extends StatefulWidget {
   final String content;
   final VoidCallback action;
-  const PushButtonA({super.key, required this.content, required this.action});
+  final bool? active;
+  const PushButtonA(
+      {super.key, required this.content, required this.action, this.active});
 
   @override
   State<PushButtonA> createState() => _PushButtonAState();
@@ -21,7 +23,9 @@ class _PushButtonAState extends State<PushButtonA> {
         margin: const EdgeInsets.symmetric(vertical: 32),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         decoration: BoxDecoration(
-            color: const Color(0xFF1B6EEE),
+            color: widget.active ?? true
+                ? const Color(0xFF1B6EEE)
+                : const Color(0xFF5A8FE1),
             border: Border.all(
               width: 1,
               color: Colors.white.withOpacity(0.2),

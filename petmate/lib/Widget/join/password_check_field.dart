@@ -35,7 +35,7 @@ class _PassWordFieldState extends State<PassWordCheckField> {
             TextFieldSlot(
               hint: '비밀번호를 한번 더 입력해주세요',
               controller: provider.password_check,
-              status: provider.password_check_status,
+              status: provider.password_check_checker,
               action: () {
                 provider.Password_Check_Check();
               },
@@ -47,7 +47,7 @@ class _PassWordFieldState extends State<PassWordCheckField> {
             Text(
               provider.password_check_fail,
               style: TextStyle(
-                color: provider.password_check_status
+                color: provider.password_check_checker
                     ? Colors.white
                     : Color(0xFFFF0000),
                 fontSize: 12,

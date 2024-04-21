@@ -20,14 +20,25 @@ class JoinProvider extends ChangeNotifier {
 
   Utill utill = Utill();
 
-  bool email_status = true;
-  bool verification_code_status = true;
-  bool name_status = true;
-  bool nickname_status = true;
-  bool password_status = true;
-  bool password_check_status = true;
-  bool pass = false;
+  bool email_status = false;
+  bool verification_code_status = false;
+  bool name_status = false;
+  bool nickname_status = false;
+  bool password_status = false;
+  bool password_check_status = false;
+  bool gender_status = false;
   bool birth_status = false;
+
+  bool email_checker = true;
+  bool verification_code_checker = true;
+  bool name_checker = true;
+  bool nickname_checker = true;
+  bool password_checker = true;
+  bool password_check_checker = true;
+  bool gender_checker = true;
+  bool birth_checker = true;
+
+  bool pass = false;
 
   bool email_duplication = true;
   bool email_valid = true;
@@ -51,6 +62,7 @@ class JoinProvider extends ChangeNotifier {
     'agree_3': false,
     'agree_4': false
   };
+  List<String> gender_list = ['남성', '여성'];
 
   String code = '';
 
@@ -80,23 +92,24 @@ class JoinProvider extends ChangeNotifier {
   }
 
   void Email_Check() async {
+    email_status = false;
     email_valid = utill.Email_Isvalid(email.text);
     email_duplication = await firebase.Duplication_Check_Email(email.text);
     if (email.text != '' && email_valid && email_duplication) {
-      email_status = true;
-      mailsend = true;
+      email_checker = true;
       Email_Valid();
       Create_Code();
       await MailSender().EmailSend(email.text, code);
       notifyListeners();
     } else {
-      email_status = false;
+      email_checker = false;
       Email_Valid();
     }
+    JoinStatusCheck();
   }
 
   void Email_Valid() {
-    if (!email_status) {
+    if (!email_checker) {
       if (email.text == '') {
         email_fail = '이메일을 입력해주세요';
       } else if (!email_duplication) {
@@ -108,7 +121,13 @@ class JoinProvider extends ChangeNotifier {
       }
     } else {
       email_fail = '인증번호를 전송하였습니다.';
+      email_status = true;
     }
+    notifyListeners();
+  }
+
+  void Email_Changer() {
+    email_status = false;
     notifyListeners();
   }
 
@@ -117,16 +136,18 @@ class JoinProvider extends ChangeNotifier {
     print(code);
     if (verification_code.text == code) {
       verification_code_status = true;
+      verification_code_checker = true;
     } else {
-      verification_code_status = false;
+      verification_code_checker = false;
     }
-    notifyListeners();
     Verification_Code_Valid();
+    JoinStatusCheck();
+    notifyListeners();
   }
 
   void Verification_Code_Valid() {
     email_fail = '';
-    if (!verification_code_status) {
+    if (!verification_code_checker) {
       email_fail = '인증번호가 일치하지 않습니다.';
     } else {
       email_fail = '인증번호가 일치합니다.';
@@ -134,18 +155,25 @@ class JoinProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void Verification_Code_Changer() {
+    verification_code_status = false;
+    notifyListeners();
+  }
+
   void Name_Check() {
     if (name.text != '' && utill.Name_Isvalid(name.text)) {
+      name_checker = true;
       name_status = true;
     } else {
-      name_status = false;
+      name_checker = false;
     }
+    JoinStatusCheck();
     Name_Valid();
     notifyListeners();
   }
 
   void Name_Valid() {
-    if (!name_status) {
+    if (!name_checker) {
       name_fail = '한글, 영문만 가능합니다.';
     } else {
       name_fail = '';
@@ -153,18 +181,25 @@ class JoinProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void Name_Changer() {
+    name_status = false;
+    notifyListeners();
+  }
+
   void NickName_Check() {
     if (nickname.text != '' && utill.NickName_Isvalid(nickname.text)) {
       nickname_status = true;
+      nickname_checker = true;
     } else {
-      nickname_status = false;
+      nickname_checker = false;
     }
+    JoinStatusCheck();
     NickName_Valid();
     notifyListeners();
   }
 
   void NickName_Valid() {
-    if (!nickname_status) {
+    if (!nickname_checker) {
       nickname_fail = '한글, 영문,숫자만 가능합니다.';
     } else {
       nickname_fail = '사용가능한 닉네임입니다.';
@@ -172,18 +207,31 @@ class JoinProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void NickName_Changer() {
+    nickname_status = false;
+    notifyListeners();
+  }
+
   void Password_Check() {
+    password_status = false;
     if (password.text != '' && utill.Password_Isvalid(password.text)) {
       password_status = true;
+      password_checker = true;
     } else {
-      password_status = false;
+      password_checker = false;
     }
     Password_Valid();
     notifyListeners();
   }
 
+  void Password_Changer() {
+    password_check.text = '';
+    Password_Check_Check();
+    notifyListeners();
+  }
+
   void Password_Valid() {
-    if (!password_status) {
+    if (!password_checker) {
       password_fail = '영문, 숫자, 특수문자 중 두가지 이상을 조합해주세요.';
     } else {
       password_fail = '';
@@ -192,26 +240,23 @@ class JoinProvider extends ChangeNotifier {
   }
 
   void Password_Check_Check() {
+    password_check_status = false;
     if (password.text == password_check.text) {
       password_check_status = true;
+      password_check_checker = true;
     } else {
-      password_check_status = false;
+      password_check_checker = false;
     }
     Password_Check_Valid();
     notifyListeners();
   }
 
   void Password_Check_Valid() {
-    if (!password_check_status) {
+    if (!password_check_checker) {
       password_check_fail = '비밀번호가 일치하지 않습니다.';
     } else {
       password_check_fail = '비밀번호가 일치합니다.';
     }
-    notifyListeners();
-  }
-
-  void Password_Change() {
-    password_check.text = '';
     notifyListeners();
   }
 
@@ -226,11 +271,17 @@ class JoinProvider extends ChangeNotifier {
   }
 
   void Birth_Check() {
-    birth_status = utill.Birth_Isvalid(birth.text);
-    if (!birth_status) {
-      birth_fail = '생년월일이 올바르게 입력되지 않았습니다.';
+    if (birth.text != '') {
+      birth_status = utill.Birth_Isvalid(birth.text);
+      if (!birth_status) {
+        birth_checker = false;
+        birth_fail = '생년월일이 올바르게 입력되지 않았습니다.';
+      } else {
+        birth_checker = true;
+        birth_fail = '생년월일이 올바르게 입력되었습니다.';
+      }
     } else {
-      birth_fail = '생년월일이 올바르게 입력되었습니다.';
+      birth_fail = '생년월일을 입력해주세요..';
     }
     notifyListeners();
   }
@@ -254,15 +305,33 @@ class JoinProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> Join_Success() async {
-    pass = false;
+  void JoinStatusCheck() {
     if (email_status &&
         verification_code_status &&
         name_status &&
         nickname_status &&
         password_status &&
         password_check_status &&
-        entire) {
+        entire &&
+        gender != '' &&
+        birth_status) {
+      pass = true;
+    } else {
+      pass = false;
+    }
+  }
+
+  Future<void> Join_Push() async {
+    if (email_status &&
+        verification_code_status &&
+        name_status &&
+        nickname_status &&
+        password_status &&
+        password_check_status &&
+        entire &&
+        gender != '' &&
+        birth_status) {
+      print('회원가입 진입 성공');
       await Join();
     }
     notifyListeners();

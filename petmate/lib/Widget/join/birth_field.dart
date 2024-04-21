@@ -35,7 +35,7 @@ class _BrithFieldState extends State<BrithField> {
             TextFieldSlot(
               hint: 'YYYY.MM.DD',
               controller: provider.birth,
-              status: provider.birth_status,
+              status: provider.birth_checker,
               action: () {
                 provider.Birth_Check();
               },
@@ -47,7 +47,8 @@ class _BrithFieldState extends State<BrithField> {
             Text(
               provider.birth_fail,
               style: TextStyle(
-                color: provider.birth_status ? Colors.white : Color(0xFFFF0000),
+                color:
+                    provider.birth_checker ? Colors.white : Color(0xFFFF0000),
                 fontSize: 12,
                 fontFamily: 'Pretendard',
                 fontWeight: FontWeight.w500,

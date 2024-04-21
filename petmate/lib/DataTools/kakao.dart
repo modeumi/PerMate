@@ -5,7 +5,7 @@ import 'package:petmate/DataTools/firebase.dart';
 class KakaoLogin {
   FirebaseData firebase = FirebaseData();
 
-  Future<bool> Kakao_login() async {
+  Future<Map<String, String>> Kakao_login() async {
     if (await isKakaoTalkInstalled()) {
       try {
         OAuthToken token = await UserApi.instance.loginWithKakaoTalk();
@@ -22,7 +22,7 @@ class KakaoLogin {
           }
           String birth =
               '${user.kakaoAccount!.birthyear}.${user.kakaoAccount!.birthday!.substring(0, 2)}.${user.kakaoAccount!.birthday!.substring(2)}';
-          bool join = await firebase.Join(
+          await firebase.Join(
               user.kakaoAccount!.email!,
               user.id.toString(),
               user.kakaoAccount!.name!,
@@ -30,13 +30,20 @@ class KakaoLogin {
               gender,
               birth,
               true);
-          return join;
+          return {
+            'email': user.kakaoAccount!.email!,
+            'password': user.id.toString()
+          };
         }
-        return !check;
+        return {
+          'email': user.kakaoAccount!.email!,
+          'password': user.id.toString()
+        };
+        ;
       } catch (error) {
         print('카카오톡으로 로그인 실패 $error');
         if (error is PlatformException && error.code == 'CANCELED') {
-          return false;
+          return {};
         }
         try {
           await UserApi.instance.loginWithKakaoAccount();
@@ -44,7 +51,7 @@ class KakaoLogin {
         } catch (error) {
           print('카카오계정으로 로그인 실패 $error');
         }
-        return false;
+        return {};
       }
     } else {
       try {
@@ -53,7 +60,7 @@ class KakaoLogin {
       } catch (error) {
         print('카카오계정으로 로그인 실패 $error');
       }
-      return false;
+      return {};
     }
   }
 }

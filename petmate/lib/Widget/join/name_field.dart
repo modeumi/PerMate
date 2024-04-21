@@ -35,8 +35,9 @@ class _NameFieldState extends State<NameField> {
             TextFieldSlot(
               hint: '이름을 입력해주세요',
               controller: provider.name,
-              status: provider.name_status,
+              status: provider.name_checker,
               action: () {
+                provider.Name_Changer();
                 provider.Name_Check();
               },
               password: false,
@@ -47,7 +48,7 @@ class _NameFieldState extends State<NameField> {
             Text(
               provider.name_fail,
               style: TextStyle(
-                color: provider.name_status ? Colors.white : Color(0xFFFF0000),
+                color: provider.name_checker ? Colors.white : Color(0xFFFF0000),
                 fontSize: 12,
                 fontFamily: 'Pretendard',
                 fontWeight: FontWeight.w500,

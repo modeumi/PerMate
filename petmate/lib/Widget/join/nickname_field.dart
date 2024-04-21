@@ -41,8 +41,10 @@ class _NickNameFieldState extends State<NickNameField> {
                   child: TextFieldSlot(
                     hint: '2~16자 이내로 입력해주세요',
                     controller: provider.nickname,
-                    status: provider.nickname_status,
-                    action: () {},
+                    status: provider.nickname_checker,
+                    action: () {
+                      provider.NickName_Changer();
+                    },
                     password: false,
                   ),
                 ),
@@ -65,8 +67,9 @@ class _NickNameFieldState extends State<NickNameField> {
             Text(
               provider.nickname_fail,
               style: TextStyle(
-                color:
-                    provider.nickname_status ? Colors.white : Color(0xFFFF0000),
+                color: provider.nickname_checker
+                    ? Colors.white
+                    : Color(0xFFFF0000),
                 fontSize: 12,
                 fontFamily: 'Pretendard',
                 fontWeight: FontWeight.w500,
