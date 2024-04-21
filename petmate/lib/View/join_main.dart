@@ -107,17 +107,18 @@ class _JoinMainState extends State<JoinMain> {
                       ),
                       const AgreeField(),
                       PushButtonA(
-                          content: '동의하고 회원가입',
-                          action: () async {
-                            await controller.Join_Success();
-                            print(controller.pass);
-                            if (controller.pass) {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => JoinSuccess()));
-                            }
-                          }),
+                        content: '동의하고 회원가입',
+                        action: () async {
+                          await controller.Join_Push();
+                          if (controller.pass) {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => JoinSuccess()));
+                          }
+                        },
+                        active: controller.pass,
+                      ),
                     ],
                   ),
                 ),

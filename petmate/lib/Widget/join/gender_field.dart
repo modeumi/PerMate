@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:petmate/Provider/join_provider.dart';
 import 'package:petmate/Widget/push_button_b.dart';
 import 'package:provider/provider.dart';
@@ -36,25 +34,24 @@ class _GenderFieldState extends State<GenderField> {
             ),
             Row(
               children: [
-                Flexible(
-                  flex: 5,
-                  child: PushButtonB(
-                      content: '남성',
-                      action: () {
-                        provider.Select_Gender('남성');
-                      }),
-                ),
-                SizedBox(
-                  width: 8,
-                ),
-                Flexible(
-                  flex: 5,
-                  child: PushButtonB(
-                      content: '여성',
-                      action: () {
-                        provider.Select_Gender('여성');
-                      }),
-                )
+                for (String key in provider.gender_list)
+                  Flexible(
+                    flex: 5,
+                    child: Container(
+                      margin: EdgeInsets.only(
+                          right: provider.gender_list.indexOf(key) !=
+                                  provider.gender_list.length - 1
+                              ? 8
+                              : 0),
+                      child: PushButtonB(
+                        content: key,
+                        action: () {
+                          provider.Select_Gender(key);
+                        },
+                        condition: provider.gender == key,
+                      ),
+                    ),
+                  ),
               ],
             ),
             SizedBox(

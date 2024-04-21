@@ -41,8 +41,10 @@ class _EmailFieldState extends State<EmailField> {
                   child: TextFieldSlot(
                     hint: 'example@example.com',
                     controller: provider.email,
-                    status: provider.email_status,
-                    action: () {},
+                    status: provider.email_checker,
+                    action: () {
+                      provider.Email_Changer();
+                    },
                     password: false,
                   ),
                 ),
@@ -69,9 +71,9 @@ class _EmailFieldState extends State<EmailField> {
                   child: TextFieldSlot(
                     hint: '인증번호를 입력해주세요',
                     controller: provider.verification_code,
-                    status: provider.verification_code_status,
+                    status: provider.verification_code_checker,
                     action: () {
-                      provider.verification_code_status = false;
+                      provider.Verification_Code_Changer();
                     },
                     password: false,
                   ),
@@ -94,8 +96,8 @@ class _EmailFieldState extends State<EmailField> {
             Text(
               Provider.of<JoinProvider>(context, listen: false).email_fail,
               style: TextStyle(
-                color: provider.email_status
-                    ? provider.verification_code_status
+                color: provider.email_checker
+                    ? provider.verification_code_checker
                         ? Colors.white
                         : Color(0xFFFF0000)
                     : Color(0xFFFF0000),

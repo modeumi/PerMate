@@ -35,9 +35,10 @@ class _PassWordFieldState extends State<PassWordField> {
             TextFieldSlot(
               hint: '영문/숫자/특수문자 혼합 8~20자',
               controller: provider.password,
-              status: provider.password_status,
+              status: provider.password_checker,
               action: () {
                 provider.Password_Check();
+                provider.Password_Changer();
               },
               password: true,
             ),
@@ -47,8 +48,9 @@ class _PassWordFieldState extends State<PassWordField> {
             Text(
               provider.password_fail,
               style: TextStyle(
-                color:
-                    provider.password_status ? Colors.white : Color(0xFFFF0000),
+                color: provider.password_checker
+                    ? Colors.white
+                    : Color(0xFFFF0000),
                 fontSize: 12,
                 fontFamily: 'Pretendard',
                 fontWeight: FontWeight.w500,
