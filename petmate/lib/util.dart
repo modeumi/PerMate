@@ -1,4 +1,4 @@
-class Utill {
+class Utility {
   bool Password_Isvalid(String password) {
     bool lower = password.contains(RegExp(r'[a-z]'));
     bool upper = password.contains(RegExp(r'[A-Z]'));

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:petmate/Provider/onboarding_provider.dart';
-import 'package:petmate/View/login_main.dart';
 import 'package:petmate/View/login_select.dart';
 import 'package:provider/provider.dart';
 

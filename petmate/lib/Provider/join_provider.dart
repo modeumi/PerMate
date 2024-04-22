@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:petmate/DataTools/firebase.dart';
 import 'package:petmate/DataTools/google_smtp.dart';
-import 'package:petmate/utill.dart';
+import 'package:petmate/util.dart';
 
 class JoinProvider extends ChangeNotifier {
   FirebaseData firebase = FirebaseData();
@@ -18,7 +18,7 @@ class JoinProvider extends ChangeNotifier {
   TextEditingController password_check = TextEditingController();
   TextEditingController birth = TextEditingController();
 
-  Utill utill = Utill();
+  Utility util = Utility();
 
   bool email_status = false;
   bool verification_code_status = false;
@@ -93,13 +93,13 @@ class JoinProvider extends ChangeNotifier {
 
   void Email_Check() async {
     email_status = false;
-    email_valid = utill.Email_Isvalid(email.text);
+    email_valid = util.Email_Isvalid(email.text);
     email_duplication = await firebase.Duplication_Check_Email(email.text);
     if (email.text != '' && email_valid && email_duplication) {
       email_checker = true;
       Email_Valid();
       Create_Code();
-      await MailSender().EmailSend(email.text, code);
+      await MailSender().JoinEmailSend(email.text, code);
       notifyListeners();
     } else {
       email_checker = false;
@@ -161,7 +161,7 @@ class JoinProvider extends ChangeNotifier {
   }
 
   void Name_Check() {
-    if (name.text != '' && utill.Name_Isvalid(name.text)) {
+    if (name.text != '' && util.Name_Isvalid(name.text)) {
       name_checker = true;
       name_status = true;
     } else {
@@ -187,7 +187,7 @@ class JoinProvider extends ChangeNotifier {
   }
 
   void NickName_Check() {
-    if (nickname.text != '' && utill.NickName_Isvalid(nickname.text)) {
+    if (nickname.text != '' && util.NickName_Isvalid(nickname.text)) {
       nickname_status = true;
       nickname_checker = true;
     } else {
@@ -214,7 +214,7 @@ class JoinProvider extends ChangeNotifier {
 
   void Password_Check() {
     password_status = false;
-    if (password.text != '' && utill.Password_Isvalid(password.text)) {
+    if (password.text != '' && util.Password_Isvalid(password.text)) {
       password_status = true;
       password_checker = true;
     } else {
@@ -272,7 +272,7 @@ class JoinProvider extends ChangeNotifier {
 
   void Birth_Check() {
     if (birth.text != '') {
-      birth_status = utill.Birth_Isvalid(birth.text);
+      birth_status = util.Birth_Isvalid(birth.text);
       if (!birth_status) {
         birth_checker = false;
         birth_fail = '생년월일이 올바르게 입력되지 않았습니다.';
