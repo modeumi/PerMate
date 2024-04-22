@@ -6,14 +6,15 @@ class CurrentAir {
   List<Listed>? listed;
 
   CurrentAir({
-      this.coord, 
-      this.listed,});
+    this.coord,
+    this.listed,
+  });
 
   CurrentAir.fromJson(dynamic json) {
-    coord = json['coord'] != null ? Coord.fromJson(json['coord']) : null;
-    if (json['list'] != null) {					// 여기를 다시 수정함
-      listed = [];
-      json['list'].forEach((v) {				// 여기를 다시 수정함
+    listed = [];
+    coord = Coord.fromJson(json['coord']);
+    if (json['list'] != null) {
+      json['list'].forEach((v) {
         listed?.add(Listed.fromJson(v));
       });
     }
@@ -29,7 +30,6 @@ class CurrentAir {
   //   }
   //   return map;
   // }
-
 }
 
 /// main : {"aqi":3}
@@ -38,13 +38,16 @@ class CurrentAir {
 
 class Listed {
   Listed({
-      this.main, 
-      this.components, 
-      this.dt,});
+    this.main,
+    this.components,
+    this.dt,
+  });
 
   Listed.fromJson(dynamic json) {
     main = json['main'] != null ? Main.fromJson(json['main']) : null;
-    components = json['components'] != null ? Components.fromJson(json['components']) : null;
+    components = json['components'] != null
+        ? Components.fromJson(json['components'])
+        : null;
     dt = json['dt'];
   }
   Main? main;
@@ -62,7 +65,6 @@ class Listed {
     map['dt'] = dt;
     return map;
   }
-
 }
 
 /// co : 337.12
@@ -76,14 +78,15 @@ class Listed {
 
 class Components {
   Components({
-      this.co, 
-      this.no, 
-      this.no2, 
-      this.o3, 
-      this.so2, 
-      this.pm2_5,
-      this.pm10, 
-      this.nh3,});
+    this.co,
+    this.no,
+    this.no2,
+    this.o3,
+    this.so2,
+    this.pm2_5,
+    this.pm10,
+    this.nh3,
+  });
 
   Components.fromJson(dynamic json) {
     co = json['co'];
@@ -116,14 +119,14 @@ class Components {
     map['nh3'] = nh3;
     return map;
   }
-
 }
 
 /// aqi : 3
 
 class Main {
   Main({
-      this.aqi,});
+    this.aqi,
+  });
 
   Main.fromJson(dynamic json) {
     aqi = json['aqi'];
@@ -135,7 +138,6 @@ class Main {
     map['aqi'] = aqi;
     return map;
   }
-
 }
 
 /// lon : 9.19
@@ -143,8 +145,9 @@ class Main {
 
 class Coord {
   Coord({
-      this.lon, 
-      this.lat,});
+    this.lon,
+    this.lat,
+  });
 
   Coord.fromJson(dynamic json) {
     lon = json['lon'];
@@ -159,5 +162,4 @@ class Coord {
     map['lat'] = lat;
     return map;
   }
-
 }
