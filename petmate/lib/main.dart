@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_naver_map/flutter_naver_map.dart';
+import 'package:petmate/Api/weather_http.dart';
 import 'package:petmate/Provider/join_provider.dart';
 import 'package:petmate/Provider/login_provider.dart';
 import 'package:petmate/Provider/onboarding_provider.dart';
-import 'package:petmate/Provider/start_provider.dart';
+import 'package:petmate/View/Map/naver_map.dart';
+import 'package:petmate/View/Notice/noticedelete.dart';
+import 'package:petmate/View/mainpage.dart';
+import 'package:petmate/Widget/notice/test3.dart';
+import 'package:petmate/Widget/notice/test.dart';
 import 'package:petmate/View/splash.dart';
+import 'package:petmate/Widget/notice/test1.dart';
+import 'package:petmate/View/Notice/notice.dart';
 import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 import 'package:kakao_flutter_sdk_auth/kakao_flutter_sdk_auth.dart';
@@ -19,6 +27,14 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  WidgetsFlutterBinding.ensureInitialized();
+  await NaverMapSdk.instance.initialize(
+    clientId: "d0y4umwxnz",
+    onAuthFailed: (ex) {
+      debugPrint("********* 네이버맵 인증오류 : $ex *********");
+    },
+  );
+
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive, overlays: []);
 
   runApp(MultiProvider(
@@ -30,7 +46,7 @@ void main() async {
     ],
     child: const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Splash(),
+      home: MainPage(),
     ),
   ));
 }
