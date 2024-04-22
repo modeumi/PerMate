@@ -1,10 +1,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-<uses-permission android:name="android.permission.INTERNET" />
+    <!-- 네이버 맵에서 현 위치 탐색 기능을 사용할 때만, 해당 권한 2개를 선언합니다 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+     <uses-permission android:name="android.permission.INTERNET" />  <!-- 인터넷 허용 동의 -->
     <application
         android:label="petmate"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
-        android:debuggable="false">
+        android:debuggable="false"
+        android:enableOnBackInvokedCallback="true"
+        >
+        
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -41,6 +47,9 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        <meta-data
+            android:name="com.naver.maps.map.d0y4umwxnz"
+            android:value="d0y4umwxnz" />
     </application>
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package="com.adjusting.petmate">
@@ -55,3 +64,16 @@
     </queries>
     
 </manifest>
+
+
+<!-- class MainActivity: flutterActivity() {
+    override fun configureFlutterEngine(@NonNull FlutterEngine) {
+        GeneratedPluginRegistrant.registerWith(FlutterEngine);
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if(checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+               requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 0);
+            }
+        }
+    }
+} -->
