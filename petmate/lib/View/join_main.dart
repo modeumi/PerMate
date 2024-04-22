@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:petmate/Provider/join_provider.dart';
 import 'package:petmate/View/join_success.dart';
+import 'package:petmate/Widget/custom_appbar.dart';
 import 'package:petmate/Widget/join/agree_field.dart';
 import 'package:petmate/Widget/join/birth_field.dart';
 import 'package:petmate/Widget/join/email_field.dart';
@@ -26,39 +27,7 @@ class _JoinMainState extends State<JoinMain> {
       return Scaffold(
         backgroundColor: Colors.transparent,
         extendBodyBehindAppBar: true,
-        appBar: AppBar(
-          toolbarHeight: 100,
-          automaticallyImplyLeading: false,
-          backgroundColor: Colors.transparent,
-          title: Stack(
-            children: [
-              Positioned(
-                top: 0,
-                bottom: 0,
-                left: 0,
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Image.asset('assets/onboarding/icon_5.png'),
-                ),
-              ),
-              const Center(
-                child: Text(
-                  '회원가입',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontFamily: 'Pretendard',
-                    fontWeight: FontWeight.w600,
-                    height: 0,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
+        appBar: CustomAppbar(title: '회원가입'),
         body: GestureDetector(
           onTap: () {
             FocusScope.of(context).unfocus();
