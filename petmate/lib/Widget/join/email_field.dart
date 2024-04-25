@@ -16,7 +16,6 @@ class _EmailFieldState extends State<EmailField> {
   Widget build(BuildContext context) {
     return Consumer<JoinProvider>(builder: (context, provider, child) {
       return Container(
-        height: 150,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

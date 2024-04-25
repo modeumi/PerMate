@@ -15,7 +15,6 @@ class _BrithFieldState extends State<BrithField> {
   Widget build(BuildContext context) {
     return Consumer<JoinProvider>(builder: (context, provider, child) {
       return Container(
-        height: 100,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

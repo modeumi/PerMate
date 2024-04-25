@@ -50,6 +50,20 @@ class FirebaseData {
     }
   }
 
+  Future<bool> Account_Exist_Check(String email, String name) async {
+    QuerySnapshot<Map<String, dynamic>> snapshot = await store
+        .collection('user')
+        .where('email', isEqualTo: email)
+        .where('name', isEqualTo: name)
+        .get();
+    if (snapshot.docs.isNotEmpty) {
+      print('통과');
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   Future<Map<String, dynamic>> Login(String email, String pass) async {
     try {
       UserCredential user =
@@ -63,5 +77,16 @@ class FirebaseData {
     } catch (e) {
       return {};
     }
+  }
+
+  Future<void> Change_Password(String email) async {
+    await auth.verifyPhoneNumber(
+      phoneNumber: '+82 10 8873 2581',
+      verificationCompleted: (PhoneAuthCredential credential) {},
+      verificationFailed: (FirebaseAuthException e) {},
+      codeSent: (String verificationId, int? resendToken) {},
+      codeAutoRetrievalTimeout: (String verificationId) {},
+    );
+    // UserCredential user = await auth.signInWithCustomToken(token)
   }
 }

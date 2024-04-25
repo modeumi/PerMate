@@ -1,35 +1,51 @@
-class Utility {
-  bool Password_Isvalid(String password) {
-    bool lower = password.contains(RegExp(r'[a-z]'));
-    bool upper = password.contains(RegExp(r'[A-Z]'));
-    bool special = password.contains(RegExp(r'[!@#]'));
-    bool digit = password.contains(RegExp(r'[0-9]'));
-    bool length = password.length >= 8 && password.length <= 20;
+import 'package:flutter/material.dart';
 
-    int count = 0;
-    if (lower) count++;
-    if (upper) count++;
-    if (special) count++;
-    if (digit) count++;
+bool Password_Isvalid(String password) {
+  bool lower = password.contains(RegExp(r'[a-z]'));
+  bool upper = password.contains(RegExp(r'[A-Z]'));
+  bool special = password.contains(RegExp(r'[!@#]'));
+  bool digit = password.contains(RegExp(r'[0-9]'));
+  bool length = password.length >= 8 && password.length <= 20;
 
-    return count >= 2 && length;
-  }
+  int count = 0;
+  if (lower) count++;
+  if (upper) count++;
+  if (special) count++;
+  if (digit) count++;
 
-  bool Email_Isvalid(String email) {
-    bool sign = email.contains('@');
+  return count >= 2 && length;
+}
 
-    return sign;
-  }
+bool Email_Isvalid(String email) {
+  bool sign = email.contains('@');
 
-  bool Name_Isvalid(String name) {
-    return RegExp(r'^[가-힣a-zA-Z]+$').hasMatch(name);
-  }
+  return sign;
+}
 
-  bool NickName_Isvalid(String name) {
-    return RegExp(r'^[가-힣a-zA-Z1-9]+$').hasMatch(name);
-  }
+bool Name_Isvalid(String name) {
+  return RegExp(r'^[가-힣a-zA-Z]+$').hasMatch(name);
+}
 
-  bool Birth_Isvalid(String birth) {
-    return RegExp(r'^\d{4}\.\d{2}\.\d{2}$').hasMatch(birth);
-  }
+bool NickName_Isvalid(String name) {
+  return RegExp(r'^[가-힣a-zA-Z1-9]+$').hasMatch(name);
+}
+
+bool Birth_Isvalid(String birth) {
+  return RegExp(r'^\d{4}\.\d{2}\.\d{2}$').hasMatch(birth);
+}
+
+TextStyle White(double size, FontWeight weight) {
+  return TextStyle(
+      fontSize: size,
+      fontWeight: weight,
+      fontFamily: 'Pretendard',
+      color: Colors.white);
+}
+
+TextStyle Red(double size, FontWeight weight) {
+  return TextStyle(
+      fontSize: size,
+      fontWeight: weight,
+      fontFamily: 'Pretendard',
+      color: const Color(0xFFFF0000));
 }

@@ -1,0 +1,73 @@
+import 'package:blurrycontainer/blurrycontainer.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:petmate/Model/current_air.dart';
+import 'package:petmate/Model/current_weather.dart';
+import 'package:petmate/Widget/main/add_alarm.dart';
+import 'package:petmate/Widget/main/add_memo.dart';
+import 'package:petmate/Widget/main/log.dart';
+import 'package:petmate/Widget/main/main_alram.dart';
+import 'package:petmate/Widget/main/memo.dart';
+import 'package:petmate/Widget/main/profile.dart';
+import 'package:petmate/Widget/main/walk.dart';
+import 'package:petmate/Widget/main/weather.dart';
+
+class MainPage extends StatefulWidget {
+  final CurrentWeather weatherData;
+  final CurrentAir airData;
+  const MainPage({super.key, required this.weatherData, required this.airData});
+
+  @override
+  State<MainPage> createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: Container(
+      width: double.infinity,
+      height: 812,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+            image: AssetImage('assets/Main/Background.png'), fit: BoxFit.fill),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(1.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            MainAlram(),
+            ProfilePlus(),
+            SizedBox(
+              height: 115,
+            ),
+            WeatherWigdget(
+             
+            ),
+            MemoWidget(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                LogWidget(),
+                WalkWidget(),
+              ],
+            ),
+            SizedBox(
+              height: 8,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                AlarmWidget(),
+                MeMoWidget(),
+              ],
+            ),
+          ],
+        ),
+      ),
+    ));
+  }
+}

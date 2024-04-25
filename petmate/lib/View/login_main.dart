@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:petmate/Provider/login_provider.dart';
 import 'package:petmate/View/join_main.dart';
+import 'package:petmate/View/password_search.dart';
 import 'package:petmate/Widget/push_button_a.dart';
 import 'package:petmate/Widget/question_to_push.dart';
 import 'package:petmate/Widget/textfield_slot.dart';
@@ -117,12 +118,12 @@ class _LoginMainState extends State<LoginMain> {
                   question: '비밀번호를 잊어버리셨나요?',
                   pushtext: '비밀번호 찾기',
                   action: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => const JoinMain(),
-                    //   ),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const PasswordSearch(),
+                      ),
+                    );
                   },
                 ),
                 SizedBox(
