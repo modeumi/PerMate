@@ -45,7 +45,7 @@ class _NoticeDeletedState extends State<NoticeDeleted> {
           isScrollControlled: true,
           builder: (BuildContext context) {
             return AnimatedContainer(
-              duration: Duration(seconds: 50),
+              duration: Duration(seconds: 10),
               curve: Curves.easeIn,
               child: Stack(
                 children: [

@@ -9,23 +9,30 @@ class Network {
   Network(this.urlWeather, this.urlAir);
 
   // 날씨정보 API
-  Future<dynamic> getWeatherData() async {
+  Future<Map<String, dynamic>> getWeatherData() async {
+    // print(' 주소 : $urlWeather');
     http.Response response = await http.get(Uri.parse(urlWeather));
 
+    print('스테이터스 코드 : ${response.statusCode}');
     if (response.statusCode == 200) {
-      String jsonData = response.body;
-      var parsingData = jsonDecode(jsonEncode(jsonData));
-      return parsingData;
+      Map<String, dynamic> data = jsonDecode(utf8.decode(response.bodyBytes));
+      print('데이터 확인1 :parsingData');
+      print(data);
+      return data;
     }
+    return {};
   }
+
   // 대기질 정보 API
-   Future<dynamic> getAirData() async {
+  Future<Map<String, dynamic>> getAirData() async {
     http.Response response = await http.get(Uri.parse(urlAir));
 
     if (response.statusCode == 200) {
-      String jsonData = response.body;
-      var parsingData = jsonDecode(jsonEncode(jsonData));
-      return parsingData;
+      Map<String, dynamic> data = jsonDecode(utf8.decode(response.bodyBytes));
+      print('데이터 확인2 :parsingData');
+      print(data);
+      return data;
     }
+    return {};
   }
 }

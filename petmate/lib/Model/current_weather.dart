@@ -13,7 +13,6 @@
 /// cod : 200
 
 class CurrentWeather {
-
   Coord? _coord;
   List<Weather>? _weather;
   String? _base;
@@ -57,9 +56,9 @@ class CurrentWeather {
     _name = name;
     _cod = cod;
   }
-
+// "coord":{"lon":126.6375,"lat":37.4537}  // MaP<STring,dynamic>
   CurrentWeather.fromJson(dynamic json) {
-    _coord = json['coord'] != null ? Coord.fromJson(json['coord']) : null;
+    _coord = Coord.fromJson(json['coord']);
     if (json['weather'] != null) {
       _weather = [];
       json['weather'].forEach((v) {
@@ -78,7 +77,6 @@ class CurrentWeather {
     _name = json['name'];
     _cod = json['cod'];
   }
-
 
   Coord? get coord => _coord;
 
@@ -144,7 +142,6 @@ class CurrentWeather {
 /// sunset : 1651170299
 
 class Sys {
-
   int? _type;
   int? _id;
   String? _country;
@@ -197,7 +194,6 @@ class Sys {
 /// all : 40
 
 class Clouds {
-
   int? _all;
 
   Clouds({
@@ -377,7 +373,6 @@ class Coord {
     _lon = lon;
     _lat = lat;
   }
-
   Coord.fromJson(dynamic json) {
     _lon = json['lon'];
     _lat = json['lat'];

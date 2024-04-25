@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_naver_map/flutter_naver_map.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:petmate/Model/current_weather.dart';
 import 'package:petmate/Provider/join_provider.dart';
 import 'package:petmate/Provider/login_provider.dart';
@@ -21,8 +22,6 @@ import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 import 'package:kakao_flutter_sdk_auth/kakao_flutter_sdk_auth.dart';
 
-
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   KakaoSdk.init(
@@ -41,6 +40,7 @@ void main() async {
   );
 
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive, overlays: []);
+  Geolocator.requestPermission(); //권한설정
 
   runApp(MultiProvider(
     providers: [
@@ -49,7 +49,6 @@ void main() async {
       ChangeNotifierProvider(create: (_) => StartProvider()),
       ChangeNotifierProvider(create: (_) => LoginProvider()),
       ChangeNotifierProvider(create: (_) => WeatherProvider())
-      
     ],
     child: const MaterialApp(
       debugShowCheckedModeBanner: false,
