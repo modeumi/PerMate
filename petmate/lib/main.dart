@@ -48,8 +48,7 @@ void main() async {
       ChangeNotifierProvider(create: (_) => JoinProvider()),
       ChangeNotifierProvider(create: (_) => StartProvider()),
       ChangeNotifierProvider(create: (_) => LoginProvider()),
-      ChangeNotifierProvider(create: (_) => WeatherProvider()),
-      ChangeNotifierProvider(create: (_) => PasswordProvider()),
+      ChangeNotifierProvider(create: (_) => WeatherProvider())
     ],
     child: const MaterialApp(
       debugShowCheckedModeBanner: false,
