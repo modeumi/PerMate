@@ -12,12 +12,17 @@ class CurrentAir {
 
   CurrentAir.fromJson(dynamic json) {
     listed = [];
+    print('여기12');
     coord = Coord.fromJson(json['coord']);
+    print('여기13');
     if (json['list'] != null) {
+      print('여기15');
       json['list'].forEach((v) {
+        print('여기16');
         listed?.add(Listed.fromJson(v));
       });
     }
+    print('여기14');
   }
 
   // Map<String, dynamic> toJson() {
@@ -44,11 +49,13 @@ class Listed {
   });
 
   Listed.fromJson(dynamic json) {
+    print('여기17');
     main = json['main'] != null ? Main.fromJson(json['main']) : null;
-    components = json['components'] != null
-        ? Components.fromJson(json['components'])
-        : null;
+    print('여기19');
+    components = Components.fromJson(json['components']);
+    print('여기20');
     dt = json['dt'];
+    print('여기30');
   }
   Main? main;
   Components? components;
@@ -79,7 +86,6 @@ class Listed {
 class Components {
   Components({
     this.co,
-    this.no,
     this.no2,
     this.o3,
     this.so2,
@@ -89,14 +95,21 @@ class Components {
   });
 
   Components.fromJson(dynamic json) {
+    print('여기22');
     co = json['co'];
-    no = json['no'];
+    print('여기23');
     no2 = json['no2'];
+    print('여기25');
     o3 = json['o3'];
+    print('여기26');
     so2 = json['so2'];
+    print('여기27');
     pm2_5 = json['pm2_5'];
+    print('여기28');
     pm10 = json['pm10'];
+    print('여기29');
     nh3 = json['nh3'];
+    print('여기21');
   }
   double? co;
   double? no;
@@ -129,6 +142,7 @@ class Main {
   });
 
   Main.fromJson(dynamic json) {
+    print('여기18');
     aqi = json['aqi'];
   }
   int? aqi;

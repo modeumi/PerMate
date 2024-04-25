@@ -18,8 +18,6 @@ class JoinProvider extends ChangeNotifier {
   TextEditingController password_check = TextEditingController();
   TextEditingController birth = TextEditingController();
 
-  Utility util = Utility();
-
   bool email_status = false;
   bool verification_code_status = false;
   bool name_status = false;
@@ -93,7 +91,7 @@ class JoinProvider extends ChangeNotifier {
 
   void Email_Check() async {
     email_status = false;
-    email_valid = util.Email_Isvalid(email.text);
+    email_valid = Email_Isvalid(email.text);
     email_duplication = await firebase.Duplication_Check_Email(email.text);
     if (email.text != '' && email_valid && email_duplication) {
       email_checker = true;
@@ -161,7 +159,7 @@ class JoinProvider extends ChangeNotifier {
   }
 
   void Name_Check() {
-    if (name.text != '' && util.Name_Isvalid(name.text)) {
+    if (name.text != '' && Name_Isvalid(name.text)) {
       name_checker = true;
       name_status = true;
     } else {
@@ -187,7 +185,7 @@ class JoinProvider extends ChangeNotifier {
   }
 
   void NickName_Check() {
-    if (nickname.text != '' && util.NickName_Isvalid(nickname.text)) {
+    if (nickname.text != '' && NickName_Isvalid(nickname.text)) {
       nickname_status = true;
       nickname_checker = true;
     } else {
@@ -214,7 +212,7 @@ class JoinProvider extends ChangeNotifier {
 
   void Password_Check() {
     password_status = false;
-    if (password.text != '' && util.Password_Isvalid(password.text)) {
+    if (password.text != '' && Password_Isvalid(password.text)) {
       password_status = true;
       password_checker = true;
     } else {
@@ -272,7 +270,7 @@ class JoinProvider extends ChangeNotifier {
 
   void Birth_Check() {
     if (birth.text != '') {
-      birth_status = util.Birth_Isvalid(birth.text);
+      birth_status = Birth_Isvalid(birth.text);
       if (!birth_status) {
         birth_checker = false;
         birth_fail = '생년월일이 올바르게 입력되지 않았습니다.';
