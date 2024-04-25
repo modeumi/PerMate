@@ -2,26 +2,14 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:petmate/DataTools/firebase.dart';
 import 'package:petmate/DataTools/google_smtp.dart';
 import 'package:petmate/util.dart';
 
 class PasswordProvider with ChangeNotifier {
-  FirebaseData firebase = FirebaseData();
   TextEditingController name = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController verification = TextEditingController();
-
-  bool email_valid = false;
-
-  String invaild_info = '';
-  bool code_status = false;
-
-  bool exist_check = false;
-  bool info_check = true;
-  bool code_check = true;
-  bool mail_send = false;
-
+  Utility util = Utility();
   String code = '';
   Timer? timer;
 
@@ -51,54 +39,11 @@ class PasswordProvider with ChangeNotifier {
   }
 
   void Email_Check() async {
-    email_valid = Email_Isvalid(email.text);
-    exist_check = await firebase.Account_Exist_Check(email.text, name.text);
-    if (email_valid && exist_check) {
-      info_check = true;
-      mail_send = true;
-      notifyListeners();
+    bool email_valid = util.Email_Isvalid(email.text);
+    if (email_valid) {
       Create_Code();
       await MailSender().SearchEmailSend(email.text, code);
-    } else {
-      info_check = false;
     }
-    Email_Show_Text();
-    notifyListeners();
-  }
-
-  void Code_Check() {
-    if (code == verification.text) {
-      code_check = true;
-      code_status = true;
-    } else {
-      code_check = false;
-    }
-    Code_Show_Text();
-  }
-
-  void Email_Show_Text() {
-    if (!email_valid) {
-      invaild_info = '이메일 형식이 올바르지 않습니다.';
-    } else if (!exist_check) {
-      invaild_info = '정보에 맞는 계정이 존재하지 않습니다.';
-    } else {
-      invaild_info = '인증번호를 전송하였습니다.';
-    }
-    notifyListeners();
-  }
-
-  void Code_Show_Text() {
-    if (!code_check) {
-      invaild_info = '인증번호가 올바르지 않습니다.';
-    } else {
-      invaild_info = '인증이 완료되었습니다.';
-    }
-    notifyListeners();
-  }
-
-  void Info_Changer() {
-    code_check = false;
-    code_status = false;
-    notifyListeners();
+    // if()
   }
 }

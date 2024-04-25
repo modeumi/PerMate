@@ -1,40 +1,43 @@
+import 'dart:convert';
+
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 /// coord : {"lon":9.19,"lat":45.4642}
 /// listed : [{"main":{"aqi":3},"components":{"co":337.12,"no":0.46,"no2":5.48,"o3":144.48,"so2":1.88,"pm2_5":24.62,"pm10":26.92,"nh3":9.25},"dt":1651237200}]
 
 class CurrentAir {
   Coord? coord;
   List<Listed>? listed;
-
   CurrentAir({
     this.coord,
     this.listed,
   });
 
-  CurrentAir.fromJson(dynamic json) {
-    listed = [];
-    print('여기12');
-    coord = Coord.fromJson(json['coord']);
-    print('여기13');
-    if (json['list'] != null) {
-      print('여기15');
-      json['list'].forEach((v) {
-        print('여기16');
-        listed?.add(Listed.fromJson(v));
-      });
-    }
-    print('여기14');
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'coord': coord?.toMap(),
+      'listed': listed!.map((x) => x.toMap()).toList(),
+    };
   }
 
-  // Map<String, dynamic> toJson() {
-  //   final map = <String, dynamic>{};
-  //   if (coord != null) {
-  //     map['coord'] = coord?.toJson();
-  //   }
-  //   if (listed != null) {
-  //     map['listed'] = listed?.map((v) => v.toJson()).toList();
-  //   }
-  //   return map;
-  // }
+  factory CurrentAir.fromMap(Map<String, dynamic> map) {
+    return CurrentAir(
+      coord: map['coord'] != null
+          ? Coord.fromMap(map['coord'] as Map<String, dynamic>)
+          : null,
+      listed: map['listed'] != null
+          ? List<Listed>.from(
+              (map['listed'] as List<int>).map<Listed?>(
+                (x) => Listed.fromMap(x as Map<String, dynamic>),
+              ),
+            )
+          : null,
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory CurrentAir.fromJson(String source) =>
+      CurrentAir.fromMap(json.decode(source) as Map<String, dynamic>);
 }
 
 /// main : {"aqi":3}
@@ -42,36 +45,39 @@ class CurrentAir {
 /// dt : 1651237200
 
 class Listed {
+  Main? main;
+  Components? components;
+  int? dt;
   Listed({
     this.main,
     this.components,
     this.dt,
   });
 
-  Listed.fromJson(dynamic json) {
-    print('여기17');
-    main = json['main'] != null ? Main.fromJson(json['main']) : null;
-    print('여기19');
-    components = Components.fromJson(json['components']);
-    print('여기20');
-    dt = json['dt'];
-    print('여기30');
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'main': main?.toString(),
+      'components': components?.toMap(),
+      'dt': dt,
+    };
   }
-  Main? main;
-  Components? components;
-  int? dt;
 
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    if (main != null) {
-      map['main'] = main?.toJson();
-    }
-    if (components != null) {
-      map['components'] = components?.toJson();
-    }
-    map['dt'] = dt;
-    return map;
+  factory Listed.fromMap(Map<String, dynamic> map) {
+    return Listed(
+      main: map['main'] != null
+          ? Main.fromJson(map['main'] as Map<String, dynamic>)
+          : null,
+      components: map['components'] != null
+          ? Components.fromMap(map['components'] as Map<String, dynamic>)
+          : null,
+      dt: map['dt'] != null ? map['dt'] as int : null,
+    );
   }
+
+  String toJson() => json.encode(toMap());
+
+  factory Listed.fromJson(String source) =>
+      Listed.fromMap(json.decode(source) as Map<String, dynamic>);
 }
 
 /// co : 337.12
@@ -84,54 +90,31 @@ class Listed {
 /// nh3 : 9.25
 
 class Components {
-  Components({
-    this.co,
-    this.no2,
-    this.o3,
-    this.so2,
-    this.pm2_5,
-    this.pm10,
-    this.nh3,
-  });
-
-  Components.fromJson(dynamic json) {
-    print('여기22');
-    co = json['co'];
-    print('여기23');
-    no2 = json['no2'];
-    print('여기25');
-    o3 = json['o3'];
-    print('여기26');
-    so2 = json['so2'];
-    print('여기27');
-    pm2_5 = json['pm2_5'];
-    print('여기28');
-    pm10 = json['pm10'];
-    print('여기29');
-    nh3 = json['nh3'];
-    print('여기21');
-  }
-  double? co;
-  double? no;
-  double? no2;
-  double? o3;
-  double? so2;
   double? pm2_5;
   double? pm10;
-  double? nh3;
+  Components({
+    this.pm2_5,
+    this.pm10,
+  });
 
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['co'] = co;
-    map['no'] = no;
-    map['no2'] = no2;
-    map['o3'] = o3;
-    map['so2'] = so2;
-    map['pm2_5'] = pm2_5;
-    map['pm10'] = pm10;
-    map['nh3'] = nh3;
-    return map;
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'pm2_5': pm2_5,
+      'pm10': pm10,
+    };
   }
+
+  factory Components.fromMap(Map<String, dynamic> map) {
+    return Components(
+      pm2_5: map['pm2_5'] != null ? map['pm2_5'] as double : null,
+      pm10: map['pm10'] != null ? map['pm10'] as double : null,
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory Components.fromJson(String source) =>
+      Components.fromMap(json.decode(source) as Map<String, dynamic>);
 }
 
 /// aqi : 3
@@ -142,7 +125,6 @@ class Main {
   });
 
   Main.fromJson(dynamic json) {
-    print('여기18');
     aqi = json['aqi'];
   }
   int? aqi;
@@ -158,22 +140,28 @@ class Main {
 /// lat : 45.4642
 
 class Coord {
+  double? lon;
+  double? lat;
   Coord({
     this.lon,
     this.lat,
   });
 
-  Coord.fromJson(dynamic json) {
-    lon = json['lon'];
-    lat = json['lat'];
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'lon': lon,
+      'lat': lat,
+    };
   }
-  double? lon;
-  double? lat;
 
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['lon'] = lon;
-    map['lat'] = lat;
-    return map;
+  factory Coord.fromMap(Map<String, dynamic> map) {
+    return Coord(
+      lon: map['lon'] != null ? map['lon'] as double : null,
+      lat: map['lat'] != null ? map['lat'] as double : null,
+    );
   }
+
+  String toJson() => json.encode(toMap());
+
+  factory Coord.fromJson(String source) => Coord.fromMap(json.decode(source) as Map<String, dynamic>);
 }
