@@ -1,4 +1,6 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:petmate/DataTools/firebase.dart';
 import 'package:petmate/Provider/password_provider.dart';
 import 'package:petmate/Widget/custom_appbar.dart';
 import 'package:petmate/Widget/passwordsearch/email_field.dart';
@@ -14,6 +16,7 @@ class PasswordSearch extends StatefulWidget {
 }
 
 class _PasswordSearchState extends State<PasswordSearch> {
+  FirebaseData firebase = FirebaseData();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,6 +25,9 @@ class _PasswordSearchState extends State<PasswordSearch> {
       appBar: const CustomAppbar(title: '비밀번호 찾기'),
       body: Consumer<PasswordProvider>(
         builder: (context, provider, child) {
+          print('불리언 체크');
+          print(provider.info_check);
+          print(provider.code_check);
           return Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
@@ -39,12 +45,15 @@ class _PasswordSearchState extends State<PasswordSearch> {
                     const EmailField(),
                     PushButtonA(
                       content: '다음',
-                      action: () {
+                      action: () async {
                         provider.Code_Check();
                         if (provider.code_status) {
-                          print('승인');
-                          // Navigator.push(context,
-                          //     MaterialPageRoute(builder: (context) => JoinSuccess()));
+                          bool result = await firebase.Change_Password(
+                              provider.email.text);
+                          if (result) {
+                            // Navigator.push(context,
+                            //     MaterialPageRoute(builder: (context) => JoinSuccess()));
+                          }
                         }
                       },
                       //

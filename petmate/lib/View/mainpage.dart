@@ -1,8 +1,4 @@
-import 'package:blurrycontainer/blurrycontainer.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:petmate/Model/current_air.dart';
 import 'package:petmate/Model/current_weather.dart';
 import 'package:petmate/Widget/main/add_alarm.dart';
@@ -44,9 +40,7 @@ class _MainPageState extends State<MainPage> {
             SizedBox(
               height: 115,
             ),
-            WeatherWigdget(
-             
-            ),
+            WeatherWigdget(),
             MemoWidget(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,

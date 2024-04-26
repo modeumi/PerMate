@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class TextFieldSlot extends StatefulWidget {
   final String hint;
@@ -22,13 +23,12 @@ class TextFieldSlot extends StatefulWidget {
 }
 
 class _TextFieldSlotState extends State<TextFieldSlot> {
-  bool? status;
-
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    status = widget.password;
+    print(widget.hint);
+    print(widget.status);
   }
 
   @override

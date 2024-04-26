@@ -18,8 +18,10 @@ class PasswordProvider with ChangeNotifier {
   bool code_status = false;
 
   bool exist_check = false;
+
   bool info_check = true;
   bool code_check = true;
+
   bool mail_send = false;
 
   String code = '';
@@ -63,6 +65,8 @@ class PasswordProvider with ChangeNotifier {
       info_check = false;
     }
     Email_Show_Text();
+    print('코드체크 확인용');
+    print(code_check);
     notifyListeners();
   }
 
@@ -97,8 +101,10 @@ class PasswordProvider with ChangeNotifier {
   }
 
   void Info_Changer() {
-    code_check = false;
-    code_status = false;
+    if (code_status) {
+      code_check = false;
+      code_status = false;
+    }
     notifyListeners();
   }
 }
