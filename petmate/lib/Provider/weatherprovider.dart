@@ -66,10 +66,8 @@ class WeatherProvider extends ChangeNotifier {
     temp = weatherData.main!.temp!.round();
     pm2_5 = airData.listed![0].components!.pm2_5;
     pm10 = airData.listed![0].components!.pm10;
-    print('해당지역 통과1');
     getWeatherIcon();
     getAirCondition();
-    print('해당지역 통과2');
     notifyListeners();
   }
 
@@ -102,20 +100,16 @@ class WeatherProvider extends ChangeNotifier {
     Map<String, dynamic> networkresult = await network.getWeatherData();
     print('데이터 셋 : $networkresult');
     CurrentWeather inputcurrentWeatherData =
-        CurrentWeather.fromJson(networkresult);
+        CurrentWeather.fromJson(networkresult.toString());
 
     // 대기질 정보 API 호출
-    var airData = await network.getAirData();
-    print('진입체크 2');
-    CurrentAir inputcurrentAirData = CurrentAir.fromJson(airData);
-    print('진입 체크 12');
+    var airData = await network.getWeatherData();
+    CurrentAir inputcurrentAirData = CurrentAir.fromJson(airData.toString());
     Save_Date(inputcurrentWeatherData, inputcurrentAirData);
     print('확인용');
-    print('데이터 체크중 : 1 $weatherData');
-    print('데이터 체크중 : 2 ${weatherData.main!.temp}');
+    print(weatherData);
+    print(weatherData.main!.temp);
     loading = true;
-    print('확인용 23');
     notifyListeners();
-    print(loading);
   }
 }
