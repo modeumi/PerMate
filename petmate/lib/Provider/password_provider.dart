@@ -9,7 +9,20 @@ class PasswordProvider with ChangeNotifier {
   TextEditingController name = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController verification = TextEditingController();
-  Utility util = Utility();
+
+
+  bool email_valid = false;
+
+  String invaild_info = '';
+  bool code_status = false;
+
+  bool exist_check = false;
+
+  bool info_check = true;
+  bool code_check = true;
+
+  bool mail_send = false;
+
   String code = '';
   Timer? timer;
 
@@ -43,7 +56,52 @@ class PasswordProvider with ChangeNotifier {
     if (email_valid) {
       Create_Code();
       await MailSender().SearchEmailSend(email.text, code);
+
+    } else {
+      info_check = false;
     }
-    // if()
+    Email_Show_Text();
+    print('코드체크 확인용');
+    print(code_check);
+    notifyListeners();
+  }
+
+  void Code_Check() {
+    if (code == verification.text) {
+      code_check = true;
+      code_status = true;
+    } else {
+      code_check = false;
+    }
+    Code_Show_Text();
+  }
+
+  void Email_Show_Text() {
+    if (!email_valid) {
+      invaild_info = '이메일 형식이 올바르지 않습니다.';
+    } else if (!exist_check) {
+      invaild_info = '정보에 맞는 계정이 존재하지 않습니다.';
+    } else {
+      invaild_info = '인증번호를 전송하였습니다.';
+    }
+    notifyListeners();
+  }
+
+  void Code_Show_Text() {
+    if (!code_check) {
+      invaild_info = '인증번호가 올바르지 않습니다.';
+    } else {
+      invaild_info = '인증이 완료되었습니다.';
+    }
+    notifyListeners();
+  }
+
+  void Info_Changer() {
+    if (code_status) {
+      code_check = false;
+      code_status = false;
+    }
+    notifyListeners();
+
   }
 }

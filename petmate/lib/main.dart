@@ -25,8 +25,7 @@ import 'package:kakao_flutter_sdk_auth/kakao_flutter_sdk_auth.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  KakaoSdk.init(
-      javaScriptAppKey: '07060657d09cc65bb1e781ae2325d058');
+  KakaoSdk.init(javaScriptAppKey: '07060657d09cc65bb1e781ae2325d058');
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -52,8 +51,8 @@ void main() async {
     ],
     child: const MaterialApp(
       debugShowCheckedModeBanner: false,
-      // home: Splash(),
-      home: WeatherWigdget(),
+      home: Splash(),
+      // home: WeatherWigdget(),
     ),
   ));
 }

@@ -79,14 +79,12 @@ class FirebaseData {
     }
   }
 
-  Future<void> Change_Password(String email) async {
-    await auth.verifyPhoneNumber(
-      phoneNumber: '+82 10 8873 2581',
-      verificationCompleted: (PhoneAuthCredential credential) {},
-      verificationFailed: (FirebaseAuthException e) {},
-      codeSent: (String verificationId, int? resendToken) {},
-      codeAutoRetrievalTimeout: (String verificationId) {},
-    );
-    // UserCredential user = await auth.signInWithCustomToken(token)
+  Future<bool> Change_Password(String email) async {
+    try {
+      await auth.sendPasswordResetEmail(email: email);
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
 }
