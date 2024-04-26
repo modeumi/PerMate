@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class OnboardingProvider with ChangeNotifier {
+class OnboardingController extends GetxController {
   int page = 0;
   late PageController pageController = PageController();
 
@@ -12,16 +13,16 @@ class OnboardingProvider with ChangeNotifier {
       pageController.nextPage(
           duration: const Duration(milliseconds: 200),
           curve: Curves.easeInSine);
-      notifyListeners();
+      update();
       return true;
     } else {
-      notifyListeners();
+      update();
       return false;
     }
   }
 
   void page_change(int value) {
     page = value;
-    notifyListeners();
+    update();
   }
 }

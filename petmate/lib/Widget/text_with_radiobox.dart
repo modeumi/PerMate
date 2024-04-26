@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:petmate/Provider/join_provider.dart';
-import 'package:provider/provider.dart';
+import 'package:get/get.dart';
+import 'package:petmate/Controller/join_controller.dart';
 
 class TextWithRadio extends StatefulWidget {
   final int active;
@@ -19,7 +19,7 @@ class TextWithRadio extends StatefulWidget {
 class _TextWithRadioState extends State<TextWithRadio> {
   @override
   Widget build(BuildContext context) {
-    return Consumer<JoinProvider>(builder: (context, controller, child) {
+    return GetBuilder<JoinController>(builder: (controller) {
       return GestureDetector(
         onTap: () {
           if (widget.active == 0) {

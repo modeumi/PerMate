@@ -53,8 +53,8 @@ dependencies:
   kakao_flutter_sdk_auth: ^1.9.1+2
   kakao_flutter_sdk_user: ^1.9.1+2
   permission_handler: ^11.3.1
-  provider: ^6.1.2
   timer_builder: ^2.0.0
+  get: ^4.6.6
 
 dev_dependencies:
   change_app_package_name: ^1.1.0

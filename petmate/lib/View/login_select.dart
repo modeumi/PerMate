@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:petmate/DataTools/kakao.dart';
-import 'package:petmate/Provider/login_provider.dart';
+import 'package:petmate/Controller/login_controller.dart';
 import 'package:petmate/View/join_main.dart';
 import 'package:petmate/View/login_main.dart';
 import 'package:petmate/Widget/login_button.dart';
 import 'package:petmate/Widget/question_to_push.dart';
-import 'package:provider/provider.dart';
 
 class LoginSelect extends StatefulWidget {
   const LoginSelect({super.key});
@@ -17,8 +17,9 @@ class LoginSelect extends StatefulWidget {
 class _LoginSelectState extends State<LoginSelect> {
   @override
   Widget build(BuildContext context) {
+    Get.put(LoginController());
     return Scaffold(
-      body: Consumer<LoginProvider>(builder: (context, provider, child) {
+      body: GetBuilder<LoginController>(builder: (controller) {
         return Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
@@ -68,10 +69,14 @@ class _LoginSelectState extends State<LoginSelect> {
                 image: 'assets/onboarding/kakaotalk_bubble.png',
                 contenct: '카카오 로그인',
                 event: () async {
+                  print('카카오');
                   Map<String, String> result = await KakaoLogin().Kakao_login();
                   if (result.isNotEmpty) {
-                    provider.KaKao_Login(result);
+                    bool login = await controller.KaKao_Login(result);
                     print('성공');
+                    if (login) {
+                      Get.toNamed('/main');
+                    }
                   } else {
                     print('실패');
                   }
@@ -85,7 +90,7 @@ class _LoginSelectState extends State<LoginSelect> {
                 image: 'assets/onboarding/icon_2.png',
                 contenct: '이메일 로그인',
                 event: () {
-                  provider.Reset();
+                  controller.Reset();
                   Navigator.push(
                       context,
                       MaterialPageRoute(

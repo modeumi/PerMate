@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:petmate/Provider/join_provider.dart';
+import 'package:get/get.dart';
+import 'package:petmate/Controller/join_controller.dart';
 import 'package:petmate/Widget/textfield_slot.dart';
-import 'package:provider/provider.dart';
 
 class NameField extends StatefulWidget {
   const NameField({super.key});
@@ -13,7 +13,7 @@ class NameField extends StatefulWidget {
 class _NameFieldState extends State<NameField> {
   @override
   Widget build(BuildContext context) {
-    return Consumer<JoinProvider>(builder: (context, provider, child) {
+    return GetBuilder<JoinController>(builder: (controller) {
       return Container(
         height: 100,
         child: Column(
@@ -34,11 +34,11 @@ class _NameFieldState extends State<NameField> {
             ),
             TextFieldSlot(
               hint: '이름을 입력해주세요',
-              controller: provider.name,
-              status: provider.name_checker,
+              controller: controller.name,
+              status: controller.name_checker,
               action: () {
-                provider.Name_Changer();
-                provider.Name_Check();
+                controller.Name_Changer();
+                controller.Name_Check();
               },
               password: false,
             ),
@@ -46,9 +46,10 @@ class _NameFieldState extends State<NameField> {
               height: 8,
             ),
             Text(
-              provider.name_fail,
+              controller.name_fail,
               style: TextStyle(
-                color: provider.name_checker ? Colors.white : Color(0xFFFF0000),
+                color:
+                    controller.name_checker ? Colors.white : Color(0xFFFF0000),
                 fontSize: 12,
                 fontFamily: 'Pretendard',
                 fontWeight: FontWeight.w500,

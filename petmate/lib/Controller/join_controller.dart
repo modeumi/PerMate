@@ -3,11 +3,12 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:petmate/DataTools/firebase.dart';
 import 'package:petmate/DataTools/google_smtp.dart';
-import 'package:petmate/util.dart';
+import 'package:petmate/Util/util.dart';
 
-class JoinProvider extends ChangeNotifier {
+class JoinController extends GetxController {
   FirebaseData firebase = FirebaseData();
 
   TextEditingController email = TextEditingController();
@@ -17,8 +18,6 @@ class JoinProvider extends ChangeNotifier {
   TextEditingController password = TextEditingController();
   TextEditingController password_check = TextEditingController();
   TextEditingController birth = TextEditingController();
-
-  Utility util = Utility();
 
   bool email_status = false;
   bool verification_code_status = false;
@@ -70,13 +69,13 @@ class JoinProvider extends ChangeNotifier {
     Random random = Random();
     int randomNumber = random.nextInt(1000000);
     code = randomNumber.toString().padLeft(6, '0');
-    notifyListeners();
+    update();
     if (timer != null) {
       timer!.cancel();
     }
     timer = Timer(Duration(minutes: 3), () {
       code = generateRandomString(10);
-      notifyListeners();
+      update();
     });
   }
 
@@ -93,14 +92,14 @@ class JoinProvider extends ChangeNotifier {
 
   void Email_Check() async {
     email_status = false;
-    email_valid = util.Email_Isvalid(email.text);
+    email_valid = Email_Isvalid(email.text);
     email_duplication = await firebase.Duplication_Check_Email(email.text);
     if (email.text != '' && email_valid && email_duplication) {
       email_checker = true;
       Email_Valid();
       Create_Code();
       await MailSender().JoinEmailSend(email.text, code);
-      notifyListeners();
+      update();
     } else {
       email_checker = false;
       Email_Valid();
@@ -123,12 +122,12 @@ class JoinProvider extends ChangeNotifier {
       email_fail = '인증번호를 전송하였습니다.';
       email_status = true;
     }
-    notifyListeners();
+    update();
   }
 
   void Email_Changer() {
     email_status = false;
-    notifyListeners();
+    update();
   }
 
   void Verification_Code_Check() {
@@ -142,7 +141,7 @@ class JoinProvider extends ChangeNotifier {
     }
     Verification_Code_Valid();
     JoinStatusCheck();
-    notifyListeners();
+    update();
   }
 
   void Verification_Code_Valid() {
@@ -152,16 +151,16 @@ class JoinProvider extends ChangeNotifier {
     } else {
       email_fail = '인증번호가 일치합니다.';
     }
-    notifyListeners();
+    update();
   }
 
   void Verification_Code_Changer() {
     verification_code_status = false;
-    notifyListeners();
+    update();
   }
 
   void Name_Check() {
-    if (name.text != '' && util.Name_Isvalid(name.text)) {
+    if (name.text != '' && Name_Isvalid(name.text)) {
       name_checker = true;
       name_status = true;
     } else {
@@ -169,7 +168,7 @@ class JoinProvider extends ChangeNotifier {
     }
     JoinStatusCheck();
     Name_Valid();
-    notifyListeners();
+    update();
   }
 
   void Name_Valid() {
@@ -178,16 +177,16 @@ class JoinProvider extends ChangeNotifier {
     } else {
       name_fail = '';
     }
-    notifyListeners();
+    update();
   }
 
   void Name_Changer() {
     name_status = false;
-    notifyListeners();
+    update();
   }
 
   void NickName_Check() {
-    if (nickname.text != '' && util.NickName_Isvalid(nickname.text)) {
+    if (nickname.text != '' && NickName_Isvalid(nickname.text)) {
       nickname_status = true;
       nickname_checker = true;
     } else {
@@ -195,7 +194,7 @@ class JoinProvider extends ChangeNotifier {
     }
     JoinStatusCheck();
     NickName_Valid();
-    notifyListeners();
+    update();
   }
 
   void NickName_Valid() {
@@ -204,30 +203,30 @@ class JoinProvider extends ChangeNotifier {
     } else {
       nickname_fail = '사용가능한 닉네임입니다.';
     }
-    notifyListeners();
+    update();
   }
 
   void NickName_Changer() {
     nickname_status = false;
-    notifyListeners();
+    update();
   }
 
   void Password_Check() {
     password_status = false;
-    if (password.text != '' && util.Password_Isvalid(password.text)) {
+    if (password.text != '' && Password_Isvalid(password.text)) {
       password_status = true;
       password_checker = true;
     } else {
       password_checker = false;
     }
     Password_Valid();
-    notifyListeners();
+    update();
   }
 
   void Password_Changer() {
     password_check.text = '';
     Password_Check_Check();
-    notifyListeners();
+    update();
   }
 
   void Password_Valid() {
@@ -236,7 +235,7 @@ class JoinProvider extends ChangeNotifier {
     } else {
       password_fail = '';
     }
-    notifyListeners();
+    update();
   }
 
   void Password_Check_Check() {
@@ -248,7 +247,7 @@ class JoinProvider extends ChangeNotifier {
       password_check_checker = false;
     }
     Password_Check_Valid();
-    notifyListeners();
+    update();
   }
 
   void Password_Check_Valid() {
@@ -257,7 +256,7 @@ class JoinProvider extends ChangeNotifier {
     } else {
       password_check_fail = '비밀번호가 일치합니다.';
     }
-    notifyListeners();
+    update();
   }
 
   void Agree_Check(String key) {
@@ -267,12 +266,12 @@ class JoinProvider extends ChangeNotifier {
     } else {
       entire = false;
     }
-    notifyListeners();
+    update();
   }
 
   void Birth_Check() {
     if (birth.text != '') {
-      birth_status = util.Birth_Isvalid(birth.text);
+      birth_status = Birth_Isvalid(birth.text);
       if (!birth_status) {
         birth_checker = false;
         birth_fail = '생년월일이 올바르게 입력되지 않았습니다.';
@@ -283,12 +282,12 @@ class JoinProvider extends ChangeNotifier {
     } else {
       birth_fail = '생년월일을 입력해주세요..';
     }
-    notifyListeners();
+    update();
   }
 
   void Select_Gender(String select) {
     gender = select;
-    notifyListeners();
+    update();
   }
 
   void Entire_Click() {
@@ -302,7 +301,7 @@ class JoinProvider extends ChangeNotifier {
         agree[key] = true;
       });
     }
-    notifyListeners();
+    update();
   }
 
   void JoinStatusCheck() {
@@ -334,13 +333,13 @@ class JoinProvider extends ChangeNotifier {
       print('회원가입 진입 성공');
       await Join();
     }
-    notifyListeners();
+    update();
   }
 
   Future<void> Join() async {
     bool success = await firebase.Join(email.text, password.text, name.text,
         nickname.text, gender, birth.text, entire);
     pass = success;
-    notifyListeners();
+    update();
   }
 }

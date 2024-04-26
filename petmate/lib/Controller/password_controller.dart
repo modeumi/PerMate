@@ -2,14 +2,14 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:petmate/DataTools/google_smtp.dart';
-import 'package:petmate/util.dart';
+import 'package:petmate/Util/util.dart';
 
-class PasswordProvider with ChangeNotifier {
+class PasswordProvider extends GetxController {
   TextEditingController name = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController verification = TextEditingController();
-
 
   bool email_valid = false;
 
@@ -30,13 +30,13 @@ class PasswordProvider with ChangeNotifier {
     Random random = Random();
     int randomNumber = random.nextInt(1000000);
     code = randomNumber.toString().padLeft(6, '0');
-    notifyListeners();
+    update();
     if (timer != null) {
       timer!.cancel();
     }
     timer = Timer(Duration(minutes: 3), () {
       code = generateRandomString(10);
-      notifyListeners();
+      update();
     });
   }
 
@@ -52,18 +52,17 @@ class PasswordProvider with ChangeNotifier {
   }
 
   void Email_Check() async {
-    bool email_valid = util.Email_Isvalid(email.text);
+    bool email_valid = Email_Isvalid(email.text);
     if (email_valid) {
       Create_Code();
       await MailSender().SearchEmailSend(email.text, code);
-
     } else {
       info_check = false;
     }
     Email_Show_Text();
     print('코드체크 확인용');
     print(code_check);
-    notifyListeners();
+    update();
   }
 
   void Code_Check() {
@@ -84,7 +83,7 @@ class PasswordProvider with ChangeNotifier {
     } else {
       invaild_info = '인증번호를 전송하였습니다.';
     }
-    notifyListeners();
+    update();
   }
 
   void Code_Show_Text() {
@@ -93,7 +92,7 @@ class PasswordProvider with ChangeNotifier {
     } else {
       invaild_info = '인증이 완료되었습니다.';
     }
-    notifyListeners();
+    update();
   }
 
   void Info_Changer() {
@@ -101,7 +100,6 @@ class PasswordProvider with ChangeNotifier {
       code_check = false;
       code_status = false;
     }
-    notifyListeners();
-
+    update();
   }
 }

@@ -11,9 +11,10 @@ import 'package:petmate/Widget/main/walk.dart';
 import 'package:petmate/Widget/main/weather.dart';
 
 class MainPage extends StatefulWidget {
-  final CurrentWeather weatherData;
-  final CurrentAir airData;
-  const MainPage({super.key, required this.weatherData, required this.airData});
+  // final CurrentWeather weatherData;
+  // final CurrentAir airData;
+  // const MainPage({super.key, required this.weatherData, required this.airData});
+  const MainPage({super.key});
 
   @override
   State<MainPage> createState() => _MainPageState();

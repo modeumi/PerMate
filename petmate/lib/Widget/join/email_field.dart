@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:petmate/Provider/join_provider.dart';
+import 'package:get/get.dart';
+import 'package:petmate/Controller/join_controller.dart';
 import 'package:petmate/Widget/check_button.dart';
 import 'package:petmate/Widget/textfield_slot.dart';
-import 'package:provider/provider.dart';
 
 class EmailField extends StatefulWidget {
   const EmailField({super.key});
@@ -14,7 +14,7 @@ class EmailField extends StatefulWidget {
 class _EmailFieldState extends State<EmailField> {
   @override
   Widget build(BuildContext context) {
-    return Consumer<JoinProvider>(builder: (context, provider, child) {
+    return GetBuilder<JoinController>(builder: (controller) {
       return Container(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,10 +39,10 @@ class _EmailFieldState extends State<EmailField> {
                   flex: 3,
                   child: TextFieldSlot(
                     hint: 'example@example.com',
-                    controller: provider.email,
-                    status: provider.email_checker,
+                    controller: controller.email,
+                    status: controller.email_checker,
                     action: () {
-                      provider.Email_Changer();
+                      controller.Email_Changer();
                     },
                     password: false,
                   ),
@@ -54,9 +54,9 @@ class _EmailFieldState extends State<EmailField> {
                     flex: 1,
                     child: CheckButton(
                         event: () {
-                          provider.Email_Check();
+                          controller.Email_Check();
                         },
-                        content: provider.mailsend ? '재전송' : '인증 요청'))
+                        content: controller.mailsend ? '재전송' : '인증 요청'))
               ],
             ),
             const SizedBox(
@@ -69,10 +69,10 @@ class _EmailFieldState extends State<EmailField> {
                   flex: 3,
                   child: TextFieldSlot(
                     hint: '인증번호를 입력해주세요',
-                    controller: provider.verification_code,
-                    status: provider.verification_code_checker,
+                    controller: controller.verification_code,
+                    status: controller.verification_code_checker,
                     action: () {
-                      provider.Verification_Code_Changer();
+                      controller.Verification_Code_Changer();
                     },
                     password: false,
                   ),
@@ -84,7 +84,7 @@ class _EmailFieldState extends State<EmailField> {
                     flex: 1,
                     child: CheckButton(
                         event: () {
-                          provider.Verification_Code_Check();
+                          controller.Verification_Code_Check();
                         },
                         content: '확인'))
               ],
@@ -93,10 +93,10 @@ class _EmailFieldState extends State<EmailField> {
               height: 7,
             ),
             Text(
-              Provider.of<JoinProvider>(context, listen: false).email_fail,
+              controller.email_fail,
               style: TextStyle(
-                color: provider.email_checker
-                    ? provider.verification_code_checker
+                color: controller.email_checker
+                    ? controller.verification_code_checker
                         ? Colors.white
                         : Color(0xFFFF0000)
                     : Color(0xFFFF0000),

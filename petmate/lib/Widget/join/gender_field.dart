@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:petmate/Provider/join_provider.dart';
+import 'package:get/get.dart';
+import 'package:petmate/Controller/join_controller.dart';
 import 'package:petmate/Widget/push_button_b.dart';
-import 'package:provider/provider.dart';
 
 class GenderField extends StatefulWidget {
   const GenderField({super.key});
@@ -13,7 +13,7 @@ class GenderField extends StatefulWidget {
 class _GenderFieldState extends State<GenderField> {
   @override
   Widget build(BuildContext context) {
-    return Consumer<JoinProvider>(builder: (context, provider, child) {
+    return GetBuilder<JoinController>(builder: (controller) {
       return Container(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,21 +33,21 @@ class _GenderFieldState extends State<GenderField> {
             ),
             Row(
               children: [
-                for (String key in provider.gender_list)
+                for (String key in controller.gender_list)
                   Flexible(
                     flex: 5,
                     child: Container(
                       margin: EdgeInsets.only(
-                          right: provider.gender_list.indexOf(key) !=
-                                  provider.gender_list.length - 1
+                          right: controller.gender_list.indexOf(key) !=
+                                  controller.gender_list.length - 1
                               ? 8
                               : 0),
                       child: PushButtonB(
                         content: key,
                         action: () {
-                          provider.Select_Gender(key);
+                          controller.Select_Gender(key);
                         },
-                        condition: provider.gender == key,
+                        condition: controller.gender == key,
                       ),
                     ),
                   ),
@@ -59,7 +59,8 @@ class _GenderFieldState extends State<GenderField> {
             Text(
               ' ',
               style: TextStyle(
-                color: provider.name_status ? Colors.white : Color(0xFFFF0000),
+                color:
+                    controller.name_status ? Colors.white : Color(0xFFFF0000),
                 fontSize: 12,
                 fontFamily: 'Pretendard',
                 fontWeight: FontWeight.w500,

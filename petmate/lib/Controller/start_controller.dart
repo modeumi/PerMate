@@ -1,12 +1,19 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:petmate/DataTools/secure_storage.dart';
 
-class StartProvider extends ChangeNotifier {
+class StartController extends GetxController {
   SecureStorage secure = SecureStorage();
 
-  Future<bool> PassOnboarding() async {
+  @override
+  void onInit() async {
+    // TODO: implement onInit
+    super.onInit();
+    PassOnboarding();
+  }
+
+  Future<void> PassOnboarding() async {
     String status = await secure.Read('onboarding');
     print('확인 1: $status');
     await Future.delayed(Duration(seconds: 2));
@@ -14,14 +21,14 @@ class StartProvider extends ChangeNotifier {
       bool status_bool = bool.parse(status);
       print('확인 2 : $status_bool');
       if (status_bool) {
-        return true;
+        Get.toNamed('/login_select');
       } else {
         secure.Write('onboarding', 'true');
-        return false;
+        Get.toNamed('/onboarding');
       }
     } else {
       secure.Write('onboarding', 'true');
-      return false;
+      Get.toNamed('/onboarding');
     }
   }
 }
