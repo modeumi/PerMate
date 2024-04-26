@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:petmate/Provider/join_provider.dart';
+import 'package:get/get.dart';
+import 'package:petmate/Controller/join_controller.dart';
 import 'package:petmate/Widget/text_with_radiobox.dart';
-import 'package:provider/provider.dart';
 
 class AgreeField extends StatefulWidget {
   const AgreeField({super.key});
@@ -13,7 +13,7 @@ class AgreeField extends StatefulWidget {
 class _AgreeFieldState extends State<AgreeField> {
   @override
   Widget build(BuildContext context) {
-    return Consumer<JoinProvider>(builder: (context, controller, child) {
+    return GetBuilder<JoinController>(builder: (controller) {
       return Container(
         child: Column(
           children: [

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:petmate/Provider/join_provider.dart';
+import 'package:get/get.dart';
+import 'package:petmate/Controller/join_controller.dart';
 import 'package:petmate/Widget/textfield_slot.dart';
-import 'package:provider/provider.dart';
 
 class PassWordCheckField extends StatefulWidget {
   const PassWordCheckField({super.key});
@@ -13,7 +13,7 @@ class PassWordCheckField extends StatefulWidget {
 class _PassWordFieldState extends State<PassWordCheckField> {
   @override
   Widget build(BuildContext context) {
-    return Consumer<JoinProvider>(builder: (context, provider, child) {
+    return GetBuilder<JoinController>(builder: (controller) {
       return Container(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,10 +33,10 @@ class _PassWordFieldState extends State<PassWordCheckField> {
             ),
             TextFieldSlot(
               hint: '비밀번호를 한번 더 입력해주세요',
-              controller: provider.password_check,
-              status: provider.password_check_checker,
+              controller: controller.password_check,
+              status: controller.password_check_checker,
               action: () {
-                provider.Password_Check_Check();
+                controller.Password_Check_Check();
               },
               password: true,
             ),
@@ -44,9 +44,9 @@ class _PassWordFieldState extends State<PassWordCheckField> {
               height: 8,
             ),
             Text(
-              provider.password_check_fail,
+              controller.password_check_fail,
               style: TextStyle(
-                color: provider.password_check_checker
+                color: controller.password_check_checker
                     ? Colors.white
                     : Color(0xFFFF0000),
                 fontSize: 12,

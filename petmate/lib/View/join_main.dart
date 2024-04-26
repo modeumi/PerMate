@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:petmate/Provider/join_provider.dart';
+import 'package:get/get.dart';
+import 'package:petmate/Controller/join_controller.dart';
 import 'package:petmate/View/join_success.dart';
 import 'package:petmate/Widget/custom_appbar.dart';
 import 'package:petmate/Widget/join/agree_field.dart';
@@ -11,7 +12,6 @@ import 'package:petmate/Widget/join/nickname_field.dart';
 import 'package:petmate/Widget/join/password_check_field.dart';
 import 'package:petmate/Widget/join/password_field.dart';
 import 'package:petmate/Widget/push_button_a.dart';
-import 'package:provider/provider.dart';
 
 class JoinMain extends StatefulWidget {
   const JoinMain({super.key});
@@ -23,7 +23,8 @@ class JoinMain extends StatefulWidget {
 class _JoinMainState extends State<JoinMain> {
   @override
   Widget build(BuildContext context) {
-    return Consumer<JoinProvider>(builder: (context, controller, child) {
+    Get.put(JoinController());
+    return GetBuilder<JoinController>(builder: (controller) {
       return Scaffold(
         backgroundColor: Colors.transparent,
         extendBodyBehindAppBar: true,

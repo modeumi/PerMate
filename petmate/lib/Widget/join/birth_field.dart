@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:petmate/Provider/join_provider.dart';
+import 'package:get/get.dart';
+import 'package:petmate/Controller/join_controller.dart';
 import 'package:petmate/Widget/textfield_slot.dart';
-import 'package:provider/provider.dart';
 
 class BrithField extends StatefulWidget {
   const BrithField({super.key});
@@ -13,7 +13,7 @@ class BrithField extends StatefulWidget {
 class _BrithFieldState extends State<BrithField> {
   @override
   Widget build(BuildContext context) {
-    return Consumer<JoinProvider>(builder: (context, provider, child) {
+    return GetBuilder<JoinController>(builder: (controller) {
       return Container(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,10 +33,10 @@ class _BrithFieldState extends State<BrithField> {
             ),
             TextFieldSlot(
               hint: 'YYYY.MM.DD',
-              controller: provider.birth,
-              status: provider.birth_checker,
+              controller: controller.birth,
+              status: controller.birth_checker,
               action: () {
-                provider.Birth_Check();
+                controller.Birth_Check();
               },
               password: false,
             ),
@@ -44,10 +44,10 @@ class _BrithFieldState extends State<BrithField> {
               height: 8,
             ),
             Text(
-              provider.birth_fail,
+              controller.birth_fail,
               style: TextStyle(
                 color:
-                    provider.birth_checker ? Colors.white : Color(0xFFFF0000),
+                    controller.birth_checker ? Colors.white : Color(0xFFFF0000),
                 fontSize: 12,
                 fontFamily: 'Pretendard',
                 fontWeight: FontWeight.w500,

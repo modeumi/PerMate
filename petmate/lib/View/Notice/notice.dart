@@ -1,11 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:petmate/View/Notice/noticedelete.dart';
-import 'package:petmate/Widget/notice/NotificationContainer2.dart';
 import 'package:petmate/Widget/notice/notification_container.dart';
 import 'package:petmate/Widget/notice/notification_type.dart';
-import 'package:provider/provider.dart';
 
 class NoticePage extends StatefulWidget {
   const NoticePage({super.key});
@@ -52,7 +48,10 @@ class _NoticePageState extends State<NoticePage> {
                         )),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => const NoticeDeleted()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const NoticeDeleted()));
                       },
                       child: Image.asset('assets/alert/delete(24).png'),
                     ),

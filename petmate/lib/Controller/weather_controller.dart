@@ -1,17 +1,17 @@
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 import 'package:petmate/Model/current_air.dart';
 import 'package:petmate/Model/current_weather.dart';
 import 'package:petmate/data/mylocation.dart';
 import 'package:petmate/data/network.dart';
 
-class WeatherProvider extends ChangeNotifier {
+class WeatherController extends GetxController {
   CurrentWeather weatherData = CurrentWeather();
   CurrentAir airData = CurrentAir();
   Widget image = Container();
   String text = '';
   double latitude = 0;
   double longitude = 0;
-  bool loading = false;
 
   // 지역명, 온도, 습도, (초)미세먼지
   String cityName = '';
@@ -37,7 +37,7 @@ class WeatherProvider extends ChangeNotifier {
     } else {
       image = Image.asset('assets/Main/weather (2).png');
     }
-    notifyListeners();
+    update();
   }
 
   void getAirCondition() {
@@ -56,7 +56,7 @@ class WeatherProvider extends ChangeNotifier {
     } else {
       text = '매우나쁨';
     }
-    notifyListeners();
+    update();
   }
 
   void Save_Date(CurrentWeather weather, CurrentAir air) {
@@ -68,20 +68,20 @@ class WeatherProvider extends ChangeNotifier {
     pm10 = airData.listed![0].components!.pm10;
     getWeatherIcon();
     getAirCondition();
-    notifyListeners();
+    update();
   }
 
   void SetLocation(List<double> result) {
     latitude = result[0];
     longitude = result[1];
-    notifyListeners();
+    update();
   }
 
   void SetCity(Map<String, dynamic> result) {
-    notifyListeners();
+    update();
   }
 
-  Future<void> Set_Weather() async {
+  Future<bool> Set_Weather() async {
     const apiKey = 'fd8662804c1d7656890c88c001f601a7';
 
     MyLocation myLocation = MyLocation();
@@ -109,7 +109,9 @@ class WeatherProvider extends ChangeNotifier {
     print('확인용');
     print(weatherData);
     print(weatherData.main!.temp);
-    loading = true;
-    notifyListeners();
+
+    update();
+
+    return true;
   }
 }

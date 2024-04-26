@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:petmate/Provider/join_provider.dart';
+import 'package:get/get.dart';
+import 'package:petmate/Controller/join_controller.dart';
 import 'package:petmate/Widget/textfield_slot.dart';
-import 'package:provider/provider.dart';
 
 class PassWordField extends StatefulWidget {
   const PassWordField({super.key});
@@ -13,7 +13,7 @@ class PassWordField extends StatefulWidget {
 class _PassWordFieldState extends State<PassWordField> {
   @override
   Widget build(BuildContext context) {
-    return Consumer<JoinProvider>(builder: (context, provider, child) {
+    return GetBuilder<JoinController>(builder: (controller) {
       return Container(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,11 +33,11 @@ class _PassWordFieldState extends State<PassWordField> {
             ),
             TextFieldSlot(
               hint: '영문/숫자/특수문자 혼합 8~20자',
-              controller: provider.password,
-              status: provider.password_checker,
+              controller: controller.password,
+              status: controller.password_checker,
               action: () {
-                provider.Password_Check();
-                provider.Password_Changer();
+                controller.Password_Check();
+                controller.Password_Changer();
               },
               password: true,
             ),
@@ -45,9 +45,9 @@ class _PassWordFieldState extends State<PassWordField> {
               height: 8,
             ),
             Text(
-              provider.password_fail,
+              controller.password_fail,
               style: TextStyle(
-                color: provider.password_checker
+                color: controller.password_checker
                     ? Colors.white
                     : Color(0xFFFF0000),
                 fontSize: 12,

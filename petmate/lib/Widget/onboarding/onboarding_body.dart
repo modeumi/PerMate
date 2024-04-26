@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:petmate/Provider/onboarding_provider.dart';
-import 'package:provider/provider.dart';
+import 'package:get/get.dart';
+import 'package:petmate/Controller/onboarding_controller.dart';
 
 class OnboardingBody extends StatefulWidget {
   const OnboardingBody({super.key});
@@ -19,38 +19,40 @@ class _OnboardingPageState extends State<OnboardingBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.end,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 43),
-          width: MediaQuery.of(context).size.width,
-          height: 80,
-          child: Text(
-            introduce[context.read<OnboardingProvider>().page],
-            style: const TextStyle(
-              color: Color(0xFF444444),
-              fontSize: 20,
-              fontFamily: 'Pretendard',
-              fontWeight: FontWeight.w600,
+    return GetBuilder<OnboardingController>(builder: (controller) {
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 43),
+            width: MediaQuery.of(context).size.width,
+            height: 80,
+            child: Text(
+              introduce[controller.page],
+              style: const TextStyle(
+                color: Color(0xFF444444),
+                fontSize: 20,
+                fontFamily: 'Pretendard',
+                fontWeight: FontWeight.w600,
+              ),
+              textAlign: TextAlign.center,
+              maxLines: 2,
             ),
-            textAlign: TextAlign.center,
-            maxLines: 2,
           ),
-        ),
-        Container(
-          width: MediaQuery.of(context).size.width,
-          height: 430,
-          child: Image.asset(
-            'assets/onboarding/tempimg${(context.watch<OnboardingProvider>().page) + 1}.png',
-            fit: BoxFit.fill,
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: 430,
+            child: Image.asset(
+              'assets/onboarding/tempimg${(controller.page) + 1}.png',
+              fit: BoxFit.fill,
+            ),
           ),
-        ),
-        const SizedBox(
-          height: 160,
-        )
-      ],
-    );
+          const SizedBox(
+            height: 160,
+          )
+        ],
+      );
+    });
   }
 }

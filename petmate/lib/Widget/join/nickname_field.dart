@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:petmate/Provider/join_provider.dart';
+import 'package:get/get.dart';
+import 'package:petmate/Controller/join_controller.dart';
 import 'package:petmate/Widget/check_button.dart';
 import 'package:petmate/Widget/textfield_slot.dart';
-import 'package:provider/provider.dart';
 
 class NickNameField extends StatefulWidget {
   const NickNameField({super.key});
@@ -15,7 +14,7 @@ class NickNameField extends StatefulWidget {
 class _NickNameFieldState extends State<NickNameField> {
   @override
   Widget build(BuildContext context) {
-    return Consumer<JoinProvider>(builder: (context, provider, child) {
+    return GetBuilder<JoinController>(builder: (controller) {
       return Container(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,10 +38,10 @@ class _NickNameFieldState extends State<NickNameField> {
                   flex: 3,
                   child: TextFieldSlot(
                     hint: '2~16자 이내로 입력해주세요',
-                    controller: provider.nickname,
-                    status: provider.nickname_checker,
+                    controller: controller.nickname,
+                    status: controller.nickname_checker,
                     action: () {
-                      provider.NickName_Changer();
+                      controller.NickName_Changer();
                     },
                     password: false,
                   ),
@@ -54,7 +53,7 @@ class _NickNameFieldState extends State<NickNameField> {
                   flex: 1,
                   child: CheckButton(
                       event: () {
-                        provider.NickName_Check();
+                        controller.NickName_Check();
                       },
                       content: '중복 확인'),
                 )
@@ -64,9 +63,9 @@ class _NickNameFieldState extends State<NickNameField> {
               height: 8,
             ),
             Text(
-              provider.nickname_fail,
+              controller.nickname_fail,
               style: TextStyle(
-                color: provider.nickname_checker
+                color: controller.nickname_checker
                     ? Colors.white
                     : Color(0xFFFF0000),
                 fontSize: 12,

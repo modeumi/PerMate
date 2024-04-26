@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:petmate/DataTools/firebase.dart';
 import 'package:petmate/DataTools/secure_storage.dart';
 import 'package:petmate/Model/user_model.dart';
 
-class LoginProvider extends ChangeNotifier {
+class LoginController extends GetxController {
   bool? auto_login;
   SecureStorage storage = SecureStorage();
   TextEditingController email = TextEditingController();
@@ -32,14 +33,15 @@ class LoginProvider extends ChangeNotifier {
   void Reset() {
     email.text = '';
     password.text = '';
-    notifyListeners();
+    update();
   }
 
-  void KaKao_Login(Map<String, String> data) {
+  Future<bool> KaKao_Login(Map<String, String> data) async {
     email.text = data['email']!;
     password.text = data['password']!;
-    Login();
-    notifyListeners();
+    bool login = await Login();
+    update();
+    return login;
   }
 
   Future<bool> Login() async {
@@ -48,12 +50,12 @@ class LoginProvider extends ChangeNotifier {
       user = UserModel.FromJson(data);
       password_wrong = '';
       email_wrong = '';
-      notifyListeners();
+      update();
       return true;
     } else {
       password_wrong = '이메일 혹은 비밀번호가 일치하지 않습니다.';
       email_wrong = '이메일 혹은 비밀번호가 일치하지 않습니다.';
-      notifyListeners();
+      update();
       return false;
     }
   }
