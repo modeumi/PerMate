@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:petmate/data/mylocation.dart';
+import 'package:geolocator/geolocator.dart';
 
 class LocationWidget extends StatefulWidget {
   const LocationWidget({super.key});

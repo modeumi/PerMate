@@ -131,7 +131,7 @@ class _WeatherWigdgetState extends State<WeatherWigdget> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Text(
-                    '${controller.weatherData.main!.temp}\u2103',
+                    '${controller.weatherData.main!.temp!}\u2103',
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                       color: Colors.white,
