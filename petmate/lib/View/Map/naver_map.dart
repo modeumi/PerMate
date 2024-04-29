@@ -4,6 +4,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_naver_map/flutter_naver_map.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:petmate/Controller/navigation_controller.dart';
+import 'package:petmate/Widget/bottom_bar/bottom_navigationbar.dart';
 
 import 'package:petmate/Widget/map/location_search.dart';
 import 'package:petmate/Widget/map/hairshop.dart';
@@ -22,6 +26,8 @@ class MNaverMap extends StatefulWidget {
 }
 
 class _MNaverMapState extends State<MNaverMap> {
+  final BottomNavigationBarController _bottomNavigationBarController =
+      Get.put(BottomNavigationBarController());
   late NaverMapController _mapController;
 
   final cameraPosition = NCameraPosition(
@@ -88,11 +94,12 @@ class _MNaverMapState extends State<MNaverMap> {
                 ),
               ),
             ),
-            Positioned(left: 100, bottom: 40, child: LocationSearch()),
-            Positioned(right: 20, bottom: 40, child: LocationWidget()),
+            Positioned(left: 100, bottom: 75, child: LocationSearch()),
+            Positioned(right: 20, bottom: 75, child: LocationWidget()),
           ],
         ),
       ),
+      bottomSheet: CustomBottomNavigationBar(),
     );
   }
 }
