@@ -44,7 +44,7 @@ class _OnboardingPageState extends State<OnboardingBody> {
             width: MediaQuery.of(context).size.width,
             height: 430,
             child: Image.asset(
-              'assets/onboarding/tempimg${(controller.page) + 1}.png',
+              'assets/onboarding/onboarding_${(controller.page) + 1}.png',
               fit: BoxFit.fill,
             ),
           ),

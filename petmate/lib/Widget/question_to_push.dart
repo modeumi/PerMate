@@ -30,9 +30,7 @@ class _QuestionToPushState extends State<QuestionToPush> {
             height: 0,
           ),
         ),
-        const SizedBox(
-          width: 24,
-        ),
+        Spacer(),
         GestureDetector(
           onTap: () {
             widget.action();
