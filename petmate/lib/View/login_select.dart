@@ -101,19 +101,23 @@ class _LoginSelectState extends State<LoginSelect> {
               const SizedBox(
                 height: 62,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 60.0),
-                child: QuestionToPush(
-                  question: '아직 펫메이트 계정이 없다면?',
-                  pushtext: '회원가입',
-                  action: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const JoinMain(),
-                      ),
-                    );
-                  },
+              Container(
+                width: MediaQuery.sizeOf(context).width,
+                padding: EdgeInsets.symmetric(
+                    horizontal: MediaQuery.sizeOf(context).width * 0.14),
+                child: Center(
+                  child: QuestionToPush(
+                    question: '아직 펫메이트 계정이 없다면?',
+                    pushtext: '회원가입',
+                    action: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const JoinMain(),
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ),
             ],
