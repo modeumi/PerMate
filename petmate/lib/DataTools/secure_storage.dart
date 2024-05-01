@@ -30,14 +30,17 @@ class SecureStorage {
     await storage.write(key: 'onboarding', value: 'true');
   }
 
-  Future<void> CheckAutoLogin() async {}
-
-  Future<String> Read(String key) async {
-    String read = await storage.read(key: key) ?? '';
-    return read;
+  Future<Map<String, dynamic>> Read(List<String> keys) async {
+    Map<String, dynamic> send_data = {};
+    for (String key in keys) {
+      send_data[key] = await storage.read(key: key);
+    }
+    return send_data;
   }
 
-  Future<void> Write(String key, String value) async {
-    await storage.write(key: key, value: value);
+  Future<void> Write(Map<String, dynamic> datas) async {
+    for (MapEntry<String, dynamic> data in datas.entries) {
+      await storage.write(key: data.key, value: data.value);
+    }
   }
 }

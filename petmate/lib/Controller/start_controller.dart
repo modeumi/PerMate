@@ -10,25 +10,25 @@ class StartController extends GetxController {
   void onInit() async {
     // TODO: implement onInit
     super.onInit();
-    PassOnboarding();
+    await PassOnboarding();
   }
 
   Future<void> PassOnboarding() async {
-    String status = await secure.Read('onboarding');
+    Map<String, dynamic> status = await secure.Read(['onboarding']);
     print('확인 1: $status');
     await Future.delayed(Duration(seconds: 2));
-    if (status != '') {
-      bool status_bool = bool.parse(status);
+    if (status['onboarding'] != '') {
+      bool status_bool = bool.parse(status['onboarding']);
       print('확인 2 : $status_bool');
       if (status_bool) {
-        Get.toNamed('/login_select');
+        Get.offAllNamed('/login_select');
       } else {
-        secure.Write('onboarding', 'true');
-        Get.toNamed('/onboarding');
+        secure.Write({'onboarding': 'true'});
+        Get.offAllNamed('/onboarding');
       }
     } else {
-      secure.Write('onboarding', 'true');
-      Get.toNamed('/onboarding');
+      secure.Write({'onboarding': 'true'});
+      Get.offAllNamed('/onboarding');
     }
   }
 }

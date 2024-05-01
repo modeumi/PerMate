@@ -19,6 +19,7 @@ class _QuestionToPushState extends State<QuestionToPush> {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           widget.question,
@@ -39,7 +40,7 @@ class _QuestionToPushState extends State<QuestionToPush> {
             padding: const EdgeInsets.only(bottom: 4),
             decoration: const BoxDecoration(
                 border:
-                    Border(bottom: BorderSide(width: 3, color: Colors.white))),
+                    Border(bottom: BorderSide(width: 2, color: Colors.white))),
             child: Text(
               widget.pushtext,
               textAlign: TextAlign.center,
