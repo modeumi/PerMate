@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:petmate/View/login_main.dart';
+import 'package:petmate/Util/textstyles.dart';
 
 class JoinSuccess extends StatefulWidget {
   const JoinSuccess({super.key});
@@ -26,29 +27,14 @@ class _JoinSuccessState extends State<JoinSuccess> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(
-                    '회원가입 완료',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 28,
-                      fontFamily: 'Pretendard',
-                      fontWeight: FontWeight.w800,
-                      height: 0,
-                    ),
+                  Text(
+                    '회원가입 완료', // 28 800
+                    style: White(28, FontWeight.w800),
                   ),
                   const SizedBox(
                     height: 12,
                   ),
-                  const Text(
-                    '환영해요!',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontFamily: 'Pretendard',
-                      fontWeight: FontWeight.w600,
-                      height: 0,
-                    ),
-                  ),
+                  Text('환영해요!', style: White(16, FontWeight.w600)),
                   const SizedBox(
                     height: 48,
                   ),
@@ -62,16 +48,8 @@ class _JoinSuccessState extends State<JoinSuccess> {
                 ],
               ),
             ),
-            const Text(
-              '이제 로그인하고 \n펫메이트를 시작해봐요!',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 16,
-                fontFamily: 'Pretendard',
-                fontWeight: FontWeight.w600,
-              ),
-            ),
+            Text('이제 로그인하고 \n펫메이트를 시작해봐요!',
+                textAlign: TextAlign.center, style: White(16, FontWeight.w600)),
             GestureDetector(
                 onTap: () {
                   Navigator.push(context,

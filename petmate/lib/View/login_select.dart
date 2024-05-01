@@ -28,95 +28,114 @@ class _LoginSelectState extends State<LoginSelect> {
                 image: AssetImage('assets/onboarding/Background.png'),
                 fit: BoxFit.fill),
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+          child: Stack(
             children: [
-              const Text(
-                '반려인을 위한 모든것',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 28,
-                  fontFamily: 'Pretendard',
-                  fontWeight: FontWeight.w800,
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              const Opacity(
-                opacity: 0.80,
-                child: Text(
-                  '펫메이트와 함께 해보세요!',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontFamily: 'Pretendard',
-                    fontWeight: FontWeight.w600,
-                    height: 0,
+              Positioned(
+                top: MediaQuery.sizeOf(context).height * 0.19,
+                left: 0,
+                right: 0,
+                child: const Center(
+                  child: Text(
+                    '반려인을 위한 모든것',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 28,
+                      fontFamily: 'Pretendard',
+                      fontWeight: FontWeight.w800,
+                    ),
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 80,
+              Positioned(
+                top: MediaQuery.sizeOf(context).height * 0.25,
+                left: 0,
+                right: 0,
+                child: const Center(
+                  child: Opacity(
+                    opacity: 0.80,
+                    child: Text(
+                      '펫메이트와 함께 해보세요!',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontFamily: 'Pretendard',
+                        fontWeight: FontWeight.w600,
+                        height: 0,
+                      ),
+                    ),
+                  ),
+                ),
               ),
-              Image.asset('assets/onboarding/image_1.png'),
-              const SizedBox(
-                height: 20,
-              ),
-              LoginButton(
-                color: const Color(0xFFFEE500),
-                image: 'assets/onboarding/kakaotalk_bubble.png',
-                contenct: '카카오 로그인',
-                event: () async {
-                  print('카카오');
-                  Map<String, String> result = await KakaoLogin().Kakao_login();
-                  if (result.isNotEmpty) {
-                    bool login = await controller.KaKao_Login(result);
-                    print('성공');
-                    if (login) {
-                      Get.toNamed('/main');
+              Positioned(
+                  left: 0,
+                  right: 0,
+                  top: MediaQuery.sizeOf(context).height * 0.361,
+                  child: Center(
+                      child: Image.asset('assets/onboarding/image_1.png'))),
+              Positioned(
+                bottom: MediaQuery.sizeOf(context).height * 0.29,
+                left: 0,
+                right: 0,
+                child: LoginButton(
+                  color: const Color(0xFFFEE500),
+                  image: 'assets/onboarding/kakaotalk_bubble.png',
+                  contenct: '카카오 로그인',
+                  event: () async {
+                    print('카카오');
+                    Map<String, String> result =
+                        await KakaoLogin().Kakao_login();
+                    if (result.isNotEmpty) {
+                      bool login = await controller.KaKao_Login(result);
+                      print('성공');
+                      if (login) {
+                        Get.toNamed('/main');
+                      }
+                    } else {
+                      print('실패');
                     }
-                  } else {
-                    print('실패');
-                  }
-                },
+                  },
+                ),
               ),
-              const SizedBox(
-                height: 16,
-              ),
-              LoginButton(
-                color: const Color(0xFFFFFFFF),
-                image: 'assets/onboarding/icon_2.png',
-                contenct: '이메일 로그인',
-                event: () {
-                  controller.Reset();
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const LoginMain(),
-                      ));
-                },
-              ),
-              const SizedBox(
-                height: 62,
-              ),
-              Container(
-                width: MediaQuery.sizeOf(context).width,
-                padding: EdgeInsets.symmetric(
-                    horizontal: MediaQuery.sizeOf(context).width * 0.14),
-                child: Center(
-                  child: QuestionToPush(
-                    question: '아직 펫메이트 계정이 없다면?',
-                    pushtext: '회원가입',
-                    action: () {
-                      Navigator.push(
+              Positioned(
+                bottom: MediaQuery.sizeOf(context).height * 0.21,
+                left: 0,
+                right: 0,
+                child: LoginButton(
+                  color: const Color(0xFFFFFFFF),
+                  image: 'assets/onboarding/icon_2.png',
+                  contenct: '이메일 로그인',
+                  event: () {
+                    controller.Reset();
+                    Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const JoinMain(),
-                        ),
-                      );
-                    },
+                          builder: (context) => const LoginMain(),
+                        ));
+                  },
+                ),
+              ),
+              Positioned(
+                bottom: MediaQuery.sizeOf(context).height * 0.1,
+                left: 0,
+                right: 0,
+                child: Container(
+                  width: MediaQuery.sizeOf(context).width,
+                  padding: EdgeInsets.symmetric(
+                      horizontal: MediaQuery.sizeOf(context).width * 0.14),
+                  child: Center(
+                    child: QuestionToPush(
+                      question: '아직 펫메이트 계정이 없다면?',
+                      pushtext: '회원가입',
+                      action: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const JoinMain(),
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ),
               ),

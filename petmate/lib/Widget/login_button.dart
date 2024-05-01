@@ -29,7 +29,11 @@ class _LoginButtonState extends State<LoginButton> {
             borderRadius: BorderRadius.circular(5), color: widget.color),
         child: Row(
           children: [
-            Image.asset(widget.image),
+            Image.asset(
+              widget.image,
+              width: 24,
+              height: 24,
+            ),
             Expanded(
                 child: Text(
               widget.contenct,

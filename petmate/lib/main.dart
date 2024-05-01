@@ -20,21 +20,22 @@ import 'package:petmate/Widget/notice/test.dart';
 import 'package:petmate/View/splash.dart';
 import 'package:petmate/Widget/notice/test1.dart';
 import 'package:petmate/View/Notice/notice.dart';
+import 'package:petmate/key.dart';
 import 'firebase_options.dart';
 import 'package:kakao_flutter_sdk_auth/kakao_flutter_sdk_auth.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   KakaoSdk.init(
-      nativeAppKey: '6aff6a6a32983c77785cb5df7c9dd27a',
-      javaScriptAppKey: '07060657d09cc65bb1e781ae2325d058');
+      nativeAppKey: kakao_nativeAppKey,
+      javaScriptAppKey: kakao_javaScriptAppKey);
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
   WidgetsFlutterBinding.ensureInitialized();
   await NaverMapSdk.instance.initialize(
-    clientId: "d0y4umwxnz",
+    clientId: naver_clientId,
     onAuthFailed: (ex) {
       debugPrint("********* 네이버맵 인증오류 : $ex *********");
     },

@@ -23,3 +23,11 @@ TextStyle Blue(double size, FontWeight weight) {
       color: const Color(0xFF2B80FF),
       fontFamily: 'Pretendard');
 }
+
+TextStyle Custom(double size, FontWeight weight, Color color) {
+  return TextStyle(
+      fontSize: size,
+      fontWeight: weight,
+      color: color,
+      fontFamily: 'Pretendard');
+}

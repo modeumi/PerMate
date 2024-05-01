@@ -17,17 +17,24 @@ class LoginController extends GetxController {
   bool password_check = true;
   String password_wrong = '';
 
-  Future<bool> Check_AutoLogin() async {
-    String status = await storage.Read('auto');
-    if (status != '') {
-      bool auto_status = bool.parse(status);
+  @override
+  void onInit() async {
+    // TODO: implement onInit
+    super.onInit();
+    await Check_AutoLogin();
+  }
+
+  Future<void> Check_AutoLogin() async {
+    Map<String, dynamic> status = await storage.Read(['auto']);
+    if (status['auto'] != '') {
+      bool auto_status = bool.parse(status['auto']);
       if (auto_status) {
-        return true;
-      } else {
-        return false;
+        Map<String, dynamic> data = await storage.Read(['email', 'password']);
+        email.text = data['email'];
+        password = data['password'];
+        Login();
       }
     }
-    return false;
   }
 
   void Reset() {
@@ -47,6 +54,7 @@ class LoginController extends GetxController {
   Future<bool> Login() async {
     Map<String, dynamic> data = await firebase.Login(email.text, password.text);
     if (data.isNotEmpty) {
+      await storage.Write({'email': email.text, 'password': password.text});
       user = UserModel.FromJson(data);
       password_wrong = '';
       email_wrong = '';
