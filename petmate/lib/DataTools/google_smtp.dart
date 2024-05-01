@@ -1,5 +1,6 @@
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server/gmail.dart';
+import 'package:petmate/key.dart';
 
 class MailSender {
   Future<void> JoinEmailSend(String email, String code) async {
@@ -10,7 +11,7 @@ class MailSender {
       ..text =
           '안녕하세요!\nPetMate 입니다.\n귀하의 회원가입을 위한 인증 코드를 발송해드립니다.\n인증코드는 \n\n$code\n\n입니다.\n\n코드의 유지시간은 5분이며 이후에는 소멸합니다.\n감사합니다.\nPetMate 드림\n\n반려인을 위한 모든것! \nPetMate';
     try {
-      await send(message, gmail('ghj2587@gmail.com', 'itryzixnwkmbxvxg'));
+      await send(message, gmail('ghj2587@gmail.com', mail_pass));
     } catch (e) {
       print('에러 :$e');
     }
@@ -24,7 +25,7 @@ class MailSender {
       ..text =
           '안녕하세요!\nPetMate 입니다.\n귀하의 비밀번호 찾기를 위한 인증 코드를 발송해드립니다.\n인증코드는 \n\n$code\n\n입니다.\n\n코드의 유지시간은 5분이며 이후에는 소멸합니다.\n감사합니다.\nPetMate 드림\n\n반려인을 위한 모든것! \nPetMate';
     try {
-      await send(message, gmail('ghj2587@gmail.com', 'itryzixnwkmbxvxg'));
+      await send(message, gmail('ghj2587@gmail.com', mail_pass));
     } catch (e) {
       print('에러 :$e');
     }

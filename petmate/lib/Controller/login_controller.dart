@@ -26,7 +26,8 @@ class LoginController extends GetxController {
 
   Future<void> Check_AutoLogin() async {
     Map<String, dynamic> status = await storage.Read(['auto']);
-    if (status['auto'] != '') {
+    print(status);
+    if (status['auto'] != null) {
       bool auto_status = bool.parse(status['auto']);
       if (auto_status) {
         Map<String, dynamic> data = await storage.Read(['email', 'password']);
