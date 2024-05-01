@@ -3,10 +3,12 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:petmate/DataTools/firebase.dart';
 import 'package:petmate/DataTools/google_smtp.dart';
 import 'package:petmate/Util/util.dart';
 
-class PasswordProvider extends GetxController {
+class PasswordController extends GetxController {
+  FirebaseData firebase = FirebaseData();
   TextEditingController name = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController verification = TextEditingController();
@@ -17,10 +19,8 @@ class PasswordProvider extends GetxController {
   bool code_status = false;
 
   bool exist_check = false;
-
   bool info_check = true;
   bool code_check = true;
-
   bool mail_send = false;
 
   String code = '';
@@ -52,8 +52,11 @@ class PasswordProvider extends GetxController {
   }
 
   void Email_Check() async {
-    bool email_valid = Email_Isvalid(email.text);
-    if (email_valid) {
+    email_valid = Email_Isvalid(email.text);
+    exist_check = await firebase.Account_Exist_Check(email.text, name.text);
+    if (email_valid && exist_check) {
+      info_check = true;
+      mail_send = true;
       Create_Code();
       await MailSender().SearchEmailSend(email.text, code);
     } else {
@@ -73,6 +76,7 @@ class PasswordProvider extends GetxController {
       code_check = false;
     }
     Code_Show_Text();
+    update();
   }
 
   void Email_Show_Text() {

@@ -3,10 +3,11 @@ import 'package:get/get.dart';
 
 import 'package:petmate/DataTools/firebase.dart';
 import 'package:petmate/Controller/password_controller.dart';
+import 'package:petmate/View/password_reset_success.dart';
 
 import 'package:petmate/Widget/custom_appbar.dart';
-import 'package:petmate/Widget/join/email_field.dart';
-import 'package:petmate/Widget/join/name_field.dart';
+import 'package:petmate/Widget/passwordsearch/email_field.dart';
+import 'package:petmate/Widget/passwordsearch/name_field.dart';
 import 'package:petmate/Widget/push_button_a.dart';
 
 class PasswordReset extends StatefulWidget {
@@ -20,11 +21,12 @@ class _PasswordResetState extends State<PasswordReset> {
   FirebaseData firebase = FirebaseData();
   @override
   Widget build(BuildContext context) {
+    Get.put(PasswordController());
     return Scaffold(
       backgroundColor: Colors.transparent,
       extendBodyBehindAppBar: true,
       appBar: const CustomAppbar(title: '비밀번호 찾기'),
-      body: GetBuilder<PasswordProvider>(
+      body: GetBuilder<PasswordController>(
         builder: (controller) {
           return Container(
             width: MediaQuery.of(context).size.width,
@@ -49,14 +51,15 @@ class _PasswordResetState extends State<PasswordReset> {
                           bool result = await firebase.Change_Password(
                               controller.email.text);
                           if (result) {
-                            // Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //         builder: (context) => LoginMain()));
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => PasswordResetSuccess(),
+                              ),
+                            );
                           }
                         }
                       },
-                      //
                       active: (controller.info_check &&
                           controller.verification.text != ''),
                     ),

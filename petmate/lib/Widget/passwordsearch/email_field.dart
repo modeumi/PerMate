@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:petmate/Controller/join_controller.dart';
+import 'package:petmate/Controller/password_controller.dart';
 import 'package:petmate/Widget/check_button.dart';
 import 'package:petmate/Widget/textfield_slot.dart';
 
@@ -14,9 +14,8 @@ class EmailField extends StatefulWidget {
 class _EmailFieldState extends State<EmailField> {
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<JoinController>(builder: (controller) {
+    return GetBuilder<PasswordController>(builder: (controller) {
       return Container(
-        height: 150,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -41,9 +40,9 @@ class _EmailFieldState extends State<EmailField> {
                   child: TextFieldSlot(
                     hint: 'example@example.com',
                     controller: controller.email,
-                    status: controller.email_checker,
+                    status: controller.info_check,
                     action: () {
-                      controller.Email_Changer();
+                      controller.Info_Changer();
                     },
                     password: false,
                   ),
@@ -57,47 +56,29 @@ class _EmailFieldState extends State<EmailField> {
                         event: () {
                           controller.Email_Check();
                         },
-                        content: controller.mailsend ? '재전송' : '인증 요청'))
+                        content: controller.mail_send ? '재전송' : '인증 요청'))
               ],
             ),
             const SizedBox(
               height: 8,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Flexible(
-                  flex: 3,
-                  child: TextFieldSlot(
-                    hint: '인증번호를 입력해주세요',
-                    controller: controller.verification_code,
-                    status: controller.verification_code_checker,
-                    action: () {
-                      controller.Verification_Code_Changer();
-                    },
-                    password: false,
-                  ),
-                ),
-                const SizedBox(
-                  width: 8,
-                ),
-                Flexible(
-                    flex: 1,
-                    child: CheckButton(
-                        event: () {
-                          controller.Verification_Code_Check();
-                        },
-                        content: '확인'))
-              ],
+            TextFieldSlot(
+              hint: '인증번호를 입력해주세요',
+              controller: controller.verification,
+              status: controller.code_check,
+              action: () {
+                //
+              },
+              password: false,
             ),
             const SizedBox(
               height: 7,
             ),
             Text(
-              controller.email_fail,
+              controller.invaild_info,
               style: TextStyle(
-                color: controller.email_checker
-                    ? controller.verification_code_checker
+                color: controller.info_check
+                    ? controller.code_check
                         ? Colors.white
                         : Color(0xFFFF0000)
                     : Color(0xFFFF0000),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:petmate/Controller/join_controller.dart';
+import 'package:petmate/Controller/password_controller.dart';
 import 'package:petmate/Widget/textfield_slot.dart';
 
 class NameField extends StatefulWidget {
@@ -13,9 +13,8 @@ class NameField extends StatefulWidget {
 class _NameFieldState extends State<NameField> {
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<JoinController>(builder: (controller) {
+    return GetBuilder<PasswordController>(builder: (controller) {
       return Container(
-        height: 100,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -35,27 +34,16 @@ class _NameFieldState extends State<NameField> {
             TextFieldSlot(
               hint: '이름을 입력해주세요',
               controller: controller.name,
-              status: controller.name_checker,
+              status: controller.info_check,
               action: () {
-                controller.Name_Changer();
-                controller.Name_Check();
+                // controller.Check_Statue();
+                controller.Info_Changer();
               },
               password: false,
             ),
             SizedBox(
-              height: 8,
+              height: 24,
             ),
-            Text(
-              controller.name_fail,
-              style: TextStyle(
-                color:
-                    controller.name_checker ? Colors.white : Color(0xFFFF0000),
-                fontSize: 12,
-                fontFamily: 'Pretendard',
-                fontWeight: FontWeight.w500,
-                height: 0,
-              ),
-            )
           ],
         ),
       );
