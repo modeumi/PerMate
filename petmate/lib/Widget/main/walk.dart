@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
+import 'package:petmate/Util/textstyles.dart';
 
 class WalkWidget extends StatefulWidget {
   const WalkWidget({super.key});
@@ -68,16 +69,8 @@ class _WalkWidgetState extends State<WalkWidget> {
         Positioned(
           left: 75,
           top: 25,
-          child: Text(
-            '산책 하기',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 12,
-              fontFamily: 'Pretendard',
-              fontWeight: FontWeight.w500,
-            ),
-          ),
+          child: Text('산책 하기',
+              textAlign: TextAlign.center, style: White(12, FontWeight.w500)),
         ),
       ],
     );

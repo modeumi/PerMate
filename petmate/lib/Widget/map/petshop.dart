@@ -24,6 +24,24 @@ class _PetShopWidgetState extends State<PetShopWidget> {
             child: Container(
               child: Stack(
                 children: [
+                  Opacity(
+                    opacity: 0.2,
+                    child: Container(
+                      width: 88,
+                      height: 40,
+                      decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color(0x26000000),
+                              blurRadius: 2,
+                              offset: Offset(2, 2),
+                              spreadRadius: 0,
+                            )
+                          ],
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10)),
+                    ),
+                  ),
                   Container(
                     width: 130,
                     height: 40,

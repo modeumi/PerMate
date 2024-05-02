@@ -2,7 +2,11 @@ import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
+import 'package:petmate/Util/textstyles.dart';
+import 'package:petmate/View/Profile.dart/edit_profile.dart';
+import 'package:petmate/View/Profile.dart/add_profile.dart';
 
 class ProfilePlus extends StatefulWidget {
   const ProfilePlus({super.key});
@@ -13,7 +17,7 @@ class ProfilePlus extends StatefulWidget {
 
 class _ProfilePlusState extends State<ProfilePlus> {
   bool state = false;
-  bool state2 = false;
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -28,8 +32,8 @@ class _ProfilePlusState extends State<ProfilePlus> {
                 opacity: 0.4,
                 child: Container(
                   margin: EdgeInsets.symmetric(horizontal: 8),
-                  width: 50,
-                  height: 50,
+                  width: 60,
+                  height: 60,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     boxShadow: [
@@ -44,13 +48,11 @@ class _ProfilePlusState extends State<ProfilePlus> {
               ),
               GestureDetector(
                 onTap: () {
-                  setState(() {
-                    state = !state;
-                  });
+                  Get.to((AddProfilePage()));
                 },
                 child: Container(
-                  width: 50,
-                  height: 50,
+                  width: 60,
+                  height: 60,
                   margin: EdgeInsets.symmetric(horizontal: 8),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
@@ -80,17 +82,10 @@ class _ProfilePlusState extends State<ProfilePlus> {
               ),
               Positioned(
                 bottom: -23,
-                left: 10,
-                child: Text(
-                  '추가하기',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 12,
-                    fontFamily: 'Pretendard',
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
+                left: 15,
+                child: Text('추가하기',
+                    textAlign: TextAlign.center,
+                    style: White(12, FontWeight.w500)),
               )
             ],
           ),
@@ -101,8 +96,8 @@ class _ProfilePlusState extends State<ProfilePlus> {
                 opacity: 0.4,
                 child: Container(
                   margin: EdgeInsets.symmetric(horizontal: 2),
-                  width: 50,
-                  height: 50,
+                  width: 60,
+                  height: 60,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     boxShadow: [
@@ -117,11 +112,11 @@ class _ProfilePlusState extends State<ProfilePlus> {
               ),
               GestureDetector(
                 onTap: () {
-                  setState(() {});
+                  Get.to(EditProfilePage());
                 },
                 child: Container(
-                  width: 50,
-                  height: 50,
+                  width: 60,
+                  height: 60,
                   margin: EdgeInsets.symmetric(horizontal: 2),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
@@ -151,21 +146,14 @@ class _ProfilePlusState extends State<ProfilePlus> {
               ),
               Positioned(
                 bottom: -23,
-                left: 8,
-                child: Text(
-                  '수정하기',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 12,
-                    fontFamily: 'Pretendard',
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
+                left: 11,
+                child: Text('수정하기',
+                    textAlign: TextAlign.center,
+                    style: White(12, FontWeight.w500)),
               ),
               Positioned(
-                  top: 85,
-                  left: -59,
+                  top: 95,
+                  left: -69,
                   child: Container(
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
@@ -180,51 +168,30 @@ class _ProfilePlusState extends State<ProfilePlus> {
                       child: Image.asset(
                           'assets/banner/InformationBanner (1).png'))),
               Positioned(
-                  top: 90,
-                  left: -48,
-                  child: Text(
-                    '정보',
-                    style: TextStyle(
-                      color: Color(0xFF303030),
-                      fontSize: 12,
-                      fontFamily: 'Pretendard',
-                      fontWeight: FontWeight.w600,
-                    ),
-                  )),
+                  top: 102,
+                  left: -53,
+                  child: Text('정보', style: White(12, FontWeight.w500))),
               Positioned(
-                  top: 90,
+                  top: 102,
                   left: 225,
-                  child: Text(
-                    '더보기',
-                    style: TextStyle(
-                      color: Color(0xFF303030),
-                      fontSize: 10,
-                      fontFamily: 'Pretendard',
-                      fontWeight: FontWeight.w600,
-                    ),
-                  )),
+                  child: Text('더보기', style: White(12, FontWeight.w500))),
               Positioned(
-                  top: 93,
+                  top: 102,
                   left: 258,
                   child: Image.asset('assets/Main/left.png')),
               Positioned(
-                  top: 112,
-                  left: -29,
+                  top: 123,
+                  left: -39,
                   child: Image.asset('assets/Main/bigleft.png')),
               Positioned(
-                  top: 112,
-                  left: 252,
+                  top: 123,
+                  left: 259,
                   child: Image.asset('assets/Main/bigright.png')),
               Positioned(
-                  top: 112,
-                  left: -19,
+                  top: 120,
+                  left: -29,
                   child: Text('강아지가 가구를 물어뜯는 이유를 알고 계신가요?',
-                      style: TextStyle(
-                        color: Color(0xFF303030),
-                        fontSize: 13,
-                        fontFamily: 'Pretendard',
-                        fontWeight: FontWeight.w500,
-                      ))),
+                      style: Black(14, FontWeight.w500))),
             ],
           ),
         ],

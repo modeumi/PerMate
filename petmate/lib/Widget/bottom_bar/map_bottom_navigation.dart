@@ -7,8 +7,8 @@ import 'package:petmate/Controller/navigation_controller.dart';
 import 'package:petmate/View/Map/naver_map.dart';
 import 'package:petmate/View/mainpage.dart';
 
-class CustomBottomNavigationBar extends GetView<BottomNavigationBarController> {
-  const CustomBottomNavigationBar({super.key});
+class MapBottomNavigationBar extends GetView<BottomNavigationBarController> {
+  const MapBottomNavigationBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +20,13 @@ class CustomBottomNavigationBar extends GetView<BottomNavigationBarController> {
               width: double.infinity,
               height: 64,
               decoration: BoxDecoration(
-                color:
-                    state2 ? Colors.white.withOpacity(0.2) : Colors.transparent,
+                color: state2
+                    ? Colors.white.withOpacity(0.2)
+                    : Colors.white.withOpacity(0.20000000298023224),
                 border: Border(
                   top: BorderSide(
-                      color: Colors.white.withOpacity(0.5), width: 1),
+                      color: Colors.white.withOpacity(0.20000000298023224),
+                      width: 1),
                 ),
                 borderRadius: BorderRadius.circular(10),
               ),
@@ -38,7 +40,7 @@ class CustomBottomNavigationBar extends GetView<BottomNavigationBarController> {
                     ),
             ),
             Opacity(
-              opacity: 0.4,
+              opacity: 0.2,
               child: Container(
                 width: double.infinity,
                 height: 64,
@@ -46,12 +48,12 @@ class CustomBottomNavigationBar extends GetView<BottomNavigationBarController> {
                     boxShadow: [
                       BoxShadow(
                         color: Color(0x26000000),
-                        blurRadius: 1,
-                        offset: Offset(1, 1),
+                        blurRadius: 2,
+                        offset: Offset(2, 2),
                         spreadRadius: 0,
                       )
                     ],
-                    color: Color(0x3300287C),
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(10)),
               ),
             ),
@@ -62,8 +64,8 @@ class CustomBottomNavigationBar extends GetView<BottomNavigationBarController> {
                 backgroundColor: Colors.transparent,
                 elevation: 0,
                 currentIndex: controller.selectedIndex.value,
-                unselectedItemColor: Color(0xFFD8E3F4),
-                selectedItemColor: Colors.white,
+                unselectedItemColor: Color(0xFFB7B7B7),
+                selectedItemColor: Color(0xFF5A8FE1),
                 unselectedLabelStyle: TextStyle(
                   fontFamily: 'Pretendard',
                   fontSize: 10,
@@ -80,13 +82,13 @@ class CustomBottomNavigationBar extends GetView<BottomNavigationBarController> {
                   BottomNavigationBarItem(
                     icon: controller.selectedIndex.value == 0
                         ? Image.asset('assets/gnbicon/home (2).png')
-                        : Image.asset('assets/gnbicon/home (1).png'),
+                        : Image.asset('assets/gnbicon(map)/gnbicon (4).png'),
                     label: "홈",
                   ),
                   BottomNavigationBarItem(
                       icon: controller.selectedIndex.value == 1
                           ? Image.asset('assets/gnbicon/record (2).png')
-                          : Image.asset('assets/gnbicon/record (1).png'),
+                          : Image.asset('assets/gnbicon(map)/gnbicon (5).png'),
                       label: "기록"),
                   BottomNavigationBarItem(
                       icon: controller.selectedIndex.value == 2
@@ -96,12 +98,12 @@ class CustomBottomNavigationBar extends GetView<BottomNavigationBarController> {
                   BottomNavigationBarItem(
                       icon: controller.selectedIndex.value == 3
                           ? Image.asset('assets/gnbicon/chat (2).png')
-                          : Image.asset('assets/gnbicon/chat (1).png'),
+                          : Image.asset('assets/gnbicon(map)/gnbicon (3).png'),
                       label: "커뮤니티"),
                   BottomNavigationBarItem(
                       icon: controller.selectedIndex.value == 4
                           ? Image.asset('assets/gnbicon/user (2).png')
-                          : Image.asset('assets/gnbicon/user (1).png'),
+                          : Image.asset('assets/gnbicon(map)/gnbicon (2).png'),
                       label: "마이페이지"),
                 ],
                 onTap: (index) {
@@ -142,7 +144,7 @@ class BottomWidget extends StatelessWidget {
       body: Obx(() => SafeArea(
           child:
               tabPages[BottomNavigationBarController.to.selectedIndex.value])),
-      bottomNavigationBar: CustomBottomNavigationBar(),
+      bottomNavigationBar: MapBottomNavigationBar(),
     );
   }
 }

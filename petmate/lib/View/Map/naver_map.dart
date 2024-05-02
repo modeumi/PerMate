@@ -4,10 +4,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_naver_map/flutter_naver_map.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:petmate/Controller/navigation_controller.dart';
 import 'package:petmate/Widget/bottom_bar/bottom_navigationbar.dart';
+import 'package:petmate/Widget/bottom_bar/map_bottom_navigation.dart';
 
 import 'package:petmate/Widget/map/location_search.dart';
 import 'package:petmate/Widget/map/hairshop.dart';
@@ -25,48 +27,43 @@ class MNaverMap extends StatefulWidget {
   State<MNaverMap> createState() => _MNaverMapState();
 }
 
+Future<Position> getCurrentLocation() async {
+  Position position = await Geolocator.getCurrentPosition(
+      desiredAccuracy: LocationAccuracy.high);
+  return position;
+}
+
 class _MNaverMapState extends State<MNaverMap> {
+  Position? _currentPosition;
   final BottomNavigationBarController _bottomNavigationBarController =
       Get.put(BottomNavigationBarController());
   late NaverMapController _mapController;
 
   final cameraPosition = NCameraPosition(
-    target: NLatLng(37.5666102, 126.9783881),
+    target: NLatLng(37.2408, 127.0297),
     zoom: 15,
     bearing: 0,
     tilt: 0,
   );
 
-  //   Future<void> _searchLocation()async{
-  //   try {
-  //     Position position = await Geolocator.getCurrentPosition(
-  //       desiredAccuracy: LocationAccuracy.high,
-  //     );
-  //     _mapController.moveCamera(
-  //       CameraUpdate.newCameraPosition(NCameraPosition(target: position.latitude, position.longitude, zoom: 15))
-  //     )
-  //   } catch (e) {
-
-  //   }
-  // }
-
   // Map<String, dynamic> hospotal = {
   //   'A병원': {'name:병원'}
   // };
-  // final marker1 = NMarker(id: '병원', position: NLatLng(37.2408, 127.0297));
+  // final marker = NMarker(id: '병원', position: NLatLng(37.2408, 127.0297));
 
   @override
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        height: 800,
         child: Stack(
           children: [
             NaverMap(
               options: NaverMapViewOptions(
-                  initialCameraPosition: cameraPosition,
-                  pickTolerance: 8,
-                  locationButtonEnable: true),
+                initialCameraPosition: cameraPosition,
+                pickTolerance: 8,
+              ),
               onMapReady: (controller) {
                 setState(() {
                   _mapController = controller;
@@ -75,9 +72,9 @@ class _MNaverMapState extends State<MNaverMap> {
             ),
             MapSearchBar(),
             Padding(
-              padding: const EdgeInsets.only(top: 100),
+              padding: const EdgeInsets.only(top: 90),
               child: Container(
-                height: 50,
+                height: 55,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [
@@ -94,12 +91,12 @@ class _MNaverMapState extends State<MNaverMap> {
                 ),
               ),
             ),
-            Positioned(left: 100, bottom: 75, child: LocationSearch()),
-            Positioned(right: 20, bottom: 75, child: LocationWidget()),
+            // Positioned(right: 110, bottom: 75, child: LocationSearch()),
+            Positioned(right: 10, bottom: 75, child: LocationWidget()),
           ],
         ),
       ),
-      bottomSheet: CustomBottomNavigationBar(),
+      bottomSheet: MapBottomNavigationBar(),
     );
   }
 }

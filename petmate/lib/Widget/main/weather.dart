@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Controller/weather_controller.dart';
+import 'package:petmate/Util/textstyles.dart';
 
 class WeatherWigdget extends StatefulWidget {
   const WeatherWigdget({
@@ -76,30 +77,13 @@ class _WeatherWigdgetState extends State<WeatherWigdget> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
-                    '날씨',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 12,
-                      fontFamily: 'Pretendard',
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
+                  Text('날씨', style: White(12, FontWeight.w600)),
                   Container(
                     width: 60,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        const Text(
-                          '반송동',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 10,
-                            fontFamily: 'Pretendard',
-                            fontWeight: FontWeight.w600,
-                            height: 0,
-                          ),
-                        ),
+                        Text('반송동', style: White(10, FontWeight.w600)),
                         GestureDetector(
                           onTap: () {
                             debugPrint('clicked~~');
@@ -119,7 +103,8 @@ class _WeatherWigdgetState extends State<WeatherWigdget> {
           Positioned(
             left: 20,
             top: 42,
-            child: controller.image,
+            // child: controller.image,
+            child: Image.asset('assets/Main/weather (1).png'),
           ),
           Positioned(
             left: 87,
@@ -131,71 +116,38 @@ class _WeatherWigdgetState extends State<WeatherWigdget> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Text(
-                    '${controller.weatherData.main!.temp!}\u2103',
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontFamily: 'Pretendard',
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
+                      // '${controller.weatherData.main!.temp!}\u2103',
+                      '-30°',
+                      textAlign: TextAlign.center,
+                      style: White(20, FontWeight.w600)),
                   Text(
-                    '${controller.weatherData.weather![0].description}',
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontFamily: 'Pretendard',
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
+                      // '${controller.weatherData.weather![0].description}',
+                      '맑음',
+                      style: White(16, FontWeight.w600)),
                 ],
               ),
             ),
           ),
           Positioned(
             left: 140,
-            top: 40,
+            top: 47,
             child: Container(
               width: 58,
               height: 64,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    '강수 확률',
-                    style: TextStyle(
-                      color: Colors.white.withOpacity(0.6),
-                      fontSize: 10,
-                      fontFamily: 'Pretendard',
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  const Text(
-                    '100%',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 14,
-                      fontFamily: 'Pretendard',
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
+                  Text('강수 확률', style: White(10, FontWeight.w500)),
+                  Text('100%', style: White(14, FontWeight.w500)),
                   Container(
                     width: 58,
                     height: 16,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: const Color(0xFF62BDFF)),
-                    child: const Text(
-                      '습도 100%',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 10,
-                        fontFamily: 'Pretendard',
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
+                    child: Text('습도 100%',
+                        textAlign: TextAlign.center,
+                        style: White(10, FontWeight.w500)),
                   ),
                 ],
               ),
@@ -203,31 +155,18 @@ class _WeatherWigdgetState extends State<WeatherWigdget> {
           ),
           Positioned(
             right: 90,
-            top: 40,
+            top: 47,
             child: Container(
               width: 58,
               height: 64,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  Text('미세 먼지', style: White(10, FontWeight.w500)),
                   Text(
-                    '미세 먼지',
-                    style: TextStyle(
-                      color: Colors.white.withOpacity(0.6),
-                      fontSize: 10,
-                      fontFamily: 'Pretendard',
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  Text(
-                    controller.text,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 14,
-                      fontFamily: 'Pretendard',
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
+                      // controller.text,
+                      '매우 나쁨',
+                      style: White(14, FontWeight.w600)),
                   Container(
                     width: 33,
                     height: 16,
@@ -236,15 +175,10 @@ class _WeatherWigdgetState extends State<WeatherWigdget> {
                       color: const Color(0xFFFF6262),
                     ),
                     child: Text(
-                      '${controller.pm10}',
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 10,
-                        fontFamily: 'Pretendard',
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
+                        // '${controller.pm10}',
+                        '150',
+                        textAlign: TextAlign.center,
+                        style: White(10, FontWeight.w600)),
                   ),
                 ],
               ),
@@ -252,31 +186,18 @@ class _WeatherWigdgetState extends State<WeatherWigdget> {
           ),
           Positioned(
             right: 20,
-            top: 40,
+            top: 47,
             child: Container(
               width: 58,
               height: 64,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  Text('초미세 먼지', style: White(10, FontWeight.w600)),
                   Text(
-                    '초미세 먼지',
-                    style: TextStyle(
-                      color: Colors.white.withOpacity(0.6),
-                      fontSize: 10,
-                      fontFamily: 'Pretendard',
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  Text(
-                    controller.text,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 14,
-                      fontFamily: 'Pretendard',
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
+                      // controller.text,
+                      '매우 나쁨',
+                      style: White(14, FontWeight.w600)),
                   Container(
                     width: 33,
                     height: 16,
@@ -285,15 +206,10 @@ class _WeatherWigdgetState extends State<WeatherWigdget> {
                       color: const Color(0xFFFF6262),
                     ),
                     child: Text(
-                      '${controller.pm2_5}',
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 10,
-                        fontFamily: 'Pretendard',
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
+                        // '${controller.pm2_5}',
+                        '76',
+                        textAlign: TextAlign.center,
+                        style: White(10, FontWeight.w600)),
                   ),
                 ],
               ),
