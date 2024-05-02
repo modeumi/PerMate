@@ -4,16 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
+import 'package:petmate/Widget/bottom_bar/bottom_navigationbar.dart';
 
-class MemoWriteWidget extends StatefulWidget {
-  const MemoWriteWidget({super.key});
+class AlarmPage extends StatefulWidget {
+  const AlarmPage({super.key});
 
   @override
-  State<MemoWriteWidget> createState() => _MemoWriteWidgetState();
+  State<AlarmPage> createState() => _AlarmPageState();
 }
 
-class _MemoWriteWidgetState extends State<MemoWriteWidget> {
-  bool state = false;
+class _AlarmPageState extends State<AlarmPage> {
   bool state2 = false;
   @override
   Widget build(BuildContext context) {
@@ -83,10 +83,10 @@ class _MemoWriteWidgetState extends State<MemoWriteWidget> {
         Positioned(
           left: 35,
           top: 50,
-          child: Opacity(
-              opacity: 0.6,
-              child: Text('메모 작성시 표시됩니다.', style: White(12, FontWeight.w500))),
-        )
+          child: Text('메모 작성시 표시됩니다.', style: White(12, FontWeight.w500)),
+        ),
+        Positioned(
+            bottom: 0, left: 0, right: 0, child: CustomBottomNavigationBar())
       ],
     );
   }

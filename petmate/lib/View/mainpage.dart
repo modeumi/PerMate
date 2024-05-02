@@ -38,41 +38,45 @@ class _MainPageState extends State<MainPage> {
               image: AssetImage('assets/Main/Background.png'),
               fit: BoxFit.fill),
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(1.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              MainAlram(),
-              ProfilePlus(),
-              SizedBox(
-                height: 115,
-              ),
-              // WeatherWigdget(),
-              MemoWidget(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  LogWidget(),
-                  WalkWidget(),
-                ],
-              ),
-              SizedBox(
-                height: 8,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  AlarmWidget(),
-                  MeMoWidget(),
-                ],
-              ),
-              CustomBottomNavigationBar(),
-            ],
-          ),
+        child: Stack(
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                MainAlram(),
+                ProfilePlus(),
+                SizedBox(
+                  height: 115,
+                ),
+                WeatherWigdget(),
+                MemoWriteWidget(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    LogWidget(),
+                    WalkWidget(),
+                  ],
+                ),
+                SizedBox(
+                  height: 2,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    AlarmWidget(),
+                    MeMoWidget(),
+                  ],
+                ),
+              ],
+            ),
+            Positioned(
+                bottom: 0,
+                left: 0,
+                right: 0,
+                child: CustomBottomNavigationBar())
+          ],
         ),
       ),
-      bottomSheet: CustomBottomNavigationBar(),
     );
   }
 }

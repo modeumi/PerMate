@@ -2,6 +2,7 @@ import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server/gmail.dart';
 import 'package:petmate/key.dart';
 
+
 class MailSender {
   Future<void> JoinEmailSend(String email, String code) async {
     final message = Message()

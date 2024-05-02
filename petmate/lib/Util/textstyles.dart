@@ -31,3 +31,4 @@ TextStyle Custom(double size, FontWeight weight, Color color) {
       color: color,
       fontFamily: 'Pretendard');
 }
+

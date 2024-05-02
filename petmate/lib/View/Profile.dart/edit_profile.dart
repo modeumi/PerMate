@@ -1,21 +1,24 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/View/Notice/noticedelete.dart';
+import 'package:petmate/View/Profile.dart/deleted_profile.dart';
 import 'package:petmate/View/mainpage.dart';
 import 'package:petmate/Widget/bottom_bar/bottom_navigationbar.dart';
 import 'package:petmate/Widget/notice/notification_container.dart';
 import 'package:petmate/Widget/notice/notification_type.dart';
+import 'package:petmate/Widget/profile/profile_edit_widget.dart';
 
-class NoticePage extends StatefulWidget {
-  const NoticePage({super.key});
+class EditProfilePage extends StatefulWidget {
+  const EditProfilePage({super.key});
 
   @override
-  State<NoticePage> createState() => _NoticePageState();
+  State<EditProfilePage> createState() => _EditProfilePageState();
 }
 
-class _NoticePageState extends State<NoticePage> {
+class _EditProfilePageState extends State<EditProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,27 +51,51 @@ class _NoticePageState extends State<NoticePage> {
                               Get.back();
                             },
                             child: Image.asset('assets/alert/back.png')),
-                        Text('알림',
+                        Container(
+                          width: 20,
+                        ),
+                        Text('수정하기',
                             textAlign: TextAlign.center,
                             style: White(20, FontWeight.w600)),
-                        GestureDetector(
-                          onTap: () {
-                            Get.to(NoticeDeleted());
-                          },
-                          child: Image.asset('assets/alert/delete(24).png'),
-                        ),
+                        Container(
+                          width: 80,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              GestureDetector(
+                                onTap: () {},
+                                child: Image.asset('assets/Main/add.png'),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  Get.to(DeletedProfilePage());
+                                },
+                                child:
+                                    Image.asset('assets/alert/delete(24).png'),
+                              ),
+                            ],
+                          ),
+                        )
                       ],
                     ),
                   ),
                 ),
-                NotificationWidget(),
-                Container(
-                  width: double.infinity,
+                Opacity(
+                  opacity: 0.6,
+                  child: Text(
+                    '순서를 수정하면 홈에서 노출되는 순서에 반영됩니다.',
+                    style: White(12, FontWeight.w500),
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Expanded(
                   child: SingleChildScrollView(
                     scrollDirection: Axis.vertical,
                     child: Column(
                       children: [
-                        NotificationContainer1(),
+                        ProfileEditWidget(),
                       ],
                     ),
                   ),

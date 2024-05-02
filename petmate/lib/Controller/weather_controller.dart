@@ -4,6 +4,7 @@ import 'package:petmate/Model/current_air.dart';
 import 'package:petmate/Model/current_weather.dart';
 import 'package:petmate/data/mylocation.dart';
 import 'package:petmate/data/network.dart';
+import 'package:petmate/key.dart';
 
 class WeatherController extends GetxController {
   CurrentWeather weatherData = CurrentWeather();
@@ -82,7 +83,7 @@ class WeatherController extends GetxController {
   }
 
   Future<bool> Set_Weather() async {
-    const apiKey = 'fd8662804c1d7656890c88c001f601a7';
+    
 
     MyLocation myLocation = MyLocation();
     List<double> result = await myLocation.getMyCurrentLocation();
@@ -94,8 +95,8 @@ class WeatherController extends GetxController {
     String _lat = 'lat=${latitude}';
     String _lon = 'lon=${longitude}';
     Network network = Network(
-        '$_baseApiWeather?$_lat&$_lon&appid=$apiKey&$_option',
-        '$_baseApiAir?$_lat&$_lon&appid=$apiKey&$_option');
+        '$_baseApiWeather?$_lat&$_lon&appid=$weather_apiKey&$_option',
+        '$_baseApiAir?$_lat&$_lon&appid=$weather_apiKey&$_option');
 
     Map<String, dynamic> networkresult = await network.getWeatherData();
     print('데이터 셋 : $networkresult');

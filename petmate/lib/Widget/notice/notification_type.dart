@@ -1,5 +1,6 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 
 class NotificationWidget extends StatefulWidget {
@@ -10,8 +11,7 @@ class NotificationWidget extends StatefulWidget {
 }
 
 class _NotificationWidgetState extends State<NotificationWidget> {
-  bool state = false;
-  bool state2 = false;
+  int button = -1;
   final text = ['기록', '정보', '거래', '모임'];
   final image = [
     'assets/alert/note (16).png',
@@ -20,83 +20,109 @@ class _NotificationWidgetState extends State<NotificationWidget> {
     'assets/alert/group(16).png',
   ];
 
+  final Changeimage = [
+    'assets/alert/note_selected.png',
+    'assets/alert/information_selected.png',
+    'assets/alert/trade_selected.png',
+    'assets/alert/group_selected.png',
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 4),
-      child: Container(
-        width: double.infinity,
-        child:
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-          for (int i = 0; i < 4; i++)
-            Stack(
-              children: [
-                Opacity(
-                  opacity: 0.4,
-                  child: Container(
-                    margin: EdgeInsets.symmetric(vertical: 12, horizontal: 4),
-                    width: 80,
-                    height: 40,
-                    decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color(0x26000000),
-                            blurRadius: 4,
-                            offset: Offset(2, 2),
-                          )
-                        ],
-                        color: Color(0x26000000),
-                        borderRadius: BorderRadius.circular(20)),
-                  ),
-                ),
-                Container(
-                  width: 80,
-                  height: 40,
-                  margin: EdgeInsets.symmetric(vertical: 10, horizontal: 2),
-                  decoration: BoxDecoration(
-                    color: state2
-                        ? Colors.white.withOpacity(0.2)
-                        : Colors.transparent,
-                    border: GradientBoxBorder(
-                      width: 1,
-                      gradient: LinearGradient(
-                        colors: [
-                          Colors.white.withOpacity(0.5),
-                          Colors.white.withOpacity(0.20000000298023224)
-                        ],
-                      ),
+    return Container(
+      width: 344,
+      child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: List.generate(
+              4,
+              (index) => GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        if (button == index) {
+                          button = -1;
+                        } else {
+                          button = index;
+                        }
+                      });
+                    },
+                    child: Stack(
+                      children: [
+                        Container(
+                          width: 80,
+                          height: 40,
+                          margin: EdgeInsets.all(2),
+                          decoration: BoxDecoration(
+                            color: button == index
+                                ? Colors.white.withOpacity(0.8)
+                                : Colors.white.withOpacity(0.1),
+                            border: GradientBoxBorder(
+                              width: 1,
+                              gradient: LinearGradient(
+                                colors: [
+                                  Colors.white.withOpacity(0.5),
+                                  Colors.white.withOpacity(0.2)
+                                ],
+                              ),
+                            ),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: button == index
+                              ? Container()
+                              : BlurryContainer(
+                                  blur: 12,
+                                  elevation: 0,
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Container(),
+                                ),
+                        ),
+                        Opacity(
+                          opacity: 0.4,
+                          child: Container(
+                            margin: EdgeInsets.all(3),
+                            width: 80,
+                            height: 40,
+                            decoration: BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Color(0x26000000),
+                                    blurRadius: 4,
+                                    offset: Offset(4, 4),
+                                    spreadRadius: 0,
+                                  )
+                                ],
+                                color: Color(0x3300287C),
+                                borderRadius: BorderRadius.circular(20)),
+                          ),
+                        ),
+                        Positioned(
+                          left: 16,
+                          top: 12,
+                          child: Container(
+                            width: 48,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Image.asset(button == index
+                                    ? Changeimage[index]
+                                    : image[index]),
+                                Text(
+                                  text[index],
+                                  style: TextStyle(
+                                    color: button == index
+                                        ? Color(0xFF5A8FE1)
+                                        : Colors.white,
+                                    fontSize: 12,
+                                    fontFamily: 'Pretendard',
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: state2
-                      ? Container()
-                      : BlurryContainer(
-                          blur: 12,
-                          elevation: 0,
-                          borderRadius: BorderRadius.circular(20),
-                          child: Container(),
-                        ),
-                ),
-                Positioned(left: 18, top: 22, child: Image.asset(image[i])),
-                Positioned(
-                    left: 40,
-                    top: 20,
-                    child: Opacity(
-                      opacity: 0.6,
-                      child: Text(
-                        text[i],
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 14,
-                          fontFamily: 'Pretendard',
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    )),
-              ],
-            ),
-        ]),
-      ),
+                  ))),
     );
   }
 }
