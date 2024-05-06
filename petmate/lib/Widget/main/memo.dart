@@ -14,7 +14,7 @@ class MemoWriteWidget extends StatefulWidget {
 
 class _MemoWriteWidgetState extends State<MemoWriteWidget> {
   bool state = false;
-  bool state2 = false;
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -24,7 +24,7 @@ class _MemoWriteWidgetState extends State<MemoWriteWidget> {
           height: 108,
           margin: EdgeInsets.all(6),
           decoration: BoxDecoration(
-            color: state2 ? Colors.white.withOpacity(0.2) : Colors.transparent,
+            color: state ? Colors.white.withOpacity(0.2) : Colors.transparent,
             border: GradientBoxBorder(
               width: 1,
               gradient: LinearGradient(
@@ -36,7 +36,7 @@ class _MemoWriteWidgetState extends State<MemoWriteWidget> {
             ),
             borderRadius: BorderRadius.circular(10),
           ),
-          child: state2
+          child: state
               ? Container()
               : BlurryContainer(
                   blur: 12,

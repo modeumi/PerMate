@@ -80,8 +80,13 @@ class _MainAlramState extends State<MainAlram> {
                   top: 16,
                   child: Opacity(
                     opacity: 0.6,
-                    child: Text('알람 등록시 표시됩니다.',
-                        style: White(14, FontWeight.w500)),
+                    child: Text(
+                      '알람 등록시 표시됩니다.',
+                      style: TextStyle(
+                          fontFamily: 'Pretendard',
+                          fontSize: 14,
+                          color: Colors.white),
+                    ),
                   )),
             ],
           ),

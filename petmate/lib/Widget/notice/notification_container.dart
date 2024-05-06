@@ -14,6 +14,13 @@ class NotificationContainer1 extends StatefulWidget {
 
 class _NotificationContainer1State extends State<NotificationContainer1> {
   bool state2 = false;
+  final text = ['기록', '정보', '거래', '모임'];
+  final image = [
+    'assets/alert/note (16).png',
+    'assets/alert/information(16).png',
+    'assets/alert/trade(16).png',
+    'assets/alert/group(16).png',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +36,7 @@ class _NotificationContainer1State extends State<NotificationContainer1> {
                 textAlign: TextAlign.center, style: White(16, FontWeight.w600)),
           ),
         ),
-        for (int i = 1; i < 4; i++)
+        for (int i = 0; i < 4; i++)
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
             child: Stack(
@@ -90,8 +97,8 @@ class _NotificationContainer1State extends State<NotificationContainer1> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Image.asset('assets/alert/note (20).png'),
-                        Text('기록', style: White(14, FontWeight.w600)),
+                        Image.asset(image[i]),
+                        Text(text[i], style: White(14, FontWeight.w600)),
                         Opacity(
                           opacity: 0.6,
                           child: Text('·  오후 5:00',

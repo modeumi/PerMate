@@ -29,7 +29,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   auto_size_text: ^3.0.0
-  blurrycontainer: ^1.0.2
+  blurrycontainer: ^2.0.1+1
   cloud_firestore: ^4.16.0
 
   # The following adds the Cupertino Icons font to your application.
@@ -116,5 +116,6 @@ fonts:
         weight: 800
       - asset: assets/fonts/Pretendard-Black.otf
         weight: 900
+
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

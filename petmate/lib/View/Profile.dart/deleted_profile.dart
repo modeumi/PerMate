@@ -2,15 +2,19 @@ import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
+import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/View/Notice/noticedelete.dart';
 import 'package:petmate/View/mainpage.dart';
 import 'package:petmate/Widget/bottom_bar/bottom_navigationbar.dart';
+import 'package:petmate/Widget/main/button_widget/deleted_button.dart';
 import 'package:petmate/Widget/notice/notification_container.dart';
 import 'package:petmate/Widget/notice/notification_type.dart';
-import 'package:petmate/Widget/profile/profile_deleted_widget.dart';
-import 'package:petmate/Widget/profile/profile_edit_widget.dart';
+import 'package:petmate/Widget/profile/mypet_deleted_widget.dart';
+import 'package:petmate/Widget/profile/mypet_edit_widget.dart';
+import 'package:petmate/Widget/profile/sharepet_deleted_widget.dart';
 
 class DeletedProfilePage extends StatefulWidget {
   const DeletedProfilePage({super.key});
@@ -22,10 +26,10 @@ class DeletedProfilePage extends StatefulWidget {
 class _DeletedProfilePageState extends State<DeletedProfilePage> {
   bool state = false;
 
-  var opactiyValue = 1.0;
   List<bool> deletedCheck = [false, false, false];
 
   OverlayEntry? deletoverlay;
+  var opactiyValue = 1.0;
 
   void deletedItems() {
     setState(() {
@@ -38,11 +42,7 @@ class _DeletedProfilePageState extends State<DeletedProfilePage> {
   }
 
   void Deletedoevrlay(BuildContext context) {
-    setState(() {
-      opactiyValue = 0.1;
-    });
-
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(Duration(milliseconds: 0), () {
       setState(() {
         opactiyValue = 1.0;
         showModalBottomSheet(
@@ -51,7 +51,7 @@ class _DeletedProfilePageState extends State<DeletedProfilePage> {
           isScrollControlled: true,
           builder: (BuildContext context) {
             return AnimatedContainer(
-              duration: Duration(seconds: 10),
+              duration: Duration(milliseconds: 0),
               curve: Curves.easeIn,
               child: Stack(
                 children: [
@@ -147,34 +147,40 @@ class _DeletedProfilePageState extends State<DeletedProfilePage> {
                           left: 20,
                           child: Row(
                             children: [
-                              Container(
-                                width: 156,
-                                height: 48,
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 16, vertical: 12),
-                                decoration: ShapeDecoration(
-                                  color: Colors.white
-                                      .withOpacity(0.800000011920929),
-                                  shape: RoundedRectangleBorder(
-                                    side: BorderSide(
-                                        width: 1, color: Color(0x332B80FF)),
-                                    borderRadius: BorderRadius.circular(10),
+                              GestureDetector(
+                                onTap: () {
+                                  Get.back();
+                                },
+                                child: Container(
+                                  width: 156,
+                                  height: 48,
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 16, vertical: 12),
+                                  decoration: ShapeDecoration(
+                                    color: Colors.white
+                                        .withOpacity(0.800000011920929),
+                                    shape: RoundedRectangleBorder(
+                                      side: BorderSide(
+                                          width: 1, color: Color(0x332B80FF)),
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
                                   ),
-                                ),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    DefaultTextStyle(
-                                        style: TextStyle(
-                                          color: Color(0xFF2B80FF),
-                                          fontSize: 15,
-                                          fontFamily: 'Pretendard',
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                        child: Text('취소')),
-                                  ],
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      DefaultTextStyle(
+                                          style: TextStyle(
+                                            color: Color(0xFF2B80FF),
+                                            fontSize: 15,
+                                            fontFamily: 'Pretendard',
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                          child: Text('취소')),
+                                    ],
+                                  ),
                                 ),
                               ),
                               SizedBox(
@@ -182,7 +188,19 @@ class _DeletedProfilePageState extends State<DeletedProfilePage> {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  setState(() {});
+                                  setState(() {
+                                    List<int> indexesToRemove = [];
+                                    for (int i = deletedCheck.length - 1;
+                                        i >= 0;
+                                        i--) {
+                                      if (deletedCheck[i]) {
+                                        deletedCheck.removeAt(i);
+                                      }
+                                    }
+                                    for (int index in indexesToRemove) {
+                                      deletedCheck.removeAt(index);
+                                    }
+                                  });
                                 },
                                 child: Container(
                                   width: 156,
@@ -297,71 +315,18 @@ class _DeletedProfilePageState extends State<DeletedProfilePage> {
                 SizedBox(
                   height: 10,
                 ),
-                Expanded(
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.vertical,
-                    child: Column(
-                      children: [
-                        ProfileDeletedWidget(),
-                      ],
-                    ),
-                  ),
-                ),
-                AnimatedOpacity(
-                  opacity: opactiyValue,
-                  duration: Duration(seconds: 3),
-                  child: Stack(
+                SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Column(
                     children: [
-                      Positioned(
-                        child: Container(
-                          width: 344,
-                          height: 60,
-                          decoration: ShapeDecoration(
-                            color: Colors.white.withOpacity(0.800000011920929),
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(
-                                width: 1,
-                                color: Colors.white
-                                    .withOpacity(0.20000000298023224),
-                              ),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            shadows: [
-                              BoxShadow(
-                                color: Color(0x33000000),
-                                blurRadius: 12,
-                                offset: Offset(0, 0),
-                                spreadRadius: 5,
-                              )
-                            ],
-                          ),
-                          child: GestureDetector(
-                            onTap: () {
-                              Deletedoevrlay(context);
-                            },
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Image.asset('assets/alert/delete(16).png'),
-                                SizedBox(
-                                  width: 8,
-                                ),
-                                Text('삭제하기',
-                                    textAlign: TextAlign.center,
-                                    style: Black(16, FontWeight.w600)),
-                              ],
-                            ),
-                          ),
-                        ),
-                      )
+                      MyPetDeletedWidget(),
+                      SharePetDeletedWidget(),
                     ],
                   ),
                 ),
-                SizedBox(
-                  height: 75,
-                )
               ],
             ),
+            Positioned(bottom: 70, left: 10, child: DeletedButtonWidget()),
             Positioned(
                 bottom: 0,
                 left: 0,

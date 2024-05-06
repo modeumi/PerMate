@@ -14,8 +14,16 @@ class NotificationCheckDeleted extends StatefulWidget {
 }
 
 class _NotificationCheckDeletedState extends State<NotificationCheckDeleted> {
+  List<bool> deletedCheck = List.generate(3, (index) => false);
   bool state2 = false;
   bool isChecked = false;
+  final text = ['기록', '정보', '거래', '모임'];
+  final image = [
+    'assets/alert/note (16).png',
+    'assets/alert/information(16).png',
+    'assets/alert/trade(16).png',
+    'assets/alert/group(16).png',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +39,7 @@ class _NotificationCheckDeletedState extends State<NotificationCheckDeleted> {
                 textAlign: TextAlign.center, style: White(16, FontWeight.w600)),
           ),
         ),
-        for (int i = 1; i < 4; i++)
+        for (int i = 0; i < 2; i++)
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
             child: Stack(
@@ -95,14 +103,14 @@ class _NotificationCheckDeletedState extends State<NotificationCheckDeleted> {
                         GestureDetector(
                             onTap: () {
                               setState(() {
-                                isChecked = !isChecked;
+                                deletedCheck[i] = !deletedCheck[i];
                               });
                             },
-                            child: Image.asset(isChecked
+                            child: Image.asset(deletedCheck[i]
                                 ? 'assets/alert/check_selected.png'
                                 : 'assets/alert/check_default.png')),
-                        Image.asset('assets/alert/note (20).png'),
-                        Text('기록', style: White(14, FontWeight.w600)),
+                        Image.asset(image[i]),
+                        Text(text[i], style: White(14, FontWeight.w600)),
                         Opacity(
                           opacity: 0.6,
                           child: Text('·  오후 5:00',
