@@ -2,6 +2,8 @@ import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
+import 'package:petmate/Widget/notice/notification_container.dart';
+import 'package:petmate/Widget/notice/notificationcontainer2.dart';
 
 class NotificationWidget extends StatefulWidget {
   const NotificationWidget({super.key});
@@ -12,7 +14,7 @@ class NotificationWidget extends StatefulWidget {
 
 class _NotificationWidgetState extends State<NotificationWidget> {
   int button = -1;
-  final text = ['기록', '정보', '거래', '모임'];
+  final List<String> text = ['기록', '정보', '거래', '모임'];
   final image = [
     'assets/alert/note (16).png',
     'assets/alert/information(16).png',
@@ -39,7 +41,6 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                     onTap: () {
                       setState(() {
                         if (button == index) {
-                          button = -1;
                         } else {
                           button = index;
                         }

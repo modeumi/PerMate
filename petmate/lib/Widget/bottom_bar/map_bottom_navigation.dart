@@ -81,29 +81,69 @@ class MapBottomNavigationBar extends GetView<BottomNavigationBarController> {
                 items: <BottomNavigationBarItem>[
                   BottomNavigationBarItem(
                     icon: controller.selectedIndex.value == 0
-                        ? Image.asset('assets/gnbicon/home (2).png')
-                        : Image.asset('assets/gnbicon(map)/gnbicon (4).png'),
+                        ? Image.asset(
+                            'assets/gnbicon/home (2).png',
+                            height: 30,
+                            width: 24,
+                          )
+                        : Image.asset(
+                            'assets/gnbicon(map)/gnbicon (4).png',
+                            height: 30,
+                            width: 24,
+                          ),
                     label: "홈",
                   ),
                   BottomNavigationBarItem(
                       icon: controller.selectedIndex.value == 1
-                          ? Image.asset('assets/gnbicon/record (2).png')
-                          : Image.asset('assets/gnbicon(map)/gnbicon (5).png'),
+                          ? Image.asset(
+                              'assets/gnbicon/record (2).png',
+                              height: 30,
+                              width: 24,
+                            )
+                          : Image.asset(
+                              'assets/gnbicon(map)/gnbicon (5).png',
+                              height: 30,
+                              width: 24,
+                            ),
                       label: "기록"),
                   BottomNavigationBarItem(
                       icon: controller.selectedIndex.value == 2
-                          ? Image.asset('assets/gnbicon(map)/gnbicon (1).png')
-                          : Image.asset('assets/gnbicon/map.png'),
+                          ? Image.asset(
+                              'assets/gnbicon(map)/gnbicon (1).png',
+                              height: 30,
+                              width: 24,
+                            )
+                          : Image.asset(
+                              'assets/gnbicon/map.png',
+                              height: 30,
+                              width: 24,
+                            ),
                       label: "지도"),
                   BottomNavigationBarItem(
                       icon: controller.selectedIndex.value == 3
-                          ? Image.asset('assets/gnbicon/chat (2).png')
-                          : Image.asset('assets/gnbicon(map)/gnbicon (3).png'),
+                          ? Image.asset(
+                              'assets/gnbicon/chat (2).png',
+                              height: 30,
+                              width: 24,
+                            )
+                          : Image.asset(
+                              'assets/gnbicon(map)/gnbicon (3).png',
+                              height: 30,
+                              width: 24,
+                            ),
                       label: "커뮤니티"),
                   BottomNavigationBarItem(
                       icon: controller.selectedIndex.value == 4
-                          ? Image.asset('assets/gnbicon/user (2).png')
-                          : Image.asset('assets/gnbicon(map)/gnbicon (2).png'),
+                          ? Image.asset(
+                              'assets/gnbicon/user (2).png',
+                              height: 30,
+                              width: 24,
+                            )
+                          : Image.asset(
+                              'assets/gnbicon(map)/gnbicon (2).png',
+                              height: 30,
+                              width: 24,
+                            ),
                       label: "마이페이지"),
                 ],
                 onTap: (index) {

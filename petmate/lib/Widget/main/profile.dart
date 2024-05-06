@@ -112,7 +112,7 @@ class _ProfilePlusState extends State<ProfilePlus> {
               ),
               GestureDetector(
                 onTap: () {
-                  Get.to(EditProfilePage());
+                  Get.to(() => EditProfilePage());
                 },
                 child: Container(
                   width: 60,
@@ -169,19 +169,19 @@ class _ProfilePlusState extends State<ProfilePlus> {
                           'assets/banner/InformationBanner (1).png'))),
               Positioned(
                   top: 102,
-                  left: -53,
-                  child: Text('정보', style: White(12, FontWeight.w500))),
+                  left: -58,
+                  child: Text('정보', style: Black(12, FontWeight.w500))),
               Positioned(
                   top: 102,
-                  left: 225,
-                  child: Text('더보기', style: White(12, FontWeight.w500))),
+                  left: 215,
+                  child: Text('더보기', style: Black(10, FontWeight.w600))),
               Positioned(
-                  top: 102,
-                  left: 258,
+                  top: 104,
+                  left: 247,
                   child: Image.asset('assets/Main/left.png')),
               Positioned(
                   top: 123,
-                  left: -39,
+                  left: -40,
                   child: Image.asset('assets/Main/bigleft.png')),
               Positioned(
                   top: 123,
@@ -191,7 +191,8 @@ class _ProfilePlusState extends State<ProfilePlus> {
                   top: 120,
                   left: -29,
                   child: Text('강아지가 가구를 물어뜯는 이유를 알고 계신가요?',
-                      style: Black(14, FontWeight.w500))),
+                      style:
+                          TextStyle(fontFamily: 'Pretendard', fontSize: 14))),
             ],
           ),
         ],

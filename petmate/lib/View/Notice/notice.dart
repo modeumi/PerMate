@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/View/Notice/noticedelete.dart';
@@ -7,6 +8,7 @@ import 'package:petmate/View/mainpage.dart';
 import 'package:petmate/Widget/bottom_bar/bottom_navigationbar.dart';
 import 'package:petmate/Widget/notice/notification_container.dart';
 import 'package:petmate/Widget/notice/notification_type.dart';
+import 'package:petmate/Widget/notice/notificationcontainer2.dart';
 
 class NoticePage extends StatefulWidget {
   const NoticePage({super.key});
@@ -62,14 +64,16 @@ class _NoticePageState extends State<NoticePage> {
                   ),
                 ),
                 NotificationWidget(),
-                Container(
-                  width: double.infinity,
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.vertical,
-                    child: Column(
-                      children: [
-                        NotificationContainer1(),
-                      ],
+                Expanded(
+                  child: Container(
+                    width: double.infinity,
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      child: Column(
+                        children: [
+                          NotificationContainer1(),
+                        ],
+                      ),
                     ),
                   ),
                 ),

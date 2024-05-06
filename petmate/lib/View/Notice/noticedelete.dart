@@ -39,7 +39,7 @@ class _NoticeDeletedState extends State<NoticeDeleted> {
       opactiyValue = 0.1;
     });
 
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(Duration(seconds: 0), () {
       setState(() {
         opactiyValue = 1.0;
         showModalBottomSheet(
@@ -48,7 +48,7 @@ class _NoticeDeletedState extends State<NoticeDeleted> {
           isScrollControlled: true,
           builder: (BuildContext context) {
             return AnimatedContainer(
-              duration: Duration(seconds: 10),
+              duration: Duration(milliseconds: 0),
               curve: Curves.easeIn,
               child: Stack(
                 children: [
@@ -288,56 +288,51 @@ class _NoticeDeletedState extends State<NoticeDeleted> {
                       opactiyValue = 0.1;
                     });
                   },
-                  child: AnimatedOpacity(
-                    opacity: opactiyValue,
-                    duration: Duration(seconds: 3),
-                    child: Stack(
-                      children: [
-                        Positioned(
-                          child: Container(
-                            width: 344,
-                            height: 60,
-                            decoration: ShapeDecoration(
-                              color:
-                                  Colors.white.withOpacity(0.800000011920929),
-                              shape: RoundedRectangleBorder(
-                                side: BorderSide(
-                                  width: 1,
-                                  color: Colors.white
-                                      .withOpacity(0.20000000298023224),
-                                ),
-                                borderRadius: BorderRadius.circular(10),
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        child: Container(
+                          width: 344,
+                          height: 60,
+                          decoration: ShapeDecoration(
+                            color: Colors.white.withOpacity(0.800000011920929),
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(
+                                width: 1,
+                                color: Colors.white
+                                    .withOpacity(0.20000000298023224),
                               ),
-                              shadows: [
-                                BoxShadow(
-                                  color: Color(0x33000000),
-                                  blurRadius: 12,
-                                  offset: Offset(0, 0),
-                                  spreadRadius: 5,
-                                )
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            shadows: [
+                              BoxShadow(
+                                color: Color(0x33000000),
+                                blurRadius: 12,
+                                offset: Offset(0, 0),
+                                spreadRadius: 5,
+                              )
+                            ],
+                          ),
+                          child: GestureDetector(
+                            onTap: () {
+                              Deletedoevrlay(context);
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset('assets/alert/delete(16).png'),
+                                SizedBox(
+                                  width: 8,
+                                ),
+                                Text('삭제하기',
+                                    textAlign: TextAlign.center,
+                                    style: Black(16, FontWeight.w600)),
                               ],
                             ),
-                            child: GestureDetector(
-                              onTap: () {
-                                Deletedoevrlay(context);
-                              },
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Image.asset('assets/alert/delete(16).png'),
-                                  SizedBox(
-                                    width: 8,
-                                  ),
-                                  Text('삭제하기',
-                                      textAlign: TextAlign.center,
-                                      style: Black(16, FontWeight.w600)),
-                                ],
-                              ),
-                            ),
                           ),
-                        )
-                      ],
-                    ),
+                        ),
+                      )
+                    ],
                   ),
                 ),
                 SizedBox(

@@ -9,7 +9,8 @@ import 'package:petmate/View/mainpage.dart';
 import 'package:petmate/Widget/bottom_bar/bottom_navigationbar.dart';
 import 'package:petmate/Widget/notice/notification_container.dart';
 import 'package:petmate/Widget/notice/notification_type.dart';
-import 'package:petmate/Widget/profile/profile_edit_widget.dart';
+import 'package:petmate/Widget/profile/mypet_edit_widget.dart';
+import 'package:petmate/Widget/profile/sharepet_edit_widget.dart';
 
 class EditProfilePage extends StatefulWidget {
   const EditProfilePage({super.key});
@@ -68,7 +69,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  Get.to(DeletedProfilePage());
+                                  Get.to(() => DeletedProfilePage());
                                 },
                                 child:
                                     Image.asset('assets/alert/delete(24).png'),
@@ -94,9 +95,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   child: SingleChildScrollView(
                     scrollDirection: Axis.vertical,
                     child: Column(
-                      children: [
-                        ProfileEditWidget(),
-                      ],
+                      children: [MyPetEditWidget(), SharePetEditWidget()],
                     ),
                   ),
                 ),
