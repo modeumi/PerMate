@@ -31,7 +31,7 @@ class _PasswordResetState extends State<PasswordReset> {
           return Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 42),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 42),
             decoration: const BoxDecoration(
               image: DecorationImage(
                   image: AssetImage('assets/onboarding/Background.png'),

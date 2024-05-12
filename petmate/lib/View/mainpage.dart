@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:petmate/Model/current_air.dart';
-import 'package:petmate/Model/current_weather.dart';
 import 'package:petmate/Widget/bottom_bar/bottom_navigationbar.dart';
 import 'package:petmate/Widget/main/add_alarm.dart';
 import 'package:petmate/Widget/main/add_memo.dart';
@@ -11,7 +8,6 @@ import 'package:petmate/Widget/main/main_alram.dart';
 import 'package:petmate/Widget/main/memo.dart';
 import 'package:petmate/Widget/main/profile.dart';
 import 'package:petmate/Widget/main/walk.dart';
-import 'package:petmate/Widget/main/weather.dart';
 import 'package:petmate/Controller/navigation_controller.dart';
 
 class MainPage extends StatefulWidget {
