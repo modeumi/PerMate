@@ -15,7 +15,7 @@ class _PasswordResetSuccessState extends State<PasswordResetSuccess> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage('assets/onboarding/Background.png'),
                 fit: BoxFit.fill)),
@@ -48,7 +48,7 @@ class _PasswordResetSuccessState extends State<PasswordResetSuccess> {
                 left: 0,
                 right: 0,
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: PushButtonA(
                       content: '로그인하기',
                       action: () {
