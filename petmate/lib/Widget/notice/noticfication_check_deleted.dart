@@ -2,6 +2,7 @@ import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
 
@@ -121,14 +122,28 @@ class _NotificationCheckDeletedState extends State<NotificationCheckDeleted> {
                   ),
                 ),
                 Positioned(
-                    left: 17,
-                    top: 38,
-                    child: Text(
-                        '‘공동육아’ 님이 ‘복실복실해’ 의 일지에 목욕기록을 남겼어요. \n 놓치지말고 확인해보세요!',
-                        style: White(12, FontWeight.w500))),
+                  left: 17,
+                  top: 38,
+                  child: Container(
+                    width: 320,
+                    height: 40,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('‘공동육아’ 님이 ‘복실복실해’ 의 일지에 목욕기록을 남겼어요.',
+                            style: White(12, FontWeight.w500)),
+                        Text('놓치지말고 확인해보세요!', style: White(12, FontWeight.w500))
+                      ],
+                    ),
+                  ),
+                )
               ],
             ),
           ),
+        SizedBox(
+          height: 130,
+        )
       ],
     );
   }

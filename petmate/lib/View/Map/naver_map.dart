@@ -34,10 +34,10 @@ Future<Position> getCurrentLocation() async {
 }
 
 class _MNaverMapState extends State<MNaverMap> {
-  Position? _currentPosition;
   final BottomNavigationBarController _bottomNavigationBarController =
       Get.put(BottomNavigationBarController());
   late NaverMapController _mapController;
+  bool _showLocationSearch = false;
 
   final cameraPosition = NCameraPosition(
     target: NLatLng(37.2408, 127.0297),
@@ -55,45 +55,64 @@ class _MNaverMapState extends State<MNaverMap> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        height: 800,
-        child: Stack(
-          children: [
-            NaverMap(
-              options: NaverMapViewOptions(
-                initialCameraPosition: cameraPosition,
-                pickTolerance: 8,
+      body: GestureDetector(
+        onTap: () {
+          setState(() {
+            _showLocationSearch = false;
+          });
+        },
+        child: Container(
+          height: 800,
+          child: Stack(
+            children: [
+              NaverMap(
+                options: NaverMapViewOptions(
+                  initialCameraPosition: cameraPosition,
+                  pickTolerance: 8,
+                ),
+                onMapReady: (controller) {
+                  setState(() {
+                    _mapController = controller;
+                  });
+                },
               ),
-              onMapReady: (controller) {
-                setState(() {
-                  _mapController = controller;
-                });
-              },
-            ),
-            MapSearchBar(),
-            Padding(
-              padding: const EdgeInsets.only(top: 90),
-              child: Container(
-                height: 55,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: [
-                    Row(
-                      children: [
-                        HospitalWidget(),
-                        RestaurantWidget(),
-                        ParkWidget(),
-                        HairShop(),
-                        PetShopWidget(),
-                      ],
-                    ),
-                  ],
+              MapSearchBar(),
+              Padding(
+                padding: const EdgeInsets.only(top: 90),
+                child: Container(
+                  height: 55,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      Row(
+                        children: [
+                          HospitalWidget(),
+                          RestaurantWidget(),
+                          ParkWidget(),
+                          HairShop(),
+                          PetShopWidget(),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-            // Positioned(right: 110, bottom: 75, child: LocationSearch()),
-            Positioned(right: 10, bottom: 75, child: LocationWidget()),
-          ],
+              Visibility(
+                  visible: _showLocationSearch = !_showLocationSearch,
+                  child: Positioned(
+                      right: 110, bottom: 75, child: LocationSearch())),
+              Positioned(
+                  right: 10,
+                  bottom: 75,
+                  child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          _showLocationSearch = true;
+                        });
+                      },
+                      child: LocationWidget())),
+            ],
+          ),
         ),
       ),
       bottomSheet: MapBottomNavigationBar(),

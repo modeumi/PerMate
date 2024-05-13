@@ -97,7 +97,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                         ),
                         Positioned(
                           left: 16,
-                          top: 12,
+                          top: 13,
                           child: Container(
                             width: 48,
                             child: Row(

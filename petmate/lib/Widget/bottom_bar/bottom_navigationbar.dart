@@ -83,12 +83,12 @@ class CustomBottomNavigationBar extends GetView<BottomNavigationBarController> {
                     icon: controller.selectedIndex.value == 0
                         ? Image.asset(
                             'assets/gnbicon/home (2).png',
-                            height: 30,
+                            height: 35,
                             width: 24,
                           )
                         : Image.asset(
                             'assets/gnbicon/home (1).png',
-                            height: 30,
+                            height: 35,
                             width: 24,
                           ),
                     label: "홈",
@@ -97,12 +97,12 @@ class CustomBottomNavigationBar extends GetView<BottomNavigationBarController> {
                       icon: controller.selectedIndex.value == 1
                           ? Image.asset(
                               'assets/gnbicon/record (2).png',
-                              height: 30,
+                              height: 35,
                               width: 24,
                             )
                           : Image.asset(
                               'assets/gnbicon/record (1).png',
-                              height: 30,
+                              height: 35,
                               width: 24,
                             ),
                       label: "기록"),
@@ -110,12 +110,12 @@ class CustomBottomNavigationBar extends GetView<BottomNavigationBarController> {
                     icon: controller.selectedIndex.value == 2
                         ? Image.asset(
                             'assets/gnbicon(map)/gnbicon (1).png',
-                            height: 30,
+                            height: 35,
                             width: 24,
                           )
                         : Image.asset(
                             'assets/gnbicon/map.png',
-                            height: 30,
+                            height: 35,
                             width: 24,
                           ),
                     label: "지도",
@@ -124,12 +124,12 @@ class CustomBottomNavigationBar extends GetView<BottomNavigationBarController> {
                       icon: controller.selectedIndex.value == 3
                           ? Image.asset(
                               'assets/gnbicon/chat (2).png',
-                              height: 30,
+                              height: 35,
                               width: 24,
                             )
                           : Image.asset(
                               'assets/gnbicon/chat (1).png',
-                              height: 30,
+                              height: 35,
                               width: 24,
                             ),
                       label: "커뮤니티"),
@@ -137,12 +137,12 @@ class CustomBottomNavigationBar extends GetView<BottomNavigationBarController> {
                       icon: controller.selectedIndex.value == 4
                           ? Image.asset(
                               'assets/gnbicon/user (2).png',
-                              height: 30,
+                              height: 35,
                               width: 24,
                             )
                           : Image.asset(
                               'assets/gnbicon/user (1).png',
-                              height: 30,
+                              height: 35,
                               width: 24,
                             ),
                       label: "마이페이지"),

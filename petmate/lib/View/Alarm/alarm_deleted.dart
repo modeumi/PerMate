@@ -2,30 +2,28 @@ import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_advanced_switch/flutter_advanced_switch.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
-import 'package:petmate/View/Notice/noticedelete.dart';
-import 'package:petmate/View/mainpage.dart';
+import 'package:petmate/View/Alarm/alarm_add.dart';
+import 'package:petmate/Widget/aralam/alarm_control.dart';
+import 'package:petmate/Widget/aralam/alarm_deleted.dart';
+import 'package:petmate/Widget/button/alarm_toggle.dart';
 import 'package:petmate/Widget/bottom_bar/bottom_navigationbar.dart';
-import 'package:petmate/Widget/button/deleted_button.dart';
-import 'package:petmate/Widget/button/sharedeleted_button.dart';
-import 'package:petmate/Widget/notice/notification_container.dart';
-import 'package:petmate/Widget/notice/notification_type.dart';
-import 'package:petmate/Widget/profile/deleted/mypet_deleted_widget.dart';
-import 'package:petmate/Widget/profile/deleted/mypet_edit_widget.dart';
-import 'package:petmate/Widget/profile/deleted/sharepet_deleted_widget.dart';
+import 'package:petmate/Widget/button/alarm_deleted_button.dart';
 
-class DeletedProfilePage extends StatefulWidget {
-  const DeletedProfilePage({super.key});
+class AlarmDeletedPage extends StatefulWidget {
+  const AlarmDeletedPage({super.key});
 
   @override
-  State<DeletedProfilePage> createState() => _DeletedProfilePageState();
+  State<AlarmDeletedPage> createState() => _AlarmDeletedPageState();
 }
 
-class _DeletedProfilePageState extends State<DeletedProfilePage> {
-  bool state = false;
+class _AlarmDeletedPageState extends State<AlarmDeletedPage> {
+  bool state2 = false;
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +33,9 @@ class _DeletedProfilePageState extends State<DeletedProfilePage> {
         height: 850,
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('assets/Main/Background.png'),
-              fit: BoxFit.fill),
+            image: AssetImage('assets/Main/Background.png'),
+            fit: BoxFit.fill,
+          ),
         ),
         child: Stack(
           children: [
@@ -58,27 +57,30 @@ class _DeletedProfilePageState extends State<DeletedProfilePage> {
                             onTap: () {
                               Get.back();
                             },
-                            child: Image.asset('assets/alert/back.png')),
+                            child: Image.asset(
+                              'assets/alert/back.png',
+                            )),
                         Container(
                           width: 1,
                         ),
-                        Text('수정하기',
+                        Text('알람',
                             textAlign: TextAlign.center,
                             style: White(20, FontWeight.w600)),
                         Container(
-                          width: 70,
+                          width: 88,
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               GestureDetector(
-                                onTap: () {},
+                                onTap: () {
+                                  Get.to(() => AlarmAddPage());
+                                },
                                 child: Image.asset('assets/Main/add.png'),
                               ),
-                              SizedBox(
-                                width: 8,
-                              ),
                               GestureDetector(
-                                onTap: () {},
+                                onTap: () {
+                                  Get.to(() => AlarmDeletedPage());
+                                },
                                 child:
                                     Image.asset('assets/alert/delete(24).png'),
                               ),
@@ -92,7 +94,7 @@ class _DeletedProfilePageState extends State<DeletedProfilePage> {
                 Opacity(
                   opacity: 0.6,
                   child: Text(
-                    '순서를 수정하면 홈에서 노출되는 순서에 반영됩니다.',
+                    '켜져있는 알람이 홈 화면 상단에 노출됩니다.',
                     style: White(12, FontWeight.w500),
                   ),
                 ),
@@ -102,16 +104,13 @@ class _DeletedProfilePageState extends State<DeletedProfilePage> {
                 Expanded(
                   child: NotificationListener(
                     child: ListView(
-                      children: [
-                        MyPetDeletedWidget(),
-                        SharePetDeletedWidget(),
-                      ],
+                      children: [AlarmDeletedWidget()],
                     ),
                   ),
                 ),
               ],
             ),
-            Positioned(bottom: 75, left: 10, child: ShareDeletedButtonWidget()),
+            Positioned(bottom: 75, left: 10, child: AlarmDeletedButton()),
             Positioned(
                 bottom: 0,
                 left: 0,

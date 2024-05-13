@@ -1,32 +1,30 @@
-import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
-import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/View/Notice/noticedelete.dart';
+import 'package:petmate/View/Profile.dart/add_profile.dart';
+import 'package:petmate/View/Profile.dart/deleted_profile.dart';
 import 'package:petmate/View/mainpage.dart';
 import 'package:petmate/Widget/bottom_bar/bottom_navigationbar.dart';
-import 'package:petmate/Widget/button/deleted_button.dart';
-import 'package:petmate/Widget/button/sharedeleted_button.dart';
 import 'package:petmate/Widget/notice/notification_container.dart';
 import 'package:petmate/Widget/notice/notification_type.dart';
-import 'package:petmate/Widget/profile/deleted/mypet_deleted_widget.dart';
+import 'package:petmate/Widget/profile/add/add_info.dart';
+import 'package:petmate/Widget/profile/add/add_profile.dart';
 import 'package:petmate/Widget/profile/deleted/mypet_edit_widget.dart';
-import 'package:petmate/Widget/profile/deleted/sharepet_deleted_widget.dart';
+import 'package:petmate/Widget/profile/deleted/sharepet_edit_widget.dart';
+import 'package:petmate/Widget/profile/details/details_type.dart';
+import 'package:petmate/Widget/profile/details/details_widget.dart';
 
-class DeletedProfilePage extends StatefulWidget {
-  const DeletedProfilePage({super.key});
+class EditdetailsPage extends StatefulWidget {
+  const EditdetailsPage({super.key});
 
   @override
-  State<DeletedProfilePage> createState() => _DeletedProfilePageState();
+  State<EditdetailsPage> createState() => _EditdetailsPageState();
 }
 
-class _DeletedProfilePageState extends State<DeletedProfilePage> {
-  bool state = false;
-
+class _EditdetailsPageState extends State<EditdetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,17 +66,19 @@ class _DeletedProfilePageState extends State<DeletedProfilePage> {
                         Container(
                           width: 70,
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               GestureDetector(
-                                onTap: () {},
-                                child: Image.asset('assets/Main/add.png'),
-                              ),
-                              SizedBox(
-                                width: 8,
+                                onTap: () {
+                                  Get.to(() => AddProfilePage());
+                                },
+                                child: Image.asset(
+                                    'assets/image_asset/pet_information_details/edit.png'),
                               ),
                               GestureDetector(
-                                onTap: () {},
+                                onTap: () {
+                                  Get.to(() => DeletedProfilePage());
+                                },
                                 child:
                                     Image.asset('assets/alert/delete(24).png'),
                               ),
@@ -89,29 +89,18 @@ class _DeletedProfilePageState extends State<DeletedProfilePage> {
                     ),
                   ),
                 ),
-                Opacity(
-                  opacity: 0.6,
-                  child: Text(
-                    '순서를 수정하면 홈에서 노출되는 순서에 반영됩니다.',
-                    style: White(12, FontWeight.w500),
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
                 Expanded(
                   child: NotificationListener(
                     child: ListView(
                       children: [
-                        MyPetDeletedWidget(),
-                        SharePetDeletedWidget(),
+                        DetailsProfileWidget(),
+                        DetailsAddWidget(),
                       ],
                     ),
                   ),
                 ),
               ],
             ),
-            Positioned(bottom: 75, left: 10, child: ShareDeletedButtonWidget()),
             Positioned(
                 bottom: 0,
                 left: 0,
