@@ -9,7 +9,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/View/Alarm/alarm_deleted.dart';
-import 'package:petmate/Widget/aralam/add_widget.dart';
+import 'package:petmate/Widget/aralam/addAralm/add_widget.dart';
 import 'package:petmate/Widget/button/alarm_toggle.dart';
 import 'package:petmate/Widget/bottom_bar/bottom_navigationbar.dart';
 

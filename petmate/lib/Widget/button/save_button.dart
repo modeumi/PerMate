@@ -2,27 +2,28 @@ import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
 
-class AddAlarmWidget extends StatefulWidget {
-  const AddAlarmWidget({super.key});
+class SaveButtonWidget extends StatefulWidget {
+  const SaveButtonWidget({super.key});
 
   @override
-  State<AddAlarmWidget> createState() => _AddAlarmWidgetState();
+  State<SaveButtonWidget> createState() => _SaveButtonWidgetState();
 }
 
-class _AddAlarmWidgetState extends State<AddAlarmWidget> {
+class _SaveButtonWidgetState extends State<SaveButtonWidget> {
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         Container(
-          width: 344,
-          height: 481,
-          margin: EdgeInsets.all(1),
+          width: 320,
+          height: 40,
+          margin: EdgeInsets.all(8),
           decoration: BoxDecoration(
-            color: Colors.transparent,
+            color: Color(0xFF2B80FF),
             border: GradientBoxBorder(
               width: 1,
               gradient: LinearGradient(
@@ -42,44 +43,32 @@ class _AddAlarmWidgetState extends State<AddAlarmWidget> {
           ),
         ),
         Opacity(
-          opacity: 0.4,
+          opacity: 0.8,
           child: Container(
-            margin: EdgeInsets.all(3),
-            width: 344,
-            height: 481,
+            margin: EdgeInsets.all(8),
+            width: 320,
+            height: 40,
             decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
-                    color: Color(0x4C000000),
-                    blurRadius: 1,
-                    offset: Offset(1, 1),
+                    color: Color(0x26000000),
+                    blurRadius: 2,
+                    offset: Offset(0, 2),
                     spreadRadius: 0,
                   )
                 ],
-                color: Color(0x3300287C),
+                color: Color(0xFF2B80FF),
                 borderRadius: BorderRadius.circular(10)),
           ),
         ),
         Positioned(
-          top: 12,
-          left: 12,
+          left: 155,
+          top: 15,
           child: Text(
-            '알람추가',
+            '저장',
             style: White(16, FontWeight.w600),
           ),
-        ),
-        Positioned(
-            top: 12,
-            right: 12,
-            child: GestureDetector(
-                onTap: () {
-                  Get.back();
-                },
-                child: Image.asset('assets/image_asset/alarm/close.png'))),
-        Positioned(
-            top: 12,
-            right: 12,
-            child: Image.asset('assets/image_asset/alarm/close.png'))
+        )
       ],
     );
   }

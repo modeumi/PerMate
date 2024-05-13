@@ -150,7 +150,7 @@ class _AddProfileWidgetState extends State<AddProfileWidget> {
           ],
         ),
         SizedBox(
-          height: 25,
+          height: 12,
         ),
         Padding(
           padding: const EdgeInsets.only(left: 48, right: 52),
@@ -167,6 +167,8 @@ class _AddProfileWidgetState extends State<AddProfileWidget> {
               enabledBorder: UnderlineInputBorder(
                 borderSide: BorderSide(color: Colors.white.withOpacity(0.6)),
               ),
+              border: OutlineInputBorder(),
+              contentPadding: EdgeInsets.fromLTRB(0, 12, 0, 0),
               focusedBorder: UnderlineInputBorder(
                 borderSide: BorderSide(color: Colors.white),
               ),

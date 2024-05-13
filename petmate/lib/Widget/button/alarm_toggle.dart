@@ -17,9 +17,10 @@ class ToggleButtonWidget extends StatefulWidget {
 }
 
 class _ToggleButtonWidgetState extends State<ToggleButtonWidget> {
+  bool check = false;
   @override
   Widget build(BuildContext context) {
-    final ToggleButtonController controller = Get.find();
+    final ToggleButtonController controller = Get.put(ToggleButtonController());
     return Stack(
       children: [
         Opacity(
@@ -45,9 +46,7 @@ class _ToggleButtonWidgetState extends State<ToggleButtonWidget> {
                 width: 20,
                 height: 20,
                 decoration: ShapeDecoration(
-                    color: controller.controllerButton.value
-                        ? Color(0xFF2B80FF)
-                        : Color(0xFFC9C9C9),
+                    color: check ? Color(0xFFC9C9C9) : Color(0xFF2B80FF),
                     shape: OvalBorder(),
                     shadows: [
                       BoxShadow(
@@ -61,7 +60,12 @@ class _ToggleButtonWidgetState extends State<ToggleButtonWidget> {
               activeColor: Color(0x3300287C),
               inactiveColor: Color(0xff00297C33),
               onChanged: (value) {
-                controller.controllerButton.value;
+                check;
+                print(value);
+                setState(() {
+                  check = !check;
+                });
+                print(check);
               },
             ),
           ),
