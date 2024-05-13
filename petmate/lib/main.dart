@@ -1,3 +1,4 @@
+import 'package:alarm/alarm.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
@@ -28,6 +29,10 @@ void main() async {
       debugPrint("********* 네이버맵 인증오류 : $ex *********");
     },
   );
+
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  await Alarm.init(); //알람초기화
 
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive, overlays: []);
   Geolocator.requestPermission(); //권한설정

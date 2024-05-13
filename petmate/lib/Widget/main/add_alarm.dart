@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
+import 'package:petmate/View/Alarm/alarm.dart';
 
 class AlarmWidget extends StatefulWidget {
   const AlarmWidget({super.key});
@@ -13,9 +14,6 @@ class AlarmWidget extends StatefulWidget {
 }
 
 class _AlarmWidgetState extends State<AlarmWidget> {
-  
-  bool state = false;
-  bool state2 = false;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -25,7 +23,6 @@ class _AlarmWidgetState extends State<AlarmWidget> {
           height: 64,
           margin: EdgeInsets.all(1),
           decoration: BoxDecoration(
-            color: state2 ? Colors.white.withOpacity(0.2) : Colors.transparent,
             border: GradientBoxBorder(
               width: 1,
               gradient: LinearGradient(
@@ -37,14 +34,6 @@ class _AlarmWidgetState extends State<AlarmWidget> {
             ),
             borderRadius: BorderRadius.circular(10),
           ),
-          child: state2
-              ? Container()
-              : BlurryContainer(
-                  blur: 12,
-                  elevation: 0,
-                  borderRadius: BorderRadius.circular(10),
-                  child: Container(),
-                ),
         ),
         Opacity(
           opacity: 0.4,

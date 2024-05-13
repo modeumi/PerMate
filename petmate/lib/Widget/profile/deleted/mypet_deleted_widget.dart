@@ -6,15 +6,18 @@ import 'package:geolocator/geolocator.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
 
-class MyPetEditWidget extends StatefulWidget {
-  const MyPetEditWidget({super.key});
+class MyPetDeletedWidget extends StatefulWidget {
+  const MyPetDeletedWidget({super.key});
 
   @override
-  State<MyPetEditWidget> createState() => _MyPetEditWidgetState();
+  State<MyPetDeletedWidget> createState() => _MyPetDeletedWidgetState();
 }
 
-class _MyPetEditWidgetState extends State<MyPetEditWidget> {
+class _MyPetDeletedWidgetState extends State<MyPetDeletedWidget> {
+  List<bool> deletedCheck = List.generate(3, (index) => false);
   bool state2 = false;
+  bool isChecked = false;
+
   final Profileimage = [
     'assets/edit/animal (1).png',
     'assets/edit/animal (2).png',
@@ -34,8 +37,8 @@ class _MyPetEditWidgetState extends State<MyPetEditWidget> {
         Padding(
           padding: const EdgeInsets.only(left: 12, top: 10),
           child: Container(
-            width: 90,
-            height: 30,
+            width: 77,
+            height: 29,
             child: Text('내 반려동물',
                 textAlign: TextAlign.center, style: White(16, FontWeight.w600)),
           ),
@@ -47,7 +50,7 @@ class _MyPetEditWidgetState extends State<MyPetEditWidget> {
               children: [
                 Container(
                   width: 344,
-                  height: 88,
+                  height: 80,
                   margin: EdgeInsets.all(1),
                   decoration: BoxDecoration(
                     color: state2
@@ -78,7 +81,7 @@ class _MyPetEditWidgetState extends State<MyPetEditWidget> {
                   child: Container(
                     margin: EdgeInsets.all(3),
                     width: 344,
-                    height: 88,
+                    height: 80,
                     decoration: BoxDecoration(
                         boxShadow: [
                           BoxShadow(
@@ -94,13 +97,25 @@ class _MyPetEditWidgetState extends State<MyPetEditWidget> {
                 ),
                 Positioned(
                   left: 12,
-                  top: 12,
+                  top: 10,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Image.asset('assets/edit/menu.png'),
+                      Container(
+                        width: 20,
+                        height: 20,
+                        child: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                deletedCheck[i] = !deletedCheck[i];
+                              });
+                            },
+                            child: Image.asset(deletedCheck[i]
+                                ? 'assets/alert/check_selected.png'
+                                : 'assets/alert/check_default.png')),
+                      ),
                       SizedBox(
-                        width: 11,
+                        width: 8,
                       ),
                       Stack(
                         children: [
@@ -153,7 +168,7 @@ class _MyPetEditWidgetState extends State<MyPetEditWidget> {
                           ),
                           Positioned(
                               left: 12,
-                              top: 11,
+                              top: 10,
                               child: Image.asset(Profileimage[i]))
                         ],
                       ),
@@ -162,10 +177,10 @@ class _MyPetEditWidgetState extends State<MyPetEditWidget> {
                 ),
                 Positioned(
                   left: 112,
-                  top: 13,
+                  top: 10,
                   child: Container(
-                    width: 103,
-                    height: 65,
+                    width: 101,
+                    height: 60,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -175,7 +190,7 @@ class _MyPetEditWidgetState extends State<MyPetEditWidget> {
                           style: White(14, FontWeight.w600),
                         ),
                         SizedBox(
-                          height: 8,
+                          height: 4,
                         ),
                         Row(
                           children: [

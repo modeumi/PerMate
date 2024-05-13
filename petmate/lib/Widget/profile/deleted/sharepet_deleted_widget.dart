@@ -6,18 +6,22 @@ import 'package:geolocator/geolocator.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
 
-class SharePetEditWidget extends StatefulWidget {
-  const SharePetEditWidget({super.key});
+class SharePetDeletedWidget extends StatefulWidget {
+  const SharePetDeletedWidget({super.key});
 
   @override
-  State<SharePetEditWidget> createState() => _SharePetEditWidgetState();
+  State<SharePetDeletedWidget> createState() => _SharePetDeletedWidgetState();
 }
 
-class _SharePetEditWidgetState extends State<SharePetEditWidget> {
+class _SharePetDeletedWidgetState extends State<SharePetDeletedWidget> {
+  List<bool> deletedCheck1 = List.generate(3, (index) => false);
   bool state2 = false;
+  bool isChecked = false;
+
   final Profileimage = [
     'assets/edit/animal (1).png',
     'assets/edit/animal (2).png',
+    'assets/edit/animal (3).png',
     'assets/edit/animal (3).png',
   ];
 
@@ -34,19 +38,19 @@ class _SharePetEditWidgetState extends State<SharePetEditWidget> {
         Padding(
           padding: const EdgeInsets.only(left: 12, top: 10),
           child: Container(
-            width: 130,
-            height: 30,
+            width: 118,
+            height: 29,
             child: Text('공유받은 반려동물',
                 textAlign: TextAlign.center, style: White(16, FontWeight.w600)),
           ),
         ),
         for (int i = 0; i < 3; i++)
           Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 1),
               child: Stack(children: [
                 Container(
                   width: 344,
-                  height: 88,
+                  height: 80,
                   margin: EdgeInsets.all(1),
                   decoration: BoxDecoration(
                     color: state2
@@ -77,7 +81,7 @@ class _SharePetEditWidgetState extends State<SharePetEditWidget> {
                   child: Container(
                     margin: EdgeInsets.all(3),
                     width: 344,
-                    height: 88,
+                    height: 80,
                     decoration: BoxDecoration(
                         boxShadow: [
                           BoxShadow(
@@ -93,11 +97,20 @@ class _SharePetEditWidgetState extends State<SharePetEditWidget> {
                 ),
                 Positioned(
                     left: 12,
-                    top: 12,
+                    top: 10,
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Image.asset('assets/edit/menu.png'),
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                deletedCheck1[i] = !deletedCheck1[i];
+                              });
+                            },
+                            child: Image.asset(deletedCheck1[i]
+                                ? 'assets/alert/check_selected.png'
+                                : 'assets/alert/check_default.png'),
+                          ),
                           SizedBox(
                             width: 11,
                           ),
@@ -152,17 +165,17 @@ class _SharePetEditWidgetState extends State<SharePetEditWidget> {
                               ),
                               Positioned(
                                   left: 12,
-                                  top: 11,
+                                  top: 10,
                                   child: Image.asset(Profileimage[i]))
                             ],
                           ),
                         ])),
                 Positioned(
                   left: 112,
-                  top: 13,
+                  top: 10,
                   child: Container(
-                    width: 103,
-                    height: 65,
+                    width: 101,
+                    height: 60,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -172,7 +185,7 @@ class _SharePetEditWidgetState extends State<SharePetEditWidget> {
                           style: White(14, FontWeight.w600),
                         ),
                         SizedBox(
-                          height: 8,
+                          height: 4,
                         ),
                         Row(
                           children: [
@@ -204,6 +217,9 @@ class _SharePetEditWidgetState extends State<SharePetEditWidget> {
                   ),
                 ),
               ])),
+        SizedBox(
+          height: 135,
+        )
       ],
     );
   }

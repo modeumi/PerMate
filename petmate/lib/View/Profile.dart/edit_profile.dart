@@ -4,13 +4,14 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/View/Notice/noticedelete.dart';
+import 'package:petmate/View/Profile.dart/add_profile.dart';
 import 'package:petmate/View/Profile.dart/deleted_profile.dart';
 import 'package:petmate/View/mainpage.dart';
 import 'package:petmate/Widget/bottom_bar/bottom_navigationbar.dart';
 import 'package:petmate/Widget/notice/notification_container.dart';
 import 'package:petmate/Widget/notice/notification_type.dart';
-import 'package:petmate/Widget/profile/mypet_edit_widget.dart';
-import 'package:petmate/Widget/profile/sharepet_edit_widget.dart';
+import 'package:petmate/Widget/profile/deleted/mypet_edit_widget.dart';
+import 'package:petmate/Widget/profile/deleted/sharepet_edit_widget.dart';
 
 class EditProfilePage extends StatefulWidget {
   const EditProfilePage({super.key});
@@ -52,20 +53,25 @@ class _EditProfilePageState extends State<EditProfilePage> {
                               Get.back();
                             },
                             child: Image.asset('assets/alert/back.png')),
-                        Container(
-                          width: 20,
+                        SizedBox(
+                          width: 1,
                         ),
                         Text('수정하기',
                             textAlign: TextAlign.center,
                             style: White(20, FontWeight.w600)),
                         Container(
-                          width: 80,
+                          width: 70,
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               GestureDetector(
-                                onTap: () {},
+                                onTap: () {
+                                  Get.to(() => AddProfilePage());
+                                },
                                 child: Image.asset('assets/Main/add.png'),
+                              ),
+                              SizedBox(
+                                width: 8,
                               ),
                               GestureDetector(
                                 onTap: () {
@@ -85,16 +91,20 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   opacity: 0.6,
                   child: Text(
                     '순서를 수정하면 홈에서 노출되는 순서에 반영됩니다.',
-                    style: White(12, FontWeight.w500),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                      fontFamily: 'Pretendard',
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
                 SizedBox(
                   height: 10,
                 ),
                 Expanded(
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.vertical,
-                    child: Column(
+                  child: NotificationListener(
+                    child: ListView(
                       children: [MyPetEditWidget(), SharePetEditWidget()],
                     ),
                   ),

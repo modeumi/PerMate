@@ -2,6 +2,7 @@ import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
 
@@ -65,27 +66,33 @@ class _MemoWriteWidgetState extends State<MemoWriteWidget> {
           ),
         ),
         Positioned(
-          left: 25,
-          top: 20,
+          left: 18,
+          top: 16,
           child: Text('메모', style: White(12, FontWeight.w500)),
         ),
         Positioned(
-            left: 25,
-            top: 57,
-            child: Container(
-              width: 4,
-              height: 4,
-              child: Image.asset(
-                'assets/Main/Rectangle (1).png',
-                color: Colors.white.withOpacity(0.6),
-              ),
-            )),
-        Positioned(
-          left: 35,
-          top: 50,
-          child: Opacity(
-              opacity: 0.6,
-              child: Text('메모 작성시 표시됩니다.', style: White(12, FontWeight.w500))),
+          top: 42,
+          left: 20,
+          child: Container(
+            width: 124,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  width: 4,
+                  height: 4,
+                  child: Image.asset(
+                    'assets/Main/Rectangle (1).png',
+                    color: Colors.white.withOpacity(0.6),
+                  ),
+                ),
+                Opacity(
+                    opacity: 0.6,
+                    child: Text('메모 작성시 표시됩니다.',
+                        style: White(12, FontWeight.w500))),
+              ],
+            ),
+          ),
         )
       ],
     );

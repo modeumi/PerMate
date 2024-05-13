@@ -6,18 +6,15 @@ import 'package:geolocator/geolocator.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
 
-class SharePetDeletedWidget extends StatefulWidget {
-  const SharePetDeletedWidget({super.key});
+class SharePetEditWidget extends StatefulWidget {
+  const SharePetEditWidget({super.key});
 
   @override
-  State<SharePetDeletedWidget> createState() => _SharePetDeletedWidgetState();
+  State<SharePetEditWidget> createState() => _SharePetEditWidgetState();
 }
 
-class _SharePetDeletedWidgetState extends State<SharePetDeletedWidget> {
-  List<bool> deletedCheck1 = List.generate(3, (index) => false);
+class _SharePetEditWidgetState extends State<SharePetEditWidget> {
   bool state2 = false;
-  bool isChecked = false;
-
   final Profileimage = [
     'assets/edit/animal (1).png',
     'assets/edit/animal (2).png',
@@ -37,19 +34,27 @@ class _SharePetDeletedWidgetState extends State<SharePetDeletedWidget> {
         Padding(
           padding: const EdgeInsets.only(left: 12, top: 10),
           child: Container(
-            width: 130,
-            height: 30,
-            child: Text('공유받은 반려동물',
-                textAlign: TextAlign.center, style: White(16, FontWeight.w600)),
+            width: 118,
+            height: 29,
+            child: Text(
+              '공유받은 반려동물',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                fontFamily: 'Pretendard',
+                fontWeight: FontWeight.w600,
+              ),
+            ),
           ),
         ),
         for (int i = 0; i < 3; i++)
           Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 1),
               child: Stack(children: [
                 Container(
                   width: 344,
-                  height: 88,
+                  height: 80,
                   margin: EdgeInsets.all(1),
                   decoration: BoxDecoration(
                     color: state2
@@ -80,7 +85,7 @@ class _SharePetDeletedWidgetState extends State<SharePetDeletedWidget> {
                   child: Container(
                     margin: EdgeInsets.all(3),
                     width: 344,
-                    height: 88,
+                    height: 80,
                     decoration: BoxDecoration(
                         boxShadow: [
                           BoxShadow(
@@ -96,20 +101,11 @@ class _SharePetDeletedWidgetState extends State<SharePetDeletedWidget> {
                 ),
                 Positioned(
                     left: 12,
-                    top: 12,
+                    top: 10,
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                deletedCheck1[i] = !deletedCheck1[i];
-                              });
-                            },
-                            child: Image.asset(deletedCheck1[i]
-                                ? 'assets/alert/check_selected.png'
-                                : 'assets/alert/check_default.png'),
-                          ),
+                          Image.asset('assets/edit/menu.png'),
                           SizedBox(
                             width: 11,
                           ),
@@ -164,33 +160,43 @@ class _SharePetDeletedWidgetState extends State<SharePetDeletedWidget> {
                               ),
                               Positioned(
                                   left: 12,
-                                  top: 11,
+                                  top: 10,
                                   child: Image.asset(Profileimage[i]))
                             ],
                           ),
                         ])),
                 Positioned(
                   left: 112,
-                  top: 13,
+                  top: 10,
                   child: Container(
-                    width: 103,
-                    height: 65,
+                    width: 101,
+                    height: 60,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           name[i],
-                          style: White(14, FontWeight.w600),
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontFamily: 'Pretendard',
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                         SizedBox(
-                          height: 8,
+                          height: 4,
                         ),
                         Row(
                           children: [
                             Text(
                               type[i],
-                              style: White(12, FontWeight.w500),
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                                fontFamily: 'Pretendard',
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                             SizedBox(
                               width: 3,
@@ -203,11 +209,21 @@ class _SharePetDeletedWidgetState extends State<SharePetDeletedWidget> {
                           children: [
                             Text(
                               old[i],
-                              style: White(12, FontWeight.w500),
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                                fontFamily: 'Pretendard',
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                             Text(
                               yymm[i],
-                              style: White(12, FontWeight.w500),
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                                fontFamily: 'Pretendard',
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                           ],
                         )
@@ -216,6 +232,9 @@ class _SharePetDeletedWidgetState extends State<SharePetDeletedWidget> {
                   ),
                 ),
               ])),
+        SizedBox(
+          height: 70,
+        )
       ],
     );
   }
