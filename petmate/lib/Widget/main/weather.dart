@@ -24,7 +24,7 @@ class _WeatherWigdgetState extends State<WeatherWigdget> {
       return Stack(
         children: [
           Container(
-            width: double.infinity,
+            width: 344,
             height: 172,
             margin: const EdgeInsets.all(6),
             decoration: BoxDecoration(
@@ -44,7 +44,7 @@ class _WeatherWigdgetState extends State<WeatherWigdget> {
             opacity: 0.4,
             child: Container(
               margin: const EdgeInsets.all(8),
-              width: double.infinity,
+              width: 344,
               height: 172,
               decoration: BoxDecoration(
                   boxShadow: [

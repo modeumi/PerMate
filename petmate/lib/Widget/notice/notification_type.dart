@@ -31,7 +31,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 344,
       child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -67,14 +67,12 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                             ),
                             borderRadius: BorderRadius.circular(20),
                           ),
-                          child: button == index
-                              ? Container()
-                              : BlurryContainer(
-                                  blur: 12,
-                                  elevation: 0,
-                                  borderRadius: BorderRadius.circular(20),
-                                  child: Container(),
-                                ),
+                          child: BlurryContainer(
+                            blur: 12,
+                            elevation: 0,
+                            borderRadius: BorderRadius.circular(20),
+                            child: Container(),
+                          ),
                         ),
                         Opacity(
                           opacity: 0.4,

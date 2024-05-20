@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:gradient_borders/gradient_borders.dart';
 import 'package:petmate/Controller/navigation_controller.dart';
+import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/View/Map/naver_map.dart';
 import 'package:petmate/View/mainpage.dart';
 
@@ -56,39 +57,31 @@ class CustomBottomNavigationBar extends GetView<BottomNavigationBarController> {
               ),
             ),
             Container(
-              width: 350,
-              height: 65,
+              width: 360,
+              height: 62,
+              padding: EdgeInsets.symmetric(
+                horizontal: 12,
+              ),
               child: BottomNavigationBar(
                 backgroundColor: Colors.transparent,
                 elevation: 0,
                 currentIndex: controller.selectedIndex.value,
                 unselectedItemColor: Color(0xFFD8E3F4),
                 selectedItemColor: Colors.white,
-                unselectedLabelStyle: TextStyle(
-                  height: 1,
-                  fontFamily: 'Pretendard',
-                  fontSize: 10,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w500,
-                ),
-                selectedLabelStyle: TextStyle(
-                  fontFamily: 'Pretendard',
-                  fontSize: 10,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w600,
-                ),
+                unselectedLabelStyle: White(10, FontWeight.w600),
+                selectedLabelStyle: White(10, FontWeight.w600),
                 type: BottomNavigationBarType.fixed,
                 items: <BottomNavigationBarItem>[
                   BottomNavigationBarItem(
                     icon: controller.selectedIndex.value == 0
                         ? Image.asset(
                             'assets/gnbicon/home (2).png',
-                            height: 35,
+                            height: 30,
                             width: 24,
                           )
                         : Image.asset(
                             'assets/gnbicon/home (1).png',
-                            height: 35,
+                            height: 30,
                             width: 24,
                           ),
                     label: "홈",
@@ -97,12 +90,12 @@ class CustomBottomNavigationBar extends GetView<BottomNavigationBarController> {
                       icon: controller.selectedIndex.value == 1
                           ? Image.asset(
                               'assets/gnbicon/record (2).png',
-                              height: 35,
+                              height: 30,
                               width: 24,
                             )
                           : Image.asset(
                               'assets/gnbicon/record (1).png',
-                              height: 35,
+                              height: 30,
                               width: 24,
                             ),
                       label: "기록"),

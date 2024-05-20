@@ -55,32 +55,31 @@ class _AlarmPageState extends State<AlarmPage> {
                             },
                             child: Image.asset('assets/alert/back.png')),
                         Container(
-                          width: 1,
+                          padding: EdgeInsets.fromLTRB(40, 0, 0, 0),
+                          child: Text('알람',
+                              textAlign: TextAlign.center,
+                              style: White(20, FontWeight.w600)),
                         ),
-                        Text('알람',
-                            textAlign: TextAlign.center,
-                            style: White(20, FontWeight.w600)),
-                        Container(
-                          width: 88,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              GestureDetector(
-                                onTap: () {
-                                  Get.to(() => AlarmAddPage());
-                                },
-                                child: Image.asset('assets/Main/add.png'),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  Get.to(() => AlarmDeletedPage());
-                                },
-                                child:
-                                    Image.asset('assets/alert/delete(24).png'),
-                              ),
-                            ],
-                          ),
-                        )
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                Get.to(() => AlarmAddPage());
+                              },
+                              child: Image.asset('assets/Main/add.png'),
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Get.to(() => AlarmDeletedPage());
+                              },
+                              child: Image.asset('assets/alert/delete(24).png'),
+                            ),
+                          ],
+                        ),
                       ],
                     ),
                   ),

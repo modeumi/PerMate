@@ -129,144 +129,139 @@ class _AlarmDeletedButtonState extends State<AlarmDeletedButton> {
                           Positioned(
                             bottom: 10,
                             left: 4,
-                            child: Container(
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Stack(
-                                    children: [
-                                      GestureDetector(
-                                        onTap: () {
-                                          Get.back();
-                                        },
-                                        child: Container(
-                                          width: 156,
-                                          height: 48,
-                                          margin: EdgeInsets.all(8),
-                                          decoration: BoxDecoration(
+                            child: Row(
+                              children: [
+                                Stack(
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () {
+                                        Get.back();
+                                      },
+                                      child: Container(
+                                        width: 156,
+                                        height: 48,
+                                        margin: EdgeInsets.all(8),
+                                        decoration: BoxDecoration(
+                                          color: Colors.white
+                                              .withOpacity(0.800000011920929),
+                                          border: GradientBoxBorder(
+                                            width: 1,
+                                            gradient: LinearGradient(
+                                              colors: [
+                                                Color(0xFF2B80FF)
+                                                    .withOpacity(0.5),
+                                                Color(0xFF2B80FF)
+                                                    .withOpacity(0.2)
+                                              ],
+                                            ),
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        child: BlurryContainer(
+                                          blur: 12,
+                                          elevation: 0,
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          child: Container(),
+                                        ),
+                                      ),
+                                    ),
+                                    Opacity(
+                                      opacity: 0.8,
+                                      child: Container(
+                                        margin: EdgeInsets.all(8),
+                                        width: 156,
+                                        height: 48,
+                                        decoration: BoxDecoration(
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color: Color(0x26000000),
+                                                blurRadius: 2,
+                                                offset: Offset(0, 2),
+                                                spreadRadius: 0,
+                                              )
+                                            ],
                                             color: Colors.white
                                                 .withOpacity(0.800000011920929),
-                                            border: GradientBoxBorder(
-                                              width: 1,
-                                              gradient: LinearGradient(
-                                                colors: [
-                                                  Color(0xFF2B80FF)
-                                                      .withOpacity(0.5),
-                                                  Color(0xFF2B80FF)
-                                                      .withOpacity(0.2)
-                                                ],
-                                              ),
-                                            ),
                                             borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                          child: BlurryContainer(
-                                            blur: 12,
-                                            elevation: 0,
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            child: Container(),
-                                          ),
-                                        ),
+                                                BorderRadius.circular(10)),
                                       ),
-                                      Opacity(
-                                        opacity: 0.8,
-                                        child: Container(
-                                          margin: EdgeInsets.all(8),
-                                          width: 156,
-                                          height: 48,
-                                          decoration: BoxDecoration(
-                                              boxShadow: [
-                                                BoxShadow(
-                                                  color: Color(0x26000000),
-                                                  blurRadius: 2,
-                                                  offset: Offset(0, 2),
-                                                  spreadRadius: 0,
-                                                )
+                                    ),
+                                    Positioned(
+                                      left: 60,
+                                      top: 20,
+                                      child: Text(
+                                        '취소하기',
+                                        style: Blue(15, FontWeight.w600),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Stack(
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () {
+                                        deletedCheck.length;
+                                      },
+                                      child: Container(
+                                        width: 156,
+                                        height: 48,
+                                        margin: EdgeInsets.all(8),
+                                        decoration: BoxDecoration(
+                                          color: Color(0xFF2B80FF),
+                                          border: GradientBoxBorder(
+                                            width: 1,
+                                            gradient: LinearGradient(
+                                              colors: [
+                                                Colors.white.withOpacity(0.5),
+                                                Colors.white.withOpacity(0.2)
                                               ],
-                                              color: Colors.white.withOpacity(
-                                                  0.800000011920929),
-                                              borderRadius:
-                                                  BorderRadius.circular(10)),
+                                            ),
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        child: BlurryContainer(
+                                          blur: 12,
+                                          elevation: 0,
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          child: Container(),
                                         ),
                                       ),
-                                      Positioned(
-                                        left: 60,
-                                        top: 20,
-                                        child: Text(
-                                          '취소하기',
-                                          style: Blue(15, FontWeight.w600),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Stack(
-                                    children: [
-                                      GestureDetector(
-                                        onTap: () {
-                                          deletedCheck.length;
-                                        },
-                                        child: Container(
-                                          width: 156,
-                                          height: 48,
-                                          margin: EdgeInsets.all(8),
-                                          decoration: BoxDecoration(
+                                    ),
+                                    Opacity(
+                                      opacity: 0.8,
+                                      child: Container(
+                                        margin: EdgeInsets.all(8),
+                                        width: 156,
+                                        height: 48,
+                                        decoration: BoxDecoration(
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color: Color(0x26000000),
+                                                blurRadius: 2,
+                                                offset: Offset(0, 2),
+                                                spreadRadius: 0,
+                                              )
+                                            ],
                                             color: Color(0xFF2B80FF),
-                                            border: GradientBoxBorder(
-                                              width: 1,
-                                              gradient: LinearGradient(
-                                                colors: [
-                                                  Colors.white.withOpacity(0.5),
-                                                  Colors.white.withOpacity(0.2)
-                                                ],
-                                              ),
-                                            ),
                                             borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                          child: BlurryContainer(
-                                            blur: 12,
-                                            elevation: 0,
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            child: Container(),
-                                          ),
-                                        ),
+                                                BorderRadius.circular(10)),
                                       ),
-                                      Opacity(
-                                        opacity: 0.8,
-                                        child: Container(
-                                          margin: EdgeInsets.all(8),
-                                          width: 156,
-                                          height: 48,
-                                          decoration: BoxDecoration(
-                                              boxShadow: [
-                                                BoxShadow(
-                                                  color: Color(0x26000000),
-                                                  blurRadius: 2,
-                                                  offset: Offset(0, 2),
-                                                  spreadRadius: 0,
-                                                )
-                                              ],
-                                              color: Color(0xFF2B80FF),
-                                              borderRadius:
-                                                  BorderRadius.circular(10)),
-                                        ),
+                                    ),
+                                    Positioned(
+                                      left: 60,
+                                      top: 20,
+                                      child: Text(
+                                        '삭제하기',
+                                        style: White(15, FontWeight.w600),
                                       ),
-                                      Positioned(
-                                        left: 60,
-                                        top: 20,
-                                        child: Text(
-                                          '삭제하기',
-                                          style: White(15, FontWeight.w600),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
                           ),
                         ],

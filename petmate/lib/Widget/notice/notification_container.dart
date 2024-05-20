@@ -13,7 +13,6 @@ class NotificationContainer1 extends StatefulWidget {
 }
 
 class _NotificationContainer1State extends State<NotificationContainer1> {
-  bool state2 = false;
   final text = ['기록', '정보', '거래', '모임'];
   final image = [
     'assets/alert/note (16).png',
@@ -46,9 +45,7 @@ class _NotificationContainer1State extends State<NotificationContainer1> {
                   height: 88,
                   margin: EdgeInsets.all(1),
                   decoration: BoxDecoration(
-                    color: state2
-                        ? Colors.white.withOpacity(0.2)
-                        : Colors.transparent,
+                    color: Colors.transparent,
                     border: GradientBoxBorder(
                       width: 1,
                       gradient: LinearGradient(
@@ -60,14 +57,12 @@ class _NotificationContainer1State extends State<NotificationContainer1> {
                     ),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: state2
-                      ? Container()
-                      : BlurryContainer(
-                          blur: 12,
-                          elevation: 0,
-                          borderRadius: BorderRadius.circular(10),
-                          child: Container(),
-                        ),
+                  child: BlurryContainer(
+                    blur: 12,
+                    elevation: 0,
+                    borderRadius: BorderRadius.circular(10),
+                    child: Container(),
+                  ),
                 ),
                 Opacity(
                   opacity: 0.4,

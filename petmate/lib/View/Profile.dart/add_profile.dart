@@ -26,8 +26,6 @@ class AddProfilePage extends StatefulWidget {
 }
 
 class _AddProfilePageState extends State<AddProfilePage> {
-  bool state = false;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

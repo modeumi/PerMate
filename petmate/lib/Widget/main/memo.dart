@@ -21,7 +21,7 @@ class _MemoWriteWidgetState extends State<MemoWriteWidget> {
     return Stack(
       children: [
         Container(
-          width: double.infinity,
+          width: 344,
           height: 108,
           margin: EdgeInsets.all(6),
           decoration: BoxDecoration(
@@ -50,7 +50,7 @@ class _MemoWriteWidgetState extends State<MemoWriteWidget> {
           opacity: 0.4,
           child: Container(
             margin: EdgeInsets.all(8),
-            width: double.infinity,
+            width: 344,
             height: 108,
             decoration: BoxDecoration(
                 boxShadow: [
