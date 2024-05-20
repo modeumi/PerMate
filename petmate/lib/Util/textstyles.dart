@@ -24,6 +24,15 @@ TextStyle Blue(double size, FontWeight weight) {
       fontFamily: 'Pretendard');
 }
 
+TextStyle Gray(double size, FontWeight weight) {
+  return TextStyle(
+    color: Color(0xFFCCCCCC),
+    fontSize: size,
+    fontFamily: 'Pretendard',
+    fontWeight: weight,
+  );
+}
+
 TextStyle Custom(double size, FontWeight weight, Color color) {
   return TextStyle(
       fontSize: size,
@@ -31,4 +40,3 @@ TextStyle Custom(double size, FontWeight weight, Color color) {
       color: color,
       fontFamily: 'Pretendard');
 }
-

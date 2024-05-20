@@ -17,10 +17,10 @@ class ToggleButtonWidget extends StatefulWidget {
 }
 
 class _ToggleButtonWidgetState extends State<ToggleButtonWidget> {
+  final ToggleButtonController controller = Get.put(ToggleButtonController());
   bool check = false;
   @override
   Widget build(BuildContext context) {
-    final ToggleButtonController controller = Get.put(ToggleButtonController());
     return Stack(
       children: [
         Opacity(
