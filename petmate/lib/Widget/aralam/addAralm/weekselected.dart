@@ -13,7 +13,8 @@ class SelectWeekWidget extends StatefulWidget {
 }
 
 class _SelectWeekWidgetState extends State<SelectWeekWidget> {
-  int button = -1;
+  int button = 0;
+  List<bool> isSelected = List.generate(7, (index) => false);
   final List<String> week = [
     '일',
     '월',
@@ -35,10 +36,11 @@ class _SelectWeekWidgetState extends State<SelectWeekWidget> {
               (index) => GestureDetector(
                     onTap: () {
                       setState(() {
-                        if (button == index) {
-                        } else {
-                          button = index;
-                        }
+                        isSelected[index] = !isSelected[index];
+                        // if (button == index) {
+                        // } else {
+                        //   button = index;
+                        // }
                       });
                     },
                     child: Stack(
@@ -48,7 +50,7 @@ class _SelectWeekWidgetState extends State<SelectWeekWidget> {
                           height: 36,
                           margin: EdgeInsets.all(2),
                           decoration: BoxDecoration(
-                            color: button == index
+                            color: isSelected[index]
                                 ? Colors.white.withOpacity(0.8)
                                 : Colors.white.withOpacity(0.1),
                             border: GradientBoxBorder(
@@ -62,7 +64,7 @@ class _SelectWeekWidgetState extends State<SelectWeekWidget> {
                             ),
                             borderRadius: BorderRadius.circular(20),
                           ),
-                          child: button == index
+                          child: isSelected[index]
                               ? Container()
                               : BlurryContainer(
                                   blur: 12,
@@ -101,7 +103,7 @@ class _SelectWeekWidgetState extends State<SelectWeekWidget> {
                                 Text(
                                   week[index],
                                   style: TextStyle(
-                                    color: button == index
+                                    color: isSelected[index]
                                         ? Color(0xFF303030)
                                         : Colors.white,
                                     fontSize: 16,

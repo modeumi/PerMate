@@ -49,7 +49,7 @@ class _MemoWriteWidgetState extends State<MemoWriteWidget> {
         Opacity(
           opacity: 0.4,
           child: Container(
-            margin: EdgeInsets.all(8),
+            margin: EdgeInsets.fromLTRB(8, 9, 8, 9),
             width: 344,
             height: 108,
             decoration: BoxDecoration(

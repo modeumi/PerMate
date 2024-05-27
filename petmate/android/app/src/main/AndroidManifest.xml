@@ -3,6 +3,11 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
      <uses-permission android:name="android.permission.INTERNET" />  <!-- 인터넷 허용 동의 -->
+      <!-- android_alarm_manager_plus packgae -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <!-- For apps with targetSDK 31 (Android 12) and newer -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
     <application
         android:label="petmate"
         android:name="${applicationName}"

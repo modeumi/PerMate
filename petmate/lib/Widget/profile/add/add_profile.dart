@@ -7,7 +7,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:petmate/Util/textstyles.dart';
-import 'package:petmate/Widget/profile/add/OtiopnCard.dart';
+import 'package:petmate/Widget/profile/add/profile_card.dart';
 
 class AddProfileWidget extends StatefulWidget {
   const AddProfileWidget({super.key});
@@ -95,7 +95,7 @@ class _AddProfileWidgetState extends State<AddProfileWidget> {
                     onTap: () {
                       setState(() {});
                     },
-                    child: OptionCard(
+                    child: ProfileCard(
                       petName: '강아지',
                       imgUrl:
                           'assets/image_asset/pet_upload/animal_select (2).png',
@@ -105,7 +105,7 @@ class _AddProfileWidgetState extends State<AddProfileWidget> {
                     onTap: () {
                       setState(() {});
                     },
-                    child: OptionCard(
+                    child: ProfileCard(
                       petName: '고양이',
                       imgUrl:
                           'assets/image_asset/pet_upload/animal_select (3).png',
@@ -115,7 +115,7 @@ class _AddProfileWidgetState extends State<AddProfileWidget> {
                     onTap: () {
                       setState(() {});
                     },
-                    child: OptionCard(
+                    child: ProfileCard(
                       petName: '토끼',
                       imgUrl:
                           'assets/image_asset/pet_upload/animal_select (4).png',
@@ -126,7 +126,7 @@ class _AddProfileWidgetState extends State<AddProfileWidget> {
                       pet.add('거북이');
                       setState(() {});
                     },
-                    child: OptionCard(
+                    child: ProfileCard(
                       petName: '거북이',
                       imgUrl:
                           'assets/image_asset/pet_upload/animal_select (5).png',
@@ -137,7 +137,7 @@ class _AddProfileWidgetState extends State<AddProfileWidget> {
                       pet.add('물고기');
                       setState(() {});
                     },
-                    child: OptionCard(
+                    child: ProfileCard(
                       petName: '물고기',
                       imgUrl:
                           'assets/image_asset/pet_upload/animal_select (6).png',
@@ -148,7 +148,7 @@ class _AddProfileWidgetState extends State<AddProfileWidget> {
                       pet.add('새');
                       setState(() {});
                     },
-                    child: OptionCard(
+                    child: ProfileCard(
                       petName: '새',
                       imgUrl:
                           'assets/image_asset/pet_upload/animal_select (1).png',

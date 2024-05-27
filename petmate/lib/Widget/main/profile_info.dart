@@ -1,9 +1,11 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:get/get.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
 
@@ -16,9 +18,9 @@ class ProfileInfoWidget extends StatefulWidget {
 
 class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
   int _currentPage = 0;
-  int PageLength = 5;
   final PageController _controller = PageController();
-  final List<String> text = [
+  final CarouselController _carouselController = CarouselController();
+  final List<String> textList = [
     '강아지가 가구를 물어뜯는 이유를 알고 계신가요?',
     '고양이의 하루 평균 수면시간은 몇시간 일까요?',
     '강아지가 가구를 물어뜯는 이유를 알고 계신가요?',
@@ -93,7 +95,7 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
             bottom: 8,
             left: 160,
             child: DotsIndicator(
-              dotsCount: text.length,
+              dotsCount: textList.length,
               position: _currentPage,
               mainAxisAlignment: MainAxisAlignment.center,
               decorator: DotsDecorator(
@@ -106,11 +108,11 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
           ),
           Positioned(
               top: 8,
-              left: 18,
+              left: 24,
               child: Text('정보', style: Black(12, FontWeight.w500))),
           Positioned(
             top: 8,
-            right: 12,
+            right: 17,
             child: Container(
               width: 42,
               child: Row(
@@ -125,16 +127,47 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
           Positioned(
               left: 38, top: 28, child: Image.asset('assets/Main/bigleft.png')),
           Positioned(
-            left: 47,
+            left: 49,
             top: 30,
             child: Container(
-              width: 274,
-              height: 110,
+              width: 265,
+              height: 27,
               child: PageView.builder(
                 controller: _controller,
-                itemCount: text.length,
+                itemCount: textList.length,
                 itemBuilder: (context, index) {
-                  return Text(text[index], style: Black(14, FontWeight.w500));
+                  return CarouselSlider(
+                    carouselController: _carouselController,
+                    options: CarouselOptions(
+                      height: 50,
+                      initialPage: 0,
+                      enableInfiniteScroll: true,
+                      autoPlay: true,
+                      viewportFraction: 1.0,
+                      autoPlayInterval: Duration(seconds: 5),
+                      autoPlayAnimationDuration: Duration(milliseconds: 800),
+                      enlargeCenterPage: true,
+                      onPageChanged: (index, reason) {
+                        setState(() {
+                          _currentPage = index;
+                        });
+                      },
+                      scrollDirection: Axis.horizontal,
+                    ),
+                    items: textList.map((text) {
+                      return Builder(builder: (BuildContext context) {
+                        return Column(
+                          children: [
+                            Text(
+                              text,
+                              style: Black(14, FontWeight.w500),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ],
+                        );
+                      });
+                    }).toList(),
+                  );
                 },
               ),
             ),

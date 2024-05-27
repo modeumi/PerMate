@@ -27,11 +27,9 @@ class _ProfilePlusState extends State<ProfilePlus> {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 12,
-        ),
+        padding: const EdgeInsets.symmetric(horizontal: 8),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Stack(
               clipBehavior: Clip.none,
@@ -39,7 +37,6 @@ class _ProfilePlusState extends State<ProfilePlus> {
                 Opacity(
                   opacity: 0.4,
                   child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: 2),
                     width: 60,
                     height: 60,
                     decoration: BoxDecoration(
@@ -69,7 +66,6 @@ class _ProfilePlusState extends State<ProfilePlus> {
                   child: Container(
                     width: 60,
                     height: 60,
-                    margin: EdgeInsets.symmetric(horizontal: 2),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: state1
@@ -111,7 +107,6 @@ class _ProfilePlusState extends State<ProfilePlus> {
                 Opacity(
                   opacity: 0.4,
                   child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: 2),
                     width: 60,
                     height: 60,
                     decoration: BoxDecoration(
@@ -141,7 +136,6 @@ class _ProfilePlusState extends State<ProfilePlus> {
                   child: Container(
                     width: 60,
                     height: 60,
-                    margin: EdgeInsets.symmetric(horizontal: 2),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: state2
