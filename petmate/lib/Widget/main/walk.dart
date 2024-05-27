@@ -22,7 +22,7 @@ class _WalkWidgetState extends State<WalkWidget> {
         Container(
           width: 168,
           height: 64,
-          margin: EdgeInsets.all(2),
+         margin: EdgeInsets.fromLTRB(3, 0, 3, 3),
           decoration: BoxDecoration(
             color: state2 ? Colors.white.withOpacity(0.2) : Colors.transparent,
             border: GradientBoxBorder(
@@ -48,7 +48,7 @@ class _WalkWidgetState extends State<WalkWidget> {
         Opacity(
           opacity: 0.4,
           child: Container(
-            margin: EdgeInsets.all(3),
+            margin: EdgeInsets.all(4),
             width: 168,
             height: 64,
             decoration: BoxDecoration(
@@ -65,12 +65,21 @@ class _WalkWidgetState extends State<WalkWidget> {
           ),
         ),
         Positioned(
-            left: 35, top: 18, child: Image.asset('assets/Main/walk.png')),
-        Positioned(
-          left: 75,
-          top: 25,
-          child: Text('산책 하기',
-              textAlign: TextAlign.center, style: White(12, FontWeight.w500)),
+          left: 36,
+          top: 16,
+          child: Container(
+            width: 88,
+            height: 32,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Image.asset('assets/Main/walk.png'),
+                Text('산책 하기',
+                    textAlign: TextAlign.center,
+                    style: White(12, FontWeight.w500)),
+              ],
+            ),
+          ),
         ),
       ],
     );

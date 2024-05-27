@@ -9,14 +9,12 @@ import 'package:petmate/Widget/main/main_alram.dart';
 import 'package:petmate/Widget/main/memo.dart';
 import 'package:petmate/Widget/main/profile.dart';
 import 'package:petmate/Widget/main/profile_info.dart';
+
 import 'package:petmate/Widget/main/walk.dart';
 import 'package:petmate/Controller/navigation_controller.dart';
 import 'package:petmate/Widget/main/weather.dart';
 
 class MainPage extends StatefulWidget {
-  // final CurrentWeather weatherData;
-  // final CurrentAir airData;
-  // const MainPage({super.key, required this.weatherData, required this.airData});
   const MainPage({super.key});
 
   @override
@@ -45,7 +43,7 @@ class _MainPageState extends State<MainPage> {
                 MainAlram(),
                 ProfilePlus(),
                 SizedBox(
-                  height: 40,
+                  height: 35,
                 ),
                 ProfileInfoWidget(),
                 SizedBox(

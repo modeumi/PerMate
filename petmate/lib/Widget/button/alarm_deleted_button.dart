@@ -100,7 +100,7 @@ class _AlarmDeletedButtonState extends State<AlarmDeletedButton> {
                           ),
                           Positioned(
                             top: 40,
-                            left: 20,
+                            left: 22,
                             child: DefaultTextStyle(
                                 style: TextStyle(
                                   color: Color(0xFF303030),
@@ -113,7 +113,7 @@ class _AlarmDeletedButtonState extends State<AlarmDeletedButton> {
                           SizedBox(height: 8),
                           Positioned(
                             top: 60,
-                            left: 20,
+                            left: 22,
                             child: Container(
                               width: 195,
                               child: DefaultTextStyle(
@@ -127,8 +127,8 @@ class _AlarmDeletedButtonState extends State<AlarmDeletedButton> {
                             ),
                           ),
                           Positioned(
-                            bottom: 10,
-                            left: 4,
+                            bottom: 20,
+                            left: 20,
                             child: Row(
                               children: [
                                 Stack(
@@ -140,7 +140,7 @@ class _AlarmDeletedButtonState extends State<AlarmDeletedButton> {
                                       child: Container(
                                         width: 156,
                                         height: 48,
-                                        margin: EdgeInsets.all(8),
+                                        margin: EdgeInsets.all(2),
                                         decoration: BoxDecoration(
                                           color: Colors.white
                                               .withOpacity(0.800000011920929),
@@ -148,9 +148,9 @@ class _AlarmDeletedButtonState extends State<AlarmDeletedButton> {
                                             width: 1,
                                             gradient: LinearGradient(
                                               colors: [
-                                                Color(0xFF2B80FF)
+                                                Color(0x332B80FF)
                                                     .withOpacity(0.5),
-                                                Color(0xFF2B80FF)
+                                                Color(0x332B80FF)
                                                     .withOpacity(0.2)
                                               ],
                                             ),
@@ -170,7 +170,7 @@ class _AlarmDeletedButtonState extends State<AlarmDeletedButton> {
                                     Opacity(
                                       opacity: 0.8,
                                       child: Container(
-                                        margin: EdgeInsets.all(8),
+                                        margin: EdgeInsets.all(2),
                                         width: 156,
                                         height: 48,
                                         decoration: BoxDecoration(
@@ -189,14 +189,17 @@ class _AlarmDeletedButtonState extends State<AlarmDeletedButton> {
                                       ),
                                     ),
                                     Positioned(
-                                      left: 60,
-                                      top: 20,
+                                      left: 69,
+                                      bottom: 18,
                                       child: Text(
-                                        '취소하기',
+                                        '취소',
                                         style: Blue(15, FontWeight.w600),
                                       ),
                                     ),
                                   ],
+                                ),
+                                SizedBox(
+                                  width: 4,
                                 ),
                                 Stack(
                                   children: [
@@ -207,7 +210,7 @@ class _AlarmDeletedButtonState extends State<AlarmDeletedButton> {
                                       child: Container(
                                         width: 156,
                                         height: 48,
-                                        margin: EdgeInsets.all(8),
+                                        margin: EdgeInsets.all(2),
                                         decoration: BoxDecoration(
                                           color: Color(0xFF2B80FF),
                                           border: GradientBoxBorder(
@@ -234,7 +237,7 @@ class _AlarmDeletedButtonState extends State<AlarmDeletedButton> {
                                     Opacity(
                                       opacity: 0.8,
                                       child: Container(
-                                        margin: EdgeInsets.all(8),
+                                        margin: EdgeInsets.all(2),
                                         width: 156,
                                         height: 48,
                                         decoration: BoxDecoration(
@@ -252,8 +255,8 @@ class _AlarmDeletedButtonState extends State<AlarmDeletedButton> {
                                       ),
                                     ),
                                     Positioned(
-                                      left: 60,
-                                      top: 20,
+                                      right: 52,
+                                      bottom: 18,
                                       child: Text(
                                         '삭제하기',
                                         style: White(15, FontWeight.w600),

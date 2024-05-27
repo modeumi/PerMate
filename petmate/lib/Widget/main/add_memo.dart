@@ -27,7 +27,7 @@ class _MeMoWidgetState extends State<MeMoWidget> {
         opactiyValue = 1.0;
         showModalBottomSheet(
           backgroundColor: Colors.transparent,
-          barrierColor: Color(0x66303030).withOpacity(0.4),
+          barrierColor: Color(0x66303030),
           context: context,
           isScrollControlled: true,
           builder: (BuildContext context) {
@@ -44,7 +44,7 @@ class _MeMoWidgetState extends State<MeMoWidget> {
                           Container(
                             width: 344,
                             height: 380,
-                            margin: EdgeInsets.all(1),
+                            margin: EdgeInsets.all(3),
                             decoration: BoxDecoration(
                               color: Colors.transparent,
                               border: GradientBoxBorder(
@@ -68,9 +68,9 @@ class _MeMoWidgetState extends State<MeMoWidget> {
                           Opacity(
                             opacity: 0.4,
                             child: Container(
-                              margin: EdgeInsets.all(3),
                               width: 344,
                               height: 380,
+                              margin: EdgeInsets.all(3),
                               decoration: BoxDecoration(
                                   boxShadow: [
                                     BoxShadow(
@@ -107,12 +107,11 @@ class _MeMoWidgetState extends State<MeMoWidget> {
                               top: 30,
                               left: 12,
                               child: Container(
-                                constraints: BoxConstraints(maxHeight: 300),
                                 width: 344,
                                 height: 380,
                                 child: TextField(
                                   keyboardType: TextInputType.multiline,
-                                  maxLength: null,
+                                  maxLines: null,
                                   decoration: InputDecoration(
                                     hintText: '내용 입력',
                                     hintStyle: Gray(14, FontWeight.w500),
@@ -123,12 +122,28 @@ class _MeMoWidgetState extends State<MeMoWidget> {
                                     focusedBorder: UnderlineInputBorder(
                                         borderSide: BorderSide.none),
                                   ),
+                                  onSubmitted: (value) {
+                                    setState(() {});
+                                  },
                                   style: TextStyle(
                                       color: Colors.white,
                                       decorationThickness: 0),
                                   cursorColor: Colors.white,
                                   cursorWidth: 1,
                                 ),
+                              )),
+                          Positioned(
+                              bottom: 70,
+                              left: 12,
+                              right: 12,
+                              child: Container(
+                                width: 320,
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            width: 2,
+                                            color: Colors.white
+                                                .withOpacity(0.4)))),
                               )),
                           Positioned(
                             bottom: 10,
@@ -157,7 +172,7 @@ class _MeMoWidgetState extends State<MeMoWidget> {
           Container(
             width: 168,
             height: 64,
-            margin: EdgeInsets.all(1),
+            margin: EdgeInsets.fromLTRB(3, 0, 3, 3),
             decoration: BoxDecoration(
               color:
                   state2 ? Colors.white.withOpacity(0.2) : Colors.transparent,
@@ -184,7 +199,7 @@ class _MeMoWidgetState extends State<MeMoWidget> {
           Opacity(
             opacity: 0.4,
             child: Container(
-              margin: EdgeInsets.all(3),
+              margin: EdgeInsets.all(4),
               width: 168,
               height: 64,
               decoration: BoxDecoration(
@@ -201,18 +216,26 @@ class _MeMoWidgetState extends State<MeMoWidget> {
             ),
           ),
           Positioned(
-              left: 35, top: 18, child: Image.asset('assets/Main/memo.png')),
-          Positioned(
-            left: 75,
-            top: 25,
-            child: Text(
-              '메모 추가',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 12,
-                fontFamily: 'Pretendard',
-                fontWeight: FontWeight.w500,
+            left: 36,
+            top: 16,
+            child: Container(
+              width: 88,
+              height: 32,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Image.asset('assets/Main/memo.png'),
+                  Text(
+                    '메모 추가',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                      fontFamily: 'Pretendard',
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
               ),
             ),
           ),

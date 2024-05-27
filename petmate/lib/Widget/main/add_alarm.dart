@@ -38,7 +38,7 @@ class _AlarmWidgetState extends State<AlarmWidget> {
                 child: Stack(
                   children: [
                     Positioned(
-                      bottom: 143,
+                      top: 171,
                       left: 8,
                       right: 8,
                       child: Stack(
@@ -46,7 +46,6 @@ class _AlarmWidgetState extends State<AlarmWidget> {
                           Container(
                             width: 344,
                             height: 481,
-                            margin: EdgeInsets.all(1),
                             decoration: BoxDecoration(
                               color: Colors.transparent,
                               border: GradientBoxBorder(
@@ -70,7 +69,6 @@ class _AlarmWidgetState extends State<AlarmWidget> {
                           Opacity(
                             opacity: 0.4,
                             child: Container(
-                              margin: EdgeInsets.all(3),
                               width: 344,
                               height: 481,
                               decoration: BoxDecoration(
@@ -229,7 +227,7 @@ class _AlarmWidgetState extends State<AlarmWidget> {
           Container(
             width: 168,
             height: 64,
-            margin: EdgeInsets.all(1),
+            margin: EdgeInsets.fromLTRB(3, 0, 3, 3),
             decoration: BoxDecoration(
               border: GradientBoxBorder(
                 width: 1,
@@ -246,7 +244,7 @@ class _AlarmWidgetState extends State<AlarmWidget> {
           Opacity(
             opacity: 0.4,
             child: Container(
-              margin: EdgeInsets.all(3),
+              margin: EdgeInsets.all(4),
               width: 168,
               height: 64,
               decoration: BoxDecoration(
@@ -263,18 +261,26 @@ class _AlarmWidgetState extends State<AlarmWidget> {
             ),
           ),
           Positioned(
-              left: 35, top: 18, child: Image.asset('assets/Main/alarm.png')),
-          Positioned(
-            left: 75,
-            top: 25,
-            child: Text(
-              '알람 추가',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 12,
-                fontFamily: 'Pretendard',
-                fontWeight: FontWeight.w500,
+            left: 36,
+            top: 16,
+            child: Container(
+              width: 88,
+              height: 32,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Image.asset('assets/Main/alarm.png'),
+                  Text(
+                    '알람 추가',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                      fontFamily: 'Pretendard',
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
               ),
             ),
           ),

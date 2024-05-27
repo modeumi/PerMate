@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:petmate/Util/textstyles.dart';
 
-class OptionCard extends StatelessWidget {
-  const OptionCard({
+class ProfileCard extends StatelessWidget {
+  const ProfileCard({
     super.key,
     required this.imgUrl,
     required this.petName,
