@@ -1,9 +1,9 @@
+import 'dart:io';
+
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:geolocator/geolocator.dart';
-
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:petmate/Util/textstyles.dart';
@@ -17,24 +17,22 @@ class AddProfileWidget extends StatefulWidget {
 }
 
 class _AddProfileWidgetState extends State<AddProfileWidget> {
-  // final List<String> ProfileTetx = [
-  //   "강아지",
-  //   "고양이",
-  //   "토끼",
-  //   "거북이",
-  //   "물고기",
-  //   "새",
-  // ];
-
-  // final List<String> Profileimage = [
-  //   'assets/image_asset/pet_upload/animal_select (2).png',
-  //   'assets/image_asset/pet_upload/animal_select (3).png',
-  //   'assets/image_asset/pet_upload/animal_select (4).png',
-  //   'assets/image_asset/pet_upload/animal_select (5).png',
-  //   'assets/image_asset/pet_upload/animal_select (6).png',
-  //   'assets/image_asset/pet_upload/animal_select (1).png',
-  // ];
   List pet = [];
+
+  File? _image;
+  final picker = ImagePicker();
+
+  Future<void> _pickImage(ImageSource source) async {
+    final pickedFile = await picker.pickImage(source: source);
+
+    setState(() {
+      if (pickedFile != null) {
+        _image = File(pickedFile.path);
+      } else {
+        print('No image selected');
+      }
+    });
+  }
 
   void _modalshow(BuildContext context) {
     showModalBottomSheet(
@@ -248,7 +246,7 @@ class _AddProfileWidgetState extends State<AddProfileWidget> {
                 right: 16,
                 top: 16,
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () => _pickImage(ImageSource.gallery),
                   child: Container(
                     width: 156,
                     height: 128,

@@ -11,7 +11,7 @@ Future<AirModel?> getAir() async {
       var data = json.decode(response.body);
       print("미세먼지확인: $data");
       AirModel airdata = AirModel(
-        pm2_5: data['list'][0]['components']['pm2_5'],
+         pm2_5: data['list'][0]['components']['pm2_5'],
         pm10: data['list'][0]['components']['pm10'],
       );
       return airdata;

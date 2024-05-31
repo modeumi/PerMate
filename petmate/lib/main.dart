@@ -8,7 +8,7 @@ import 'package:petmate/Controller/start_controller.dart';
 import 'package:petmate/Util/route.dart';
 import 'package:petmate/View/mainpage.dart';
 import 'package:petmate/View/splash.dart';
-import 'package:petmate/Widget/main/weather.dart';
+
 import 'firebase_options.dart';
 import 'package:petmate/key.dart';
 import 'package:kakao_flutter_sdk_auth/kakao_flutter_sdk_auth.dart';
@@ -46,7 +46,7 @@ void main() async {
       }),
       debugShowCheckedModeBanner: false,
       home: MainPage(),
-      // home: WeatherWigdget(), 
+      // home: WeatherWigdget(),
     ),
   );
 }

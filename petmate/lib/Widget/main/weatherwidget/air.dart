@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:petmate/Model/air_model.dart';
 import 'package:petmate/Util/textstyles.dart';
-import '../../Controller/air_controller.dart';
+import '../../../Controller/air_controller.dart';
 
 class AirDataWidget extends StatelessWidget {
   @override

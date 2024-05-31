@@ -5,13 +5,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:get/get.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:http/http.dart' as http;
 import 'package:petmate/Controller/weather_controller.dart';
 import 'package:petmate/Model/air_model.dart';
 import 'package:petmate/Model/weather_model.dart';
 import 'package:petmate/Util/textstyles.dart';
-import 'package:petmate/Widget/main/air.dart';
+import 'package:petmate/Widget/main/weatherwidget/air.dart';
 
 class WeatherWigdget extends StatefulWidget {
   const WeatherWigdget({
@@ -23,6 +24,28 @@ class WeatherWigdget extends StatefulWidget {
 }
 
 class _WeatherWigdgetState extends State<WeatherWigdget> {
+  final WeatherController weatherController = Get.put(WeatherController());
+  late Position _currentPosition;
+
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getLocation();
+  }
+
+  Future<void> getLocation() async {
+    try {
+      Position position = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high);
+      setState(() {
+        _currentPosition = position;
+        print("데이터 확인: $position");
+      });
+    } catch (e) {
+      print('Error while fetching location: $e');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -78,7 +101,7 @@ class _WeatherWigdgetState extends State<WeatherWigdget> {
                   children: [
                     Positioned(
                       left: 12,
-                      top: 12,
+                      top: 10,
                       child: Container(
                         width: 320,
                         child: Row(
@@ -95,8 +118,7 @@ class _WeatherWigdgetState extends State<WeatherWigdget> {
                                       style: White(10, FontWeight.w600)),
                                   GestureDetector(
                                     onTap: () {
-                                      debugPrint('clicked~~');
-                                      ();
+                                      getLocation();
                                     },
                                     child: Image.asset(
                                       'assets/Main/reset.png',
@@ -113,7 +135,7 @@ class _WeatherWigdgetState extends State<WeatherWigdget> {
                       left: 9,
                       top: 38,
                       // child: controller.image,
-                      child: _buildWeatherIcon(weather.code),
+                      child: weatherController.buildWeatherIcon(weather.code),
                     ),
                     Positioned(
                       left: 77,
@@ -128,7 +150,8 @@ class _WeatherWigdgetState extends State<WeatherWigdget> {
                             Text('${weather.temp.round()}°',
                                 textAlign: TextAlign.center,
                                 style: White(20, FontWeight.w600)),
-                            Text('${_getWatherStatus(weather.weatherMain)}',
+                            Text(
+                                '${weatherController.getWatherStatus(weather.weatherMain)}',
                                 style: White(16, FontWeight.w600)),
                           ],
                         ),
@@ -183,7 +206,8 @@ class _WeatherWigdgetState extends State<WeatherWigdget> {
                     Positioned(
                         right: 40,
                         bottom: 0,
-                        child: _buildPetIcon(weather.weatherMain)),
+                        child: weatherController
+                            .buildPetIcon(weather.weatherMain)),
                   ],
                 );
               }
@@ -192,62 +216,5 @@ class _WeatherWigdgetState extends State<WeatherWigdget> {
         ),
       ],
     );
-  }
-
-  Widget _buildWeatherIcon(int? code) {
-    if (code == null) {
-      return Icon(Icons.error);
-    }
-    switch (code ~/ 100) {
-      case 800:
-        return Image.asset("assets/Main/sun.png");
-      case 801:
-        return Image.asset("assets/Main/cloudysun.png");
-      case 8:
-      case 7:
-        return Image.asset('assets/Main/cloud.png');
-
-      case 6:
-        return Image.asset('assets/Main/snow.png');
-      case 5:
-      case 3:
-      case 2:
-        return Image.asset('assets/Main/rain.png');
-      default:
-        return Image.asset('assets/Main/sun.png');
-    }
-  }
-
-  Widget _buildPetIcon(String weatherMain) {
-    if (weatherMain == 'Rain' || weatherMain == 'Snow') {
-      return Image.asset('assets/Main/home.png');
-    } else {
-      return Image.asset('assets/Main/pet.png');
-      // return Image.asset('assets/Main/pet.png');
-    }
-  }
-
-  String _getWatherStatus(String weatherMain) {
-    switch (weatherMain) {
-      case 'Clear':
-        return '맑음';
-      case 'Few clouds':
-        return '흐림';
-      case 'Clouds':
-        return '구름';
-      case 'Rain':
-        return '비';
-      case 'Mist' || 'Smoke' || 'Dust' || 'Fog' || 'Sand':
-        return '안개';
-      case 'Drizzle':
-        return '이슬비';
-      case 'Thunderstorm':
-        return '뇌우';
-      case 'Snow':
-        return '눈';
-
-      default:
-        return weatherMain;
-    }
   }
 }
