@@ -62,6 +62,10 @@ dependencies:
   get: ^4.6.6
   location_picker_flutter_map: ^1.1.0
   image_picker: ^1.1.1
+  image_picker_widget: ^2.4.1
+ 
+  
+ 
 
 dev_dependencies:
   change_app_package_name: ^1.1.0

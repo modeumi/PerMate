@@ -7,6 +7,8 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
+import 'package:petmate/Widget/main/log/logcard.dart';
+import 'package:petmate/Widget/profile/add/profile_card.dart';
 
 class LogWidget extends StatefulWidget {
   const LogWidget({super.key});
@@ -96,77 +98,83 @@ class _LogWidgetState extends State<LogWidget> {
                             right: 20,
                             child: Container(
                               width: 344,
-                              height: 380,
-                              child: GridView.builder(
-                                  itemCount: 8, //item 개수
-                                  gridDelegate:
-                                      SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 3, //1 개의 행에 보여줄 item 개수
-
-                                    mainAxisSpacing: 4, //수평 Padding
-                                    crossAxisSpacing: 4, //수직 Padding
+                              height: 308,
+                              child: GridView(
+                                gridDelegate:
+                                    SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 3,
+                                        mainAxisExtent: 72,
+                                        crossAxisSpacing: 8.0,
+                                        mainAxisSpacing: 36.0),
+                                children: [
+                                  InkWell(
+                                    onTap: () {},
+                                    child: LogCard(
+                                      CardName: '목욕',
+                                      Cardimg:
+                                          'assets/image_asset/record/shower.png',
+                                    ),
                                   ),
-                                  itemBuilder:
-                                      (BuildContext context, int index) {
-                                    return Stack(
-                                      children: [
-                                        Container(
-                                          width: 72,
-                                          height: 72,
-                                          decoration: BoxDecoration(
-                                            color:
-                                                Colors.white.withOpacity(0.8),
-                                            border: GradientBoxBorder(
-                                              width: 1,
-                                              gradient: LinearGradient(
-                                                colors: [
-                                                  Colors.white.withOpacity(0.5),
-                                                  Colors.white.withOpacity(0.2)
-                                                ],
-                                              ),
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(50),
-                                          ),
-                                          child: BlurryContainer(
-                                            blur: 12,
-                                            elevation: 0,
-                                            borderRadius:
-                                                BorderRadius.circular(50),
-                                            child: Container(),
-                                          ),
-                                        ),
-                                        Opacity(
-                                          opacity: 0.4,
-                                          child: Container(
-                                            width: 72,
-                                            height: 72,
-                                            decoration: BoxDecoration(
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                    color: Color(0x26000000),
-                                                    blurRadius: 2,
-                                                    offset: Offset(4, 4),
-                                                    spreadRadius: 0,
-                                                  )
-                                                ],
-                                                color: Colors.white
-                                                    .withOpacity(0.8),
-                                                borderRadius:
-                                                    BorderRadius.circular(50)),
-                                          ),
-                                        ),
-                                      ],
-                                    );
-                                  }),
+                                  InkWell(
+                                    onTap: () {},
+                                    child: LogCard(
+                                      CardName: '용변',
+                                      Cardimg:
+                                          'assets/image_asset/record/toilet.png',
+                                    ),
+                                  ),
+                                  InkWell(
+                                    onTap: () {},
+                                    child: LogCard(
+                                      CardName: '식사',
+                                      Cardimg:
+                                          'assets/image_asset/record/food.png',
+                                    ),
+                                  ),
+                                  InkWell(
+                                    onTap: () {},
+                                    child: LogCard(
+                                      CardName: '진료',
+                                      Cardimg:
+                                          'assets/image_asset/record/examine.png',
+                                    ),
+                                  ),
+                                  InkWell(
+                                    onTap: () {},
+                                    child: LogCard(
+                                      CardName: '놀이',
+                                      Cardimg:
+                                          'assets/image_asset/record/play.png',
+                                    ),
+                                  ),
+                                  InkWell(
+                                    onTap: () {},
+                                    child: LogCard(
+                                      CardName: '체중',
+                                      Cardimg:
+                                          'assets/image_asset/record/weight.png',
+                                    ),
+                                  ),
+                                  InkWell(
+                                    onTap: () {},
+                                    child: LogCard(
+                                      CardName: '미용',
+                                      Cardimg:
+                                          'assets/image_asset/record/beauty.png',
+                                    ),
+                                  ),
+                                  InkWell(
+                                    onTap: () {},
+                                    child: LogCard(
+                                      CardName: '주의',
+                                      Cardimg:
+                                          'assets/image_asset/record/notice.png',
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                          Positioned(
-                              left: 10,
-                              top: 16,
-                              right: 16,
-                              child: Image.asset(
-                                  'assets/image_asset/record/shower.png')),
                           Positioned(
                             right: 12,
                             top: 12,
@@ -196,13 +204,14 @@ class _LogWidgetState extends State<LogWidget> {
         Deletedoevrlay(context);
       },
       child: Stack(
+        clipBehavior: Clip.none,
         children: [
           Container(
             width: 168,
             height: 64,
             margin: EdgeInsets.fromLTRB(3, 0, 3, 3),
             decoration: BoxDecoration(
-              color: state ? Colors.white.withOpacity(0.2) : Colors.transparent,
+              color: state ? Colors.white : Colors.transparent,
               border: GradientBoxBorder(
                 width: 1,
                 gradient: LinearGradient(
@@ -215,7 +224,9 @@ class _LogWidgetState extends State<LogWidget> {
               borderRadius: BorderRadius.circular(10),
             ),
             child: state
-                ? Container()
+                ? Container(
+                    color: Colors.white,
+                  )
                 : BlurryContainer(
                     blur: 12,
                     elevation: 0,
@@ -252,16 +263,9 @@ class _LogWidgetState extends State<LogWidget> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Image.asset('assets/Main/note.png'),
-                  Text(
-                    '기록 하기',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 12,
-                      fontFamily: 'Pretendard',
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
+                  Text('기록 하기',
+                      textAlign: TextAlign.center,
+                      style: White(12, FontWeight.w500)),
                 ],
               ),
             ),

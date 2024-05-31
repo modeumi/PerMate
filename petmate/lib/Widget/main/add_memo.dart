@@ -31,130 +31,129 @@ class _MeMoWidgetState extends State<MeMoWidget> {
           context: context,
           isScrollControlled: true,
           builder: (BuildContext context) {
-            return AnimatedContainer(
-                duration: Duration(milliseconds: 0),
-                child: Stack(
-                  children: [
-                    Positioned(
-                      bottom: 141,
-                      left: 6,
-                      right: 8,
-                      child: Stack(
-                        children: [
-                          Container(
+            return Stack(
+              children: [
+                Positioned(
+                  bottom: 141,
+                  left: 6,
+                  right: 8,
+                  child: Stack(
+                    children: [
+                      Container(
+                        width: 344,
+                        height: 380,
+                        margin: EdgeInsets.all(3),
+                        decoration: BoxDecoration(
+                          color: Colors.transparent,
+                          border: GradientBoxBorder(
+                            width: 1,
+                            gradient: LinearGradient(
+                              colors: [
+                                Colors.white.withOpacity(0.5),
+                                Colors.white.withOpacity(0.2)
+                              ],
+                            ),
+                          ),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: BlurryContainer(
+                          blur: 12,
+                          elevation: 0,
+                          borderRadius: BorderRadius.circular(10),
+                          child: Container(),
+                        ),
+                      ),
+                      Opacity(
+                        opacity: 0.4,
+                        child: Container(
+                          width: 344,
+                          height: 380,
+                          margin: EdgeInsets.all(3),
+                          decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color(0x4C000000),
+                                  blurRadius: 1,
+                                  offset: Offset(1, 1),
+                                  spreadRadius: 0,
+                                )
+                              ],
+                              color: Color(0x3300287C),
+                              borderRadius: BorderRadius.circular(10)),
+                        ),
+                      ),
+                      Positioned(
+                        top: 12,
+                        left: 12,
+                        child: Text(
+                          '메모추가',
+                          style: White(16, FontWeight.w600),
+                        ),
+                      ),
+                      Positioned(
+                        right: 12,
+                        top: 12,
+                        child: GestureDetector(
+                          onTap: () {
+                            Get.back();
+                          },
+                          child:
+                              Image.asset('assets/image_asset/alarm/close.png'),
+                        ),
+                      ),
+                      Positioned(
+                          top: 30,
+                          left: 12,
+                          child: Container(
                             width: 344,
                             height: 380,
-                            margin: EdgeInsets.all(3),
-                            decoration: BoxDecoration(
-                              color: Colors.transparent,
-                              border: GradientBoxBorder(
-                                width: 1,
-                                gradient: LinearGradient(
-                                  colors: [
-                                    Colors.white.withOpacity(0.5),
-                                    Colors.white.withOpacity(0.2)
-                                  ],
-                                ),
+                            child: TextField(
+                              scrollPadding: EdgeInsets.only(
+                                  bottom:
+                                      MediaQuery.of(context).viewInsets.bottom),
+                              keyboardType: TextInputType.multiline,
+                              maxLines: null,
+                              decoration: InputDecoration(
+                                hintText: '내용 입력',
+                                hintStyle: Gray(14, FontWeight.w500),
+                                enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide.none),
+                                border: OutlineInputBorder(
+                                    borderSide: BorderSide.none),
+                                focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide.none),
                               ),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: BlurryContainer(
-                              blur: 12,
-                              elevation: 0,
-                              borderRadius: BorderRadius.circular(10),
-                              child: Container(),
-                            ),
-                          ),
-                          Opacity(
-                            opacity: 0.4,
-                            child: Container(
-                              width: 344,
-                              height: 380,
-                              margin: EdgeInsets.all(3),
-                              decoration: BoxDecoration(
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Color(0x4C000000),
-                                      blurRadius: 1,
-                                      offset: Offset(1, 1),
-                                      spreadRadius: 0,
-                                    )
-                                  ],
-                                  color: Color(0x3300287C),
-                                  borderRadius: BorderRadius.circular(10)),
-                            ),
-                          ),
-                          Positioned(
-                            top: 12,
-                            left: 12,
-                            child: Text(
-                              '메모추가',
-                              style: White(16, FontWeight.w600),
-                            ),
-                          ),
-                          Positioned(
-                            right: 12,
-                            top: 12,
-                            child: GestureDetector(
-                              onTap: () {
-                                Get.back();
+                              onSubmitted: (value) {
+                                setState(() {});
                               },
-                              child: Image.asset(
-                                  'assets/image_asset/alarm/close.png'),
+                              style: TextStyle(
+                                  color: Colors.white, decorationThickness: 0),
+                              cursorColor: Colors.white,
+                              cursorWidth: 1,
                             ),
-                          ),
-                          Positioned(
-                              top: 30,
-                              left: 12,
-                              child: Container(
-                                width: 344,
-                                height: 380,
-                                child: TextField(
-                                  keyboardType: TextInputType.multiline,
-                                  maxLines: null,
-                                  decoration: InputDecoration(
-                                    hintText: '내용 입력',
-                                    hintStyle: Gray(14, FontWeight.w500),
-                                    enabledBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide.none),
-                                    border: OutlineInputBorder(
-                                        borderSide: BorderSide.none),
-                                    focusedBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide.none),
-                                  ),
-                                  onSubmitted: (value) {
-                                    setState(() {});
-                                  },
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      decorationThickness: 0),
-                                  cursorColor: Colors.white,
-                                  cursorWidth: 1,
-                                ),
-                              )),
-                          Positioned(
-                              bottom: 70,
-                              left: 12,
-                              right: 12,
-                              child: Container(
-                                width: 320,
-                                decoration: BoxDecoration(
-                                    border: Border(
-                                        bottom: BorderSide(
-                                            width: 2,
-                                            color: Colors.white
-                                                .withOpacity(0.4)))),
-                              )),
-                          Positioned(
-                            bottom: 10,
-                            left: 6,
-                            child: Container(child: SaveButtonWidget()),
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
-                ));
+                          )),
+                      Positioned(
+                          bottom: 70,
+                          left: 12,
+                          right: 12,
+                          child: Container(
+                            width: 320,
+                            decoration: BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(
+                                        width: 2,
+                                        color: Colors.white.withOpacity(0.4)))),
+                          )),
+                      Positioned(
+                        bottom: 10,
+                        left: 6,
+                        child: Container(child: SaveButtonWidget()),
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            );
           },
         );
       });

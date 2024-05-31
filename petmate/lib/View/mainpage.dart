@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:petmate/Widget/bottom_bar/bottom_navigationbar.dart';
 import 'package:petmate/Widget/main/add_alarm.dart';
 import 'package:petmate/Widget/main/add_memo.dart';
-import 'package:petmate/Widget/main/log.dart';
+import 'package:petmate/Widget/main/log/log.dart';
 import 'package:petmate/Widget/main/main_alram.dart';
 import 'package:petmate/Widget/main/memo.dart';
 import 'package:petmate/Widget/main/profile.dart';
@@ -12,7 +12,7 @@ import 'package:petmate/Widget/main/profile_info.dart';
 
 import 'package:petmate/Widget/main/walk.dart';
 import 'package:petmate/Controller/navigation_controller.dart';
-import 'package:petmate/Widget/main/weather.dart';
+import 'package:petmate/Widget/main/weatherwidget/weather.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
