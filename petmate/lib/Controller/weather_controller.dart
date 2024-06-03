@@ -1,117 +1,105 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:petmate/Model/current_air.dart';
-import 'package:petmate/Model/current_weather.dart';
-import 'package:petmate/data/mylocation.dart';
-import 'package:petmate/data/network.dart';
+import 'package:petmate/Model/weather_model.dart';
+import 'package:http/http.dart' as http;
 
-class WeatherController extends GetxController {
-  CurrentWeather weatherData = CurrentWeather();
-  CurrentAir airData = CurrentAir();
-  Widget image = Container();
-  String text = '';
-  double latitude = 0;
-  double longitude = 0;
 
-  // 지역명, 온도, 습도, (초)미세먼지
-  String cityName = '';
-  int temp = 0;
-  int humidity = 0;
-  int pressure = 0;
-  double? pm2_5;
-  double? pm10;
 
-  void getWeatherIcon() {
-    int index = weatherData.weather![0].id!;
 
-    if (index < 400) {
-      image = Image.asset('assets/Main/weather (5).png');
-    } else if (index < 700) {
-      image = Image.asset('assets/Main/weather (4).png');
-    } else if (index < 800) {
-      image = Image.asset('assets/Main/weather (3).png');
-    } else if (index == 800) {
-      image = Image.asset('assets/Main/weather (1).png');
-    } else if (index <= 804) {
-      image = Image.asset('assets/Main/weather (2).png');
+
+
+Future<WeatherModel?> getWeather() async {
+  String WeatherData =
+      "https://api.openweathermap.org/data/2.5/weather?q=suwon&appid=fd8662804c1d7656890c88c001f601a7&units=metric";
+  try {
+    final response = await http.get(Uri.parse(WeatherData));
+
+    if (response.statusCode == 200) {
+      var data = json.decode(response.body);
+      print("데이터 확인: $data");
+
+      double? rain =
+          data["rain"] != null ? data["rain"]["1h"]?.toDouble() : null;
+
+      WeatherModel weather = WeatherModel(
+        temp: data["main"]["temp"],
+        weatherMain: data["weather"][0]["main"],
+        humidity: data["main"]["humidity"],
+        rain: rain,
+        code: data["weather"][0]["id"],
+      );
+      return weather;
     } else {
-      image = Image.asset('assets/Main/weather (2).png');
+      throw Exception('Failed to load weather data');
     }
-    update();
-  }
-
-  void getAirCondition() {
-    int index = airData.listed![0].main!.aqi!;
-
-    if (index == 1) {
-      text = '매우 좋음';
-    } else if (index == 2) {
-      text = '좋음';
-    } else if (index == 3) {
-      text = '보통';
-    } else if (index == 4) {
-      text = '나쁨';
-    } else if (index == 5) {
-      text = '매우나쁨';
-    } else {
-      text = '매우나쁨';
-    }
-    update();
-  }
-
-  void Save_Date(CurrentWeather weather, CurrentAir air) {
-    weatherData = weather;
-    airData = air;
-    cityName = weatherData.name!;
-    temp = weatherData.main!.temp!.round();
-    pm2_5 = airData.listed![0].components!.pm2_5;
-    pm10 = airData.listed![0].components!.pm10;
-    getWeatherIcon();
-    getAirCondition();
-    update();
-  }
-
-  void SetLocation(List<double> result) {
-    latitude = result[0];
-    longitude = result[1];
-    update();
-  }
-
-  void SetCity(Map<String, dynamic> result) {
-    update();
-  }
-
-  Future<bool> Set_Weather() async {
-    const apiKey = 'fd8662804c1d7656890c88c001f601a7';
-
-    MyLocation myLocation = MyLocation();
-    List<double> result = await myLocation.getMyCurrentLocation();
-    SetLocation(result);
-    String _baseApiWeather = 'https://api.openweathermap.org/data/2.5/weather';
-    String _baseApiAir =
-        'https://api.openweathermap.org/data/2.5/air_pollution';
-    String _option = 'units=metric&lang=kr';
-    String _lat = 'lat=${latitude}';
-    String _lon = 'lon=${longitude}';
-    Network network = Network(
-        '$_baseApiWeather?$_lat&$_lon&appid=$apiKey&$_option',
-        '$_baseApiAir?$_lat&$_lon&appid=$apiKey&$_option');
-
-    Map<String, dynamic> networkresult = await network.getWeatherData();
-    print('데이터 셋 : $networkresult');
-    CurrentWeather inputcurrentWeatherData =
-        CurrentWeather.fromJson(networkresult.toString());
-
-    // 대기질 정보 API 호출
-    var airData = await network.getWeatherData();
-    CurrentAir inputcurrentAirData = CurrentAir.fromJson(airData.toString());
-    Save_Date(inputcurrentWeatherData, inputcurrentAirData);
-    print('확인용');
-    print(weatherData);
-    print(weatherData.main!.temp);
-
-    update();
-
-    return true;
+  } catch (e) {
+    print(e);
+    return null;
   }
 }
+
+class WeatherController extends GetxController {
+   Widget buildWeatherIcon(int? code) {
+    if (code == null) {
+      return Icon(Icons.error);
+    }
+
+    if (code == 800) {
+      return Image.asset("assets/Main/sun.png");
+    } else if (code == 801) {
+      return Image.asset("assets/Main/cloudysun.png");
+    } else if (code >= 802 && code <= 804) {
+      return Image.asset('assets/Main/cloud.png');
+    } else if (code >= 700 && code < 800) {
+      return Image.asset('assets/Main/cloud.png');
+    } else if (code >= 600 && code < 700) {
+      return Image.asset('assets/Main/snow.png');
+    } else if (code >= 500 && code < 600) {
+      return Image.asset('assets/Main/rain.png');
+    } else if (code >= 300 && code < 400) {
+      return Image.asset('assets/Main/rain.png');
+    } else if (code >= 200 && code < 300) {
+      return Image.asset('assets/Main/rain.png');
+    } else {
+      return Icon(Icons.error);
+    }
+  }
+
+    Widget buildPetIcon(String weatherMain) {
+    if (weatherMain == 'Rain' || weatherMain == 'Snow') {
+      return Image.asset('assets/Main/home.png');
+    } else {
+      return Image.asset('assets/Main/pet.png');
+      // return Image.asset('assets/Main/pet.png');
+    }
+  }
+
+  String getWatherStatus(String weatherMain) {
+    switch (weatherMain) {
+      case 'Clear':
+        return '맑음';
+      case 'Few clouds':
+        return '흐림';
+      case 'Clouds':
+        return '구름';
+      case 'Rain':
+        return '비';
+      case 'Mist' || 'Smoke' || 'Dust' || 'Fog' || 'Sand':
+        return '안개';
+      case 'Drizzle':
+        return '이슬비';
+      case 'Thunderstorm':
+        return '뇌우';
+      case 'Snow':
+        return '눈';
+
+      default:
+        return weatherMain;
+    }
+  }
+}
+
+
+
+

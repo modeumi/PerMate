@@ -2,28 +2,30 @@ import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
+import 'package:petmate/Util/textstyles.dart';
 
-class MemoWidget extends StatefulWidget {
-  const MemoWidget({super.key});
+class MemoWriteWidget extends StatefulWidget {
+  const MemoWriteWidget({super.key});
 
   @override
-  State<MemoWidget> createState() => _MemoWidgetState();
+  State<MemoWriteWidget> createState() => _MemoWriteWidgetState();
 }
 
-class _MemoWidgetState extends State<MemoWidget> {
+class _MemoWriteWidgetState extends State<MemoWriteWidget> {
   bool state = false;
-  bool state2 = false;
+
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         Container(
-          width: double.infinity,
+          width: 344,
           height: 108,
           margin: EdgeInsets.all(6),
           decoration: BoxDecoration(
-            color: state2 ? Colors.white.withOpacity(0.2) : Colors.transparent,
+            color: state ? Colors.white.withOpacity(0.2) : Colors.transparent,
             border: GradientBoxBorder(
               width: 1,
               gradient: LinearGradient(
@@ -35,7 +37,7 @@ class _MemoWidgetState extends State<MemoWidget> {
             ),
             borderRadius: BorderRadius.circular(10),
           ),
-          child: state2
+          child: state
               ? Container()
               : BlurryContainer(
                   blur: 12,
@@ -47,8 +49,8 @@ class _MemoWidgetState extends State<MemoWidget> {
         Opacity(
           opacity: 0.4,
           child: Container(
-            margin: EdgeInsets.all(8),
-            width: double.infinity,
+            margin: EdgeInsets.fromLTRB(8, 9, 8, 9),
+            width: 344,
             height: 108,
             decoration: BoxDecoration(
                 boxShadow: [
@@ -64,40 +66,31 @@ class _MemoWidgetState extends State<MemoWidget> {
           ),
         ),
         Positioned(
-          left: 25,
-          top: 20,
-          child: Text(
-            '메모',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 12,
-              fontFamily: 'Pretendard',
-              fontWeight: FontWeight.w500,
-              height: 0,
-            ),
-          ),
+          left: 18,
+          top: 16,
+          child: Text('메모', style: White(12, FontWeight.w500)),
         ),
         Positioned(
-            left: 25,
-            top: 57,
-            child: Container(
-              width: 4,
-              height: 4,
-              child: Image.asset(
-                'assets/Main/Rectangle (1).png',
-                color: Colors.white.withOpacity(0.6),
-              ),
-            )),
-        Positioned(
-          left: 35,
-          top: 50,
-          child: Text(
-            '메모 작성시 표시됩니다.',
-            style: TextStyle(
-              color: Colors.white.withOpacity(0.7),
-              fontSize: 12,
-              fontFamily: 'Pretendard',
-              fontWeight: FontWeight.w500,
+          top: 42,
+          left: 20,
+          child: Container(
+            width: 124,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  width: 4,
+                  height: 4,
+                  child: Image.asset(
+                    'assets/Main/Rectangle (1).png',
+                    color: Colors.white.withOpacity(0.6),
+                  ),
+                ),
+                Opacity(
+                    opacity: 0.6,
+                    child: Text('메모 작성시 표시됩니다.',
+                        style: White(12, FontWeight.w500))),
+              ],
             ),
           ),
         )

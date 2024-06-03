@@ -12,7 +12,7 @@ class _MapSearchBarState extends State<MapSearchBar> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 53),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 43),
       child: Stack(
         children: [
           Container(
@@ -29,23 +29,24 @@ class _MapSearchBarState extends State<MapSearchBar> {
                     spreadRadius: 0,
                   )
                 ]),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-              child: TextFormField(
-                decoration: InputDecoration(
+            child: TextFormField(
+              textAlign: TextAlign.center,
+              decoration: InputDecoration(
                   border: InputBorder.none,
-                ),
-              ),
+                  hintText: '검색어를 입력해주세요',
+                  hintStyle: TextStyle(
+                    color: Color(0xFFCCCCCC),
+                    fontSize: 14,
+                    fontFamily: 'Pretendard',
+                    fontWeight: FontWeight.w600,
+                  )),
             ),
           ),
           Positioned(
               right: 10,
               bottom: 8,
               child: GestureDetector(
-                  onTap: () {
-                    print('hi');
-                  },
-                  child: Image.asset('assets/mapimg/icon (2).png')))
+                  onTap: () {}, child: Image.asset('assets/mapimg/Search.png')))
         ],
       ),
     );

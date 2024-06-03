@@ -4,24 +4,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter_naver_map/flutter_naver_map.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
-import 'package:petmate/Model/current_weather.dart';
-import 'package:petmate/Controller/join_controller.dart';
-import 'package:petmate/Controller/login_controller.dart';
-import 'package:petmate/Controller/onboarding_controller.dart';
-import 'package:petmate/Controller/password_controller.dart';
 import 'package:petmate/Controller/start_controller.dart';
 import 'package:petmate/Util/route.dart';
-import 'package:petmate/View/Map/naver_map.dart';
-import 'package:petmate/View/Notice/noticedelete.dart';
 import 'package:petmate/View/mainpage.dart';
-import 'package:petmate/Widget/main/weather.dart';
-import 'package:petmate/Widget/notice/test3.dart';
-import 'package:petmate/Widget/notice/test.dart';
 import 'package:petmate/View/splash.dart';
-import 'package:petmate/Widget/notice/test1.dart';
-import 'package:petmate/View/Notice/notice.dart';
-import 'package:petmate/key.dart';
+
 import 'firebase_options.dart';
+import 'package:petmate/key.dart';
 import 'package:kakao_flutter_sdk_auth/kakao_flutter_sdk_auth.dart';
 
 void main() async {
@@ -41,17 +30,22 @@ void main() async {
     },
   );
 
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  // await Alarm.init(); //알람초기화
+
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive, overlays: []);
   Geolocator.requestPermission(); //권한설정
 
   runApp(
     GetMaterialApp(
+      theme: ThemeData(fontFamily: 'Pretendard'),
       getPages: getpage,
       initialBinding: BindingsBuilder(() {
         Get.put(StartController());
       }),
       debugShowCheckedModeBanner: false,
-      home: Splash(),
+      home: MainPage(),
       // home: WeatherWigdget(),
     ),
   );

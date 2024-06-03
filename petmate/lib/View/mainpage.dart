@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:petmate/Widget/bottom_bar/bottom_navigationbar.dart';
 import 'package:petmate/Widget/main/add_alarm.dart';
 import 'package:petmate/Widget/main/add_memo.dart';
-import 'package:petmate/Widget/main/log.dart';
+import 'package:petmate/Widget/main/log/log.dart';
 import 'package:petmate/Widget/main/main_alram.dart';
 import 'package:petmate/Widget/main/memo.dart';
 import 'package:petmate/Widget/main/profile.dart';
+import 'package:petmate/Widget/main/profile_info.dart';
+
 import 'package:petmate/Widget/main/walk.dart';
 import 'package:petmate/Controller/navigation_controller.dart';
+import 'package:petmate/Widget/main/weatherwidget/weather.dart';
 
 class MainPage extends StatefulWidget {
-  // final CurrentWeather weatherData;
-  // final CurrentAir airData;
-  // const MainPage({super.key, required this.weatherData, required this.airData});
   const MainPage({super.key});
 
   @override
@@ -34,41 +35,49 @@ class _MainPageState extends State<MainPage> {
               image: AssetImage('assets/Main/Background.png'),
               fit: BoxFit.fill),
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(1.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              MainAlram(),
-              ProfilePlus(),
-              SizedBox(
-                height: 115,
-              ),
-              // WeatherWigdget(),
-              MemoWidget(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  LogWidget(),
-                  WalkWidget(),
-                ],
-              ),
-              SizedBox(
-                height: 8,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  AlarmWidget(),
-                  MeMoWidget(),
-                ],
-              ),
-              CustomBottomNavigationBar(),
-            ],
-          ),
+        child: Stack(
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                MainAlram(),
+                ProfilePlus(),
+                SizedBox(
+                  height: 35,
+                ),
+                ProfileInfoWidget(),
+                SizedBox(
+                  height: 5,
+                ),
+                WeatherWigdget(),
+                MemoWriteWidget(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    LogWidget(),
+                    WalkWidget(),
+                  ],
+                ),
+                SizedBox(
+                  height: 2,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    AlarmWidget(),
+                    MeMoWidget(),
+                  ],
+                ),
+              ],
+            ),
+            Positioned(
+                bottom: 0,
+                left: 0,
+                right: 0,
+                child: CustomBottomNavigationBar())
+          ],
         ),
       ),
-      bottomSheet: CustomBottomNavigationBar(),
     );
   }
 }
