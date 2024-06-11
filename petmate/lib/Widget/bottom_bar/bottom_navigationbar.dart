@@ -5,6 +5,7 @@ import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:gradient_borders/gradient_borders.dart';
 import 'package:petmate/Controller/navigation_controller.dart';
 import 'package:petmate/Util/textstyles.dart';
+import 'package:petmate/View/Community/community_main.dart';
 import 'package:petmate/View/Map/naver_map.dart';
 import 'package:petmate/View/mainpage.dart';
 
@@ -153,7 +154,7 @@ class CustomBottomNavigationBar extends GetView<BottomNavigationBarController> {
                       Get.to(() => MNaverMap());
                       break;
                     case 3:
-                      // Get.to(() => Community());
+                      Get.to(() => CommunityMain());
                       break;
                     case 4:
                       // Get.to(() => MyPage());

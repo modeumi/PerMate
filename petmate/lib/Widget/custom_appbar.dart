@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class CustomAppbar extends StatefulWidget implements PreferredSizeWidget {
   final String title;
-  const CustomAppbar({super.key, required this.title});
+  final List<Widget>? action;
+  const CustomAppbar({super.key, required this.title, this.action});
 
   @override
   State<CustomAppbar> createState() => _CustomAppbarState();
@@ -44,6 +45,13 @@ class _CustomAppbarState extends State<CustomAppbar> {
               ),
             ),
           ),
+          widget.action != null
+              ? Positioned(
+                  right: 0,
+                  child: Row(
+                    children: widget.action!,
+                  ))
+              : Container()
         ],
       ),
     );

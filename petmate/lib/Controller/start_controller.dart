@@ -17,7 +17,7 @@ class StartController extends GetxController {
     Map<String, dynamic> status = await secure.Read(['onboarding']);
     print('확인 1: $status');
     await Future.delayed(Duration(seconds: 2));
-    if (status['onboarding'] != '') {
+    if (status['onboarding'] != null) {
       bool status_bool = bool.parse(status['onboarding']);
       print('확인 2 : $status_bool');
       if (status_bool) {
