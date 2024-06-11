@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:petmate/View/Community/community_main.dart';
 import 'package:petmate/View/Notice/notice.dart';
 import 'package:petmate/View/Notice/noticedelete.dart';
 import 'package:petmate/View/join_main.dart';
@@ -21,4 +22,5 @@ List<GetPage<dynamic>> getpage = [
   GetPage(name: '/main', page: () => const MainPage()),
   GetPage(name: '/notice', page: () => const NoticePage()),
   GetPage(name: '/notice_detail', page: () => const NoticeDeleted()),
+  GetPage(name: '/community', page: ()=> const CommunityMain())
 ];
