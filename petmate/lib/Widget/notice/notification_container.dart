@@ -2,17 +2,19 @@ import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:glass_kit/glass_kit.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
 
-class NotificationContainer1 extends StatefulWidget {
-  const NotificationContainer1({super.key});
+class NotificationContainer extends StatefulWidget {
+  const NotificationContainer({super.key});
 
   @override
-  State<NotificationContainer1> createState() => _NotificationContainer1State();
+  State<NotificationContainer> createState() => _NotificationContainer1State();
 }
 
-class _NotificationContainer1State extends State<NotificationContainer1> {
+class _NotificationContainer1State extends State<NotificationContainer> {
   final text = ['기록', '정보', '거래', '모임'];
   final image = [
     'assets/alert/note (16).png',
@@ -40,48 +42,43 @@ class _NotificationContainer1State extends State<NotificationContainer1> {
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
             child: Stack(
               children: [
-                Container(
-                  width: 344,
-                  height: 88,
-                  margin: EdgeInsets.all(1),
-                  decoration: BoxDecoration(
-                    color: Colors.transparent,
-                    border: GradientBoxBorder(
-                      width: 1,
-                      gradient: LinearGradient(
-                        colors: [
-                          Colors.white.withOpacity(0.5),
-                          Colors.white.withOpacity(0.2)
-                        ],
-                      ),
-                    ),
-                    borderRadius: BorderRadius.circular(10),
+                GlassContainer(
+                  width: 344.w,
+                  height: 88.h,
+                  margin: EdgeInsets.symmetric(vertical: 2),
+                  color: Color(0x3300287C),
+                  gradient: LinearGradient(
+                    colors: [
+                      Colors.white.withOpacity(0.2),
+                      Colors.white.withOpacity(0.2),
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
                   ),
-                  child: BlurryContainer(
-                    blur: 12,
-                    elevation: 0,
-                    borderRadius: BorderRadius.circular(10),
-                    child: Container(),
+                  
+                  borderGradient: LinearGradient(
+                    colors: [
+                      Colors.white.withOpacity(0.5),
+                      Colors.white.withOpacity(0.2),
+                      Colors.white.withOpacity(0.2),
+                      Colors.white.withOpacity(0.2),
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    stops: [0.10, 0.30, 0.40, 0.0],
                   ),
-                ),
-                Opacity(
-                  opacity: 0.4,
-                  child: Container(
-                    margin: EdgeInsets.all(3),
-                    width: 344,
-                    height: 88,
-                    decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color(0x26000000),
-                            blurRadius: 2,
-                            offset: Offset(2, 2),
-                            spreadRadius: 0,
-                          )
-                        ],
-                        color: Color(0x3300287C),
-                        borderRadius: BorderRadius.circular(10)),
-                  ),
+                  blur: 12,
+                  borderRadius: BorderRadius.circular(10),
+                  borderWidth: 1,
+                  elevation: 0,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Color(0x26000000),
+                      blurRadius: 2,
+                      offset: Offset(2, 2),
+                      spreadRadius: 0,
+                    )
+                  ],
                 ),
                 Positioned(
                   left: 12,

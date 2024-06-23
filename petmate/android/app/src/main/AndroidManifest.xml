@@ -2,6 +2,7 @@
     <!-- 네이버 맵에서 현 위치 탐색 기능을 사용할 때만, 해당 권한 2개를 선언합니다 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    
      <uses-permission android:name="android.permission.INTERNET" />  <!-- 인터넷 허용 동의 -->
       <!-- android_alarm_manager_plus packgae -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>

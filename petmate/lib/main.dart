@@ -2,12 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_naver_map/flutter_naver_map.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:petmate/Controller/start_controller.dart';
 import 'package:petmate/Util/route.dart';
+import 'package:petmate/View/join_main.dart';
 import 'package:petmate/View/mainpage.dart';
 import 'package:petmate/View/splash.dart';
+import 'package:petmate/Widget/notice/test1.dart';
 
 import 'firebase_options.dart';
 import 'package:petmate/key.dart';
@@ -38,15 +42,19 @@ void main() async {
   Geolocator.requestPermission(); //권한설정
 
   runApp(
-    GetMaterialApp(
-      theme: ThemeData(fontFamily: 'Pretendard'),
-      getPages: getpage,
-      initialBinding: BindingsBuilder(() {
-        Get.put(StartController());
-      }),
-      debugShowCheckedModeBanner: false,
-      home: MainPage(),
-      // home: WeatherWigdget(),
+    ScreenUtilInit(
+      designSize: Size(360, 800),
+      splitScreenMode: true,
+      minTextAdapt: true,
+      child: GetMaterialApp(
+        theme: ThemeData(fontFamily: 'Pretendard'),
+        getPages: getpage,
+        initialBinding: BindingsBuilder(() {
+          Get.put(StartController());
+        }),
+        debugShowCheckedModeBanner: false,
+        home: MainPage(),
+      ),
     ),
   );
 }

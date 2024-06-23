@@ -4,8 +4,13 @@ class PushButtonA extends StatefulWidget {
   final String content;
   final VoidCallback action;
   final bool? active;
-  const PushButtonA(
-      {super.key, required this.content, required this.action, this.active});
+
+  const PushButtonA({
+    super.key,
+    required this.content,
+    required this.action,
+    this.active,
+  });
 
   @override
   State<PushButtonA> createState() => _PushButtonAState();

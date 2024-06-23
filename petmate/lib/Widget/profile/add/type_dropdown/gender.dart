@@ -1,5 +1,6 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 
 class GenderType extends StatefulWidget {
@@ -28,9 +29,9 @@ class _GenderTypeState extends State<GenderType> {
         },
         child: Stack(children: [
           Container(
-            width: 154,
-            height: 40,
-            margin: EdgeInsets.all(4),
+            width: 154.w,
+            height: 40.h,
+            margin: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
             decoration: BoxDecoration(
               color: button == i ? Colors.white : Colors.transparent,
               border: GradientBoxBorder(
@@ -42,7 +43,7 @@ class _GenderTypeState extends State<GenderType> {
                   ],
                 ),
               ),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(10.r),
             ),
             // child: BlurryContainer(
             //   blur: 12,
@@ -54,9 +55,9 @@ class _GenderTypeState extends State<GenderType> {
           Opacity(
             opacity: 0.4,
             child: Container(
-              margin: EdgeInsets.all(4),
-              width: 154,
-              height: 40,
+              margin: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              width: 154.w,
+              height: 40.h,
               decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
@@ -69,16 +70,16 @@ class _GenderTypeState extends State<GenderType> {
                     )
                   ],
                   color: Color(0x3300287C),
-                  borderRadius: BorderRadius.circular(10)),
+                  borderRadius: BorderRadius.circular(10.r)),
             ),
           ),
           Positioned(
-            left: 71,
+            left: 75,
             top: 12,
             child: Text(
               gender[i],
               style: TextStyle(
-                  fontSize: 14,
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w500,
                   color: button == i ? Color(0xFF303030) : Colors.white,
                   fontFamily: 'Pretendard'),

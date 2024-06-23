@@ -4,9 +4,12 @@ import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:petmate/Util/textstyles.dart';
+import 'package:petmate/Widget/circle_container.dart';
 import 'package:petmate/Widget/profile/add/profile_card.dart';
 
 class AddProfileWidget extends StatefulWidget {
@@ -18,23 +21,22 @@ class AddProfileWidget extends StatefulWidget {
 
 class _AddProfileWidgetState extends State<AddProfileWidget> {
   List pet = [];
-
-  File? _image;
   final picker = ImagePicker();
+  File? _image;
+  String _PetProfileImag =
+      'assets/image_asset/pet_upload/animal_profile (2).png';
 
   Future<void> _pickImage(ImageSource source) async {
     final pickedFile = await picker.pickImage(source: source);
-
-    setState(() {
-      if (pickedFile != null) {
+    if (pickedFile != null) {
+      setState(() {
         _image = File(pickedFile.path);
-      } else {
-        print('No image selected');
-      }
-    });
+      });
+    }
   }
 
   void _modalshow(BuildContext context) {
+    Navigator.pop(context);
     showModalBottomSheet(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         backgroundColor: Colors.transparent,
@@ -43,8 +45,8 @@ class _AddProfileWidgetState extends State<AddProfileWidget> {
         builder: (context) {
           return Stack(children: [
             Container(
-              width: 360,
-              height: 172,
+              width: 360.w,
+              height: 172.h,
               margin: EdgeInsets.all(1),
               decoration: BoxDecoration(
                 color: Colors.white.withOpacity(0.8),
@@ -64,8 +66,8 @@ class _AddProfileWidgetState extends State<AddProfileWidget> {
               opacity: 0.4,
               child: Container(
                 margin: EdgeInsets.all(1),
-                width: 360,
-                height: 172,
+                width: 360.w,
+                height: 172.h,
                 decoration: BoxDecoration(
                     boxShadow: [
                       BoxShadow(
@@ -89,9 +91,12 @@ class _AddProfileWidgetState extends State<AddProfileWidget> {
                     crossAxisSpacing: 8.0,
                     mainAxisSpacing: 12.0),
                 children: [
-                  InkWell(
+                  GestureDetector(
                     onTap: () {
-                      setState(() {});
+                      setState(() {
+                        _PetProfileImag =
+                            'assets/image_asset/pet_upload/animal_profile (2).png';
+                      });
                     },
                     child: ProfileCard(
                       petName: '강아지',
@@ -99,9 +104,12 @@ class _AddProfileWidgetState extends State<AddProfileWidget> {
                           'assets/image_asset/pet_upload/animal_select (2).png',
                     ),
                   ),
-                  InkWell(
+                  GestureDetector(
                     onTap: () {
-                      setState(() {});
+                      setState(() {
+                        _PetProfileImag =
+                            'assets/image_asset/pet_upload/animal_profile (5).png';
+                      });
                     },
                     child: ProfileCard(
                       petName: '고양이',
@@ -109,9 +117,12 @@ class _AddProfileWidgetState extends State<AddProfileWidget> {
                           'assets/image_asset/pet_upload/animal_select (3).png',
                     ),
                   ),
-                  InkWell(
+                  GestureDetector(
                     onTap: () {
-                      setState(() {});
+                      setState(() {
+                        _PetProfileImag =
+                            'assets/image_asset/pet_upload/animal_profile (6).png';
+                      });
                     },
                     child: ProfileCard(
                       petName: '토끼',
@@ -119,10 +130,12 @@ class _AddProfileWidgetState extends State<AddProfileWidget> {
                           'assets/image_asset/pet_upload/animal_select (4).png',
                     ),
                   ),
-                  InkWell(
+                  GestureDetector(
                     onTap: () {
-                      pet.add('거북이');
-                      setState(() {});
+                      setState(() {
+                        _PetProfileImag =
+                            'assets/image_asset/pet_upload/animal_profile (3).png';
+                      });
                     },
                     child: ProfileCard(
                       petName: '거북이',
@@ -130,10 +143,12 @@ class _AddProfileWidgetState extends State<AddProfileWidget> {
                           'assets/image_asset/pet_upload/animal_select (5).png',
                     ),
                   ),
-                  InkWell(
+                  GestureDetector(
                     onTap: () {
-                      pet.add('물고기');
-                      setState(() {});
+                      setState(() {
+                        _PetProfileImag =
+                            'assets/image_asset/pet_upload/animal_profile (4).png';
+                      });
                     },
                     child: ProfileCard(
                       petName: '물고기',
@@ -141,10 +156,12 @@ class _AddProfileWidgetState extends State<AddProfileWidget> {
                           'assets/image_asset/pet_upload/animal_select (6).png',
                     ),
                   ),
-                  InkWell(
+                  GestureDetector(
                     onTap: () {
-                      pet.add('새');
-                      setState(() {});
+                      setState(() {
+                        _PetProfileImag =
+                            'assets/image_asset/pet_upload/animal_profile (1).png';
+                      });
                     },
                     child: ProfileCard(
                       petName: '새',
@@ -187,7 +204,7 @@ class _AddProfileWidgetState extends State<AddProfileWidget> {
             ),
             BlurryContainer(
               width: double.infinity,
-              height: 160,
+              height: 160.h,
               blur: 12,
               elevation: 0,
               borderRadius: BorderRadius.circular(10),
@@ -197,8 +214,8 @@ class _AddProfileWidgetState extends State<AddProfileWidget> {
               opacity: 0.8,
               child: Container(
                 margin: EdgeInsets.all(1),
-                width: 360,
-                height: 160,
+                width: 360.w,
+                height: 160.h,
                 decoration: BoxDecoration(
                     boxShadow: [
                       BoxShadow(
@@ -246,7 +263,9 @@ class _AddProfileWidgetState extends State<AddProfileWidget> {
                 right: 16,
                 top: 16,
                 child: GestureDetector(
-                  onTap: () => _pickImage(ImageSource.gallery),
+                  onTap: () {
+                    _pickImage(ImageSource.gallery);
+                  },
                   child: Container(
                     width: 156,
                     height: 128,
@@ -278,174 +297,43 @@ class _AddProfileWidgetState extends State<AddProfileWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        _showModal(context);
-      },
-      child: Column(
-        children: [
-          Stack(
-            children: [
-              Positioned(
-                child: Stack(
-                  children: [
-                    Container(
-                      width: 96,
-                      height: 96,
-                      margin: EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.8),
-                        border: GradientBoxBorder(
-                          width: 1,
-                          gradient: LinearGradient(
-                            colors: [
-                              Colors.white.withOpacity(0.5),
-                              Colors.white.withOpacity(0.2)
-                            ],
-                          ),
-                        ),
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                      child: BlurryContainer(
-                        blur: 12,
-                        elevation: 0,
-                        borderRadius: BorderRadius.circular(50),
-                        child: Container(),
-                      ),
-                    ),
-                    Opacity(
-                      opacity: 0.4,
-                      child: Container(
-                        margin: EdgeInsets.all(8),
-                        width: 96,
-                        height: 96,
-                        decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color(0x26000000),
-                                blurRadius: 2,
-                                offset: Offset(4, 4),
-                                spreadRadius: 0,
-                              )
-                            ],
-                            color: Colors.white.withOpacity(0.8),
-                            borderRadius: BorderRadius.circular(50)),
-                      ),
-                    ),
-                    Positioned(
-                        left: 16,
-                        top: 16,
-                        right: 16,
-                        child: Image.asset(
-                            'assets/image_asset/pet_upload/animal_profile (2).png'))
-                  ],
-                ),
-              ),
-              Positioned(
-                bottom: 9,
-                right: 5,
-                child: Stack(
-                  children: [
-                    Container(
-                      width: 24,
-                      height: 24,
-                      margin: EdgeInsets.all(2),
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.8),
-                        border: GradientBoxBorder(
-                          width: 1,
-                          gradient: LinearGradient(
-                            colors: [
-                              Colors.white.withOpacity(0.5),
-                              Colors.white.withOpacity(0.2)
-                            ],
-                          ),
-                        ),
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                      child: BlurryContainer(
-                        blur: 12,
-                        elevation: 0,
-                        borderRadius: BorderRadius.circular(50),
-                        child: Container(),
-                      ),
-                    ),
-                    Opacity(
-                      opacity: 0.4,
-                      child: Container(
-                        margin: EdgeInsets.all(2),
-                        width: 24,
-                        height: 24,
-                        decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color(0x26000000),
-                                blurRadius: 2,
-                                offset: Offset(3, 3),
-                                spreadRadius: 0,
-                              )
-                            ],
-                            color: Colors.white.withOpacity(0.8),
-                            borderRadius: BorderRadius.circular(50)),
-                      ),
-                    ),
-                    Positioned(
-                        left: 6,
-                        top: 8,
-                        child: Image.asset(
-                            'assets/image_asset/pet_upload/camera.png'))
-                  ],
-                ),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 8,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 48, right: 52),
-            child: TextField(
-              textAlign: TextAlign.center,
-              decoration: InputDecoration(
-                hintText: '이름을 알려주세요.*',
-                hintStyle: TextStyle(
-                  color: Colors.white.withOpacity(0.6),
-                  fontSize: 16,
-                  fontFamily: 'Pretendard',
-                  fontWeight: FontWeight.w600,
-                ),
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white.withOpacity(0.6)),
-                ),
-                border: OutlineInputBorder(),
-                contentPadding: EdgeInsets.fromLTRB(0, 12, 0, 0),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
-                ),
-              ),
-              style: TextStyle(color: Colors.white, decorationThickness: 0),
-              cursorColor: Colors.white,
-              cursorWidth: 2,
+    return Column(
+      children: [
+        Stack(
+          clipBehavior: Clip.none,
+          children: [
+            CircleContainer(
+              width: 96.w,
+              height: 96.h,
             ),
-          ),
-          SizedBox(
-            height: 12,
-          ),
-          SizedBox(
-            width: 263,
-            height: 16,
-            child: Opacity(
-              opacity: 0.60,
-              child: Text('*표시는 필수 항목이에요.',
-                  textAlign: TextAlign.center,
-                  style: White(12, FontWeight.w500)),
+            Positioned(
+                left: 16.w,
+                top: 16.h,
+                child: _image != null
+                    ? Image.file(_image!)
+                    : Image.asset(_PetProfileImag)),
+            Positioned(
+              top: 72.h,
+              left: 72.w,
+              child: CircleContainer(
+                width: 24.w,
+                height: 24.h,
+              ),
             ),
-          ),
-          SizedBox(
-            height: 8,
-          ),
-        ],
-      ),
+            Positioned(
+                left: 76.w,
+                top: 78.h,
+                child: GestureDetector(
+                  onTap: () {
+                    _showModal(context);
+                  },
+                  child: Image.asset(
+                    'assets/image_asset/pet_upload/camera.png',
+                  ),
+                )),
+          ],
+        ),
+      ],
     );
   }
 }

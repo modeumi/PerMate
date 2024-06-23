@@ -4,12 +4,15 @@ import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
+import 'package:glass_kit/glass_kit.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
-import 'package:petmate/View/Profile.dart/edit_profile.dart';
-import 'package:petmate/View/Profile.dart/add_profile.dart';
+import 'package:petmate/View/Profile/edit_pet_list.dart';
+import 'package:petmate/View/Profile/upload_profile.dart';
 
 class ProfilePlus extends StatefulWidget {
   const ProfilePlus({super.key});
@@ -19,154 +22,111 @@ class ProfilePlus extends StatefulWidget {
 }
 
 class _ProfilePlusState extends State<ProfilePlus> {
-  bool state1 = false;
-  bool state2 = false;
-
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8),
+      child: Container(
+        width: 344.w,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Stack(
-              clipBehavior: Clip.none,
+            Column(
               children: [
-                Opacity(
-                  opacity: 0.4,
-                  child: Container(
-                    width: 60,
-                    height: 60,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
+                GlassContainer(
+                    width: 60.w,
+                    height: 60.h,
+                    color: Color(0xff00297C).withOpacity(0.2),
+                    margin: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                    gradient: LinearGradient(
+                      colors: [
+                        Colors.transparent,
+                        Colors.white.withOpacity(0.2)
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                    borderGradient: LinearGradient(
+                      colors: [
+                        Colors.white.withOpacity(0.5),
+                        Colors.white.withOpacity(0.2),
+                        Colors.white.withOpacity(0.2),
+                        Colors.white.withOpacity(0.2),
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      stops: [0.10, 0.30, 0.40, 0.0],
+                    ),
+                    blur: 12,
+                    borderRadius: BorderRadius.circular(50.r),
+                    borderWidth: 1,
+                    elevation: 0,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0x26000000),
+                        blurRadius: 2,
+                        offset: Offset(2, 2),
+                      )
+                    ],
+                    child: GestureDetector(
+                      onTap: () {
+                        Get.to(() => UploadProfilePage());
+                      },
+                      child: Image.asset('assets/Main/add.png'),
+                    )),
+                Text('추가하기',
+                    textAlign: TextAlign.center,
+                    style: White(12.sp, FontWeight.w500)),
+              ],
+            ),
+            Container(
+              child: Column(
+                children: [
+                  GlassContainer(
+                      width: 60.w,
+                      height: 60.h,
+                      margin: EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+                      color: Color(0xff00297C).withOpacity(0.2),
+                      gradient: LinearGradient(
+                        colors: [
+                          Colors.transparent,
+                          Colors.white.withOpacity(0.2)
+                        ],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      ),
+                      borderGradient: LinearGradient(
+                        colors: [
+                          Colors.white.withOpacity(0.5),
+                          Colors.white.withOpacity(0.2),
+                          Colors.white.withOpacity(0.2),
+                          Colors.white.withOpacity(0.2),
+                        ],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        stops: [0.10, 0.30, 0.40, 0.0],
+                      ),
+                      blur: 12,
+                      borderRadius: BorderRadius.circular(50.r),
+                      borderWidth: 1,
+                      elevation: 0,
                       boxShadow: [
                         BoxShadow(
                           color: Color(0x26000000),
+                          blurRadius: 2,
                           offset: Offset(2, 2),
                         )
                       ],
-                      color: Color(0x3300287C),
-                    ),
-                  ),
-                ),
-                InkWell(
-                  onTapDown: (_) {
-                    setState(() {
-                      state1 = true;
-                    });
-                  },
-                  onTapUp: (_) {
-                    setState(() {
-                      state1 = false;
-                    });
-                    Get.to(() => AddProfilePage());
-                  },
-                  child: Container(
-                    width: 60,
-                    height: 60,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: state1
-                          ? Colors.white.withOpacity(0.1)
-                          : Colors.transparent,
-                      border: GradientBoxBorder(
-                        width: 1,
-                        gradient: LinearGradient(
-                          colors: [
-                            Colors.white.withOpacity(0.5),
-                            Colors.white.withOpacity(0.2)
-                          ],
-                        ),
-                      ),
-                    ),
-                    child: BlurryContainer(
-                      blur: 12,
-                      elevation: 0,
-                      borderRadius: BorderRadius.circular(50),
-                      child: Image.asset('assets/edit/plus.png'),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  bottom: -23,
-                  left: 11,
-                  child: Text('추가하기',
+                      child: GestureDetector(
+                        onTap: () {
+                          Get.to(() => EditPetListPage());
+                        },
+                        child: Image.asset('assets/Main/edit.png'),
+                      )),
+                  Text('수정하기',
                       textAlign: TextAlign.center,
-                      style: White(12, FontWeight.w500)),
-                ),
-              ],
-            ),
-            SizedBox(
-              width: 8,
-            ),
-            Stack(
-              clipBehavior: Clip.none,
-              children: [
-                Opacity(
-                  opacity: 0.4,
-                  child: Container(
-                    width: 60,
-                    height: 60,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Color(0x26000000),
-                          offset: Offset(2, 2),
-                        )
-                      ],
-                      color: Color(0x3300287C),
-                    ),
-                  ),
-                ),
-                InkWell(
-                  onTapDown: (_) {
-                    setState(() {
-                      state2 = true;
-                    });
-                  },
-                  onTapUp: (_) {
-                    setState(() {
-                      state2 = false;
-                    });
-                    Get.to(() => EditProfilePage());
-                  },
-                  child: Container(
-                    width: 60,
-                    height: 60,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: state2
-                          ? Colors.white.withOpacity(0.1)
-                          : Colors.transparent,
-                      border: GradientBoxBorder(
-                        width: 1,
-                        gradient: LinearGradient(
-                          colors: [
-                            Colors.white.withOpacity(0.5),
-                            Colors.white.withOpacity(0.2)
-                          ],
-                        ),
-                      ),
-                    ),
-                    child: BlurryContainer(
-                      blur: 12,
-                      elevation: 0,
-                      borderRadius: BorderRadius.circular(50),
-                      child: Image.asset('assets/Main/edit.png'),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  bottom: -23,
-                  left: 11,
-                  child: Text('수정하기',
-                      textAlign: TextAlign.center,
-                      style: White(12, FontWeight.w500)),
-                ),
-              ],
+                      style: White(12.sp, FontWeight.w500)),
+                ],
+              ),
             ),
           ],
         ),

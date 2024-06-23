@@ -3,8 +3,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:dropdown_model_list/dropdown_model_list.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:glass_kit/glass_kit.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
+import 'package:petmate/Widget/custom_container.dart';
 
 class DetailsAddWidget extends StatefulWidget {
   const DetailsAddWidget({super.key});
@@ -35,59 +38,52 @@ class _DetailsAddWidgetState extends State<DetailsAddWidget> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(title, style: White(14, FontWeight.w600)),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12),
+          child: Text(title, style: White(14, FontWeight.w600)),
+        ),
         Stack(children: [
-          Container(
-            width: 320,
-            height: 40,
-            margin: EdgeInsets.all(4),
-            decoration: BoxDecoration(
-              color: state ? Colors.white.withOpacity(0.2) : Colors.transparent,
-              border: GradientBoxBorder(
-                width: 1,
-                gradient: LinearGradient(
-                  colors: [
-                    Colors.white.withOpacity(0.5),
-                    Colors.white.withOpacity(0.2)
-                  ],
-                ),
-              ),
-              borderRadius: BorderRadius.circular(10),
+          GlassContainer(
+            width: 320.w,
+            height: 40.h,
+            margin: EdgeInsets.all(8),
+            color: Color(0x3300287C),
+            gradient: LinearGradient(
+              colors: [
+                Colors.transparent,
+                Colors.white.withOpacity(0.2),
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
             ),
-            child: state
-                ? Container()
-                : BlurryContainer(
-                    blur: 12,
-                    elevation: 0,
-                    borderRadius: BorderRadius.circular(10),
-                    child: Container(),
-                  ),
-          ),
-          Opacity(
-            opacity: 0.4,
-            child: Container(
-              margin: EdgeInsets.all(4),
-              width: 320,
-              height: 40,
-              decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0x4C000000),
-                      blurRadius: 2,
-                      offset: Offset(0, 0),
-                      spreadRadius: 0,
-                    )
-                  ],
-                  color: Color(0x3300287C),
-                  borderRadius: BorderRadius.circular(10)),
+            borderGradient: LinearGradient(
+              colors: [
+                Colors.white.withOpacity(0.5),
+                Colors.white.withOpacity(0.2),
+                Colors.white.withOpacity(0.2),
+                Colors.white.withOpacity(0.2),
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              stops: [0.10, 0.60, 0.40, 0.0],
             ),
+            blur: 12,
+            borderRadius: BorderRadius.circular(10),
+            borderWidth: 1.0,
+            elevation: 0,
           ),
           Positioned(
-            left: 140,
-            top: 12,
-            child: Text(
-              content ?? '',
-              style: White(14, FontWeight.w500),
+            top: 18.h,
+            left: 118.w,
+            child: Container(
+              width: 110.w,
+              child: Align(
+                alignment: Alignment.center,
+                child: Text(
+                  content ?? '',
+                  style: White(14.sp, FontWeight.w500),
+                ),
+              ),
             ),
           )
         ]),
@@ -97,82 +93,25 @@ class _DetailsAddWidgetState extends State<DetailsAddWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 12),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-            child: Stack(
-              children: [
-                Container(
-                  width: 344,
-                  height: 930,
-                  margin: EdgeInsets.all(4),
-                  decoration: BoxDecoration(
-                    color: state
-                        ? Colors.white.withOpacity(0.2)
-                        : Colors.transparent,
-                    border: GradientBoxBorder(
-                      width: 1,
-                      gradient: LinearGradient(
-                        colors: [
-                          Colors.white.withOpacity(0.5),
-                          Colors.white.withOpacity(0.2)
-                        ],
-                      ),
-                    ),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: state
-                      ? Container()
-                      : BlurryContainer(
-                          blur: 12,
-                          elevation: 0,
-                          borderRadius: BorderRadius.circular(10),
-                          child: Container(),
-                        ),
-                ),
-                Opacity(
-                  opacity: 0.4,
-                  child: Container(
-                    margin: EdgeInsets.all(4),
-                    width: 344,
-                    height: 930,
-                    decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color(0x4C000000),
-                            blurRadius: 10,
-                            offset: Offset(2, 2),
-                            spreadRadius: 0,
-                          )
-                        ],
-                        color: Color(0x3300287C),
-                        borderRadius: BorderRadius.circular(10)),
-                  ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        for (String key in result.keys)
-                          result[key] != null
-                              ? test(key, result[key]!)
-                              : Container(),
-                      ]),
-                ),
-                SizedBox(
-                  height: 55,
-                )
-              ],
-            ),
-          )
-        ],
-      ),
+    return Stack(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          child: CustomContainer(
+            width: 344.w,
+            height: 930.h,
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
+          child: Column(children: [
+            for (String key in result.keys)
+              result[key] != null
+                  ? test(key, result[key].toString())
+                  : Container(),
+          ]),
+        ),
+      ],
     );
   }
 }

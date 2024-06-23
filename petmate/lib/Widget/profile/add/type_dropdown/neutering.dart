@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:petmate/Util/textstyles.dart';
 
 class Neutering extends StatefulWidget {
@@ -13,8 +14,8 @@ class _NeuteringState extends State<Neutering> {
   Widget build(BuildContext context) {
     return Stack(children: [
       Container(
-        width: 320,
-        height: 40,
+        width: 320.w,
+        height: 40.h,
         margin: EdgeInsets.all(4),
         decoration: BoxDecoration(
           color: Colors.white,
@@ -33,7 +34,7 @@ class _NeuteringState extends State<Neutering> {
           textAlign: TextAlign.center,
           decoration: InputDecoration(
             hintText: 'YYYY.MM.DD',
-            hintStyle: Gray(14, FontWeight.w500),
+            hintStyle: Gray(14.sp, FontWeight.w500),
             enabledBorder: UnderlineInputBorder(borderSide: BorderSide.none),
             border: OutlineInputBorder(borderSide: BorderSide.none),
             contentPadding: EdgeInsets.fromLTRB(1, 0, 0, 10),

@@ -2,14 +2,17 @@ import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
-import 'package:petmate/Widget/aralam/addAralm/timepicker.dart';
+import 'package:petmate/Widget/button/save_button.dart';
+import 'package:petmate/Widget/aralam/addAralm/aralm_timepicker.dart';
 import 'package:petmate/Widget/aralam/addAralm/weekselected.dart';
 import 'package:petmate/Widget/button/alarm_toggle.dart';
-import 'package:petmate/Widget/button/save_button.dart';
+
+import 'package:petmate/Widget/push_button_a.dart';
 
 class AddAlarmWidget extends StatefulWidget {
   const AddAlarmWidget({super.key});
@@ -24,13 +27,13 @@ class _AddAlarmWidgetState extends State<AddAlarmWidget> {
     return Stack(
       children: [
         Container(
-          width: 344,
-          height: 481,
+          width: 344.w,
+          height: 481.h,
           margin: EdgeInsets.all(1),
           decoration: BoxDecoration(
             color: Colors.transparent,
             border: GradientBoxBorder(
-              width: 1,
+              width: 1.w,
               gradient: LinearGradient(
                 colors: [
                   Colors.white.withOpacity(0.5),
@@ -38,12 +41,12 @@ class _AddAlarmWidgetState extends State<AddAlarmWidget> {
                 ],
               ),
             ),
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(10.r),
           ),
           child: BlurryContainer(
             blur: 12,
             elevation: 0,
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(10.r),
             child: Container(),
           ),
         ),
@@ -51,8 +54,8 @@ class _AddAlarmWidgetState extends State<AddAlarmWidget> {
           opacity: 0.4,
           child: Container(
             margin: EdgeInsets.all(3),
-            width: 344,
-            height: 481,
+            width: 344.w,
+            height: 481.h,
             decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
@@ -63,20 +66,20 @@ class _AddAlarmWidgetState extends State<AddAlarmWidget> {
                   )
                 ],
                 color: Color(0x3300287C),
-                borderRadius: BorderRadius.circular(10)),
+                borderRadius: BorderRadius.circular(10.r)),
           ),
         ),
         Positioned(
-          top: 12,
-          left: 12,
+          top: 12.h,
+          left: 12.w,
           child: Text(
             '알람추가',
-            style: White(16, FontWeight.w600),
+            style: White(16.sp, FontWeight.w600),
           ),
         ),
         Positioned(
-          right: 12,
-          top: 12,
+          right: 12.w,
+          top: 12.h,
           child: GestureDetector(
             onTap: () {
               Get.back();
@@ -84,31 +87,26 @@ class _AddAlarmWidgetState extends State<AddAlarmWidget> {
             child: Image.asset('assets/image_asset/alarm/close.png'),
           ),
         ),
-        Positioned(top: 48, left: 79, child: TimePicker()),
+        Positioned(top: 48.h, left: 79.w, child: AralmTimepicker()),
         Positioned(
-          top: 164,
-          left: 12,
+          top: 164.h,
+          left: 12.w,
           child: Text(
             '이름',
-            style: White(16, FontWeight.w600),
+            style: White(16.sp, FontWeight.w600),
           ),
         ),
         Positioned(
-          top: 173,
-          left: 12,
+          top: 173.h,
+          left: 12.w,
           child: Container(
-            width: 320,
-            height: 50,
+            width: 300.w,
+            height: 44.h,
             child: TextField(
               textAlign: TextAlign.start,
               decoration: InputDecoration(
                 hintText: '알람 이름/설명/내용 입력',
-                hintStyle: TextStyle(
-                  color: Colors.white.withOpacity(0.6),
-                  fontSize: 14,
-                  fontFamily: 'Pretendard',
-                  fontWeight: FontWeight.w600,
-                ),
+                hintStyle: whiteOpacity(14.sp, FontWeight.w600),
                 enabledBorder: UnderlineInputBorder(
                   borderSide: BorderSide(color: Colors.white.withOpacity(0.6)),
                 ),
@@ -120,63 +118,66 @@ class _AddAlarmWidgetState extends State<AddAlarmWidget> {
               ),
               style: TextStyle(color: Colors.white, decorationThickness: 0),
               cursorColor: Colors.white,
-              cursorWidth: 2,
+              cursorWidth: 2.w,
             ),
           ),
         ),
         Positioned(
-          top: 234,
-          left: 12,
+          top: 234.h,
+          left: 12.w,
           child: Text(
             '요일',
-            style: White(16, FontWeight.w600),
+            style: White(16.sp, FontWeight.w600),
           ),
         ),
         Positioned(
-            top: 263,
-            left: 12,
-            child: Container(width: 321, child: SelectWeekWidget())),
+            top: 263.h,
+            left: 12.w,
+            child: Container(width: 321.w, child: SelectWeekWidget())),
         Positioned(
-          top: 319,
-          left: 12,
+          top: 319.h,
+          left: 12.w,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 '알람음',
-                style: White(16, FontWeight.w600),
+                style: White(16.sp, FontWeight.w600),
               ),
               Text(
                 '기본',
-                style: White(12, FontWeight.w500),
+                style: White(12.sp, FontWeight.w500),
               ),
             ],
           ),
         ),
-        Positioned(top: 324, right: 12, child: ToggleButtonWidget()),
+        Positioned(top: 324.h, right: 12.w, child: ToggleButtonWidget()),
         Positioned(
-          top: 374,
-          left: 12,
+          top: 374.h,
+          left: 12.w,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 '진동',
-                style: White(16, FontWeight.w600),
+                style: White(16.sp, FontWeight.w600),
               ),
               Text(
                 '사용안함',
-                style: White(12, FontWeight.w500),
+                style: White(12.sp, FontWeight.w500),
               ),
             ],
           ),
         ),
         Positioned(
-            top: 379, right: 12, child: Container(child: ToggleButtonWidget())),
+            top: 379.h, right: 12.w, child: Container(child: ToggleButtonWidget())),
         Positioned(
-          bottom: 10,
-          left: 6,
-          child: Container(child: SaveButtonWidget()),
+          bottom: -4.h,
+          left: 12.w,
+          child: SaveButton(
+            content: '저장',
+            action: () {},
+          ),
         )
       ],
     );
