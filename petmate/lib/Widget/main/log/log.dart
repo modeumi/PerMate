@@ -6,8 +6,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
+import 'package:glass_kit/glass_kit.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
+import 'package:petmate/Widget/custom_container.dart';
 import 'package:petmate/Widget/main/log/logcard.dart';
 import 'package:petmate/Widget/profile/add/profile_card.dart';
 
@@ -44,46 +46,9 @@ class _LogWidgetState extends State<LogWidget> {
                       right: 8,
                       child: Stack(
                         children: [
-                          Container(
+                          CustomContainer(
                             width: 344.w,
                             height: 380.h,
-                            decoration: BoxDecoration(
-                              color: Colors.transparent,
-                              border: GradientBoxBorder(
-                                width: 1.w,
-                                gradient: LinearGradient(
-                                  colors: [
-                                    Colors.white.withOpacity(0.5),
-                                    Colors.white.withOpacity(0.2)
-                                  ],
-                                ),
-                              ),
-                              borderRadius: BorderRadius.circular(10.r),
-                            ),
-                            child: BlurryContainer(
-                              blur: 12,
-                              elevation: 0,
-                              borderRadius: BorderRadius.circular(10.r),
-                              child: Container(),
-                            ),
-                          ),
-                          Opacity(
-                            opacity: 0.4,
-                            child: Container(
-                              width: 344.w,
-                              height: 380.h,
-                              decoration: BoxDecoration(
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Color(0x4C000000),
-                                      blurRadius: 1,
-                                      offset: Offset(1, 1),
-                                      spreadRadius: 0,
-                                    )
-                                  ],
-                                  color: Color(0x3300287C),
-                                  borderRadius: BorderRadius.circular(10.r)),
-                            ),
                           ),
                           Positioned(
                             top: 12,
@@ -98,8 +63,8 @@ class _LogWidgetState extends State<LogWidget> {
                             left: 35,
                             right: 20,
                             child: Container(
-                              width: 344.w,
-                              height: 380.h,
+                              width: 288.w,
+                              height: 315.h,
                               child: GridView(
                                 gridDelegate:
                                     SliverGridDelegateWithFixedCrossAxisCount(
@@ -190,7 +155,6 @@ class _LogWidgetState extends State<LogWidget> {
                         ],
                       ),
                     ),
-                    // Positioned(bottom: 142, left: 5, child: LogWidget())
                   ],
                 ));
           },
@@ -208,56 +172,13 @@ class _LogWidgetState extends State<LogWidget> {
       child: Stack(
         clipBehavior: Clip.none,
         children: [
-          Container(
-            width: 168,
-            height: 64,
-            margin: EdgeInsets.only(top: 3),
-            decoration: BoxDecoration(
-              color: state ? Colors.white : Colors.transparent,
-              border: GradientBoxBorder(
-                width: 1,
-                gradient: LinearGradient(
-                  colors: [
-                    Colors.white.withOpacity(0.5),
-                    Colors.white.withOpacity(0.2)
-                  ],
-                ),
-              ),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: state
-                ? Container(
-                    color: Colors.white,
-                  )
-                : BlurryContainer(
-                    blur: 12,
-                    elevation: 0,
-                    borderRadius: BorderRadius.circular(10),
-                    child: Container(),
-                  ),
-          ),
-          Opacity(
-            opacity: 0.4,
-            child: Container(
-              margin: EdgeInsets.only(top: 5),
-              width: 168,
-              height: 64,
-              decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0x26000000),
-                      blurRadius: 1,
-                      offset: Offset(1, 1),
-                      spreadRadius: 0,
-                    )
-                  ],
-                  color: Color(0x3300287C),
-                  borderRadius: BorderRadius.circular(10)),
-            ),
+          CustomContainer(
+            width: 168.w,
+            height: 64.h,
           ),
           Positioned(
-            left: 32,
-            top: 18,
+            left: 30,
+            bottom: 18,
             child: Container(
               width: 88,
               height: 32,

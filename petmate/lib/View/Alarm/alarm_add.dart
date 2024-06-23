@@ -12,7 +12,7 @@ import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/View/Alarm/alarm_deleted.dart';
 import 'package:petmate/Widget/aralam/addAralm/add_widget.dart';
 import 'package:petmate/Widget/button/alarm_toggle.dart';
-import 'package:petmate/Widget/bottom_bar/bottom_navigationbar.dart';
+import 'package:petmate/Widget/bottom_navigation_bar/bottom_navigationbar.dart';
 import 'package:petmate/Widget/custom_appbar.dart';
 
 class AlarmAddPage extends StatefulWidget {
@@ -28,6 +28,22 @@ class _AlarmAddPageState extends State<AlarmAddPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: CustomAppbar(
+        title: '알람',
+        action: [
+          GestureDetector(
+              onTap: () {
+                Get.to(() => AlarmAddPage());
+              },
+              child: Image.asset('assets/image_asset/alarm/add.png')),
+          GestureDetector(
+              onTap: () {
+                Get.to(() => AlarmDeletedPage());
+              },
+              child: Image.asset('assets/alert/delete(24).png'))
+        ],
+      ),
       body: Stack(
         children: [
           Container(
@@ -41,67 +57,6 @@ class _AlarmAddPageState extends State<AlarmAddPage> {
             ),
             child: Stack(
               children: [
-                Column(
-                  children: [
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 16, vertical: 10),
-                      child: Container(
-                        width: 360.w,
-                        height: 45.h,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            GestureDetector(
-                                onTap: () {
-                                  Get.back();
-                                },
-                                child: Image.asset(
-                                  'assets/alert/back.png',
-                                )),
-                            Container(
-                              padding: EdgeInsets.fromLTRB(40, 0, 0, 0),
-                              child: Text('알람',
-                                  textAlign: TextAlign.center,
-                                  style: White(20.sp, FontWeight.w600)),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                GestureDetector(
-                                  onTap: () {
-                                    Get.to(() => AlarmAddPage());
-                                  },
-                                  child: Image.asset('assets/Main/add.png'),
-                                ),
-                                SizedBox(
-                                  width: 20.w,
-                                ),
-                                GestureDetector(
-                                  onTap: () {
-                                    Get.to(() => AlarmDeletedPage());
-                                  },
-                                  child: Image.asset(
-                                      'assets/alert/delete(24).png'),
-                                ),
-                              ],
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                    Opacity(
-                      opacity: 0.6,
-                      child: Text(
-                        '켜져있는 알람이 홈 화면 상단에 노출됩니다.',
-                        style: White(12.sp, FontWeight.w500),
-                      ),
-                    ),
-                  ],
-                ),
                 Positioned(
                     bottom: 0,
                     left: 0,
@@ -112,7 +67,7 @@ class _AlarmAddPageState extends State<AlarmAddPage> {
                   width: 360.w,
                   height: 800.h,
                 ),
-                Positioned(top: 80, left: 7, child: AddAlarmWidget()),
+                Positioned(top: 80.h, left: 7.w, child: AddAlarmWidget()),
               ],
             ),
           ),

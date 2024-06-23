@@ -7,10 +7,12 @@ import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
+import 'package:petmate/Widget/button/save_button.dart';
 import 'package:petmate/Widget/aralam/addAralm/aralm_timepicker.dart';
 import 'package:petmate/Widget/aralam/addAralm/weekselected.dart';
 import 'package:petmate/Widget/button/alarm_toggle.dart';
-import 'package:petmate/Widget/button/alarm_save_button.dart';
+
+import 'package:petmate/Widget/push_button_a.dart';
 
 class AddAlarmWidget extends StatefulWidget {
   const AddAlarmWidget({super.key});
@@ -68,16 +70,16 @@ class _AddAlarmWidgetState extends State<AddAlarmWidget> {
           ),
         ),
         Positioned(
-          top: 12,
-          left: 12,
+          top: 12.h,
+          left: 12.w,
           child: Text(
             '알람추가',
             style: White(16.sp, FontWeight.w600),
           ),
         ),
         Positioned(
-          right: 12,
-          top: 12,
+          right: 12.w,
+          top: 12.h,
           child: GestureDetector(
             onTap: () {
               Get.back();
@@ -85,26 +87,26 @@ class _AddAlarmWidgetState extends State<AddAlarmWidget> {
             child: Image.asset('assets/image_asset/alarm/close.png'),
           ),
         ),
-        Positioned(top: 48, left: 79, child: AralmTimepicker()),
+        Positioned(top: 48.h, left: 79.w, child: AralmTimepicker()),
         Positioned(
-          top: 164,
-          left: 12,
+          top: 164.h,
+          left: 12.w,
           child: Text(
             '이름',
             style: White(16.sp, FontWeight.w600),
           ),
         ),
         Positioned(
-          top: 173,
-          left: 12,
+          top: 173.h,
+          left: 12.w,
           child: Container(
-            width: 320.w,
-            height: 50.h,
+            width: 300.w,
+            height: 44.h,
             child: TextField(
               textAlign: TextAlign.start,
               decoration: InputDecoration(
                 hintText: '알람 이름/설명/내용 입력',
-                hintStyle: whiteOpacity(14, FontWeight.w600),
+                hintStyle: whiteOpacity(14.sp, FontWeight.w600),
                 enabledBorder: UnderlineInputBorder(
                   borderSide: BorderSide(color: Colors.white.withOpacity(0.6)),
                 ),
@@ -121,20 +123,20 @@ class _AddAlarmWidgetState extends State<AddAlarmWidget> {
           ),
         ),
         Positioned(
-          top: 234,
-          left: 12,
+          top: 234.h,
+          left: 12.w,
           child: Text(
             '요일',
             style: White(16.sp, FontWeight.w600),
           ),
         ),
         Positioned(
-            top: 263,
-            left: 12,
+            top: 263.h,
+            left: 12.w,
             child: Container(width: 321.w, child: SelectWeekWidget())),
         Positioned(
-          top: 319,
-          left: 12,
+          top: 319.h,
+          left: 12.w,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -149,10 +151,10 @@ class _AddAlarmWidgetState extends State<AddAlarmWidget> {
             ],
           ),
         ),
-        Positioned(top: 324, right: 12, child: ToggleButtonWidget()),
+        Positioned(top: 324.h, right: 12.w, child: ToggleButtonWidget()),
         Positioned(
-          top: 374,
-          left: 12,
+          top: 374.h,
+          left: 12.w,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -168,11 +170,14 @@ class _AddAlarmWidgetState extends State<AddAlarmWidget> {
           ),
         ),
         Positioned(
-            top: 379, right: 12, child: Container(child: ToggleButtonWidget())),
+            top: 379.h, right: 12.w, child: Container(child: ToggleButtonWidget())),
         Positioned(
-          bottom: 8,
-          left: 4,
-          child: Container(child: AlarmSaveButtonWidget()),
+          bottom: -4.h,
+          left: 12.w,
+          child: SaveButton(
+            content: '저장',
+            action: () {},
+          ),
         )
       ],
     );

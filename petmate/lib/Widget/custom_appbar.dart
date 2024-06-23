@@ -16,10 +16,13 @@ class _CustomAppbarState extends State<CustomAppbar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      scrolledUnderElevation: 0,
       toolbarHeight: 100,
       automaticallyImplyLeading: false,
+      elevation: 0,
       backgroundColor: Colors.transparent,
       title: Stack(
+        clipBehavior: Clip.none,
         children: [
           Positioned(
             top: 0,
@@ -50,13 +53,18 @@ class _CustomAppbarState extends State<CustomAppbar> {
           widget.action != null
               ? Positioned(
                   right: 0,
-                  child: Row(
-                    children: widget.action!,
+                  bottom: -11,
+                  child: SizedBox(
+                    width: 75,
+                    height: 40,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: widget.action!,
+                    ),
                   ))
               : Container()
         ],
       ),
-     
     );
   }
 }

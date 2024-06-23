@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
+import 'package:glass_kit/glass_kit.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/View/Alarm/alarm_add.dart';
@@ -12,7 +13,7 @@ import 'package:petmate/Widget/aralam/addAralm/add_widget.dart';
 import 'package:petmate/Widget/aralam/addAralm/aralm_timepicker.dart';
 import 'package:petmate/Widget/aralam/addAralm/weekselected.dart';
 import 'package:petmate/Widget/button/alarm_toggle.dart';
-import 'package:petmate/Widget/button/alarm_save_button.dart';
+import 'package:petmate/Widget/custom_container.dart';
 
 class AlarmWidget extends StatefulWidget {
   const AlarmWidget({super.key});
@@ -62,45 +63,13 @@ class _AlarmWidgetState extends State<AlarmWidget> {
       },
       child: Stack(
         children: [
-          Container(
+          CustomContainer(
             width: 168.w,
             height: 64.h,
-            margin: EdgeInsets.only(top: 3),
-            decoration: BoxDecoration(
-              border: GradientBoxBorder(
-                width: 1,
-                gradient: LinearGradient(
-                  colors: [
-                    Colors.white.withOpacity(0.5),
-                    Colors.white.withOpacity(0.2)
-                  ],
-                ),
-              ),
-              borderRadius: BorderRadius.circular(10.r),
-            ),
-          ),
-          Opacity(
-            opacity: 0.4,
-            child: Container(
-              margin: EdgeInsets.only(top: 5),
-              width: 168.w,
-              height: 64.h,
-              decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0x26000000),
-                      blurRadius: 1,
-                      offset: Offset(1, 1),
-                      spreadRadius: 0,
-                    )
-                  ],
-                  color: Color(0x3300287C),
-                  borderRadius: BorderRadius.circular(10.r)),
-            ),
           ),
           Positioned(
-            left: 32,
-            top: 18,
+            left: 30,
+            bottom: 18,
             child: Container(
               width: 88.w,
               height: 32.h,

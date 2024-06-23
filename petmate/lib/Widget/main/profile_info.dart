@@ -46,7 +46,9 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
         Container(
           width: 344.w,
           height: 72.h,
-          margin: EdgeInsets.symmetric(horizontal: 8, vertical: 0),
+          margin: EdgeInsets.symmetric(
+            horizontal: 8,
+          ),
           decoration: BoxDecoration(
             border: GradientBoxBorder(
               width: 1.w,

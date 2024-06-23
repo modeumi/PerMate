@@ -58,6 +58,7 @@ dependencies:
   flutter_advanced_switch: ^3.1.0
   dots_indicator: ^3.0.0
   carousel_slider: ^4.2.1
+  glass_kit: ^4.0.1
   android_alarm_manager_plus: ^4.0.3
   get: ^4.6.6
   location_picker_flutter_map: ^1.1.0
@@ -97,6 +98,7 @@ flutter:
     - assets/gnbicon/
     - assets/gnbicon(map)/
     - assets/edit/
+    - assets/image_asset/mypage/
     - assets/image_asset/edit/
     - assets/image_asset/pet_upload/
     - assets/image_asset/pet_information_details/
@@ -104,6 +106,7 @@ flutter:
     - assets/image_asset/pet_upload/
     - assets/image_asset/record/
     - assets/image_asset/walk_log/
+    - assets/image_asset/invite/
     - assets/text_file/dog.json
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see

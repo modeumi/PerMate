@@ -6,9 +6,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:glass_kit/glass_kit.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
-import 'package:petmate/Widget/button/alarm_save_button.dart';
+
+import 'package:petmate/Widget/button/save_button.dart';
+import 'package:petmate/Widget/custom_container.dart';
 
 class MeMoWidget extends StatefulWidget {
   const MeMoWidget({super.key});
@@ -35,53 +38,14 @@ class _MeMoWidgetState extends State<MeMoWidget> {
             return Stack(
               children: [
                 Positioned(
-                  bottom: 141,
-                  left: 6,
-                  right: 8,
+                  top: 266.h,
+                  left: 8.w,
+                  right: 8.w,
                   child: Stack(
                     children: [
-                      Container(
+                      CustomContainer(
                         width: 344.w,
                         height: 380.h,
-                        margin: EdgeInsets.all(3),
-                        decoration: BoxDecoration(
-                          color: Colors.transparent,
-                          border: GradientBoxBorder(
-                            width: 1,
-                            gradient: LinearGradient(
-                              colors: [
-                                Colors.white.withOpacity(0.5),
-                                Colors.white.withOpacity(0.2)
-                              ],
-                            ),
-                          ),
-                          borderRadius: BorderRadius.circular(10.r),
-                        ),
-                        child: BlurryContainer(
-                          blur: 12,
-                          elevation: 0,
-                          borderRadius: BorderRadius.circular(10.r),
-                          child: Container(),
-                        ),
-                      ),
-                      Opacity(
-                        opacity: 0.4,
-                        child: Container(
-                          width: 344.w,
-                          height: 380.h,
-                          margin: EdgeInsets.all(3),
-                          decoration: BoxDecoration(
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color(0x4C000000),
-                                  blurRadius: 1,
-                                  offset: Offset(1, 1),
-                                  spreadRadius: 0,
-                                )
-                              ],
-                              color: Color(0x3300287C),
-                              borderRadius: BorderRadius.circular(10.r)),
-                        ),
                       ),
                       Positioned(
                         top: 12,
@@ -116,7 +80,7 @@ class _MeMoWidgetState extends State<MeMoWidget> {
                               maxLines: null,
                               decoration: InputDecoration(
                                 hintText: '내용 입력',
-                                hintStyle: Gray(14.sp, FontWeight.w500),
+                                hintStyle: whiteOpacity(14.sp, FontWeight.w500),
                                 enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide.none),
                                 border: OutlineInputBorder(
@@ -134,7 +98,7 @@ class _MeMoWidgetState extends State<MeMoWidget> {
                             ),
                           )),
                       Positioned(
-                          bottom: 70,
+                          top: 316,
                           left: 12,
                           right: 12,
                           child: Container(
@@ -143,13 +107,13 @@ class _MeMoWidgetState extends State<MeMoWidget> {
                                 border: Border(
                                     bottom: BorderSide(
                                         width: 2.w,
-                                        color: Colors.white.withOpacity(0.4)))),
+                                        color: Colors.white.withOpacity(0.5)))),
                           )),
                       Positioned(
-                        bottom: 10,
-                        left: 6,
-                        child: Container(child: AlarmSaveButtonWidget()),
-                      )
+                          top: 307.h,
+                          left: 8.w,
+                          right: 8.w,
+                          child: SaveButton(content: '저장', action: () {}))
                     ],
                   ),
                 ),
@@ -169,55 +133,13 @@ class _MeMoWidgetState extends State<MeMoWidget> {
       },
       child: Stack(
         children: [
-          Container(
+          CustomContainer(
             width: 168.w,
             height: 64.h,
-            margin: EdgeInsets.only(top: 3),
-            decoration: BoxDecoration(
-              color:
-                  state2 ? Colors.white.withOpacity(0.2) : Colors.transparent,
-              border: GradientBoxBorder(
-                width: 1,
-                gradient: LinearGradient(
-                  colors: [
-                    Colors.white.withOpacity(0.5),
-                    Colors.white.withOpacity(0.2)
-                  ],
-                ),
-              ),
-              borderRadius: BorderRadius.circular(10.r),
-            ),
-            child: state2
-                ? Container()
-                : BlurryContainer(
-                    blur: 12,
-                    elevation: 0,
-                    borderRadius: BorderRadius.circular(10.r),
-                    child: Container(),
-                  ),
-          ),
-          Opacity(
-            opacity: 0.4,
-            child: Container(
-              margin: EdgeInsets.only(top: 5),
-              width: 168.w,
-              height: 64.h,
-              decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0x26000000),
-                      blurRadius: 1,
-                      offset: Offset(1, 1),
-                      spreadRadius: 0,
-                    )
-                  ],
-                  color: Color(0x3300287C),
-                  borderRadius: BorderRadius.circular(10.r)),
-            ),
           ),
           Positioned(
-            left: 32,
-            top: 18,
+            left: 30.w,
+            bottom: 18.h,
             child: Container(
               width: 88.w,
               height: 32.h,

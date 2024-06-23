@@ -5,8 +5,10 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
+import 'package:glass_kit/glass_kit.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
+import 'package:petmate/View/Invite/public_mate.dart';
 import 'package:petmate/View/Notice/notice.dart';
 import 'package:petmate/View/Alarm/alarm.dart';
 
@@ -21,7 +23,7 @@ class _MainAlramState extends State<MainAlram> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 40, bottom: 5, left: 3),
+      padding: const EdgeInsets.only(top: 40),
       child: GestureDetector(
         onTap: () {
           Get.to(() => AlarmPage());
@@ -31,236 +33,188 @@ class _MainAlramState extends State<MainAlram> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Stack(
-                children: [
-                  Container(
-                    width: 200.w,
-                    height: 40.h,
-                    margin: EdgeInsets.symmetric(horizontal: 3),
-                    decoration: BoxDecoration(
-                      border: GradientBoxBorder(
-                        width: 1,
-                        gradient: LinearGradient(
-                          colors: [
-                            Colors.white.withOpacity(0.5),
-                            Colors.white.withOpacity(0.2)
-                          ],
-                        ),
-                      ),
-                      borderRadius: BorderRadius.circular(20.r),
-                    ),
-                    child: BlurryContainer(
-                      blur: 12,
-                      elevation: 0,
-                      borderRadius: BorderRadius.circular(20.r),
-                      child: Container(),
-                    ),
-                  ),
-                  Opacity(
-                    opacity: 0.4,
-                    child: Container(
-                      margin: EdgeInsets.symmetric(horizontal: 5, vertical: 2),
-                      width: 200.w,
-                      height: 40.h,
-                      decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color(0x26000000),
-                              blurRadius: 2,
-                              offset: Offset(2, 2),
-                            )
-                          ],
-                          color: Color(0x3300287C),
-                          borderRadius: BorderRadius.circular(20.r)),
-                    ),
-                  ),
-                  Positioned(
-                    top: 10,
-                    left: 10,
-                    child: Container(
-                      width: 175.w,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Image.asset('assets/Main/Clock.png'),
-                          Opacity(
-                            opacity: 0.6,
-                            child: Text(
-                              '알람 등록시 표시됩니다.',
-                              style: TextStyle(
-                                  fontFamily: 'Pretendard',
-                                  fontSize: 14.sp,
-                                  color: Colors.white),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
+              GlassContainer(
+                width: 200.w,
+                height: 40.h,
+                color: Color(0xff00297C).withOpacity(0.2),
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.transparent,
+                    Colors.white.withOpacity(0.2),
+                  ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+                borderGradient: LinearGradient(
+                  colors: [
+                    Colors.white.withOpacity(0.5),
+                    Colors.white.withOpacity(0.2),
+                    Colors.white.withOpacity(0.2),
+                    Colors.white.withOpacity(0.2),
+                  ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  stops: [0.10, 0.30, 0.40, 0.0],
+                ),
+                blur: 12,
+                borderRadius: BorderRadius.circular(20.r),
+                borderWidth: 1.w,
+                elevation: 0,
+                boxShadow: [
+                  BoxShadow(
+                    color: Color(0x26000000),
+                    blurRadius: 2,
+                    offset: Offset(2, 2),
                   )
                 ],
-              ),
-              Stack(
-                children: [
-                  Container(
-                    width: 40,
-                    height: 40,
-                    margin: EdgeInsets.symmetric(horizontal: 2),
-                    decoration: BoxDecoration(
-                      border: GradientBoxBorder(
-                        width: 1,
-                        gradient: LinearGradient(
-                          colors: [
-                            Colors.white.withOpacity(0.5),
-                            Colors.white.withOpacity(0.20000000298023224)
-                          ],
-                        ),
+                shadowColor: Color(0x26000000),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      width: 12.w,
+                    ),
+                    Image.asset('assets/Main/Clock.png'),
+                    SizedBox(
+                      width: 8.w,
+                    ),
+                    Opacity(
+                      opacity: 0.6,
+                      child: Text(
+                        '알람 등록시 표시됩니다.',
+                        style: TextStyle(
+                            fontFamily: 'Pretendard',
+                            fontSize: 14.sp,
+                            color: Colors.white),
                       ),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                  ),
-                  Opacity(
-                    opacity: 0.4,
-                    child: Container(
-                      width: 40.w,
-                      height: 40.h,
-                      margin: EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-                      decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color(0x26000000),
-                              blurRadius: 2,
-                              offset: Offset(2, 2),
-                            )
-                          ],
-                          color: Color(0x3300287C),
-                          borderRadius: BorderRadius.circular(20.r)),
-                    ),
-                  ),
-                  Positioned(
-                      left: 15,
-                      top: 7,
-                      child: GestureDetector(
-                        onTap: () {},
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              "assets/Main/Fire.png",
-                            ),
-                            Text(
-                              '0',
-                              style: White(10.sp, FontWeight.w500),
-                            ),
-                          ],
-                        ),
-                      ))
-                ],
+                    )
+                  ],
+                ),
               ),
-              Stack(
-                children: [
-                  Container(
-                    width: 40.w,
-                    height: 40.h,
-                    margin: EdgeInsets.symmetric(horizontal: 2),
-                    decoration: BoxDecoration(
-                      border: GradientBoxBorder(
-                        width: 1,
-                        gradient: LinearGradient(
-                          colors: [
-                            Colors.white.withOpacity(0.5),
-                            Colors.white.withOpacity(0.20000000298023224)
-                          ],
-                        ),
-                      ),
-                      borderRadius: BorderRadius.circular(20.r),
-                    ),
+              GlassContainer(
+                  width: 40.w,
+                  height: 40.h,
+                  color: Color(0xff00297C).withOpacity(0.2),
+                  gradient: LinearGradient(
+                    colors: [Colors.transparent, Colors.white.withOpacity(0.2)],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
                   ),
-                  Opacity(
-                    opacity: 0.4,
-                    child: Container(
-                      width: 40.w,
-                      height: 40.h,
-                      margin: EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-                      decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color(0x26000000),
-                              blurRadius: 2,
-                              offset: Offset(2, 2),
-                            )
-                          ],
-                          color: Color(0x3300287C),
-                          borderRadius: BorderRadius.circular(20.r)),
-                    ),
+                  borderGradient: LinearGradient(
+                    colors: [
+                      Colors.white.withOpacity(0.5),
+                      Colors.white.withOpacity(0.2),
+                      Colors.white.withOpacity(0.2),
+                      Colors.white.withOpacity(0.2),
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    stops: [0.10, 0.30, 0.40, 0.0],
                   ),
-                  Positioned(
-                      left: 13,
-                      top: 10,
-                      child: GestureDetector(
-                        onTap: () {},
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              "assets/Main/invite.png",
-                            ),
-                          ],
+                  blur: 12,
+                  borderRadius: BorderRadius.circular(20.r),
+                  borderWidth: 1.w,
+                  elevation: 0,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Color(0x26000000),
+                      blurRadius: 2,
+                      offset: Offset(2, 2),
+                    )
+                  ],
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          "assets/Main/Fire.png",
                         ),
-                      ))
-                ],
-              ),
-              Stack(
-                children: [
-                  Container(
-                    width: 40.w,
-                    height: 40.h,
-                    margin: EdgeInsets.symmetric(horizontal: 2),
-                    decoration: BoxDecoration(
-                      border: GradientBoxBorder(
-                        width: 1,
-                        gradient: LinearGradient(
-                          colors: [
-                            Colors.white.withOpacity(0.5),
-                            Colors.white.withOpacity(0.20000000298023224)
-                          ],
+                        Text(
+                          '0',
+                          style: White(10.sp, FontWeight.w500),
                         ),
-                      ),
-                      borderRadius: BorderRadius.circular(20.r),
+                      ],
                     ),
+                  )),
+              GlassContainer(
+                  width: 40.w,
+                  height: 40.h,
+                  color: Color(0xff00297C).withOpacity(0.2),
+                  gradient: LinearGradient(
+                    colors: [Colors.transparent, Colors.white.withOpacity(0.2)],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
                   ),
-                  Opacity(
-                    opacity: 0.4,
-                    child: Container(
-                      width: 40.w,
-                      height: 40.h,
-                      margin: EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-                      decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color(0x26000000),
-                              blurRadius: 2.r,
-                              offset: Offset(2, 2),
-                            )
-                          ],
-                          color: Color(0x3300287C),
-                          borderRadius: BorderRadius.circular(20.r)),
+                  borderGradient: LinearGradient(
+                    colors: [
+                      Colors.white.withOpacity(0.5),
+                      Colors.white.withOpacity(0.2),
+                      Colors.white.withOpacity(0.2),
+                      Colors.white.withOpacity(0.2),
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    stops: [0.10, 0.30, 0.40, 0.0],
+                  ),
+                  blur: 12,
+                  borderRadius: BorderRadius.circular(20.r),
+                  borderWidth: 1.w,
+                  elevation: 0,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Color(0x26000000),
+                      blurRadius: 2,
+                      offset: Offset(2, 2),
+                    )
+                  ],
+                  child: GestureDetector(
+                    onTap: () {
+                      Get.to(() => PublicMate());
+                    },
+                    child: Image.asset(
+                      "assets/Main/invite.png",
                     ),
+                  )),
+              GlassContainer(
+                  width: 40.w,
+                  height: 40.h,
+                  color: Color(0xff00297C).withOpacity(0.2),
+                  gradient: LinearGradient(
+                    colors: [Colors.transparent, Colors.white.withOpacity(0.2)],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
                   ),
-                  Positioned(
-                      left: 12,
-                      top: 10,
-                      child: GestureDetector(
-                        onTap: () {
-                          Get.to(() => NoticePage());
-                        },
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              "assets/Main/notification.png",
-                            ),
-                          ],
-                        ),
-                      ))
-                ],
-              ),
+                  borderGradient: LinearGradient(
+                    colors: [
+                      Colors.white.withOpacity(0.5),
+                      Colors.white.withOpacity(0.2),
+                      Colors.white.withOpacity(0.2),
+                      Colors.white.withOpacity(0.2),
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    stops: [0.10, 0.30, 0.40, 0.0],
+                  ),
+                  blur: 12,
+                  borderRadius: BorderRadius.circular(20.r),
+                  borderWidth: 1.w,
+                  elevation: 0,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Color(0x26000000),
+                      blurRadius: 2,
+                      offset: Offset(2, 2),
+                    )
+                  ],
+                  child: GestureDetector(
+                    onTap: () {
+                      Get.to(() => NoticePage());
+                    },
+                    child: Image.asset(
+                      "assets/Main/notification.png",
+                    ),
+                  )),
             ],
           ),
         ),

@@ -31,7 +31,7 @@ class _GenderTypeState extends State<GenderType> {
           Container(
             width: 154.w,
             height: 40.h,
-            margin: EdgeInsets.all(4),
+            margin: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
             decoration: BoxDecoration(
               color: button == i ? Colors.white : Colors.transparent,
               border: GradientBoxBorder(
@@ -55,7 +55,7 @@ class _GenderTypeState extends State<GenderType> {
           Opacity(
             opacity: 0.4,
             child: Container(
-              margin: EdgeInsets.all(4),
+              margin: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               width: 154.w,
               height: 40.h,
               decoration: BoxDecoration(
@@ -74,7 +74,7 @@ class _GenderTypeState extends State<GenderType> {
             ),
           ),
           Positioned(
-            left: 71,
+            left: 75,
             top: 12,
             child: Text(
               gender[i],

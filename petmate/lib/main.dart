@@ -54,7 +54,6 @@ void main() async {
         }),
         debugShowCheckedModeBanner: false,
         home: MainPage(),
-        // home: WeatherWigdget(),
       ),
     ),
   );

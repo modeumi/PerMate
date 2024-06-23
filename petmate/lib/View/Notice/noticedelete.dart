@@ -6,8 +6,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
-import 'package:petmate/Widget/bottom_bar/bottom_navigationbar.dart';
-import 'package:petmate/Widget/button/deleted_button.dart';
+import 'package:petmate/Widget/bottom_navigation_bar/bottom_navigationbar.dart';
+import 'package:petmate/Widget/button/deletedbutton/notice_deleted_button.dart';
+import 'package:petmate/Widget/custom_appbar.dart';
 import 'package:petmate/Widget/notice/NotificationContainer2.dart';
 import 'package:petmate/Widget/notice/noticfication_check_deleted.dart';
 import 'package:petmate/Widget/notice/notification_container.dart';
@@ -21,13 +22,25 @@ class NoticeDeleted extends StatefulWidget {
 }
 
 class _NoticeDeletedState extends State<NoticeDeleted> {
-  bool state = false;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
+      extendBodyBehindAppBar: true,
+      appBar: CustomAppbar(
+        title: '알림',
+        action: [
+          Spacer(),
+          GestureDetector(
+            onTap: () {
+              Get.to(NoticeDeleted());
+            },
+            child: Image.asset('assets/alert/delete(24).png'),
+          ),
+        ],
+      ),
       body: Container(
-        width:360.w,
+        width: 360.w,
         height: 850.h,
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -39,54 +52,26 @@ class _NoticeDeletedState extends State<NoticeDeleted> {
             Column(
               children: [
                 SizedBox(
-                  height: 20.h,
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                  child: Container(
-                    width: 360.w,
-                    height: 45.h,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            Get.back();
-                          },
-                          child: Image.asset('assets/alert/back.png'),
-                        ),
-                        Text('알림',
-                            textAlign: TextAlign.center,
-                            style: White(20.sp, FontWeight.w600)),
-                        GestureDetector(
-                          child: Image.asset('assets/alert/delete(24).png'),
-                        ),
-                      ],
-                    ),
-                  ),
+                  height: 60,
                 ),
                 NotificationWidget(),
                 Expanded(
-                  child: ListView(
-                    children: [
-                      NotificationCheckDeleted(),
-                      NotificationCheckDeleted(),
-                      NotificationCheckDeleted(),
-                    ],
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: List.generate(1000, (index) {
+                          return NotificationCheckDeleted();
+                        })),
                   ),
                 ),
               ],
             ),
-            Positioned(bottom: 75, left: 10, child: DeletedButtonWidget()),
-            Positioned(
-                bottom: 0,
-                left: 0,
-                right: 0,
-                child: CustomBottomNavigationBar())
+            Positioned(bottom: 75, left: 10, child: NoticeDeletedButton()),
           ],
         ),
       ),
+      bottomNavigationBar: CustomBottomNavigationBar(),
     );
   }
 }

@@ -8,8 +8,8 @@ import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:petmate/Controller/navigation_controller.dart';
-import 'package:petmate/Widget/bottom_bar/bottom_navigationbar.dart';
-import 'package:petmate/Widget/bottom_bar/map_bottom_navigation.dart';
+import 'package:petmate/Widget/bottom_navigation_bar/bottom_navigationbar.dart';
+import 'package:petmate/Widget/bottom_navigation_bar/map_bottom_navigation.dart';
 import 'package:petmate/Widget/custom_appbar.dart';
 
 import 'package:petmate/Widget/map/location_search.dart';

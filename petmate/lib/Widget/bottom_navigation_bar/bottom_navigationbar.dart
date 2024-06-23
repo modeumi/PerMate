@@ -8,6 +8,7 @@ import 'package:petmate/Controller/navigation_controller.dart';
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/View/Community/community_main.dart';
 import 'package:petmate/View/Map/naver_map.dart';
+import 'package:petmate/View/MyPage/mypage.dart';
 import 'package:petmate/View/mainpage.dart';
 
 class CustomBottomNavigationBar extends GetView<BottomNavigationBarController> {
@@ -27,7 +28,7 @@ class CustomBottomNavigationBar extends GetView<BottomNavigationBarController> {
                     state2 ? Colors.white.withOpacity(0.2) : Colors.transparent,
                 border: Border(
                   top: BorderSide(
-                      color: Colors.white.withOpacity(0.5), width: 1),
+                      color: Colors.white.withOpacity(0.5), width: 1.w),
                 ),
                 borderRadius: BorderRadius.circular(10),
               ),
@@ -62,7 +63,7 @@ class CustomBottomNavigationBar extends GetView<BottomNavigationBarController> {
               width: 360.h,
               height: 62.w,
               padding: EdgeInsets.symmetric(
-                horizontal: 12,
+                horizontal: 12.h,
               ),
               child: BottomNavigationBar(
                 backgroundColor: Colors.transparent,
@@ -105,12 +106,12 @@ class CustomBottomNavigationBar extends GetView<BottomNavigationBarController> {
                     icon: controller.selectedIndex.value == 2
                         ? Image.asset(
                             'assets/gnbicon(map)/gnbicon (1).png',
-                            height: 35,
+                            height: 35.h,
                             width: 24.w,
                           )
                         : Image.asset(
                             'assets/gnbicon/map.png',
-                            height: 35,
+                            height: 35.h,
                             width: 24.w,
                           ),
                     label: "지도",
@@ -119,12 +120,12 @@ class CustomBottomNavigationBar extends GetView<BottomNavigationBarController> {
                       icon: controller.selectedIndex.value == 3
                           ? Image.asset(
                               'assets/gnbicon/chat (2).png',
-                              height: 35,
+                              height: 35.h,
                               width: 24.w,
                             )
                           : Image.asset(
                               'assets/gnbicon/chat (1).png',
-                              height: 35,
+                              height: 35.h,
                               width: 24.w,
                             ),
                       label: "커뮤니티"),
@@ -132,12 +133,12 @@ class CustomBottomNavigationBar extends GetView<BottomNavigationBarController> {
                       icon: controller.selectedIndex.value == 4
                           ? Image.asset(
                               'assets/gnbicon/user (2).png',
-                              height: 35,
+                              height: 35.h,
                               width: 24.w,
                             )
                           : Image.asset(
                               'assets/gnbicon/user (1).png',
-                              height: 35,
+                              height: 35.h,
                               width: 24.w,
                             ),
                       label: "마이페이지"),
@@ -158,7 +159,7 @@ class CustomBottomNavigationBar extends GetView<BottomNavigationBarController> {
                       Get.to(() => CommunityMain());
                       break;
                     case 4:
-                      // Get.to(() => MyPage());
+                      Get.to(() => Mypage());
                       break;
                     default:
                   }

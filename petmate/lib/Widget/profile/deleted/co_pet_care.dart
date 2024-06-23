@@ -68,7 +68,7 @@ class _CoPetCareWidgetState extends State<CoPetCareWidget> {
                 borderRadius: BorderRadius.circular(20.r)),
           ),
         ),
-        Positioned(left: 7, top: 7, child: Image.asset('assets/edit/user.png')),
+        Positioned(left: 7.w, top: 7.h, child: Image.asset('assets/edit/user.png')),
       ],
     );
   }

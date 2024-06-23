@@ -3,12 +3,12 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
-import 'package:petmate/Widget/bottom_bar/bottom_navigationbar.dart';
+import 'package:petmate/Widget/bottom_navigation_bar/bottom_navigationbar.dart';
 import 'package:petmate/Widget/main/add_alarm.dart';
 import 'package:petmate/Widget/main/add_memo.dart';
 import 'package:petmate/Widget/main/log/log.dart';
 import 'package:petmate/Widget/main/main_alram.dart';
-import 'package:petmate/Widget/main/memo.dart';
+import 'package:petmate/Widget/main/memo/memo.dart';
 import 'package:petmate/Widget/main/profile.dart';
 import 'package:petmate/Widget/main/profile_info.dart';
 
@@ -29,6 +29,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       body: Container(
         width: double.infinity,
         height: 812.h,
@@ -37,57 +38,59 @@ class _MainPageState extends State<MainPage> {
               image: AssetImage('assets/Main/Background.png'),
               fit: BoxFit.fill),
         ),
-        child: Stack(
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                MainAlram(),
-                ProfilePlus(),
-                SizedBox(
-                  height: 30.h,
-                ),
-                ProfileInfoWidget(),
-                SizedBox(
-                  height: 8.h,
-                ),
-                WeatherWigdget(),
-                MemoWriteWidget(),
-                Center(
-                  child: Container(
-                    width: 342.w,
-                    height: 142.h,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            LogWidget(),
-                            WalkWidget(),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            AlarmWidget(),
-                            MeMoWidget(),
-                          ],
-                        ),
-                      ],
-                    ),
+        child: Container(
+          child: Column(
+            children: [
+              MainAlram(),
+              SizedBox(
+                height: 8.h,
+              ),
+              ProfilePlus(),
+              SizedBox(
+                height: 12.h,
+              ),
+              ProfileInfoWidget(),
+              SizedBox(
+                height: 12.h,
+              ),
+              WeatherWigdget(),
+              SizedBox(
+                height: 12.h,
+              ),
+              MemoWriteWidget(),
+              SizedBox(
+                height: 12.h,
+              ),
+              Center(
+                child: Container(
+                  width: 344.w,
+                  height: 135.h,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          LogWidget(),
+                          WalkWidget(),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          AlarmWidget(),
+                          MeMoWidget(),
+                        ],
+                      ),
+                    ],
                   ),
-                )
-              ],
-            ),
-            Positioned(
-                bottom: 0,
-                left: 0,
-                right: 0,
-                child: CustomBottomNavigationBar())
-          ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
+      bottomNavigationBar: CustomBottomNavigationBar(),
     );
   }
 }

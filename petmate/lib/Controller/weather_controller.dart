@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
@@ -8,7 +9,6 @@ import 'package:http/http.dart' as http;
 import 'package:petmate/Util/textstyles.dart';
 
 class WeatherController extends GetxController {
-
   // Weather
   Widget buildWeatherIcon(int? code) {
     if (code == null) {
@@ -36,12 +36,27 @@ class WeatherController extends GetxController {
     }
   }
 
+  // Widget buildPetIcon(String weatherMain) {
+  //   if (weatherMain == 'Rain' || weatherMain == 'Snow') {
+  //     return Image.asset('assets/Main/home.png');
+  //   } else {
+  //     return Image.asset('assets/Main/pet.png');
+  //   }
+  // }
+
   Widget buildPetIcon(String weatherMain) {
-    if (weatherMain == 'Rain' || weatherMain == 'Snow') {
-      return Image.asset('assets/Main/home.png');
-    } else {
-      return Image.asset('assets/Main/pet.png');
+    String assetPath;
+
+    switch (weatherMain) {
+      case 'Rain':
+      case 'Snow':
+        assetPath = 'assets/Main/home.png';
+        break;
+      default:
+        assetPath = 'assets/Main/pet.png';
     }
+
+    return Image.asset(assetPath);
   }
 
   String getWatherStatus(String weatherMain) {
@@ -100,11 +115,11 @@ class WeatherController extends GetxController {
     }
   }
 
-
-
   Future<WeatherModel?> getWeather() async {
+    Position position = await fetchLocationName();
     String WeatherData =
-        "https://api.openweathermap.org/data/2.5/weather?q=suwon&appid=fd8662804c1d7656890c88c001f601a7&units=metric";
+        'https://api.openweathermap.org/data/2.5/weather?lat=${position.latitude}&lon=${position.longitude}&limit&appid=fd8662804c1d7656890c88c001f601a7&units=metric';
+    // "https://api.openweathermap.org/data/2.5/weather?q=suwon&appid=fd8662804c1d7656890c88c001f601a7&units=metric";
     try {
       final response = await http.get(Uri.parse(WeatherData));
 
@@ -133,8 +148,10 @@ class WeatherController extends GetxController {
   }
 
   Future<AirModel?> getAir() async {
+    Position position = await fetchLocationName();
     String airData =
-        "http://api.openweathermap.org/data/2.5/air_pollution?lat=37.2911&lon=127.0089&appid=fd8662804c1d7656890c88c001f601a7";
+        "http://api.openweathermap.org/data/2.5/air_pollution?lat=${position.latitude}&lon=${position.longitude}&appid=fd8662804c1d7656890c88c001f601a7";
+    // "http://api.openweathermap.org/data/2.5/air_pollution?lat=37.2911&lon=127.0089&appid=fd8662804c1d7656890c88c001f601a7";
     try {
       final response = await http.get(Uri.parse(airData));
       if (response.statusCode == 200) {
@@ -154,5 +171,26 @@ class WeatherController extends GetxController {
     }
   }
 
-  
+  Future<Position> fetchLocationName() async {
+    bool serivceEnabled = true;
+    LocationPermission permission;
+
+    serivceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serivceEnabled) {
+      return Future.error('Location services are disabled');
+    }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        return Future.error('Location permissions are denied');
+      }
+    }
+    if (permission == LocationPermission.deniedForever) {
+      return Future.error('error');
+    }
+    return await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+  }
 }

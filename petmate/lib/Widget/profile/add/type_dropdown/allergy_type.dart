@@ -47,6 +47,7 @@ class _AllergyTypeState extends State<AllergyType> {
           child: DropdownButton(
             iconSize: 25,
             menuMaxHeight: 168,
+            dropdownColor: Colors.white,
             iconEnabledColor: Color(0xffCCCCCC),
             borderRadius: BorderRadius.circular(10.r),
             underline: SizedBox.shrink(),
