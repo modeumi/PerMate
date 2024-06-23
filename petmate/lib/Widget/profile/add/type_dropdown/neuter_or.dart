@@ -1,5 +1,6 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 
 class NeuterOr extends StatefulWidget {
@@ -28,13 +29,13 @@ class _NeuterOrState extends State<NeuterOr> {
         },
         child: Stack(children: [
           Container(
-            width: 100,
-            height: 40,
+            width: 100.w,
+            height: 40.h,
             margin: EdgeInsets.all(4),
             decoration: BoxDecoration(
               color: button == i ? Colors.white : Colors.transparent,
               border: GradientBoxBorder(
-                width: 1,
+                width: 1.w,
                 gradient: LinearGradient(
                   colors: [
                     Colors.white.withOpacity(0.5),
@@ -42,7 +43,7 @@ class _NeuterOrState extends State<NeuterOr> {
                   ],
                 ),
               ),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(10.r),
             ),
             // child: BlurryContainer(
             //   blur: 12,
@@ -55,8 +56,8 @@ class _NeuterOrState extends State<NeuterOr> {
             opacity: 0.4,
             child: Container(
               margin: EdgeInsets.all(4),
-              width: 100,
-              height: 40,
+              width: 100.w,
+              height: 40.h,
               decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
@@ -69,18 +70,18 @@ class _NeuterOrState extends State<NeuterOr> {
                     )
                   ],
                   color: Color(0x3300287C),
-                  borderRadius: BorderRadius.circular(10)),
+                  borderRadius: BorderRadius.circular(10.r)),
             ),
           ),
           Positioned(
             top: 14,
             child: Container(
-              width: 110,
+              width: 110.w,
               child: Text(
                 gender[i],
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    fontSize: 14,
+                    fontSize: 14.sp,
                     fontWeight: FontWeight.w500,
                     color: button == i ? Color(0xFF303030) : Colors.white,
                     fontFamily: 'Pretendard'),

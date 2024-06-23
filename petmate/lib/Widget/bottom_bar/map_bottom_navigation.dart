@@ -1,9 +1,11 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:gradient_borders/gradient_borders.dart';
 import 'package:petmate/Controller/navigation_controller.dart';
+import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/View/Map/naver_map.dart';
 import 'package:petmate/View/mainpage.dart';
 
@@ -17,8 +19,8 @@ class MapBottomNavigationBar extends GetView<BottomNavigationBarController> {
     return Obx(() => Stack(
           children: [
             Container(
-              width: double.infinity,
-              height: 64,
+              width: 360.w,
+              height: 64.h,
               decoration: BoxDecoration(
                 color: state2
                     ? Colors.white.withOpacity(0.2)
@@ -28,22 +30,22 @@ class MapBottomNavigationBar extends GetView<BottomNavigationBarController> {
                       color: Colors.white.withOpacity(0.20000000298023224),
                       width: 1),
                 ),
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(10.r),
               ),
               child: state2
                   ? Container()
                   : BlurryContainer(
                       blur: 12,
                       elevation: 0,
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(10.r),
                       child: Container(),
                     ),
             ),
             Opacity(
               opacity: 0.2,
               child: Container(
-                width: double.infinity,
-                height: 64,
+                width: 360.w,
+                height: 64.h,
                 decoration: BoxDecoration(
                     boxShadow: [
                       BoxShadow(
@@ -58,38 +60,32 @@ class MapBottomNavigationBar extends GetView<BottomNavigationBarController> {
               ),
             ),
             Container(
-              width: 350,
-              height: 65,
+              width: 360.w,
+              height: 62.h,
+              padding: EdgeInsets.symmetric(
+                horizontal: 12,
+              ),
               child: BottomNavigationBar(
                 backgroundColor: Colors.transparent,
                 elevation: 0,
                 currentIndex: controller.selectedIndex.value,
                 unselectedItemColor: Color(0xFFB7B7B7),
                 selectedItemColor: Color(0xFF5A8FE1),
-                unselectedLabelStyle: TextStyle(
-                  fontFamily: 'Pretendard',
-                  fontSize: 10,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w500,
-                ),
-                selectedLabelStyle: TextStyle(
-                  fontSize: 10,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w600,
-                ),
+                unselectedLabelStyle: White(10.sp, FontWeight.w500),
+                selectedLabelStyle: White(10.sp, FontWeight.w600),
                 type: BottomNavigationBarType.fixed,
                 items: <BottomNavigationBarItem>[
                   BottomNavigationBarItem(
                     icon: controller.selectedIndex.value == 0
                         ? Image.asset(
                             'assets/gnbicon/home (2).png',
-                            height: 30,
-                            width: 24,
+                            height: 30.h,
+                            width: 24.w,
                           )
                         : Image.asset(
                             'assets/gnbicon(map)/gnbicon (4).png',
-                            height: 30,
-                            width: 24,
+                            height: 30.h,
+                            width: 24.w,
                           ),
                     label: "홈",
                   ),
@@ -97,52 +93,52 @@ class MapBottomNavigationBar extends GetView<BottomNavigationBarController> {
                       icon: controller.selectedIndex.value == 1
                           ? Image.asset(
                               'assets/gnbicon/record (2).png',
-                              height: 30,
-                              width: 24,
+                              height: 30.h,
+                              width: 24.w,
                             )
                           : Image.asset(
                               'assets/gnbicon(map)/gnbicon (5).png',
-                              height: 30,
-                              width: 24,
+                              height: 30.h,
+                              width: 24.w,
                             ),
                       label: "기록"),
                   BottomNavigationBarItem(
                       icon: controller.selectedIndex.value == 2
                           ? Image.asset(
                               'assets/gnbicon(map)/gnbicon (1).png',
-                              height: 30,
-                              width: 24,
+                              height: 30.h,
+                              width: 24.w,
                             )
                           : Image.asset(
                               'assets/gnbicon/map.png',
-                              height: 30,
-                              width: 24,
+                              height: 30.h,
+                              width: 24.w,
                             ),
                       label: "지도"),
                   BottomNavigationBarItem(
                       icon: controller.selectedIndex.value == 3
                           ? Image.asset(
                               'assets/gnbicon/chat (2).png',
-                              height: 30,
-                              width: 24,
+                              height: 30.h,
+                              width: 24.w,
                             )
                           : Image.asset(
                               'assets/gnbicon(map)/gnbicon (3).png',
-                              height: 30,
-                              width: 24,
+                              height: 30.h,
+                              width: 24.w,
                             ),
                       label: "커뮤니티"),
                   BottomNavigationBarItem(
                       icon: controller.selectedIndex.value == 4
                           ? Image.asset(
                               'assets/gnbicon/user (2).png',
-                              height: 30,
-                              width: 24,
+                              height: 30.h,
+                              width: 24.w,
                             )
                           : Image.asset(
                               'assets/gnbicon(map)/gnbicon (2).png',
-                              height: 30,
-                              width: 24,
+                              height: 30.h,
+                              width: 24.w,
                             ),
                       label: "마이페이지"),
                 ],

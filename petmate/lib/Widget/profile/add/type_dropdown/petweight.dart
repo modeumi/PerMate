@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:petmate/Util/textstyles.dart';
 
 class PetWeight extends StatefulWidget {
@@ -38,8 +39,8 @@ class _PetWeightState extends State<PetWeight> {
   Widget build(BuildContext context) {
     return Stack(children: [
       Container(
-        width: 320,
-        height: 40,
+        width: 320.w,
+        height: 40.h,
         margin: EdgeInsets.all(4),
         decoration: BoxDecoration(
           color: Colors.white,
@@ -52,7 +53,7 @@ class _PetWeightState extends State<PetWeight> {
           //     ],
           //   ),
           // ),
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(10.r),
         ),
         child: TextField(
           controller: _textEditingController,
@@ -60,7 +61,7 @@ class _PetWeightState extends State<PetWeight> {
           textAlign: TextAlign.center,
           decoration: InputDecoration(
             hintText: '-- KG',
-            hintStyle: Gray(14, FontWeight.w500),
+            hintStyle: Gray(14.sp, FontWeight.w500),
             enabledBorder: UnderlineInputBorder(borderSide: BorderSide.none),
             border: OutlineInputBorder(borderSide: BorderSide.none),
             contentPadding: EdgeInsets.fromLTRB(1, 0, 0, 10),
@@ -69,7 +70,7 @@ class _PetWeightState extends State<PetWeight> {
           style: TextStyle(
             color: Colors.black,
             decorationThickness: 0,
-            fontSize: 14,
+            fontSize: 14.sp,
             fontWeight: FontWeight.w500,
             fontFamily: 'Pretendard',
           ),

@@ -2,6 +2,7 @@ import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_advanced_switch/flutter_advanced_switch.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
@@ -29,7 +30,7 @@ class _ToggleButtonWidgetState extends State<ToggleButtonWidget> {
             decoration: BoxDecoration(
               color: Color(0x3300287C),
               border: GradientBoxBorder(
-                width: 1,
+                width: 1.w,
                 gradient: LinearGradient(
                   colors: [
                     Colors.white.withOpacity(0.5),
@@ -37,14 +38,14 @@ class _ToggleButtonWidgetState extends State<ToggleButtonWidget> {
                   ],
                 ),
               ),
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(20.r),
             ),
             child: AdvancedSwitch(
-              width: 48,
-              height: 24,
+              width: 48.w,
+              height: 24.h,
               thumb: Container(
-                width: 20,
-                height: 20,
+                width: 20.w,
+                height: 20.h,
                 decoration: ShapeDecoration(
                     color: check ? Color(0xFFC9C9C9) : Color(0xFF2B80FF),
                     shape: OvalBorder(),

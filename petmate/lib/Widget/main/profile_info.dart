@@ -4,6 +4,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
@@ -40,144 +41,168 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: 72,
-      child: Stack(
-        children: [
-          Container(
-            width: double.infinity,
-            height: 72,
-            margin: EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              border: GradientBoxBorder(
-                width: 1,
-                gradient: LinearGradient(
-                  colors: [
-                    Colors.white.withOpacity(0.5),
-                    Colors.white.withOpacity(0.2)
-                  ],
-                ),
-              ),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: BlurryContainer(
-              blur: 12,
-              elevation: 0,
-              borderRadius: BorderRadius.circular(10),
-              child: Container(),
-            ),
-          ),
-          Opacity(
-            opacity: 0.4,
-            child: Container(
-              margin: EdgeInsets.all(8),
-              width: double.infinity,
-              height: 72,
-              decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0x26000000),
-                      blurRadius: 2,
-                      offset: Offset(2, 2),
-                    )
-                  ],
-                  color: Colors.white.withOpacity(0.8),
-                  borderRadius: BorderRadius.circular(10)),
-            ),
-          ),
-          Positioned(
-              left: 8,
-              child: Container(
-                  child:
-                      Image.asset('assets/banner/InformationBanner (1).png'))),
-          Positioned(
-            bottom: 8,
-            left: 160,
-            child: DotsIndicator(
-              dotsCount: textList.length,
-              position: _currentPage,
-              mainAxisAlignment: MainAxisAlignment.center,
-              decorator: DotsDecorator(
-                  color: Colors.black.withOpacity(0.4),
-                  activeColor: Colors.black,
-                  size: Size(4, 4),
-                  activeSize: Size(4, 4),
-                  spacing: EdgeInsets.only(right: 3)),
-            ),
-          ),
-          Positioned(
-              top: 8,
-              left: 24,
-              child: Text('정보', style: Black(12, FontWeight.w500))),
-          Positioned(
-            top: 8,
-            right: 17,
-            child: Container(
-              width: 42,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('더보기', style: Black(10, FontWeight.w600)),
-                  Image.asset('assets/Main/left.png')
+    return Stack(
+      children: [
+        Container(
+          width: 344.w,
+          height: 72.h,
+          margin: EdgeInsets.symmetric(horizontal: 8, vertical: 0),
+          decoration: BoxDecoration(
+            border: GradientBoxBorder(
+              width: 1.w,
+              gradient: LinearGradient(
+                colors: [
+                  Colors.white.withOpacity(0.5),
+                  Colors.white.withOpacity(0.2)
                 ],
               ),
             ),
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.white.withOpacity(0.8),
           ),
-          Positioned(
-              left: 38, top: 28, child: Image.asset('assets/Main/bigleft.png')),
-          Positioned(
-            left: 49,
-            top: 30,
-            child: Container(
-              width: 265,
-              height: 27,
-              child: PageView.builder(
-                controller: _controller,
-                itemCount: textList.length,
-                itemBuilder: (context, index) {
-                  return CarouselSlider(
-                    carouselController: _carouselController,
-                    options: CarouselOptions(
-                      height: 50,
-                      initialPage: 0,
-                      enableInfiniteScroll: true,
-                      autoPlay: true,
-                      viewportFraction: 1.0,
-                      autoPlayInterval: Duration(seconds: 5),
-                      autoPlayAnimationDuration: Duration(milliseconds: 800),
-                      enlargeCenterPage: true,
-                      onPageChanged: (index, reason) {
-                        setState(() {
-                          _currentPage = index;
-                        });
-                      },
-                      scrollDirection: Axis.horizontal,
-                    ),
-                    items: textList.map((text) {
-                      return Builder(builder: (BuildContext context) {
-                        return Column(
-                          children: [
-                            Text(
-                              text,
-                              style: Black(14, FontWeight.w500),
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ],
-                        );
-                      });
-                    }).toList(),
-                  );
-                },
-              ),
+          child: BlurryContainer(
+            blur: 12,
+            elevation: 0,
+            borderRadius: BorderRadius.circular(10),
+            child: Container(),
+          ),
+        ),
+        Opacity(
+          opacity: 0.8,
+          child: Container(
+            margin: EdgeInsets.symmetric(horizontal: 8, vertical: 1),
+            width: 344.w,
+            height: 72.h,
+            decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Color(0x26000000),
+                    blurRadius: 2.r,
+                    offset: Offset(2, 2),
+                  )
+                ],
+                color: Colors.white.withOpacity(0.8),
+                borderRadius: BorderRadius.circular(10.r)),
+          ),
+        ),
+        Positioned(
+          top: 15,
+          left: 0,
+          child: Container(
+            width: 360.w,
+            height: 77.h,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ClipRRect(
+                  borderRadius:
+                      const BorderRadius.only(bottomLeft: Radius.circular(40)),
+                  child: Image.asset(
+                    'assets/Main/dog.png',
+                    width: 60.w,
+                    height: 60.h,
+                  ),
+                ),
+                ClipRRect(
+                  borderRadius:
+                      const BorderRadius.only(bottomRight: Radius.circular(42)),
+                  child: Image.asset(
+                    'assets/Main/cat.png',
+                    width: 60.w,
+                    height: 60.h,
+                  ),
+                ),
+              ],
             ),
           ),
-          Positioned(
-              left: 320,
-              top: 28,
-              child: Image.asset('assets/Main/bigright.png')),
-        ],
-      ),
+        ),
+        Positioned(
+          bottom: 8,
+          left: 160,
+          child: DotsIndicator(
+            dotsCount: textList.length,
+            position: _currentPage,
+            mainAxisAlignment: MainAxisAlignment.center,
+            decorator: DotsDecorator(
+                color: Colors.black.withOpacity(0.4),
+                activeColor: Colors.black,
+                size: const Size(4, 4),
+                activeSize: const Size(4, 4),
+                spacing: const EdgeInsets.only(right: 4)),
+          ),
+        ),
+        Positioned(
+            top: 6,
+            left: 18,
+            child: Text('정보', style: Black(12.sp, FontWeight.w500))),
+        Positioned(
+          top: 6,
+          right: 18,
+          child: SizedBox(
+            width: 42.w,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('더보기', style: Black(10.sp, FontWeight.w600)),
+                Image.asset(
+                  'assets/Main/left.png',
+                  width: 12.w,
+                  height: 12.h,
+                )
+              ],
+            ),
+          ),
+        ),
+        Positioned(
+          top: 20,
+          left: 30,
+          child: Container(
+            width: 295.w,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Image.asset(
+                  'assets/Main/bigleft.png',
+                  width: 24.w,
+                  height: 24.h,
+                ),
+                Image.asset('assets/Main/bigright.png')
+              ],
+            ),
+          ),
+        ),
+        Positioned(
+          left: 44,
+          top: 25,
+          child: SizedBox(
+              width: 275.w,
+              height: 27.h,
+              child: CarouselSlider.builder(
+                  itemCount: textList.length,
+                  itemBuilder: (context, index, realIdx) {
+                    return Center(
+                      child: Text(
+                        textList[index],
+                        style: Black(14.sp, FontWeight.w500),
+                      ),
+                    );
+                  },
+                  options: CarouselOptions(
+                    height: 50.h,
+                    initialPage: 0,
+                    enableInfiniteScroll: true,
+                    autoPlay: true,
+                    viewportFraction: 10,
+                    autoPlayInterval: const Duration(seconds: 5),
+                    onPageChanged: (index, reason) {
+                      setState(() {
+                        _currentPage = index;
+                      });
+                    },
+                  ))),
+        ),
+      ],
     );
   }
 }

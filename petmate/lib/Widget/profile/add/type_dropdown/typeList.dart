@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Model/TypeList/dogtype.dart';
 import 'package:petmate/Util/textstyles.dart';
@@ -38,8 +39,8 @@ class _TypeListState extends State<TypeList> {
   Widget build(BuildContext context) {
     return Stack(children: [
       Container(
-        width: 320,
-        height: 40,
+        width: 320.w,
+        height: 40.h,
         margin: EdgeInsets.all(4),
         decoration: BoxDecoration(
           color: Colors.white,
@@ -52,7 +53,7 @@ class _TypeListState extends State<TypeList> {
               ],
             ),
           ),
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(10.r),
         ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -62,16 +63,16 @@ class _TypeListState extends State<TypeList> {
             iconEnabledColor: Color(0xffCCCCCC),
             borderRadius: BorderRadius.circular(10),
             underline: SizedBox.shrink(),
-            style: Black(14, FontWeight.w500),
+            style: Black(14.sp, FontWeight.w500),
             isExpanded: true,
             value: _selectedDogType,
             hint: Container(
               padding: const EdgeInsets.fromLTRB(45, 0, 8, 0),
-              width: 280,
+              width: 280.w,
               color: Colors.white,
               child: Text('반려동물의 품종을 선택해주세요.',
                   textAlign: TextAlign.center,
-                  style: Gray(14, FontWeight.w500)),
+                  style: Gray(14.sp, FontWeight.w500)),
             ),
             items: dogs.map<DropdownMenuItem<String>>((DogList breed) {
               return DropdownMenuItem<String>(

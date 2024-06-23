@@ -4,6 +4,7 @@ import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
 
@@ -21,15 +22,15 @@ class _CoPetCareWidgetState extends State<CoPetCareWidget> {
     return Stack(
       children: [
         Container(
-          width: 24,
-          height: 24,
+          width: 24.w,
+          height: 24.h,
           margin: EdgeInsets.all(2),
           decoration: BoxDecoration(
             color: state
                 ? Colors.white.withOpacity(0.8)
                 : Colors.white.withOpacity(0.1),
             border: GradientBoxBorder(
-              width: 1,
+              width: 1.w,
               gradient: LinearGradient(
                 colors: [
                   Colors.white.withOpacity(0.5),
@@ -37,14 +38,14 @@ class _CoPetCareWidgetState extends State<CoPetCareWidget> {
                 ],
               ),
             ),
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(20.r),
           ),
           child: state
               ? Container()
               : BlurryContainer(
                   blur: 12,
                   elevation: 0,
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(20.r),
                   child: Container(),
                 ),
         ),
@@ -52,8 +53,8 @@ class _CoPetCareWidgetState extends State<CoPetCareWidget> {
           opacity: 0.4,
           child: Container(
             margin: EdgeInsets.all(3),
-            width: 24,
-            height: 24,
+            width: 24.w,
+            height: 24.h,
             decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
@@ -64,7 +65,7 @@ class _CoPetCareWidgetState extends State<CoPetCareWidget> {
                   )
                 ],
                 color: Color(0x3300287C),
-                borderRadius: BorderRadius.circular(20)),
+                borderRadius: BorderRadius.circular(20.r)),
           ),
         ),
         Positioned(left: 7, top: 7, child: Image.asset('assets/edit/user.png')),

@@ -4,12 +4,14 @@ import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
-import 'package:petmate/View/Profile.dart/edit_profile.dart';
-import 'package:petmate/View/Profile.dart/add_profile.dart';
+import 'package:petmate/View/Profile/edit_pet_list.dart';
+import 'package:petmate/View/Profile/upload_profile.dart';
 
 class ProfilePlus extends StatefulWidget {
   const ProfilePlus({super.key});
@@ -27,45 +29,21 @@ class _ProfilePlusState extends State<ProfilePlus> {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Stack(
-              clipBehavior: Clip.none,
-              children: [
-                Opacity(
-                  opacity: 0.4,
-                  child: Container(
-                    width: 60,
-                    height: 60,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Color(0x26000000),
-                          offset: Offset(2, 2),
-                        )
-                      ],
-                      color: Color(0x3300287C),
-                    ),
-                  ),
-                ),
-                InkWell(
-                  onTapDown: (_) {
-                    setState(() {
-                      state1 = true;
-                    });
-                  },
-                  onTapUp: (_) {
-                    setState(() {
-                      state1 = false;
-                    });
-                    Get.to(() => AddProfilePage());
-                  },
-                  child: Container(
-                    width: 60,
-                    height: 60,
+            GestureDetector(
+              onTap: () {
+                Get.to(() => UploadProfilePage());
+              },
+              child: Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  Container(
+                    width: 60.w,
+                    height: 60.h,
+                    margin: EdgeInsets.symmetric(horizontal: 3),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: state1
@@ -84,58 +62,50 @@ class _ProfilePlusState extends State<ProfilePlus> {
                     child: BlurryContainer(
                       blur: 12,
                       elevation: 0,
-                      borderRadius: BorderRadius.circular(50),
-                      child: Image.asset('assets/edit/plus.png'),
+                      borderRadius: BorderRadius.circular(50.r),
+                      child: Image.asset('assets/Main/add.png'),
                     ),
                   ),
-                ),
-                Positioned(
-                  bottom: -23,
-                  left: 11,
-                  child: Text('추가하기',
-                      textAlign: TextAlign.center,
-                      style: White(12, FontWeight.w500)),
-                ),
-              ],
-            ),
-            SizedBox(
-              width: 8,
-            ),
-            Stack(
-              clipBehavior: Clip.none,
-              children: [
-                Opacity(
-                  opacity: 0.4,
-                  child: Container(
-                    width: 60,
-                    height: 60,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Color(0x26000000),
-                          offset: Offset(2, 2),
-                        )
-                      ],
-                      color: Color(0x3300287C),
+                  Opacity(
+                    opacity: 0.4,
+                    child: Container(
+                      width: 60.w,
+                      height: 60.h,
+                      margin: EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                            blurRadius: 2,
+                            color: Color(0x26000000),
+                            offset: Offset(2, 2),
+                          )
+                        ],
+                        color: Color(0x3300287C),
+                      ),
                     ),
                   ),
-                ),
-                InkWell(
-                  onTapDown: (_) {
-                    setState(() {
-                      state2 = true;
-                    });
-                  },
-                  onTapUp: (_) {
-                    setState(() {
-                      state2 = false;
-                    });
-                    Get.to(() => EditProfilePage());
-                  },
-                  child: Container(
-                    width: 60,
-                    height: 60,
+                  Positioned(
+                    bottom: -20,
+                    left: 11,
+                    child: Text('추가하기',
+                        textAlign: TextAlign.center,
+                        style: White(12.sp, FontWeight.w500)),
+                  ),
+                ],
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                Get.to(() => EditPetListPage());
+              },
+              child: Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  Container(
+                    width: 60.w,
+                    height: 60.h,
+                    margin: EdgeInsets.symmetric(horizontal: 3),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: state2
@@ -154,19 +124,37 @@ class _ProfilePlusState extends State<ProfilePlus> {
                     child: BlurryContainer(
                       blur: 12,
                       elevation: 0,
-                      borderRadius: BorderRadius.circular(50),
+                      borderRadius: BorderRadius.circular(50.r),
                       child: Image.asset('assets/Main/edit.png'),
                     ),
                   ),
-                ),
-                Positioned(
-                  bottom: -23,
-                  left: 11,
-                  child: Text('수정하기',
-                      textAlign: TextAlign.center,
-                      style: White(12, FontWeight.w500)),
-                ),
-              ],
+                  Opacity(
+                    opacity: 0.4,
+                    child: Container(
+                      width: 60.w,
+                      height: 60.h,
+                      margin: EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color(0x26000000),
+                            offset: Offset(2, 2),
+                          )
+                        ],
+                        color: Color(0x3300287C),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    bottom: -20,
+                    left: 11,
+                    child: Text('수정하기',
+                        textAlign: TextAlign.center,
+                        style: White(12.sp, FontWeight.w500)),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

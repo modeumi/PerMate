@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 TextStyle Black(double size, FontWeight weight) {
   return TextStyle(
       fontSize: size,
@@ -32,6 +33,15 @@ TextStyle Gray(double size, FontWeight weight) {
     fontWeight: weight,
   );
 }
+
+TextStyle whiteOpacity(double size, FontWeight weight) {
+  return TextStyle(
+      fontSize: size,
+      fontWeight: weight,
+      color: Colors.white.withOpacity(0.6),
+      fontFamily: 'Pretendard');
+}
+
 
 TextStyle Custom(double size, FontWeight weight, Color color) {
   return TextStyle(

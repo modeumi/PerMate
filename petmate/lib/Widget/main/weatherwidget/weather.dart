@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
@@ -39,8 +40,10 @@ class _WeatherWigdgetState extends State<WeatherWigdget> {
           desiredAccuracy: LocationAccuracy.high);
       setState(() {
         _currentPosition = position;
-        print("데이터 확인: $position");
+        print("위치: $position");
       });
+      await weatherController.getWeather();
+      await weatherController.getAir();
     } catch (e) {
       print('Error while fetching location: $e');
     }
@@ -53,8 +56,8 @@ class _WeatherWigdgetState extends State<WeatherWigdget> {
         Opacity(
           opacity: 0.4,
           child: Container(
-            width: 344,
-            height: 172,
+            width: 344.w,
+            height: 172.h,
             margin: EdgeInsets.symmetric(horizontal: 8, vertical: 7),
             decoration: BoxDecoration(
                 boxShadow: [
@@ -66,16 +69,16 @@ class _WeatherWigdgetState extends State<WeatherWigdget> {
                       blurStyle: BlurStyle.outer)
                 ],
                 color: const Color(0x3300287C),
-                borderRadius: BorderRadius.circular(10)),
+                borderRadius: BorderRadius.circular(10.r)),
           ),
         ),
         Container(
-          width: 344,
-          height: 172,
-          margin: EdgeInsets.symmetric(horizontal: 8, vertical: 7),
+          width: 344.w,
+          height: 172.h,
+          margin: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
           decoration: BoxDecoration(
             border: GradientBoxBorder(
-              width: 1,
+              width: 1.w,
               gradient: LinearGradient(
                 colors: [
                   Colors.white.withOpacity(0.5),
@@ -86,7 +89,7 @@ class _WeatherWigdgetState extends State<WeatherWigdget> {
             borderRadius: BorderRadius.circular(10),
           ),
           child: FutureBuilder<WeatherModel?>(
-            future: getWeather(),
+            future: weatherController.getWeather(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Center(
@@ -103,13 +106,13 @@ class _WeatherWigdgetState extends State<WeatherWigdget> {
                       left: 12,
                       top: 10,
                       child: Container(
-                        width: 320,
+                        width: 320.w,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text('날씨', style: White(12, FontWeight.w600)),
                             Container(
-                              width: 50,
+                              width: 50.w,
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
@@ -134,7 +137,6 @@ class _WeatherWigdgetState extends State<WeatherWigdget> {
                     Positioned(
                       left: 9,
                       top: 38,
-                      // child: controller.image,
                       child: weatherController.buildWeatherIcon(weather.code),
                     ),
                     Positioned(
@@ -142,8 +144,8 @@ class _WeatherWigdgetState extends State<WeatherWigdget> {
                       top: 44,
                       bottom: 70,
                       child: Container(
-                        width: 50,
-                        height: 64,
+                        width: 50.w,
+                        height: 64.h,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
@@ -169,13 +171,13 @@ class _WeatherWigdgetState extends State<WeatherWigdget> {
                             Opacity(
                                 opacity: 0.6,
                                 child: Text('강수 확률',
-                                    style: White(10, FontWeight.w500))),
+                                    style: White(10.sp, FontWeight.w500))),
                             Text(
                                 weather.rain != null
                                     // weatherMain == 'Rain' || weatherMain == 'Snow'
                                     ? '${weather.rain!.round()}%'
                                     : '0%',
-                                style: White(14, FontWeight.w500)),
+                                style: White(14.sp, FontWeight.w500)),
                             Container(
                               width: 58,
                               height: 16,
@@ -184,7 +186,7 @@ class _WeatherWigdgetState extends State<WeatherWigdget> {
                                   color: const Color(0xFF62BDFF)),
                               child: Text('습도: ${weather.humidity}%',
                                   textAlign: TextAlign.center,
-                                  style: White(10, FontWeight.w500)),
+                                  style: White(10.sp, FontWeight.w500)),
                             ),
                           ],
                         ),

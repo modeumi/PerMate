@@ -2,6 +2,7 @@ import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
@@ -38,8 +39,8 @@ class _SharePetDeletedWidgetState extends State<SharePetDeletedWidget> {
         Padding(
           padding: const EdgeInsets.only(left: 12, top: 10),
           child: Container(
-            width: 118,
-            height: 29,
+            width: 118.w,
+            height: 29.h,
             child: Text('공유받은 반려동물',
                 textAlign: TextAlign.center, style: White(16, FontWeight.w600)),
           ),
@@ -49,8 +50,8 @@ class _SharePetDeletedWidgetState extends State<SharePetDeletedWidget> {
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 1),
               child: Stack(children: [
                 Container(
-                  width: 344,
-                  height: 80,
+                  width: 344.w,
+                  height: 80.h,
                   margin: EdgeInsets.all(1),
                   decoration: BoxDecoration(
                     color: state2
@@ -65,14 +66,14 @@ class _SharePetDeletedWidgetState extends State<SharePetDeletedWidget> {
                         ],
                       ),
                     ),
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(10.r),
                   ),
                   child: state2
                       ? Container()
                       : BlurryContainer(
                           blur: 12,
                           elevation: 0,
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(10.r),
                           child: Container(),
                         ),
                 ),
@@ -80,8 +81,8 @@ class _SharePetDeletedWidgetState extends State<SharePetDeletedWidget> {
                   opacity: 0.4,
                   child: Container(
                     margin: EdgeInsets.all(3),
-                    width: 344,
-                    height: 80,
+                    width: 344.w,
+                    height: 80.h,
                     decoration: BoxDecoration(
                         boxShadow: [
                           BoxShadow(
@@ -92,7 +93,7 @@ class _SharePetDeletedWidgetState extends State<SharePetDeletedWidget> {
                           )
                         ],
                         color: Color(0x3300287C),
-                        borderRadius: BorderRadius.circular(10)),
+                        borderRadius: BorderRadius.circular(10.r)),
                   ),
                 ),
                 Positioned(
@@ -112,13 +113,13 @@ class _SharePetDeletedWidgetState extends State<SharePetDeletedWidget> {
                                 : 'assets/alert/check_default.png'),
                           ),
                           SizedBox(
-                            width: 11,
+                            width: 11.w,
                           ),
                           Stack(
                             children: [
                               Container(
-                                width: 60,
-                                height: 60,
+                                width: 60.w,
+                                height: 60.h,
                                 margin: EdgeInsets.all(1),
                                 decoration: BoxDecoration(
                                   color: state2
@@ -133,14 +134,15 @@ class _SharePetDeletedWidgetState extends State<SharePetDeletedWidget> {
                                       ],
                                     ),
                                   ),
-                                  borderRadius: BorderRadius.circular(30),
+                                  borderRadius: BorderRadius.circular(30.r),
                                 ),
                                 child: state2
                                     ? Container()
                                     : BlurryContainer(
                                         blur: 12,
                                         elevation: 0,
-                                        borderRadius: BorderRadius.circular(30),
+                                        borderRadius:
+                                            BorderRadius.circular(30.r),
                                         child: Container(),
                                       ),
                               ),
@@ -160,7 +162,8 @@ class _SharePetDeletedWidgetState extends State<SharePetDeletedWidget> {
                                         )
                                       ],
                                       color: Colors.white,
-                                      borderRadius: BorderRadius.circular(30)),
+                                      borderRadius:
+                                          BorderRadius.circular(30.r)),
                                 ),
                               ),
                               Positioned(
@@ -174,27 +177,27 @@ class _SharePetDeletedWidgetState extends State<SharePetDeletedWidget> {
                   left: 112,
                   top: 10,
                   child: Container(
-                    width: 101,
-                    height: 60,
+                    width: 101.w,
+                    height: 60.h,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           name[i],
-                          style: White(14, FontWeight.w600),
+                          style: White(14.sp, FontWeight.w600),
                         ),
                         SizedBox(
-                          height: 4,
+                          height: 4.h,
                         ),
                         Row(
                           children: [
                             Text(
                               type[i],
-                              style: White(12, FontWeight.w500),
+                              style: White(12.sp, FontWeight.w500),
                             ),
                             SizedBox(
-                              width: 3,
+                              width: 3.w,
                             ),
                             Image.asset('assets/edit/Male.png'),
                           ],
@@ -204,11 +207,11 @@ class _SharePetDeletedWidgetState extends State<SharePetDeletedWidget> {
                           children: [
                             Text(
                               old[i],
-                              style: White(12, FontWeight.w500),
+                              style: White(12.sp, FontWeight.w500),
                             ),
                             Text(
                               yymm[i],
-                              style: White(12, FontWeight.w500),
+                              style: White(12.sp, FontWeight.w500),
                             ),
                           ],
                         )
@@ -218,7 +221,7 @@ class _SharePetDeletedWidgetState extends State<SharePetDeletedWidget> {
                 ),
               ])),
         SizedBox(
-          height: 135,
+          height: 135.h,
         )
       ],
     );

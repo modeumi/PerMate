@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:get/get.dart';
 import 'package:petmate/Widget/bottom_bar/bottom_navigationbar.dart';
 import 'package:petmate/Widget/main/add_alarm.dart';
@@ -10,7 +12,7 @@ import 'package:petmate/Widget/main/memo.dart';
 import 'package:petmate/Widget/main/profile.dart';
 import 'package:petmate/Widget/main/profile_info.dart';
 
-import 'package:petmate/Widget/main/walk.dart';
+import 'package:petmate/Widget/main/walk/walk.dart';
 import 'package:petmate/Controller/navigation_controller.dart';
 import 'package:petmate/Widget/main/weatherwidget/weather.dart';
 
@@ -29,7 +31,7 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       body: Container(
         width: double.infinity,
-        height: 812,
+        height: 812.h,
         decoration: BoxDecoration(
           image: DecorationImage(
               image: AssetImage('assets/Main/Background.png'),
@@ -43,31 +45,39 @@ class _MainPageState extends State<MainPage> {
                 MainAlram(),
                 ProfilePlus(),
                 SizedBox(
-                  height: 35,
+                  height: 30.h,
                 ),
                 ProfileInfoWidget(),
                 SizedBox(
-                  height: 5,
+                  height: 8.h,
                 ),
                 WeatherWigdget(),
                 MemoWriteWidget(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    LogWidget(),
-                    WalkWidget(),
-                  ],
-                ),
-                SizedBox(
-                  height: 2,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    AlarmWidget(),
-                    MeMoWidget(),
-                  ],
-                ),
+                Center(
+                  child: Container(
+                    width: 342.w,
+                    height: 142.h,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            LogWidget(),
+                            WalkWidget(),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            AlarmWidget(),
+                            MeMoWidget(),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                )
               ],
             ),
             Positioned(

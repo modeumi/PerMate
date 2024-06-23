@@ -1,6 +1,7 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
@@ -19,8 +20,8 @@ class _SaveButton2WidgetState extends State<SaveButton2Widget> {
     return Stack(
       children: [
         Container(
-          width: 320,
-          height: 52,
+          width: 320.w,
+          height: 52.h,
           margin: EdgeInsets.all(4),
           decoration: BoxDecoration(
             color: Color(0xFF2B80FF),
@@ -33,12 +34,12 @@ class _SaveButton2WidgetState extends State<SaveButton2Widget> {
                 ],
               ),
             ),
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(10.r),
           ),
           child: BlurryContainer(
             blur: 12,
             elevation: 0,
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(10.r),
             child: Container(),
           ),
         ),
@@ -46,8 +47,8 @@ class _SaveButton2WidgetState extends State<SaveButton2Widget> {
           opacity: 0.8,
           child: Container(
             margin: EdgeInsets.all(4),
-            width: 320,
-            height: 52,
+            width: 320.w,
+            height: 52.h,
             decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
@@ -58,7 +59,7 @@ class _SaveButton2WidgetState extends State<SaveButton2Widget> {
                   )
                 ],
                 color: Color(0xFF2B80FF),
-                borderRadius: BorderRadius.circular(10)),
+                borderRadius: BorderRadius.circular(10.r)),
           ),
         ),
         Positioned(
@@ -66,7 +67,7 @@ class _SaveButton2WidgetState extends State<SaveButton2Widget> {
           top: 20,
           child: Text(
             '저장',
-            style: White(16, FontWeight.w600),
+            style: White(16.sp, FontWeight.w600),
           ),
         )
       ],

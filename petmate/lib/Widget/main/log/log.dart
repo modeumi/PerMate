@@ -2,6 +2,7 @@ import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
@@ -38,18 +39,18 @@ class _LogWidgetState extends State<LogWidget> {
                 child: Stack(
                   children: [
                     Positioned(
-                      top: 195,
+                      top: 190,
                       left: 8,
                       right: 8,
                       child: Stack(
                         children: [
                           Container(
-                            width: 344,
-                            height: 380,
+                            width: 344.w,
+                            height: 380.h,
                             decoration: BoxDecoration(
                               color: Colors.transparent,
                               border: GradientBoxBorder(
-                                width: 1,
+                                width: 1.w,
                                 gradient: LinearGradient(
                                   colors: [
                                     Colors.white.withOpacity(0.5),
@@ -57,20 +58,20 @@ class _LogWidgetState extends State<LogWidget> {
                                   ],
                                 ),
                               ),
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(10.r),
                             ),
                             child: BlurryContainer(
                               blur: 12,
                               elevation: 0,
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(10.r),
                               child: Container(),
                             ),
                           ),
                           Opacity(
                             opacity: 0.4,
                             child: Container(
-                              width: 344,
-                              height: 380,
+                              width: 344.w,
+                              height: 380.h,
                               decoration: BoxDecoration(
                                   boxShadow: [
                                     BoxShadow(
@@ -81,31 +82,31 @@ class _LogWidgetState extends State<LogWidget> {
                                     )
                                   ],
                                   color: Color(0x3300287C),
-                                  borderRadius: BorderRadius.circular(10)),
+                                  borderRadius: BorderRadius.circular(10.r)),
                             ),
                           ),
                           Positioned(
                             top: 12,
                             left: 12,
                             child: Text(
-                              '기록하기',
-                              style: White(16, FontWeight.w600),
+                              '기록 하기',
+                              style: White(16.sp, FontWeight.w600),
                             ),
                           ),
                           Positioned(
-                            top: 48,
+                            top: 45,
                             left: 35,
                             right: 20,
                             child: Container(
-                              width: 344,
-                              height: 308,
+                              width: 344.w,
+                              height: 380.h,
                               child: GridView(
                                 gridDelegate:
                                     SliverGridDelegateWithFixedCrossAxisCount(
                                         crossAxisCount: 3,
                                         mainAxisExtent: 72,
                                         crossAxisSpacing: 8.0,
-                                        mainAxisSpacing: 36.0),
+                                        mainAxisSpacing: 40.0),
                                 children: [
                                   InkWell(
                                     onTap: () {},
@@ -189,6 +190,7 @@ class _LogWidgetState extends State<LogWidget> {
                         ],
                       ),
                     ),
+                    // Positioned(bottom: 142, left: 5, child: LogWidget())
                   ],
                 ));
           },
@@ -209,7 +211,7 @@ class _LogWidgetState extends State<LogWidget> {
           Container(
             width: 168,
             height: 64,
-            margin: EdgeInsets.fromLTRB(3, 0, 3, 3),
+            margin: EdgeInsets.only(top: 3),
             decoration: BoxDecoration(
               color: state ? Colors.white : Colors.transparent,
               border: GradientBoxBorder(
@@ -237,7 +239,7 @@ class _LogWidgetState extends State<LogWidget> {
           Opacity(
             opacity: 0.4,
             child: Container(
-              margin: EdgeInsets.all(4),
+              margin: EdgeInsets.only(top: 5),
               width: 168,
               height: 64,
               decoration: BoxDecoration(
@@ -254,8 +256,8 @@ class _LogWidgetState extends State<LogWidget> {
             ),
           ),
           Positioned(
-            left: 36,
-            top: 16,
+            left: 32,
+            top: 18,
             child: Container(
               width: 88,
               height: 32,

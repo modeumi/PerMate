@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
 
@@ -25,8 +26,8 @@ class _AllergyTypeState extends State<AllergyType> {
   Widget build(BuildContext context) {
     return Stack(children: [
       Container(
-        width: 320,
-        height: 40,
+        width: 320.w,
+        height: 40.h,
         margin: EdgeInsets.all(4),
         decoration: BoxDecoration(
           color: Colors.white,
@@ -39,7 +40,7 @@ class _AllergyTypeState extends State<AllergyType> {
               ],
             ),
           ),
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(10.r),
         ),
         child: Padding(
           padding: const EdgeInsets.all(8),
@@ -47,17 +48,17 @@ class _AllergyTypeState extends State<AllergyType> {
             iconSize: 25,
             menuMaxHeight: 168,
             iconEnabledColor: Color(0xffCCCCCC),
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(10.r),
             underline: SizedBox.shrink(),
-            style: Black(14, FontWeight.w500),
+            style: Black(14.sp, FontWeight.w500),
             isExpanded: true,
             value: _selectedType.isNotEmpty ? _selectedType : null,
             hint: Container(
-              width: 280,
+              width: 280.w,
               padding: const EdgeInsets.fromLTRB(48, 0, 8, 0),
               child: Text('보유 알러지를 선택해주세요.',
                   textAlign: TextAlign.center,
-                  style: Gray(14, FontWeight.w600)),
+                  style: Gray(14.sp, FontWeight.w600)),
             ),
             items: TypeList.map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(

@@ -1,6 +1,7 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:petmate/Util/textstyles.dart';
 
@@ -44,8 +45,8 @@ class _ShareDeletedButtonWidgetState extends State<ShareDeletedButtonWidget> {
               child: Stack(
                 children: [
                   Container(
-                    width: 360,
-                    height: 186,
+                    width: 360.w,
+                    height: 186.h,
                     decoration: BoxDecoration(
                       color: state
                           ? Colors.white.withOpacity(0.2)
@@ -57,13 +58,13 @@ class _ShareDeletedButtonWidgetState extends State<ShareDeletedButtonWidget> {
                         : BlurryContainer(
                             blur: 12,
                             elevation: 0,
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(10.r),
                             child: Container(),
                           ),
                   ),
                   Container(
-                    width: 360,
-                    height: 186,
+                    width: 360.w,
+                    height: 186.h,
                     decoration: ShapeDecoration(
                       color: Colors.white.withOpacity(0.8),
                       shape: RoundedRectangleBorder(
@@ -72,31 +73,25 @@ class _ShareDeletedButtonWidgetState extends State<ShareDeletedButtonWidget> {
                           color: Colors.white.withOpacity(0.2),
                         ),
                         borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(10),
-                          topRight: Radius.circular(10),
+                          topLeft: Radius.circular(10.r),
+                          topRight: Radius.circular(10.r),
                         ),
                       ),
                     ),
                     child: Stack(
                       children: [
                         Container(
-                          width: 100,
-                          height: 48,
+                          width: 100.w,
+                          height: 48.w,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               SizedBox(
-                                width: 5,
+                                width: 5.w,
                               ),
                               Image.asset('assets/alert/delete(14).png'),
                               DefaultTextStyle(
-                                style: TextStyle(
-                                  color: Color(0xFF303030),
-                                  fontSize: 14,
-                                  fontFamily: 'Pretendard',
-                                  fontWeight: FontWeight.w600,
-                                  height: 0,
-                                ),
+                                style:Black(14.sp, FontWeight.w600),
                                 child: Text('삭제하기'),
                               ),
                             ],
@@ -106,26 +101,16 @@ class _ShareDeletedButtonWidgetState extends State<ShareDeletedButtonWidget> {
                           top: 45,
                           left: 20,
                           child: DefaultTextStyle(
-                              style: TextStyle(
-                                color: Color(0xFF303030),
-                                fontSize: 12,
-                                fontFamily: 'Pretendard',
-                                fontWeight: FontWeight.w500,
-                              ),
+                              style: Black(12.sp, FontWeight.w500),
                               child: Text('반려동물을 목록에서 삭제할까요?')),
                         ),
                         Positioned(
                           top: 64,
                           left: 20,
                           child: Container(
-                            width: 195,
+                            width: 195.w,
                             child: DefaultTextStyle(
-                                style: TextStyle(
-                                  color: Color(0xFF303030),
-                                  fontSize: 12,
-                                  fontFamily: 'Pretendard',
-                                  fontWeight: FontWeight.w500,
-                                ),
+                                style: Black(12.sp, FontWeight.w500),
                                 child: Text('목록에서 삭제한 후에는 복구할수 없어요.')),
                           ),
                         ),
@@ -133,17 +118,12 @@ class _ShareDeletedButtonWidgetState extends State<ShareDeletedButtonWidget> {
                           top: 88,
                           left: 20,
                           child: Container(
-                            width: 242,
-                            height: 14,
+                            width: 242.w,
+                            height: 14.h,
                             child: Opacity(
                               opacity: 0.6,
                               child: DefaultTextStyle(
-                                  style: TextStyle(
-                                    color: Color(0xFF303030),
-                                    fontSize: 12,
-                                    fontFamily: 'Pretendard',
-                                    fontWeight: FontWeight.w500,
-                                  ),
+                                  style: Black(12.sp, FontWeight.w500),
                                   child: Text('*공유받은 반려동물 삭제는 공유 상태가 해제됩니다.')),
                             ),
                           ),
@@ -158,8 +138,8 @@ class _ShareDeletedButtonWidgetState extends State<ShareDeletedButtonWidget> {
                                   Get.back();
                                 },
                                 child: Container(
-                                  width: 156,
-                                  height: 48,
+                                  width: 156.w,
+                                  height: 48.h,
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 16, vertical: 12),
                                   decoration: ShapeDecoration(
@@ -167,8 +147,8 @@ class _ShareDeletedButtonWidgetState extends State<ShareDeletedButtonWidget> {
                                         .withOpacity(0.800000011920929),
                                     shape: RoundedRectangleBorder(
                                       side: BorderSide(
-                                          width: 1, color: Color(0x332B80FF)),
-                                      borderRadius: BorderRadius.circular(10),
+                                          width: 1.w, color: Color(0x332B80FF)),
+                                      borderRadius: BorderRadius.circular(10.r),
                                     ),
                                   ),
                                   child: Column(
@@ -178,12 +158,7 @@ class _ShareDeletedButtonWidgetState extends State<ShareDeletedButtonWidget> {
                                         CrossAxisAlignment.center,
                                     children: [
                                       DefaultTextStyle(
-                                          style: TextStyle(
-                                            color: Color(0xFF2B80FF),
-                                            fontSize: 15,
-                                            fontFamily: 'Pretendard',
-                                            fontWeight: FontWeight.w600,
-                                          ),
+                                          style: Blue(15.sp, FontWeight.w600),
                                           child: Text('취소')),
                                     ],
                                   ),
@@ -209,15 +184,15 @@ class _ShareDeletedButtonWidgetState extends State<ShareDeletedButtonWidget> {
                                   });
                                 },
                                 child: Container(
-                                  width: 156,
-                                  height: 48,
+                                  width: 156.w,
+                                  height: 48.h,
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 16, vertical: 12),
                                   decoration: ShapeDecoration(
                                     color: Color(0xFF2B80FF),
                                     shape: RoundedRectangleBorder(
                                       side: BorderSide(
-                                        width: 1,
+                                        width: 1.w,
                                         color: Colors.white
                                             .withOpacity(0.20000000298023224),
                                       ),
@@ -231,7 +206,7 @@ class _ShareDeletedButtonWidgetState extends State<ShareDeletedButtonWidget> {
                                         CrossAxisAlignment.center,
                                     children: [
                                       DefaultTextStyle(
-                                          style: White(15, FontWeight.w600),
+                                          style: White(15.sp, FontWeight.w600),
                                           child: Text('삭제하기')),
                                     ],
                                   ),
@@ -257,16 +232,16 @@ class _ShareDeletedButtonWidgetState extends State<ShareDeletedButtonWidget> {
     return Stack(
       children: [
         Container(
-          width: 344,
-          height: 60,
+          width: 344.w,
+          height: 60.h,
           decoration: ShapeDecoration(
             color: Colors.white.withOpacity(0.8),
             shape: RoundedRectangleBorder(
               side: BorderSide(
-                width: 1,
+                width: 1.w,
                 color: Colors.white.withOpacity(0.2),
               ),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(10.r),
             ),
             shadows: [
               BoxShadow(
@@ -281,8 +256,8 @@ class _ShareDeletedButtonWidgetState extends State<ShareDeletedButtonWidget> {
         Opacity(
           opacity: 0.8,
           child: Container(
-            width: 344,
-            height: 60,
+            width: 344.w,
+            height: 60.h,
             decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
@@ -293,7 +268,7 @@ class _ShareDeletedButtonWidgetState extends State<ShareDeletedButtonWidget> {
                   )
                 ],
                 color: Colors.white.withOpacity(0.8),
-                borderRadius: BorderRadius.circular(10)),
+                borderRadius: BorderRadius.circular(10.r)),
           ),
         ),
         Positioned(
@@ -308,11 +283,11 @@ class _ShareDeletedButtonWidgetState extends State<ShareDeletedButtonWidget> {
               children: [
                 Image.asset('assets/alert/delete(16).png'),
                 SizedBox(
-                  width: 8,
+                  width: 8.w,
                 ),
                 Text('삭제하기',
                     textAlign: TextAlign.center,
-                    style: Black(16, FontWeight.w600)),
+                    style: Black(16.sp, FontWeight.w600)),
               ],
             ),
           ),

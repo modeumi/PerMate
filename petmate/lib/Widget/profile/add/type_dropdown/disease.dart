@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
 
@@ -25,8 +26,8 @@ class _DiseaseListState extends State<DiseaseList> {
   Widget build(BuildContext context) {
     return Stack(children: [
       Container(
-        width: 320,
-        height: 40,
+        width: 320.w,
+        height: 40.h,
         margin: EdgeInsets.all(4),
         decoration: BoxDecoration(
           color: Colors.white,
@@ -39,7 +40,7 @@ class _DiseaseListState extends State<DiseaseList> {
               ],
             ),
           ),
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(10.r),
         ),
         child: Padding(
           padding: const EdgeInsets.all(8),
@@ -54,7 +55,7 @@ class _DiseaseListState extends State<DiseaseList> {
             value: _selectedType.isNotEmpty ? _selectedType : null,
             hint: Container(
               padding: const EdgeInsets.fromLTRB(45, 0, 8, 0),
-              width: 400,
+              width: 400.w,
               child: Text('분류를 선택해주세요.',
                   textAlign: TextAlign.center,
                   style: Gray(14, FontWeight.w500)),

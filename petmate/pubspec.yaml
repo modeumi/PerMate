@@ -63,6 +63,8 @@ dependencies:
   location_picker_flutter_map: ^1.1.0
   image_picker: ^1.1.1
   image_picker_widget: ^2.4.1
+  flutter_screenutil: ^5.9.3
+ 
  
   
  
@@ -101,6 +103,7 @@ flutter:
     - assets/image_asset/alarm/
     - assets/image_asset/pet_upload/
     - assets/image_asset/record/
+    - assets/image_asset/walk_log/
     - assets/text_file/dog.json
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -29,7 +29,9 @@ class _CustomAppbarState extends State<CustomAppbar> {
               onTap: () {
                 Navigator.pop(context);
               },
-              child: Image.asset('assets/onboarding/icon_5.png'),
+              child: Image.asset(
+                'assets/onboarding/icon_5.png',
+              ),
             ),
           ),
           Center(
@@ -54,6 +56,7 @@ class _CustomAppbarState extends State<CustomAppbar> {
               : Container()
         ],
       ),
+     
     );
   }
 }

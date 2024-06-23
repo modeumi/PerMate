@@ -2,6 +2,7 @@ import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
@@ -26,8 +27,8 @@ class _NoticeDeletedState extends State<NoticeDeleted> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        width: double.infinity,
-        height: 850,
+        width:360.w,
+        height: 850.h,
         decoration: BoxDecoration(
           image: DecorationImage(
               image: AssetImage('assets/Main/Background.png'),
@@ -37,15 +38,15 @@ class _NoticeDeletedState extends State<NoticeDeleted> {
           children: [
             Column(
               children: [
-                const SizedBox(
-                  height: 20,
+                SizedBox(
+                  height: 20.h,
                 ),
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                   child: Container(
-                    width: double.infinity,
-                    height: 45,
+                    width: 360.w,
+                    height: 45.h,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -57,7 +58,7 @@ class _NoticeDeletedState extends State<NoticeDeleted> {
                         ),
                         Text('알림',
                             textAlign: TextAlign.center,
-                            style: White(20, FontWeight.w600)),
+                            style: White(20.sp, FontWeight.w600)),
                         GestureDetector(
                           child: Image.asset('assets/alert/delete(24).png'),
                         ),

@@ -1,5 +1,6 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:gradient_borders/gradient_borders.dart';
@@ -19,8 +20,8 @@ class CustomBottomNavigationBar extends GetView<BottomNavigationBarController> {
     return Obx(() => Stack(
           children: [
             Container(
-              width: double.infinity,
-              height: 64,
+              width: 360.w,
+              height: 64.h,
               decoration: BoxDecoration(
                 color:
                     state2 ? Colors.white.withOpacity(0.2) : Colors.transparent,
@@ -35,15 +36,15 @@ class CustomBottomNavigationBar extends GetView<BottomNavigationBarController> {
                   : BlurryContainer(
                       blur: 12,
                       elevation: 0,
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(10.r),
                       child: Container(),
                     ),
             ),
             Opacity(
               opacity: 0.4,
               child: Container(
-                width: double.infinity,
-                height: 64,
+                width: 360.w,
+                height: 64.h,
                 decoration: BoxDecoration(
                     boxShadow: [
                       BoxShadow(
@@ -54,12 +55,12 @@ class CustomBottomNavigationBar extends GetView<BottomNavigationBarController> {
                       )
                     ],
                     color: Color(0x3300287C),
-                    borderRadius: BorderRadius.circular(10)),
+                    borderRadius: BorderRadius.circular(10.r)),
               ),
             ),
             Container(
-              width: 360,
-              height: 62,
+              width: 360.h,
+              height: 62.w,
               padding: EdgeInsets.symmetric(
                 horizontal: 12,
               ),
@@ -69,21 +70,21 @@ class CustomBottomNavigationBar extends GetView<BottomNavigationBarController> {
                 currentIndex: controller.selectedIndex.value,
                 unselectedItemColor: Color(0xFFD8E3F4),
                 selectedItemColor: Colors.white,
-                unselectedLabelStyle: White(10, FontWeight.w600),
-                selectedLabelStyle: White(10, FontWeight.w600),
+                unselectedLabelStyle: White(10.sp, FontWeight.w600),
+                selectedLabelStyle: White(10.sp, FontWeight.w600),
                 type: BottomNavigationBarType.fixed,
                 items: <BottomNavigationBarItem>[
                   BottomNavigationBarItem(
                     icon: controller.selectedIndex.value == 0
                         ? Image.asset(
                             'assets/gnbicon/home (2).png',
-                            height: 30,
-                            width: 24,
+                            height: 30.h,
+                            width: 24.w,
                           )
                         : Image.asset(
                             'assets/gnbicon/home (1).png',
-                            height: 30,
-                            width: 24,
+                            height: 30.h,
+                            width: 24.w,
                           ),
                     label: "홈",
                   ),
@@ -91,13 +92,13 @@ class CustomBottomNavigationBar extends GetView<BottomNavigationBarController> {
                       icon: controller.selectedIndex.value == 1
                           ? Image.asset(
                               'assets/gnbicon/record (2).png',
-                              height: 30,
-                              width: 24,
+                              height: 30.h,
+                              width: 24.w,
                             )
                           : Image.asset(
                               'assets/gnbicon/record (1).png',
-                              height: 30,
-                              width: 24,
+                              height: 30.h,
+                              width: 24.w,
                             ),
                       label: "기록"),
                   BottomNavigationBarItem(
@@ -105,12 +106,12 @@ class CustomBottomNavigationBar extends GetView<BottomNavigationBarController> {
                         ? Image.asset(
                             'assets/gnbicon(map)/gnbicon (1).png',
                             height: 35,
-                            width: 24,
+                            width: 24.w,
                           )
                         : Image.asset(
                             'assets/gnbicon/map.png',
                             height: 35,
-                            width: 24,
+                            width: 24.w,
                           ),
                     label: "지도",
                   ),
@@ -119,12 +120,12 @@ class CustomBottomNavigationBar extends GetView<BottomNavigationBarController> {
                           ? Image.asset(
                               'assets/gnbicon/chat (2).png',
                               height: 35,
-                              width: 24,
+                              width: 24.w,
                             )
                           : Image.asset(
                               'assets/gnbicon/chat (1).png',
                               height: 35,
-                              width: 24,
+                              width: 24.w,
                             ),
                       label: "커뮤니티"),
                   BottomNavigationBarItem(
@@ -132,12 +133,12 @@ class CustomBottomNavigationBar extends GetView<BottomNavigationBarController> {
                           ? Image.asset(
                               'assets/gnbicon/user (2).png',
                               height: 35,
-                              width: 24,
+                              width: 24.w,
                             )
                           : Image.asset(
                               'assets/gnbicon/user (1).png',
                               height: 35,
-                              width: 24,
+                              width: 24.w,
                             ),
                       label: "마이페이지"),
                 ],

@@ -1,6 +1,7 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Widget/notice/notification_container.dart';
 import 'package:petmate/Widget/notice/notificationcontainer2.dart';
@@ -28,7 +29,7 @@ class _SelectWeekWidgetState extends State<SelectWeekWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 344,
+      width: 344.w,
       child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: List.generate(
@@ -37,24 +38,20 @@ class _SelectWeekWidgetState extends State<SelectWeekWidget> {
                     onTap: () {
                       setState(() {
                         isSelected[index] = !isSelected[index];
-                        // if (button == index) {
-                        // } else {
-                        //   button = index;
-                        // }
                       });
                     },
                     child: Stack(
                       children: [
                         Container(
-                          width: 36,
-                          height: 36,
+                          width: 36.w,
+                          height: 36.h,
                           margin: EdgeInsets.all(2),
                           decoration: BoxDecoration(
                             color: isSelected[index]
                                 ? Colors.white.withOpacity(0.8)
                                 : Colors.white.withOpacity(0.1),
                             border: GradientBoxBorder(
-                              width: 1,
+                              width: 1.w,
                               gradient: LinearGradient(
                                 colors: [
                                   Colors.white.withOpacity(0.5),
@@ -62,14 +59,14 @@ class _SelectWeekWidgetState extends State<SelectWeekWidget> {
                                 ],
                               ),
                             ),
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: BorderRadius.circular(20.r),
                           ),
                           child: isSelected[index]
                               ? Container()
                               : BlurryContainer(
                                   blur: 12,
                                   elevation: 0,
-                                  borderRadius: BorderRadius.circular(20),
+                                  borderRadius: BorderRadius.circular(20.r),
                                   child: Container(),
                                 ),
                         ),
@@ -77,8 +74,8 @@ class _SelectWeekWidgetState extends State<SelectWeekWidget> {
                           opacity: 0.4,
                           child: Container(
                             margin: EdgeInsets.all(3),
-                            width: 36,
-                            height: 36,
+                            width: 36.w,
+                            height: 36.h,
                             decoration: BoxDecoration(
                                 boxShadow: [
                                   BoxShadow(
@@ -88,15 +85,15 @@ class _SelectWeekWidgetState extends State<SelectWeekWidget> {
                                     spreadRadius: 0,
                                   )
                                 ],
-                                color: Color(0x3300287C),
-                                borderRadius: BorderRadius.circular(20)),
+                                color: Color(0x3300287C).withOpacity(0.2),
+                                borderRadius: BorderRadius.circular(20.r)),
                           ),
                         ),
                         Positioned(
                           left: 2,
                           top: 8,
                           child: Container(
-                            width: 36,
+                            width: 36.w,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
@@ -106,7 +103,7 @@ class _SelectWeekWidgetState extends State<SelectWeekWidget> {
                                     color: isSelected[index]
                                         ? Color(0xFF303030)
                                         : Colors.white,
-                                    fontSize: 16,
+                                    fontSize: 16.sp,
                                     fontFamily: 'Pretendard',
                                     fontWeight: FontWeight.w600,
                                   ),

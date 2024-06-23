@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/View/Notice/noticedelete.dart';
@@ -22,8 +23,8 @@ class _NoticePageState extends State<NoticePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        width: double.infinity,
-        height: 850,
+        width: 360.w,
+        height: 850.h,
         decoration: BoxDecoration(
           image: DecorationImage(
               image: AssetImage('assets/Main/Background.png'),
@@ -33,15 +34,15 @@ class _NoticePageState extends State<NoticePage> {
           children: [
             Column(
               children: [
-                const SizedBox(
-                  height: 20,
+                SizedBox(
+                  height: 20.h,
                 ),
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                   child: Container(
-                    width: double.infinity,
-                    height: 45,
+                    width: 360.w,
+                    height: 45.h,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -52,7 +53,7 @@ class _NoticePageState extends State<NoticePage> {
                             child: Image.asset('assets/alert/back.png')),
                         Text('알림',
                             textAlign: TextAlign.center,
-                            style: White(20, FontWeight.w600)),
+                            style: White(20.sp, FontWeight.w600)),
                         GestureDetector(
                           onTap: () {
                             Get.to(NoticeDeleted());
