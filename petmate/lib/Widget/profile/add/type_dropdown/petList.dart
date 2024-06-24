@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
 
@@ -26,26 +27,11 @@ class _PetListState extends State<PetList> {
   };
 
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    // setState(() {
-    //   _selectedPet.isNotEmpty ? _selectedPet : null;
-    // });
-  }
-
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Stack(children: [
       Container(
-        width: 320,
-        height: 40,
+        width: 320.w,
+        height: 40.h,
         margin: EdgeInsets.all(4),
         decoration: BoxDecoration(
           color: Colors.white,
@@ -58,7 +44,7 @@ class _PetListState extends State<PetList> {
               ],
             ),
           ),
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(10.r),
         ),
         child: Theme(
           data: Theme.of(context).copyWith(
@@ -72,18 +58,18 @@ class _PetListState extends State<PetList> {
                     textAlign: TextAlign.center,
                     decoration: InputDecoration(
                       hintText: '직접 입력해주세요.',
-                      hintStyle: Gray(14, FontWeight.w500),
+                      hintStyle: Gray(14.sp, FontWeight.w500),
                       enabledBorder:
                           UnderlineInputBorder(borderSide: BorderSide.none),
                       border: OutlineInputBorder(borderSide: BorderSide.none),
-                      contentPadding: EdgeInsets.fromLTRB(10, 0, 0, 13),
+                      contentPadding: EdgeInsets.fromLTRB(10, 0, 0, 11),
                       focusedBorder:
                           UnderlineInputBorder(borderSide: BorderSide.none),
                     ),
                     style:
                         TextStyle(color: Colors.black, decorationThickness: 0),
                     cursorColor: Colors.black,
-                    cursorWidth: 1,
+                    cursorWidth: 1.w,
                   )
                 : DropdownButton<String>(
                     iconSize: 25,
@@ -99,30 +85,30 @@ class _PetListState extends State<PetList> {
                     value: _selectedPet.isNotEmpty ? _selectedPet : null,
                     hint: Container(
                       padding: const EdgeInsets.fromLTRB(48, 0, 8, 0),
-                      width: 260,
+                      width: 260.w,
                       child: Text('반려동물의 종류를 선택해주세요.',
                           textAlign: TextAlign.center,
-                          style: Gray(14, FontWeight.w500)),
+                          style: Gray(14.sp, FontWeight.w500)),
                     ),
                     items: petList.keys
                         .map<DropdownMenuItem<String>>((String key) {
                       return DropdownMenuItem<String>(
                         value: key,
                         child: Container(
-                          width: 286,
-                          height: 30,
+                          width: 286.w,
+                          height: 30.h,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               if (petList[key] != null)
                                 Image.asset(
                                   petList[key]!,
-                                  width: 24,
-                                  height: 24,
+                                  width: 24.w,
+                                  height: 24.h,
                                 ),
                               if (petList[key] != null)
                                 SizedBox(
-                                  width: 4,
+                                  width: 4.w,
                                 ),
                               Text(key),
                             ],

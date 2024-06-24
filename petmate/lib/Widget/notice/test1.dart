@@ -33,7 +33,7 @@ class _NoticePage2State extends State<NoticePage2> {
       setState(() {
         notificationWidgets.addAll([
           NotificationWidget(),
-          NotificationContainer1(),
+          NotificationContainer(),
           NotificationContainer2(),
           NotificationContainer2(),
         ]);

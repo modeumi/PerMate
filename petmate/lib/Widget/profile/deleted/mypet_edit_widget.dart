@@ -2,11 +2,14 @@ import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
-import 'package:petmate/View/Profile.dart/edit_detail.dart';
+import 'package:petmate/View/Profile/edit_detail.dart';
+import 'package:petmate/Widget/circle_container.dart';
+import 'package:petmate/Widget/custom_container.dart';
 import 'package:petmate/Widget/profile/deleted/co_pet_care.dart';
 
 class MyPetEditWidget extends StatefulWidget {
@@ -17,7 +20,6 @@ class MyPetEditWidget extends StatefulWidget {
 }
 
 class _MyPetEditWidgetState extends State<MyPetEditWidget> {
-  bool state2 = false;
   final Profileimage = [
     'assets/edit/animal (1).png',
     'assets/edit/animal (2).png',
@@ -32,233 +34,77 @@ class _MyPetEditWidgetState extends State<MyPetEditWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 12, top: 10),
-          child: Container(
-            width: 77,
-            height: 29,
-            child: Text(
-              '내 반려동물',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 16,
-                fontFamily: 'Pretendard',
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
-        ),
         for (int i = 0; i < 3; i++)
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 1),
-            child: GestureDetector(
-              onTap: () {
-                Get.to(() => EditdetailsPage());
-              },
-              child: Stack(
-                children: [
-                  Container(
-                    width: 344,
-                    height: 80,
-                    margin: EdgeInsets.all(1),
-                    decoration: BoxDecoration(
-                      color: state2
-                          ? Colors.white.withOpacity(0.2)
-                          : Colors.transparent,
-                      border: GradientBoxBorder(
-                        width: 1,
-                        gradient: LinearGradient(
-                          colors: [
-                            Colors.white.withOpacity(0.5),
-                            Colors.white.withOpacity(0.2)
-                          ],
-                        ),
-                      ),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: state2
-                        ? Container()
-                        : BlurryContainer(
-                            blur: 12,
-                            elevation: 0,
-                            borderRadius: BorderRadius.circular(10),
-                            child: Container(),
-                          ),
+          GestureDetector(
+            onTap: () {
+              Get.to(() => EditdetailsPage());
+            },
+            child: Stack(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 4),
+                  child: CustomContainer(
+                    width: 344.w,
+                    height: 80.h,
                   ),
-                  Opacity(
-                    opacity: 0.4,
-                    child: Container(
-                      margin: EdgeInsets.all(3),
-                      width: 344,
-                      height: 80,
-                      decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color(0x26000000),
-                              blurRadius: 2,
-                              offset: Offset(2, 2),
-                              spreadRadius: 0,
-                            )
-                          ],
-                          color: Color(0x3300287C),
-                          borderRadius: BorderRadius.circular(10)),
-                    ),
+                ),
+                Positioned(
+                    top: 32.h,
+                    left: 11.w,
+                    child: Image.asset('assets/edit/menu.png')),
+                Positioned(
+                  left: 38.w,
+                  top: 13.h,
+                  child: CircleContainer(
+                    width: 60.w,
+                    height: 60.h,
                   ),
-                  Positioned(
-                    left: 12,
-                    top: 10,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                ),
+                Positioned(
+                    left: 48.w, top: 23.h, child: Image.asset(Profileimage[i])),
+                Positioned(
+                  left: 112.w,
+                  top: 10.h,
+                  child: Container(
+                    width: 101.w,
+                    height: 60.h,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Image.asset('assets/edit/menu.png'),
+                        Text(name[i], style: White(14.sp, FontWeight.w600)),
                         SizedBox(
-                          width: 11,
+                          height: 4.h,
                         ),
-                        Stack(
+                        Row(
                           children: [
-                            Container(
-                              width: 60,
-                              height: 60,
-                              margin: EdgeInsets.all(1),
-                              decoration: BoxDecoration(
-                                color: state2
-                                    ? Colors.white.withOpacity(0.2)
-                                    : Colors.white,
-                                border: GradientBoxBorder(
-                                  width: 1,
-                                  gradient: LinearGradient(
-                                    colors: [
-                                      Colors.white.withOpacity(0.5),
-                                      Colors.white.withOpacity(0.2)
-                                    ],
-                                  ),
-                                ),
-                                borderRadius: BorderRadius.circular(30),
-                              ),
-                              child: state2
-                                  ? Container()
-                                  : BlurryContainer(
-                                      blur: 12,
-                                      elevation: 0,
-                                      borderRadius: BorderRadius.circular(30),
-                                      child: Container(),
-                                    ),
+                            Text(type[i], style: White(12.sp, FontWeight.w600)),
+                            SizedBox(
+                              width: 3.w,
                             ),
-                            Opacity(
-                              opacity: 0.4,
-                              child: Container(
-                                margin: EdgeInsets.all(2),
-                                width: 60,
-                                height: 60,
-                                decoration: BoxDecoration(
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Color(0x26000000),
-                                        blurRadius: 2,
-                                        offset: Offset(0, 2),
-                                        spreadRadius: 0,
-                                      )
-                                    ],
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(30)),
-                              ),
-                            ),
-                            Positioned(
-                                left: 12,
-                                top: 10,
-                                child: Image.asset(Profileimage[i]))
+                            Image.asset('assets/edit/Male.png'),
                           ],
                         ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(old[i], style: White(12.sp, FontWeight.w500)),
+                            Text(yymm[i], style: White(12.sp, FontWeight.w500)),
+                          ],
+                        )
                       ],
                     ),
                   ),
-                  Positioned(
-                    left: 112,
-                    top: 10,
-                    child: Container(
-                      width: 101,
-                      height: 60,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            name[i],
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 14,
-                              fontFamily: 'Pretendard',
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 4,
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                type[i],
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 12,
-                                  fontFamily: 'Pretendard',
-                                  fontWeight: FontWeight.w600,
-                                  height: 0,
-                                ),
-                              ),
-                              SizedBox(
-                                width: 3,
-                              ),
-                              Image.asset('assets/edit/Male.png'),
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                old[i],
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 12,
-                                  fontFamily: 'Pretendard',
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                              Text(
-                                yymm[i],
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 12,
-                                  fontFamily: 'Pretendard',
-                                  fontWeight: FontWeight.w500,
-                                  height: 0,
-                                ),
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  Positioned(right: 10, top: 8, child: CoPetCareWidget()),
-                  Positioned(
-                    right: 12,
-                    bottom: 12,
-                    child: Text(
-                      '        공동육아님과\n공동육아중 입니다.',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 10,
-                        fontFamily: 'Pretendard',
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  )
-                ],
-              ),
+                ),
+                Positioned(right: 12.w, top: 10.h, child: CoPetCareWidget()),
+                Positioned(
+                  right: 12.w,
+                  bottom: 12.h,
+                  child: Text('        공동육아님과\n공동육아중 입니다.',
+                      style: White(10.sp, FontWeight.w500)),
+                )
+              ],
             ),
           ),
       ],

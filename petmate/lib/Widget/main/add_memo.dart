@@ -2,12 +2,16 @@ import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:glass_kit/glass_kit.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
+
 import 'package:petmate/Widget/button/save_button.dart';
+import 'package:petmate/Widget/custom_container.dart';
 
 class MeMoWidget extends StatefulWidget {
   const MeMoWidget({super.key});
@@ -34,60 +38,21 @@ class _MeMoWidgetState extends State<MeMoWidget> {
             return Stack(
               children: [
                 Positioned(
-                  bottom: 141,
-                  left: 6,
-                  right: 8,
+                  top: 266.h,
+                  left: 8.w,
+                  right: 8.w,
                   child: Stack(
                     children: [
-                      Container(
-                        width: 344,
-                        height: 380,
-                        margin: EdgeInsets.all(3),
-                        decoration: BoxDecoration(
-                          color: Colors.transparent,
-                          border: GradientBoxBorder(
-                            width: 1,
-                            gradient: LinearGradient(
-                              colors: [
-                                Colors.white.withOpacity(0.5),
-                                Colors.white.withOpacity(0.2)
-                              ],
-                            ),
-                          ),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: BlurryContainer(
-                          blur: 12,
-                          elevation: 0,
-                          borderRadius: BorderRadius.circular(10),
-                          child: Container(),
-                        ),
-                      ),
-                      Opacity(
-                        opacity: 0.4,
-                        child: Container(
-                          width: 344,
-                          height: 380,
-                          margin: EdgeInsets.all(3),
-                          decoration: BoxDecoration(
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color(0x4C000000),
-                                  blurRadius: 1,
-                                  offset: Offset(1, 1),
-                                  spreadRadius: 0,
-                                )
-                              ],
-                              color: Color(0x3300287C),
-                              borderRadius: BorderRadius.circular(10)),
-                        ),
+                      CustomContainer(
+                        width: 344.w,
+                        height: 380.h,
                       ),
                       Positioned(
                         top: 12,
                         left: 12,
                         child: Text(
                           '메모추가',
-                          style: White(16, FontWeight.w600),
+                          style: White(16.sp, FontWeight.w600),
                         ),
                       ),
                       Positioned(
@@ -105,8 +70,8 @@ class _MeMoWidgetState extends State<MeMoWidget> {
                           top: 30,
                           left: 12,
                           child: Container(
-                            width: 344,
-                            height: 380,
+                            width: 344.w,
+                            height: 380.h,
                             child: TextField(
                               scrollPadding: EdgeInsets.only(
                                   bottom:
@@ -115,7 +80,7 @@ class _MeMoWidgetState extends State<MeMoWidget> {
                               maxLines: null,
                               decoration: InputDecoration(
                                 hintText: '내용 입력',
-                                hintStyle: Gray(14, FontWeight.w500),
+                                hintStyle: whiteOpacity(14.sp, FontWeight.w500),
                                 enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide.none),
                                 border: OutlineInputBorder(
@@ -129,26 +94,26 @@ class _MeMoWidgetState extends State<MeMoWidget> {
                               style: TextStyle(
                                   color: Colors.white, decorationThickness: 0),
                               cursorColor: Colors.white,
-                              cursorWidth: 1,
+                              cursorWidth: 1.w,
                             ),
                           )),
                       Positioned(
-                          bottom: 70,
+                          top: 316,
                           left: 12,
                           right: 12,
                           child: Container(
-                            width: 320,
+                            width: 320.w,
                             decoration: BoxDecoration(
                                 border: Border(
                                     bottom: BorderSide(
-                                        width: 2,
-                                        color: Colors.white.withOpacity(0.4)))),
+                                        width: 2.w,
+                                        color: Colors.white.withOpacity(0.5)))),
                           )),
                       Positioned(
-                        bottom: 10,
-                        left: 6,
-                        child: Container(child: SaveButtonWidget()),
-                      )
+                          top: 307.h,
+                          left: 8.w,
+                          right: 8.w,
+                          child: SaveButton(content: '저장', action: () {}))
                     ],
                   ),
                 ),
@@ -168,72 +133,23 @@ class _MeMoWidgetState extends State<MeMoWidget> {
       },
       child: Stack(
         children: [
-          Container(
-            width: 168,
-            height: 64,
-            margin: EdgeInsets.fromLTRB(3, 0, 3, 3),
-            decoration: BoxDecoration(
-              color:
-                  state2 ? Colors.white.withOpacity(0.2) : Colors.transparent,
-              border: GradientBoxBorder(
-                width: 1,
-                gradient: LinearGradient(
-                  colors: [
-                    Colors.white.withOpacity(0.5),
-                    Colors.white.withOpacity(0.2)
-                  ],
-                ),
-              ),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: state2
-                ? Container()
-                : BlurryContainer(
-                    blur: 12,
-                    elevation: 0,
-                    borderRadius: BorderRadius.circular(10),
-                    child: Container(),
-                  ),
-          ),
-          Opacity(
-            opacity: 0.4,
-            child: Container(
-              margin: EdgeInsets.all(4),
-              width: 168,
-              height: 64,
-              decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0x26000000),
-                      blurRadius: 1,
-                      offset: Offset(1, 1),
-                      spreadRadius: 0,
-                    )
-                  ],
-                  color: Color(0x3300287C),
-                  borderRadius: BorderRadius.circular(10)),
-            ),
+          CustomContainer(
+            width: 168.w,
+            height: 64.h,
           ),
           Positioned(
-            left: 36,
-            top: 16,
+            left: 30.w,
+            bottom: 18.h,
             child: Container(
-              width: 88,
-              height: 32,
+              width: 88.w,
+              height: 32.h,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Image.asset('assets/Main/memo.png'),
-                  Text(
-                    '메모 추가',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 12,
-                      fontFamily: 'Pretendard',
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
+                  Text('메모 추가',
+                      textAlign: TextAlign.center,
+                      style: White(12.sp, FontWeight.w500)),
                 ],
               ),
             ),

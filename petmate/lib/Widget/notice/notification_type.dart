@@ -1,6 +1,8 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:glass_kit/glass_kit.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Widget/notice/notification_container.dart';
 import 'package:petmate/Widget/notice/notificationcontainer2.dart';
@@ -32,7 +34,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 344,
+      width: 344.w,
       child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: List.generate(
@@ -49,15 +51,15 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                     child: Stack(
                       children: [
                         Container(
-                          width: 80,
-                          height: 40,
+                          width: 80.w,
+                          height: 40.h,
                           margin: EdgeInsets.all(2),
                           decoration: BoxDecoration(
                             color: button == index
                                 ? Colors.white.withOpacity(0.8)
-                                : Colors.white.withOpacity(0.1),
+                                : Color(0x3300287C).withOpacity(0.2),
                             border: GradientBoxBorder(
-                              width: 1,
+                              width: 1.w,
                               gradient: LinearGradient(
                                 colors: [
                                   Colors.white.withOpacity(0.5),
@@ -65,32 +67,34 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                 ],
                               ),
                             ),
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: BorderRadius.circular(20.r),
                           ),
-                          child: BlurryContainer(
-                            blur: 12,
-                            elevation: 0,
-                            borderRadius: BorderRadius.circular(20),
-                            child: Container(),
-                          ),
+                          child: button == index
+                              ? Container()
+                              : BlurryContainer(
+                                  blur: 12,
+                                  elevation: 0,
+                                  borderRadius: BorderRadius.circular(20.r),
+                                  child: Container(),
+                                ),
                         ),
                         Opacity(
                           opacity: 0.4,
                           child: Container(
                             margin: EdgeInsets.all(3),
-                            width: 80,
-                            height: 40,
+                            width: 80.w,
+                            height: 40.h,
                             decoration: BoxDecoration(
                                 boxShadow: [
                                   BoxShadow(
                                     color: Color(0x26000000),
-                                    blurRadius: 4,
-                                    offset: Offset(4, 4),
+                                    blurRadius: 2,
+                                    offset: Offset(0, 2),
                                     spreadRadius: 0,
                                   )
                                 ],
-                                color: Color(0x3300287C),
-                                borderRadius: BorderRadius.circular(20)),
+                                color: Color(0x3300287C).withOpacity(0.2),
+                                borderRadius: BorderRadius.circular(20.r)),
                           ),
                         ),
                         Positioned(
