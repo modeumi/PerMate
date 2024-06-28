@@ -29,149 +29,101 @@ class AddInfoWidget extends StatefulWidget {
 }
 
 class _AddInfoWidgetState extends State<AddInfoWidget> {
-  List text = [
-    '종류*',
-    '품종*',
-    '성별*',
-    '생일*',
-    '처음 만난 날',
-    '몸무게',
-    '중성화 여부*',
-    '중성화 날짜',
-    '염려 · 보유 질환',
-    '보유 알러지',
-    '접종 기록',
-    '수술 기록'
-  ];
+  // List text = [
+  //   '종류*',
+  //   '품종*',
+  //   '성별*',
+  //   '생일*',
+  //   '처음 만난 날',
+  //   '몸무게',
+  //   '중성화 여부*',
+  //   '중성화 날짜',
+  //   '염려 · 보유 질환',
+  //   '보유 알러지',
+  //   '접종 기록',
+  //   '수술 기록'
+  // ];
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         CustomContainer(
           width: 344.w,
-          height: 1180.h,
+          height: 1099.h,
         ),
         Container(
           width: 344.w,
-          height: 1180.h,
+          height: 1099.h,
           padding: EdgeInsets.symmetric(
             vertical: 12,
           ),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
                   width: 320.w,
+                  height: 25,
                   child: Text('종류*', style: White(14.sp, FontWeight.w600))),
               PetList(),
               Container(
-                  width: 300.w,
+                  height: 25,
+                  width: 320.w,
                   child: Text('품종*', style: White(14.sp, FontWeight.w600))),
               TypeList(),
               Container(
-                  width: 300.w,
+                  width: 320.w,
+                  height: 25,
                   child: Text('성별*', style: White(14.sp, FontWeight.w600))),
               GenderType(),
               Container(
-                  width: 300.w,
+                  width: 320.w,
+                  height: 25,
                   child: Text('생일*', style: White(14.sp, FontWeight.w600))),
+              Brithday(),
               Container(
-                  width: 300.w,
+                  width: 320.w,
+                  height: 25,
                   child: Text('처음 만난 날', style: White(14.sp, FontWeight.w600))),
+              FirstMeetDay(),
               Container(
-                  width: 300.w,
+                  width: 320.w,
+                  height: 25,
                   child: Text('몸무게', style: White(14.sp, FontWeight.w600))),
+              PetWeight(),
               Container(
-                  width: 300.w,
-                  child: Text('품종*', style: White(14.sp, FontWeight.w600))),
-              Container(
-                  width: 300.w,
+                  width: 320.w,
+                  height: 25,
                   child: Text('중성화 여부*', style: White(14.sp, FontWeight.w600))),
+              NeuterOr(),
               Container(
-                  width: 300.w,
+                  width: 320.w,
+                  height: 25,
                   child:
                       Text('중성화 날짜 *', style: White(14.sp, FontWeight.w600))),
+              Neutering(),
               Container(
-                  width: 300.w,
+                  width: 320.w,
+                  height: 25,
                   child:
                       Text('염려 · 보유 질환', style: White(14.sp, FontWeight.w600))),
+              DiseaseList(),
+              DiseaseSearch(),
               Container(
-                  width: 300.w,
+                  width: 320.w,
+                  height: 25,
                   child: Text('보유 알러지', style: White(14.sp, FontWeight.w600))),
-              // AllergyType(),
-
+              AllergyType(),
               Container(
-                  width: 300.w,
+                  width: 320.w,
+                  height: 25,
                   child: Text('접종 기록', style: White(14.sp, FontWeight.w600))),
-              // VaccinationRecord(),
-
+              VaccinationRecord(),
               Container(
-                  width: 300.w,
+                  width: 320.w,
+                  height: 25,
                   child: Text('수술 기록', style: White(14.sp, FontWeight.w600))),
-              // SurgeryRecord(),
-            ],
-          ),
-        ),
-        Container(
-          child: Stack(
-            children: [
-              // SizedBox(
-              //   height: 12,
-              // ),
-              // Text('품종*', style: White(14.sp, FontWeight.w600)),
-              // TypeList(),
-              // SizedBox(
-              //   height: 16,
-              // ),
-              // Text('성별*', style: White(14.sp, FontWeight.w600)),
-              // GenderType(),
-              // SizedBox(
-              //   height: 16,
-              // ),
-              // Text('생일*', style: White(14.sp, FontWeight.w600)),
-              // Brithday(),
-              // SizedBox(
-              //   height: 16,
-              // ),
-              // Text('처음 만난 날', style: White(14.sp, FontWeight.w600)),
-              // FirstMeetDay(),
-              // SizedBox(
-              //   height: 16,
-              // ),
-              // Text('몸무게', style: White(14.sp, FontWeight.w600)),
-              // PetWeight(),
-              // SizedBox(
-              //   height: 16,
-              // ),
-              // Text('중성화 여부*', style: White(14.sp, FontWeight.w600)),
-              // NeuterOr(),
-              // SizedBox(
-              //   height: 16.h,
-              // ),
-              // Text('중성화 날짜', style: White(14.sp, FontWeight.w600)),
-              // Neutering(),
-              // SizedBox(
-              //   height: 16,
-              // ),
-              // Text('염려 · 보유 질환', style: White(14.sp, FontWeight.w600)),
-              // DiseaseList(),
-              // DiseaseSearch(),
-              // SizedBox(
-              //   height: 16.h,
-              // ),
-              // Text('보유 알러지', style: White(14.sp, FontWeight.w600)),
-              // AllergyType(),
-              // SizedBox(
-              //   height: 16,
-              // ),
-              // Text('접종 기록', style: White(14.sp, FontWeight.w600)),
-              // VaccinationRecord(),
-              // SizedBox(
-              //   height: 16.h,
-              // ),
-              // Text('수술 기록', style: White(14.sp, FontWeight.w600)),
-              // SurgeryRecord(),
-              // BigSaveButton(content: '저장', action: () {})
+              SurgeryRecord(),
+              BigSaveButton(content: '저장하기', action: () {}),
             ],
           ),
         ),

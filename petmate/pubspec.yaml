@@ -107,6 +107,15 @@ flutter:
     - assets/image_asset/record/
     - assets/image_asset/walk_log/
     - assets/image_asset/invite/
+    - assets/image_asset/artice_writing/
+    - assets/image_asset/information_screen/
+    - assets/image_asset/transaction_details/
+    - assets/image_asset/information_details/
+    - assets/image_asset/transaction_writing/
+    - assets/image_asset/trading_screen/
+    - assets/image_asset/meet_screen/
+    - assets/image_asset/meet_details/
+    - assets/image_asset/myarticle_like/
     - assets/text_file/dog.json
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see

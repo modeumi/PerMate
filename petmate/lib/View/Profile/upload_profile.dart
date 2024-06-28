@@ -46,14 +46,25 @@ class _UploadProfilePage extends State<UploadProfilePage> {
           children: [
             Positioned(top: 102.h, left: 132.w, child: AddProfileWidget()),
             Positioned(top: 218.h, left: 55.w, child: AddName()),
-            Positioned(top: 302.h, left: 8.w, child: AddInfoWidget())
+            // Positioned(top: 302.h, left: 8.w, child: AddInfoWidget()),
+            Positioned(
+              top: 302.h,
+              left: 8.w,
+              right: 8.w,
+              bottom: 0,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    AddInfoWidget(),
+                    SizedBox(
+                      height: 70,
+                    )
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
-        // child: Expanded(
-        //   child: ListView(
-        //     children: [],
-        //   ),
-        // ),
       ),
       bottomNavigationBar: CustomBottomNavigationBar(),
     );

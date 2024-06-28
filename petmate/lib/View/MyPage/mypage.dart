@@ -39,12 +39,31 @@ class _MypageState extends State<Mypage> {
         child: Stack(
           children: [
             Positioned(
-                top: 212.h,
-                left: 143.w,
-                child: Text(
-                  '닉네임 님',
-                  style: White(20.sp, FontWeight.w600),
-                )),
+              top: 190.h,
+              left: 143.w,
+              child: Container(
+                width: 75.w,
+                child: TextField(
+                  textAlign: TextAlign.center,
+                  decoration: InputDecoration(
+                    hintText: '닉네임 님',
+                    hintStyle: White(20.sp, FontWeight.w600),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide:
+                          BorderSide(color: Colors.white.withOpacity(0.6)),
+                    ),
+                    border: OutlineInputBorder(),
+                    contentPadding: EdgeInsets.fromLTRB(0, 15, 0, 0),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
+                  ),
+                  style: TextStyle(color: Colors.white, decorationThickness: 0),
+                  cursorColor: Colors.white,
+                  cursorWidth: 2,
+                ),
+              ),
+            ),
             Positioned(
                 top: 212.h,
                 left: 225.w,

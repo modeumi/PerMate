@@ -126,7 +126,7 @@ class _MypageProfileState extends State<MypageProfile> {
                   onTap: () {
                     setState(() {
                       _profileImagePath =
-                          'assets/image_asset/mypage/profile.png';
+                          'assets/image_asset/mypage/profile_select (1).png';
                     });
                   },
                   child: Container(
@@ -290,17 +290,16 @@ class _MypageProfileState extends State<MypageProfile> {
         _profileImage != null
             ? Image.file(
                 _profileImage!,
-                width: 126.w,
-                height: 126.h,
+                // width: 126.w,
+                // height: 126.h,
                 fit: BoxFit.cover,
               )
             : Image.asset(
                 _profileImagePath,
-                width: 126.w,
-                height: 126.h,
-                fit: BoxFit.cover,
+                // width: 126.w,
+                // height: 126.h,
+                // fit: BoxFit.cover,
               ),
-       
         Positioned(
           left: 98.w,
           top: 98.h,

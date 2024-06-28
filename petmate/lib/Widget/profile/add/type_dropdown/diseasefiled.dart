@@ -68,7 +68,7 @@ class _DiseaseSearchState extends State<DiseaseSearch> {
         ),
         Container(
             width: double.infinity,
-            height: 36.h,
+            height: 30.h,
             margin: EdgeInsets.all(4),
             child: diseaseList.isNotEmpty
                 ? ListView.builder(

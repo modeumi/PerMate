@@ -85,7 +85,7 @@ class _GetInviteState extends State<GetInvite> {
               left: 32.w,
               child: Container(
                 width: 296.w,
-                height: 28.h,
+                height: 40.h,
                 child: TextField(
                   textAlign: TextAlign.center,
                   scrollPadding: EdgeInsets.only(

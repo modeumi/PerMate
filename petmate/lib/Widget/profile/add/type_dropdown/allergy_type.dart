@@ -43,7 +43,7 @@ class _AllergyTypeState extends State<AllergyType> {
           borderRadius: BorderRadius.circular(10.r),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(8),
+          padding: const EdgeInsets.all(4),
           child: DropdownButton(
             iconSize: 25,
             menuMaxHeight: 168,
