@@ -21,7 +21,6 @@ class MeMoWidget extends StatefulWidget {
 }
 
 class _MeMoWidgetState extends State<MeMoWidget> {
-  bool state2 = false;
   OverlayEntry? deletoverlay;
   var opactiyValue = 1.0;
 
@@ -113,7 +112,9 @@ class _MeMoWidgetState extends State<MeMoWidget> {
                           top: 307.h,
                           left: 8.w,
                           right: 8.w,
-                          child: SaveButton(content: '저장', action: () {}))
+                          child: SaveButton(content: '저장', action: () {
+                            
+                          }))
                     ],
                   ),
                 ),
