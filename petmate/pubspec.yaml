@@ -61,6 +61,7 @@ dependencies:
   glass_kit: ^4.0.1
   android_alarm_manager_plus: ^4.0.3
   get: ^4.6.6
+  alarm: ^3.1.4
   location_picker_flutter_map: ^1.1.0
   image_picker: ^1.1.1
   image_picker_widget: ^2.4.1
