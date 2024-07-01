@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:glass_kit/glass_kit.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
+import 'package:petmate/Widget/circle_container.dart';
 import 'package:petmate/Widget/custom_container.dart';
 
 class DetailsAddWidget extends StatefulWidget {
@@ -74,7 +75,7 @@ class _DetailsAddWidgetState extends State<DetailsAddWidget> {
           ),
           Positioned(
             top: 18.h,
-            left: 118.w,
+            left: 110.w,
             child: Container(
               width: 110.w,
               child: Align(

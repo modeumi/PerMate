@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/View/Invite/invite.dart';
+import 'package:petmate/View/MyPage/my_info.dart';
 import 'package:petmate/Widget/custom_container.dart';
 
 class MypageInfo extends StatefulWidget {
@@ -25,9 +26,14 @@ class _MypageInfoState extends State<MypageInfo> {
         Positioned(
           top: 16.h,
           left: 16.w,
-          child: Text(
-            '내정보',
-            style: White(14.sp, FontWeight.w600),
+          child: GestureDetector(
+            onTap: () {
+              Get.to(() => MyInfo());
+            },
+            child: Text(
+              '내정보',
+              style: White(14.sp, FontWeight.w600),
+            ),
           ),
         ),
         Positioned(

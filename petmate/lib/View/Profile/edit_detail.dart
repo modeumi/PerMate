@@ -33,29 +33,6 @@ class _EditdetailsPageState extends State<EditdetailsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      backgroundColor: Colors.transparent,
-      extendBodyBehindAppBar: true,
-      appBar: CustomAppbar(
-        title: '수정하기',
-        action: [
-          GestureDetector(
-            onTap: () {
-              Get.to(() => EditPage());
-            },
-            child: Image.asset(
-              'assets/image_asset/pet_information_details/edit.png',
-            ),
-          ),
-          GestureDetector(
-            onTap: () {
-              Get.to(() => DeletedProfilePage());
-            },
-            child: Image.asset(
-              'assets/alert/delete(24).png',
-            ),
-          ),
-        ],
-      ),
       body: Container(
         width: 360.w,
         height: 800.h,
@@ -64,43 +41,86 @@ class _EditdetailsPageState extends State<EditdetailsPage> {
               image: AssetImage('assets/Main/Background.png'),
               fit: BoxFit.fill),
         ),
-        child: Stack(
-          children: [
-            Positioned(
-              left: 120.w,
-              top: 114.h,
-              child: CircleContainer(
-                width: 120.w,
-                height: 120.h,
-              ),
-            ),
-            Positioned(
-                left: 140.w,
-                top: 134.h,
+        child: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              scrolledUnderElevation: 0,
+              backgroundColor: Colors.transparent,
+              centerTitle: true,
+              leading: GestureDetector(
+                onTap: () {
+                  Get.back();
+                },
                 child: Image.asset(
-                  'assets/image_asset/edit/Image.png',
-                )),
-            Positioned(
-              top: 250.h,
-              left: 144.w,
-              child: Container(
-                child: Text(
-                  '복실복실해',
-                  style: White(16.sp, FontWeight.w600),
+                  'assets/onboarding/icon_5.png',
                 ),
               ),
+              title: Text(
+                '수정하기',
+                style: White(20.sp, FontWeight.w600),
+              ),
+              actions: [
+                GestureDetector(
+                  onTap: () {
+                    Get.to(() => EditPage());
+                  },
+                  child: Image.asset(
+                    'assets/image_asset/pet_information_details/edit.png',
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Get.to(() => DeletedProfilePage());
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Image.asset(
+                      'assets/alert/delete(24).png',
+                    ),
+                  ),
+                ),
+              ],
             ),
-            Positioned(
-              top: 260.h,
-              bottom: 0,
-              left: 0,
-              right: 0,
-              child: ListView(
+            SliverToBoxAdapter(
+              child: Column(
                 children: [
+                  Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      Positioned(
+                        child: CircleContainer(
+                          width: 120.w,
+                          height: 120.h,
+                        ),
+                      ),
+                      Positioned(
+                          left: 20.w,
+                          top: 20.h,
+                          child: Image.asset(
+                            'assets/image_asset/edit/Image.png',
+                          )),
+                      Positioned(
+                        left: 25.w,
+                        top: 136.h,
+                        child: Container(
+                          child: Text(
+                            '복실복실해',
+                            style: White(16.sp, FontWeight.w600),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 68.h,
+                  ),
                   DetailsAddWidget(),
+                  SizedBox(
+                    height: 60.h,
+                  )
                 ],
               ),
-            ),
+            )
           ],
         ),
       ),
