@@ -17,28 +17,11 @@ class AreaData extends StatelessWidget {
         if (snapshot.hasError || !snapshot.hasData) {
           return CircularProgressIndicator(
             strokeWidth: 1,
-            color: Colors.white.withOpacity(0.5),
+            color: Colors.transparent,
           );
-        }
-        //error가 발생하게 될 경우 반환하게 되는 부분
-        else {
+        } else {
           List ll = snapshot.data as List;
-          return Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text(ll[2], style: White(10.sp, FontWeight.w600)),
-              GestureDetector(
-                onTap: () {
-                  weatherController.getArea();
-                  weatherController.getWeather();
-                  print('click');
-                },
-                child: Image.asset(
-                  'assets/Main/reset.png',
-                ),
-              ),
-            ],
-          );
+          return Text(ll[2], style: White(10.sp, FontWeight.w600));
         }
       },
     );

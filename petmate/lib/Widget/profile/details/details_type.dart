@@ -7,8 +7,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:glass_kit/glass_kit.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
-import 'package:petmate/Widget/circle_container.dart';
-import 'package:petmate/Widget/custom_container.dart';
+import 'package:petmate/Widget/custom_widget/circle_container.dart';
+import 'package:petmate/Widget/custom_widget/custom_container.dart';
 
 class DetailsAddWidget extends StatefulWidget {
   const DetailsAddWidget({super.key});

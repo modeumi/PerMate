@@ -1,0 +1,30 @@
+[
+    {
+        "id" : "강아지",  
+        "image": "assets/image_asset/pet_upload/animal_list (1).png"
+    },
+    {
+        "id" : "고양이",  
+        "image": "assets/image_asset/pet_upload/animal_list (2).png"
+    },
+    {
+        "id" : "토끼", 
+        "image": "assets/image_asset/pet_upload/animal_list (3).png"
+    },
+    {
+        "id" : "거북이",  
+        "image": "assets/image_asset/pet_upload/animal_list (4).png"
+    },
+    {
+        "id" : "물고기",  
+        "image": "assets/image_asset/pet_upload/animal_list (5).png"
+    },
+    {
+        "id" : "새", 
+        "image": "assets/image_asset/pet_upload/animal_list (6).png"
+        },
+    {
+        "id" : "직접 입력", 
+        "image": null
+    }
+]

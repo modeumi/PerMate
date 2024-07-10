@@ -3,13 +3,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_naver_map/flutter_naver_map.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:petmate/Controller/start_controller.dart';
 import 'package:petmate/Util/route.dart';
 import 'package:petmate/View/splash.dart';
-
 import 'firebase_options.dart';
 import 'package:petmate/key.dart';
 import 'package:kakao_flutter_sdk_auth/kakao_flutter_sdk_auth.dart';

@@ -20,7 +20,7 @@ class CustomContainer2 extends StatelessWidget {
           Colors.white.withOpacity(0.2),
         ],
         begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
+        end: Alignment.center,
       ),
       borderGradient: LinearGradient(
         colors: [

@@ -5,7 +5,8 @@ import 'package:get/get.dart';
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/View/Invite/invite.dart';
 import 'package:petmate/View/MyPage/my_info.dart';
-import 'package:petmate/Widget/custom_container.dart';
+import 'package:petmate/Widget/custom_widget/custom_container.dart';
+import 'package:petmate/Widget/mypage/account_link.dart';
 
 class MypageInfo extends StatefulWidget {
   const MypageInfo({super.key});
@@ -49,9 +50,14 @@ class _MypageInfoState extends State<MypageInfo> {
         Positioned(
           top: 66.h,
           left: 16.w,
-          child: Text(
-            '계정연동',
-            style: White(14.sp, FontWeight.w600),
+          child: GestureDetector(
+            onTap: () {
+              Get.to(() => AccountLink());
+            },
+            child: Text(
+              '계정연동',
+              style: White(14.sp, FontWeight.w600),
+            ),
           ),
         ),
         Positioned(

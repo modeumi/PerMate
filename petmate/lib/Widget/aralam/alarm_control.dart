@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Controller/toggle_controller.dart';
-import 'package:petmate/Widget/custom_container.dart';
+import 'package:petmate/Widget/custom_widget/custom_container.dart';
 
 class AlarmControlWidget extends StatefulWidget {
   const AlarmControlWidget({super.key});
@@ -38,7 +38,7 @@ class _AlarmControlWidgetState extends State<AlarmControlWidget> {
     return Stack(
       children: [
         Positioned(
-          left: 10.w,
+          left: 8.w,
           top: 124.h,
           child: CustomContainer(
               width: 344.w, height: 96.h, shadow_color: Color(0x26000000)),

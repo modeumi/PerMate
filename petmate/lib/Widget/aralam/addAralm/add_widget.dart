@@ -1,3 +1,4 @@
+import 'package:alarm/alarm.dart';
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +7,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
+import 'package:petmate/DataTools/alarm_database.dart';
+import 'package:petmate/Model/alarm_model.dart';
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/Widget/button/save_button.dart';
 import 'package:petmate/Widget/aralam/addAralm/aralm_timepicker.dart';
@@ -22,6 +25,23 @@ class AddAlarmWidget extends StatefulWidget {
 }
 
 class _AddAlarmWidgetState extends State<AddAlarmWidget> {
+  final _controllerbutton = ValueNotifier<bool>(false);
+  void main() {
+    final alarm = AlarmModel(
+        id: 1,
+        title: '아침 알람',
+        time: "7:00",
+        days: ["월", "수", "금"],
+        isVibrationOn: true,
+        isSoundOn: true);
+
+    final jsonString = alarm.toJson();
+    print(jsonString);
+
+    final newAlarm = AlarmModel.fromJson(jsonString);
+    print(newAlarm.title);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -162,21 +182,29 @@ class _AddAlarmWidgetState extends State<AddAlarmWidget> {
                 '진동',
                 style: White(16.sp, FontWeight.w600),
               ),
-              Text(
-                '사용안함',
-                style: White(12.sp, FontWeight.w500),
-              ),
+              ValueListenableBuilder<bool>(
+                  valueListenable: _controllerbutton,
+                  builder: (context, value, child) {
+                    return Text(
+                      value ? '사용함' : '사용 안함',
+                      style: White(12.sp, FontWeight.w500),
+                    );
+                  })
             ],
           ),
         ),
         Positioned(
-            top: 379.h, right: 12.w, child: Container(child: ToggleButtonWidget())),
+            top: 379.h,
+            right: 12.w,
+            child: Container(child: ToggleButtonWidget())),
         Positioned(
           bottom: -4.h,
           left: 12.w,
           child: SaveButton(
             content: '저장',
-            action: () {},
+            action: () async {
+              Get.back();
+            },
           ),
         )
       ],

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:petmate/Util/textstyles.dart';
-import 'package:petmate/View/Notice/noticedelete.dart';
-import 'package:petmate/View/mainpage.dart';
+import 'package:petmate/View/Main/Notice/noticedelete.dart';
+import 'package:petmate/View/Main/mainpage.dart';
 import 'package:petmate/Widget/notice/notification_container.dart';
 import 'package:petmate/Widget/notice/notification_type.dart';
 

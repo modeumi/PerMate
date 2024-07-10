@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:petmate/Controller/community_controller.dart';
-import 'package:petmate/View/Community/community_info.dart';
 import 'package:petmate/Widget/bottom_navigation_bar/bottom_navigationbar.dart';
-import 'package:petmate/Widget/custom_tabbar.dart';
-import 'package:petmate/Widget/search_appbar.dart';
+import 'package:petmate/Widget/cummity/community_button.dart';
+import 'package:petmate/Widget/cummity/coummunity_searchbar.dart';
+import 'package:petmate/Widget/custom_widget/custom_tabbar.dart';
+import 'package:petmate/Widget/mypage/my_write/deal.dart';
+import 'package:petmate/Widget/mypage/my_write/info.dart';
+import 'package:petmate/Widget/mypage/my_write/meet.dart';
 
 class CommunityMain extends StatefulWidget {
   const CommunityMain({super.key});
@@ -14,14 +17,14 @@ class CommunityMain extends StatefulWidget {
 }
 
 class _CommunityMainState extends State<CommunityMain>
-    with SingleTickerProviderStateMixin {
-  late TabController tab;
+    with TickerProviderStateMixin {
+  late TabController _tabController;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    tab = TabController(length: 2, vsync: this);
+    _tabController = TabController(length: 3, vsync: this);
   }
 
   @override
@@ -30,6 +33,7 @@ class _CommunityMainState extends State<CommunityMain>
     return GetBuilder<CommunityController>(
       builder: (controller) {
         return Scaffold(
+          extendBody: true,
           body: Container(
             width: MediaQuery.sizeOf(context).width,
             height: MediaQuery.sizeOf(context).height,
@@ -39,18 +43,20 @@ class _CommunityMainState extends State<CommunityMain>
                     fit: BoxFit.fill)),
             child: Stack(
               children: [
-                SearchAppbar(actions: [], change: () {}, finish: () {}),
-                CustomTabbar(
-                    tabController: tab,
-                    tabView: [CommunityInfo(), Container(), Container()]),
-                Positioned(
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    child: CustomBottomNavigationBar())
+                CoummunitySearchbar(),
+                Padding(
+                  padding: const EdgeInsets.only(top: 90),
+                  child: CustomTabbar(
+                      bannerImage:
+                          'assets/image_asset/information_screen/banner.png',
+                      tabController: _tabController,
+                      tabView: [Info(), Deal(), Meet()]),
+                ),
+                Positioned(top: 684, child: CommunityButton()),
               ],
             ),
           ),
+          bottomNavigationBar: CustomBottomNavigationBar(),
         );
       },
     );

@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:petmate/Util/textstyles.dart';
-import 'package:petmate/Widget/circle_container.dart';
+import 'package:petmate/Widget/custom_widget/circle_container.dart';
 import 'package:petmate/Widget/profile/add/profile_card.dart';
 
 class AddProfileWidget extends StatefulWidget {
