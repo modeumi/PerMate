@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:geolocator/geolocator.dart';
 
 class LocationWidget extends StatefulWidget {
   const LocationWidget({super.key});
@@ -10,8 +8,6 @@ class LocationWidget extends StatefulWidget {
 }
 
 class _LocationWidgetState extends State<LocationWidget> {
-
-
   @override
   Widget build(BuildContext context) {
     return Stack(

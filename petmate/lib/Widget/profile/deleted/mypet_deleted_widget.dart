@@ -1,10 +1,7 @@
-import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/Widget/custom_widget/circle_container.dart';
 import 'package:petmate/Widget/custom_widget/custom_container.dart';
@@ -44,9 +41,9 @@ class _MyPetDeletedWidgetState extends State<MyPetDeletedWidget> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 4),
                 child: CustomContainer(
-                  width: 344.w,
-                  height: 80.h,
-                ),
+                    width: 344.w,
+                    height: 80.h,
+                    shadow_color: Color(0x26000000)),
               ),
               Positioned(
                 top: 32.h,

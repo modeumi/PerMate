@@ -1,19 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/View/MyPage/my_post_delete.dart';
 import 'package:petmate/Widget/bottom_navigation_bar/bottom_navigationbar.dart';
 import 'package:petmate/Widget/custom_appbar.dart';
 import 'package:petmate/Widget/custom_widget/custom_tabbar.dart';
 import 'package:petmate/Widget/mypage/my_write/deal.dart';
-import 'package:petmate/Widget/mypage/my_write/deal_check.dart';
 import 'package:petmate/Widget/mypage/my_write/info.dart';
 import 'package:petmate/Widget/mypage/my_write/meet.dart';
-import 'package:petmate/Widget/mypage/my_write/meet_check.dart';
 
 class MyPost extends StatefulWidget {
   const MyPost({super.key});

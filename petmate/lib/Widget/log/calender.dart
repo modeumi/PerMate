@@ -17,6 +17,7 @@ class _CalenderState extends State<Calender> {
         CustomContainer(
           width: 344.w,
           height: 146.h,
+          shadow_color: Color(0x4C000000),
         )
       ],
     );

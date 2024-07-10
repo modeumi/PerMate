@@ -1,24 +1,8 @@
 import 'dart:async';
-import 'dart:convert';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_naver_map/flutter_naver_map.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:petmate/Controller/navigation_controller.dart';
-import 'package:petmate/Widget/bottom_navigation_bar/bottom_navigationbar.dart';
-import 'package:petmate/Widget/bottom_navigation_bar/map_bottom_navigation.dart';
-
-import 'package:petmate/Widget/map/location_search.dart';
-import 'package:petmate/Widget/map/hairshop.dart';
-import 'package:petmate/Widget/map/location.dart';
-import 'package:petmate/Widget/map/map_serachbar.dart';
-import 'package:petmate/Widget/map/hospital.dart';
-import 'package:petmate/Widget/map/park.dart';
-import 'package:petmate/Widget/map/petshop.dart';
-import 'package:petmate/Widget/map/restaurant.dart';
 
 class WalkLog extends StatefulWidget {
   const WalkLog({super.key});

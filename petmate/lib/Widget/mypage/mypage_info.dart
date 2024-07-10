@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -21,9 +20,7 @@ class _MypageInfoState extends State<MypageInfo> {
     return Stack(
       children: [
         CustomContainer(
-          width: 344.w,
-          height: 300.h,
-        ),
+            width: 344.w, height: 300.h, shadow_color: Color(0x26000000)),
         Positioned(
           top: 16.h,
           left: 16.w,

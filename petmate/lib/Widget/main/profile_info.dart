@@ -1,12 +1,8 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dots_indicator/dots_indicator.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:get/get.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
 
@@ -20,7 +16,6 @@ class ProfileInfoWidget extends StatefulWidget {
 class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
   int _currentPage = 0;
   final PageController _controller = PageController();
-  final CarouselController _carouselController = CarouselController();
   final List<String> textList = [
     '강아지가 가구를 물어뜯는 이유를 알고 계신가요?',
     '고양이의 하루 평균 수면시간은 몇시간 일까요?',

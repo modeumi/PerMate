@@ -1,18 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/Widget/bottom_navigation_bar/bottom_navigationbar.dart';
 import 'package:petmate/Widget/custom_appbar.dart';
-import 'package:petmate/Widget/custom_widget/custom_container.dart';
-import 'package:petmate/Widget/custom_widget/custom_container2.dart';
-import 'package:petmate/Widget/custom_widget/custom_tabbar.dart';
 import 'package:petmate/Widget/mypage/my_info.dart';
-import 'package:petmate/Widget/mypage/my_write/deal.dart';
-import 'package:petmate/Widget/mypage/my_write/info.dart';
-import 'package:petmate/Widget/mypage/my_write/meet.dart';
 
 class MyInfo extends StatefulWidget {
   const MyInfo({super.key});
@@ -22,14 +12,6 @@ class MyInfo extends StatefulWidget {
 }
 
 class _MyInfoState extends State<MyInfo> with SingleTickerProviderStateMixin {
-  late TabController _tabController;
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    _tabController = TabController(length: 3, vsync: this);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

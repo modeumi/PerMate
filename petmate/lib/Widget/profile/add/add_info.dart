@@ -12,11 +12,9 @@ import 'package:petmate/Widget/profile/add/type_dropdown/first_meet.dart';
 import 'package:petmate/Widget/profile/add/type_dropdown/gender.dart';
 import 'package:petmate/Widget/profile/add/type_dropdown/neuter_or.dart';
 import 'package:petmate/Widget/profile/add/type_dropdown/neutering.dart';
-import 'package:petmate/Widget/profile/add/type_dropdown/petList.dart';
 import 'package:petmate/Widget/profile/add/type_dropdown/pets.dart';
 import 'package:petmate/Widget/profile/add/type_dropdown/petweight.dart';
 import 'package:petmate/Widget/profile/add/type_dropdown/surgery_record.dart';
-import 'package:petmate/Widget/profile/add/type_dropdown/typeList.dart';
 import 'package:petmate/Widget/profile/add/type_dropdown/vaccination_record.dart';
 
 class AddInfoWidget extends StatefulWidget {
@@ -35,6 +33,7 @@ class _AddInfoWidgetState extends State<AddInfoWidget> {
           child: CustomContainer(
             width: 344.w,
             height: 1200.h,
+            shadow_color: Color(0x4C000000),
           ),
         ),
         Positioned(

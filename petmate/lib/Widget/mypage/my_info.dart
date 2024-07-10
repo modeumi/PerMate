@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:glass_kit/glass_kit.dart';
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/Widget/custom_widget/circle_container.dart';
-import 'package:petmate/Widget/custom_widget/custom_container2.dart';
+import 'package:petmate/Widget/custom_widget/custom_container.dart';
 
 class MyInfomation extends StatefulWidget {
   const MyInfomation({super.key});
@@ -49,9 +49,10 @@ class _MyInfomationState extends State<MyInfomation> {
         Positioned(
           top: 296.h,
           left: 8.w,
-          child: CustomContainer2(
+          child: CustomContainer(
             width: 344.w,
             height: 428.h,
+            shadow_color: Color(0x4C000000),
           ),
         ),
         ...list.entries.map((entry) {

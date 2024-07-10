@@ -1,11 +1,8 @@
-import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:glass_kit/glass_kit.dart';
-import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/View/walk_log.dart';
 import 'package:petmate/Widget/custom_widget/custom_container.dart';
@@ -27,9 +24,7 @@ class _WalkWidgetState extends State<WalkWidget> {
       child: Stack(
         children: [
           CustomContainer(
-            width: 168.w,
-            height: 64.h,
-          ),
+              width: 168.w, height: 64.h, shadow_color: Color(0x26000000)),
           Positioned(
             left: 30,
             bottom: 18,

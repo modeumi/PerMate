@@ -7,7 +7,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:petmate/Controller/start_controller.dart';
 import 'package:petmate/Util/route.dart';
-import 'package:petmate/View/Main/mainpage.dart';
+import 'package:petmate/View/splash.dart';
 import 'firebase_options.dart';
 import 'package:petmate/key.dart';
 import 'package:kakao_flutter_sdk_auth/kakao_flutter_sdk_auth.dart';
@@ -48,7 +48,7 @@ void main() async {
           Get.put(StartController());
         }),
         debugShowCheckedModeBanner: false,
-        home: MainPage(),
+        home: Splash(),
       ),
     ),
   );
