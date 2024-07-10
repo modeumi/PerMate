@@ -21,7 +21,6 @@ class LogWidget extends StatefulWidget {
 }
 
 class _LogWidgetState extends State<LogWidget> {
-
   OverlayEntry? deletoverlay;
   var opactiyValue = 1.0;
 
@@ -46,9 +45,9 @@ class _LogWidgetState extends State<LogWidget> {
                       child: Stack(
                         children: [
                           CustomContainer(
-                            width: 344.w,
-                            height: 380.h,
-                          ),
+                              width: 344.w,
+                              height: 380.h,
+                              shadow_color: Color(0x26000000)),
                           Positioned(
                             top: 12,
                             left: 12,
@@ -172,9 +171,7 @@ class _LogWidgetState extends State<LogWidget> {
         clipBehavior: Clip.none,
         children: [
           CustomContainer(
-            width: 168.w,
-            height: 64.h,
-          ),
+              width: 168.w, height: 64.h, shadow_color: Color(0x26000000)),
           Positioned(
             left: 30,
             bottom: 18,

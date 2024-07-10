@@ -1,20 +1,19 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:glass_kit/glass_kit.dart';
 
 class CustomContainer2 extends StatelessWidget {
-  final double width;
-  final double height;
+  final double? width;
+  final double? height;
+  final Color shadow_color;
   const CustomContainer2(
-      {super.key, this.width = double.infinity, this.height = double.infinity});
+      {super.key, this.width, this.height, required this.shadow_color});
 
   @override
   Widget build(BuildContext context) {
     return GlassContainer(
-      width: width,
-      height: height,
-      color: Color(0x3300287C),
+      width: width ?? double.infinity,
+      height: height ?? double.infinity,
+      color: const Color(0x3300287C),
       gradient: LinearGradient(
         colors: [
           Colors.transparent,
@@ -40,7 +39,7 @@ class CustomContainer2 extends StatelessWidget {
       elevation: 0,
       boxShadow: [
         BoxShadow(
-          color: Color(0x4C000000),
+          color: shadow_color,
           blurRadius: 10,
           offset: Offset(2, 2),
           spreadRadius: 0,

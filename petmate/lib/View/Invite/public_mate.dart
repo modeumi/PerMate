@@ -1,9 +1,6 @@
-import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:glass_kit/glass_kit.dart';
-import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/View/Invite/get_invite.dart';
 import 'package:petmate/View/Invite/invite.dart';
@@ -58,9 +55,9 @@ class _PublicMateState extends State<PublicMate> {
                     Get.to(() => InvitePage());
                   },
                   child: CustomContainer(
-                    width: 344.w,
-                    height: 200.h,
-                  )),
+                      width: 344.w,
+                      height: 200.h,
+                      shadow_color: Color(0x26000000))),
             ),
             Positioned(
                 top: 367.h,
@@ -91,9 +88,9 @@ class _PublicMateState extends State<PublicMate> {
                     Get.to(() => GetInvite());
                   },
                   child: CustomContainer(
-                    width: 344.w,
-                    height: 200.h,
-                  )),
+                      width: 344.w,
+                      height: 200.h,
+                      shadow_color: Color(0x26000000))),
             ),
             Positioned(
                 top: 573.h,

@@ -54,9 +54,7 @@ class _InvitePageState extends State<InvitePage> {
               top: 312.h,
               left: 8.w,
               child: CustomContainer(
-                width: 344.w,
-                height: 412.h,
-              ),
+                  width: 344.w, height: 412.h, shadow_color: Color(0x26000000)),
             ),
             Positioned(
               top: 324.h,

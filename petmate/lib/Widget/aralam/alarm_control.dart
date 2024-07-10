@@ -1,17 +1,9 @@
-import 'package:blurrycontainer/blurrycontainer.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_advanced_switch/flutter_advanced_switch.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:glass_kit/glass_kit.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Controller/toggle_controller.dart';
-import 'package:petmate/Util/textstyles.dart';
-import 'package:petmate/Widget/button/alarm_toggle.dart';
 import 'package:petmate/Widget/custom_container.dart';
 
 class AlarmControlWidget extends StatefulWidget {
@@ -49,9 +41,7 @@ class _AlarmControlWidgetState extends State<AlarmControlWidget> {
           left: 10.w,
           top: 124.h,
           child: CustomContainer(
-            width: 344.w,
-            height: 96.h,
-          ),
+              width: 344.w, height: 96.h, shadow_color: Color(0x26000000)),
         ),
         Positioned(
             left: 24.w,

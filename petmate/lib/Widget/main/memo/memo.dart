@@ -27,9 +27,7 @@ class _MemoWriteWidgetState extends State<MemoWriteWidget> {
       },
       child: Stack(children: [
         CustomContainer(
-          width: 344.w,
-          height: 108.h,
-        ),
+            width: 344.w, height: 108.h, shadow_color: Color(0x26000000)),
         Positioned(
           top: 12.h,
           left: 12.h,

@@ -45,9 +45,9 @@ class _MyPetEditWidgetState extends State<MyPetEditWidget> {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 4),
                   child: CustomContainer(
-                    width: 344.w,
-                    height: 80.h,
-                  ),
+                      width: 344.w,
+                      height: 80.h,
+                      shadow_color: Color(0x26000000)),
                 ),
                 Positioned(
                     top: 32.h,

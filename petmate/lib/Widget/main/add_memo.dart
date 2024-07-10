@@ -43,9 +43,9 @@ class _MeMoWidgetState extends State<MeMoWidget> {
                   child: Stack(
                     children: [
                       CustomContainer(
-                        width: 344.w,
-                        height: 380.h,
-                      ),
+                          width: 344.w,
+                          height: 380.h,
+                          shadow_color: Color(0x26000000)),
                       Positioned(
                         top: 12,
                         left: 12,
@@ -112,9 +112,7 @@ class _MeMoWidgetState extends State<MeMoWidget> {
                           top: 307.h,
                           left: 8.w,
                           right: 8.w,
-                          child: SaveButton(content: '저장', action: () {
-                            
-                          }))
+                          child: SaveButton(content: '저장', action: () {}))
                     ],
                   ),
                 ),
@@ -135,9 +133,7 @@ class _MeMoWidgetState extends State<MeMoWidget> {
       child: Stack(
         children: [
           CustomContainer(
-            width: 168.w,
-            height: 64.h,
-          ),
+              width: 168.w, height: 64.h, shadow_color: Color(0x26000000)),
           Positioned(
             left: 30.w,
             bottom: 18.h,

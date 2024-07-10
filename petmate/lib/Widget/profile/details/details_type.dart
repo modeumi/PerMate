@@ -99,9 +99,7 @@ class _DetailsAddWidgetState extends State<DetailsAddWidget> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: CustomContainer(
-            width: 344.w,
-            height: 930.h,
-          ),
+              width: 344.w, height: 930.h, shadow_color: Color(0x26000000)),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),

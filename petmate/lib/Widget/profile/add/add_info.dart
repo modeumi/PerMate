@@ -48,9 +48,7 @@ class _AddInfoWidgetState extends State<AddInfoWidget> {
     return Stack(
       children: [
         CustomContainer(
-          width: 344.w,
-          height: 1099.h,
-        ),
+            width: 344.w, height: 1099.h, shadow_color: Color(0x26000000)),
         Container(
           width: 344.w,
           height: 1099.h,

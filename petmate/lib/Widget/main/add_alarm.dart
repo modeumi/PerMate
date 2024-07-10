@@ -64,9 +64,7 @@ class _AlarmWidgetState extends State<AlarmWidget> {
       child: Stack(
         children: [
           CustomContainer(
-            width: 168.w,
-            height: 64.h,
-          ),
+              width: 168.w, height: 64.h, shadow_color: Color(0x26000000)),
           Positioned(
             left: 30,
             bottom: 18,

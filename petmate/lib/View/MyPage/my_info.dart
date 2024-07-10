@@ -53,6 +53,7 @@ class _MyInfoState extends State<MyInfo> with SingleTickerProviderStateMixin {
                 child: CustomContainer2(
                   width: 344,
                   height: 428,
+                  shadow_color: Color(0x4C000000),
                 ),
               ),
             ],

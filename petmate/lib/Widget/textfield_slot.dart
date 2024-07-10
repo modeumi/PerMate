@@ -22,52 +22,37 @@ class TextFieldSlot extends StatefulWidget {
 
 class _TextFieldSlotState extends State<TextFieldSlot> {
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    print(widget.hint);
-    print(widget.status);
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width,
+      width: MediaQuery.sizeOf(context).width,
       height: 50,
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
           border: widget.status
               ? null
               : Border.all(width: 1.5, color: const Color(0xFFFF0000))),
-      child: Stack(
-        children: [
-          TextField(
-            controller: widget.controller,
-            cursorColor: Colors.blue,
-            textAlignVertical: TextAlignVertical.center,
-            textAlign: TextAlign.left,
-            onChanged: (value) {
-              widget.action();
-            },
-            obscureText: widget.password,
-            decoration: InputDecoration(
-                hintText: widget.hint,
-                border: InputBorder.none,
-                hintStyle: const TextStyle(
-                  color: Color(0xFFCCCCCC),
-                  fontSize: 12,
-                  fontFamily: 'Pretendard',
-                  fontWeight: FontWeight.w500,
-                )),
-          ),
-          Positioned(
-              right: 10,
-              top: 0,
-              bottom: 0,
-              child: widget.addwidget ?? Container())
-        ],
+      child: TextField(
+        controller: widget.controller,
+        cursorColor: Colors.blue,
+        textAlignVertical: TextAlignVertical.center,
+        textAlign: TextAlign.left,
+        onChanged: (value) {
+          widget.action();
+        },
+        obscureText: widget.password,
+        decoration: InputDecoration(
+            hintText: widget.hint,
+            border: InputBorder.none,
+            focusColor: Colors.blue,
+            contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+            hintStyle: const TextStyle(
+              color: Color(0xFFCCCCCC),
+              fontSize: 12,
+              fontFamily: 'Pretendard',
+              fontWeight: FontWeight.w500,
+            ),
+            suffixIcon: widget.addwidget ?? const SizedBox.shrink()),
       ),
     );
   }

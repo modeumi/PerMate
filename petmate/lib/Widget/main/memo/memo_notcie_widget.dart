@@ -36,6 +36,7 @@ class _MemoNotcieWidgetState extends State<MemoNotcieWidget> {
                 child: CustomContainer(
                   width: 344.w,
                   height: 80.h,
+                  shadow_color: Color(0x26000000),
                 ),
               ),
               Positioned(

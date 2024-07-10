@@ -45,9 +45,9 @@ class _MemoNoticeState extends State<MemoNotice> {
                   child: Stack(
                     children: [
                       CustomContainer(
-                        width: 344.w,
-                        height: 380.h,
-                      ),
+                          width: 344.w,
+                          height: 380.h,
+                          shadow_color: Color(0x26000000)),
                       Positioned(
                         top: 12,
                         left: 12,
