@@ -30,27 +30,27 @@ class _SearchAppbarState extends State<SearchAppbar> {
             child: Container(
               width: MediaQuery.sizeOf(context).width,
               height: 40,
-               decoration: BoxDecoration(
-                  boxShadow: const [
-                        BoxShadow(
-                          color: Color(0x26000000),
-                          blurRadius: 2,
-                          offset: Offset(0, 2),
-                          spreadRadius: 0,
-                        )
-                      ],
-                    border: GradientBoxBorder(
-                      width: 1,
-                      gradient: LinearGradient(
-                        colors: [
-                          Colors.white.withOpacity(0.5),
-                          Colors.white.withOpacity(0.2)
-                        ],
-                      ),
-                    ),
-                    color: Color(0x3300287c),
-                    borderRadius: BorderRadius.circular(20),
+              decoration: BoxDecoration(
+                boxShadow: const [
+                  BoxShadow(
+                    color: Color(0x26000000),
+                    blurRadius: 2,
+                    offset: Offset(0, 2),
+                    spreadRadius: 0,
+                  )
+                ],
+                border: GradientBoxBorder(
+                  width: 1,
+                  gradient: LinearGradient(
+                    colors: [
+                      Colors.white.withOpacity(0.5),
+                      Colors.white.withOpacity(0.2)
+                    ],
                   ),
+                ),
+                color: Color(0x3300287c),
+                borderRadius: BorderRadius.circular(20),
+              ),
               child: BlurryContainer(
                 height: 40,
                 width: MediaQuery.sizeOf(context).width,
@@ -59,8 +59,8 @@ class _SearchAppbarState extends State<SearchAppbar> {
                 borderRadius: BorderRadius.circular(20),
                 child: Container(
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
                   child: TextField(
                     textAlign: TextAlign.center,
                     decoration: InputDecoration(
@@ -68,7 +68,7 @@ class _SearchAppbarState extends State<SearchAppbar> {
                           onTap: () {},
                           child: Container(
                             child: Image.asset(
-                              'assets/mapimg/Search.png',
+                              'assets/image_asset/information_screen/search.png',
                             ),
                           ),
                         ),

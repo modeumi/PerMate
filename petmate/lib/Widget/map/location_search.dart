@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:petmate/Util/textstyles.dart';
 
 class LocationSearch extends StatefulWidget {
   const LocationSearch({super.key});
@@ -17,7 +19,7 @@ class _LocationSearchState extends State<LocationSearch> {
           width: 144,
           height: 40,
           decoration: ShapeDecoration(
-              color: Color(0xFF5A8FE1),
+              color: Color(0xFF2B80FF),
               shape: RoundedRectangleBorder(
                   side: BorderSide(
                       width: 1, color: Colors.white.withOpacity(0.2)),
@@ -58,20 +60,12 @@ class _LocationSearchState extends State<LocationSearch> {
               SizedBox(
                 width: 4,
               ),
-              Text(
-                '현 위치에서 검색',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 14,
-                  fontFamily: 'Pretendard',
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
+              Text('현 위치에서 검색',
+                  textAlign: TextAlign.center,
+                  style: White(14.sp, FontWeight.w600)),
             ],
           ),
         ),
-        
       ],
     );
   }

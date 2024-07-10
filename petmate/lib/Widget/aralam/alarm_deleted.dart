@@ -10,7 +10,7 @@ import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/Widget/aralam/alarm_control.dart';
 import 'package:petmate/Widget/button/alarm_toggle.dart';
-import 'package:petmate/Widget/custom_container.dart';
+import 'package:petmate/Widget/custom_widget/custom_container.dart';
 
 class AlarmDeletedWidget extends StatefulWidget {
   const AlarmDeletedWidget({super.key});

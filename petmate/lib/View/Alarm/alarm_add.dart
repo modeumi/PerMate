@@ -29,21 +29,6 @@ class _AlarmAddPageState extends State<AlarmAddPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: CustomAppbar(
-        title: '알람',
-        action: [
-          GestureDetector(
-              onTap: () {
-                Get.to(() => AlarmAddPage());
-              },
-              child: Image.asset('assets/image_asset/alarm/add.png')),
-          GestureDetector(
-              onTap: () {
-                Get.to(() => AlarmDeletedPage());
-              },
-              child: Image.asset('assets/alert/delete(24).png'))
-        ],
-      ),
       body: Stack(
         children: [
           Container(
@@ -57,6 +42,13 @@ class _AlarmAddPageState extends State<AlarmAddPage> {
             ),
             child: Stack(
               children: [
+                CustomAppbar(
+                  title: '알람',
+                  action: [
+                    Image.asset('assets/image_asset/alarm/add.png'),
+                    Image.asset('assets/alert/delete(24).png')
+                  ],
+                ),
                 Positioned(
                     bottom: 0,
                     left: 0,

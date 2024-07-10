@@ -1,12 +1,12 @@
 import 'package:get/get.dart';
 import 'package:petmate/View/Community/community_main.dart';
-import 'package:petmate/View/Notice/notice.dart';
-import 'package:petmate/View/Notice/noticedelete.dart';
+import 'package:petmate/View/Main/Notice/notice.dart';
+import 'package:petmate/View/Main/Notice/noticedelete.dart';
 import 'package:petmate/View/join_main.dart';
 import 'package:petmate/View/join_success.dart';
 import 'package:petmate/View/login_main.dart';
 import 'package:petmate/View/login_select.dart';
-import 'package:petmate/View/mainpage.dart';
+import 'package:petmate/View/Main/mainpage.dart';
 import 'package:petmate/View/onboarding.dart';
 import 'package:petmate/View/password_search.dart';
 import 'package:petmate/View/splash.dart';

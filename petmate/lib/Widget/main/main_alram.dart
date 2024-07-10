@@ -9,7 +9,7 @@ import 'package:glass_kit/glass_kit.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/View/Invite/public_mate.dart';
-import 'package:petmate/View/Notice/notice.dart';
+import 'package:petmate/View/Main/Notice/notice.dart';
 import 'package:petmate/View/Alarm/alarm.dart';
 
 class MainAlram extends StatefulWidget {

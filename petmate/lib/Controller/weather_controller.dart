@@ -108,7 +108,15 @@ class WeatherController extends GetxController {
     }
   }
 
-  Future<WeatherModel?> getWeather() async {
+   @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+    getWeather();
+  }
+  
+  Future<WeatherModel?> getWeather({bool forceRefresh = false}) async {
+
     Position position = await fetchLocationName();
     //현재 위치 날씨 가져오기
     String WeatherData =
@@ -118,7 +126,7 @@ class WeatherController extends GetxController {
 
       if (response.statusCode == 200) {
         var data = json.decode(response.body);
-        print("데이터 확인: $data");
+        // print("데이터 확인: $data");
 
         double? rain =
             data["rain"] != null ? data["rain"]["1h"]?.toDouble() : null;
@@ -149,7 +157,7 @@ class WeatherController extends GetxController {
       final response = await http.get(Uri.parse(airData));
       if (response.statusCode == 200) {
         var data = json.decode(response.body);
-        print("미세먼지확인: $data");
+        // print("미세먼지확인: $data");
         AirModel airdata = AirModel(
           pm2_5: data['list'][0]['components']['pm2_5'],
           pm10: data['list'][0]['components']['pm10'],
@@ -159,7 +167,7 @@ class WeatherController extends GetxController {
         throw Exception('Failed to load air pollution data');
       }
     } catch (e) {
-      print(e);
+      // print(e);
       return null;
     }
   }
@@ -188,15 +196,12 @@ class WeatherController extends GetxController {
         desiredAccuracy: LocationAccuracy.high);
   }
 
- 
-
   Future<List<String>> getArea() async {
     Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
     //현재위치를 position이라는 변수로 저장
     String lat = position.latitude.toString();
     String lon = position.longitude.toString();
-   
 
     String url =
         "https://naveropenapi.apigw.ntruss.com/map-reversegeocode/v2/gc?request=coordsToaddr&coords=${lon},${lat}&sourcecrs=epsg:4326&orders=admcode,legalcode,addr,roadaddr&output=json";
@@ -210,7 +215,7 @@ class WeatherController extends GetxController {
     if (response.statusCode == 200) {
       String jsonData = response.body;
       var data = jsonDecode(jsonData);
-      print('위치 표시${data}');
+      // print('위치 표시${data}');
       var myJson_dong =
           jsonDecode(jsonData)["results"][1]['region']['area3']['name'];
       var myJson_gu =
@@ -224,4 +229,8 @@ class WeatherController extends GetxController {
       throw Exception('Failed to load location data');
     }
   }
+
+  
+
+
 }

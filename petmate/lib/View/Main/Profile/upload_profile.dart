@@ -22,7 +22,7 @@ class _UploadProfilePage extends State<UploadProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      extendBodyBehindAppBar: false,
+      extendBodyBehindAppBar: true,
       body: Container(
         width: 360.w,
         height: 800.h,
@@ -34,6 +34,7 @@ class _UploadProfilePage extends State<UploadProfilePage> {
         child: CustomScrollView(
           slivers: [
             SliverAppBar(
+              toolbarHeight: 100,
               scrolledUnderElevation: 0,
               automaticallyImplyLeading: false,
               backgroundColor: Colors.transparent,
@@ -55,7 +56,13 @@ class _UploadProfilePage extends State<UploadProfilePage> {
               child: Column(
                 children: [
                   AddProfileWidget(),
+                  SizedBox(
+                    height: 10.h,
+                  ),
                   AddName(),
+                  SizedBox(
+                    height: 40.h,
+                  ),
                   AddInfoWidget(),
                   SizedBox(
                     height: 75,

@@ -3,10 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:petmate/Model/memo_model.dart';
 import 'package:petmate/Util/textstyles.dart';
+import 'package:petmate/Widget/main/memo/memoModel.dart';
+import 'package:petmate/Widget/main/memo/memo_database.dart';
 
 class MemoDeletedButton extends StatefulWidget {
-  const MemoDeletedButton({super.key});
+  // final MemoDatabase memoDatabase;
+  const MemoDeletedButton({super.key,});
 
   @override
   State<MemoDeletedButton> createState() => _MemoDeletedButtonState();
@@ -14,22 +18,18 @@ class MemoDeletedButton extends StatefulWidget {
 
 class _MemoDeletedButtonState extends State<MemoDeletedButton> {
   List<bool> deletedCheck = [false, false, false];
-  bool state = false;
-
+  // late Future<List<Memo>> memo;
   OverlayEntry? deletoverlay;
   var opactiyValue = 1.0;
 
-  void deletedItems() {
-    setState(() {
-      deletedCheck.asMap().forEach((index, isSelected) {
-        if (isSelected) {
-          deletedCheck[index] = false;
-        }
-      });
-    });
-  }
+  // @override
+  // void initState() {
+  //   // TODO: implement initState
+  //   super.initState();
+  //   memo = widget.memoDatabase.getMemo();
+  // }
 
-  void Deletedoevrlay(BuildContext context) {
+  void Deletedoevrlay(BuildContext context, Memo memo) {
     Future.delayed(Duration(milliseconds: 0), () {
       setState(() {
         opactiyValue = 1.0;
@@ -47,19 +47,15 @@ class _MemoDeletedButtonState extends State<MemoDeletedButton> {
                     width: 360.w,
                     height: 160.h,
                     decoration: BoxDecoration(
-                      color: state
-                          ? Colors.white.withOpacity(0.2)
-                          : Colors.transparent,
+                      color: Colors.transparent,
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: state
-                        ? Container()
-                        : BlurryContainer(
-                            blur: 12,
-                            elevation: 0,
-                            borderRadius: BorderRadius.circular(10.r),
-                            child: Container(),
-                          ),
+                    child: BlurryContainer(
+                      blur: 12,
+                      elevation: 0,
+                      borderRadius: BorderRadius.circular(10.r),
+                      child: Container(),
+                    ),
                   ),
                   Container(
                     width: 360.w,
@@ -153,21 +149,14 @@ class _MemoDeletedButtonState extends State<MemoDeletedButton> {
                                 width: 8,
                               ),
                               GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    List<int> indexesToRemove = [];
-                                    for (int i = deletedCheck.length - 1;
-                                        i >= 0;
-                                        i--) {
-                                      if (deletedCheck[i]) {
-                                        deletedCheck.removeAt(i);
-                                      }
-                                    }
-                                    for (int index in indexesToRemove) {
-                                      deletedCheck.removeAt(index);
-                                    }
-                                  });
-                                },
+                                // onTap: () async {
+                                //   await widget.memoDatabase
+                                //       .deletedMemo(memo.id!);
+                                //   Get.back();
+                                //   setState(() {
+                                //     this.memo = widget.memoDatabase.getMemo();
+                                //   });
+                                // },
                                 child: Container(
                                   width: 156.w,
                                   height: 48.h,
@@ -215,8 +204,11 @@ class _MemoDeletedButtonState extends State<MemoDeletedButton> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Deletedoevrlay(context);
+      onTap: () async {
+        // List<Memo> memoList = await memo;
+        // if (memoList.isNotEmpty) {
+        //    Deletedoevrlay(context, memoList[0]);
+        // }
       },
       child: Stack(
         children: [

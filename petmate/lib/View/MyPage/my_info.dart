@@ -6,9 +6,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/Widget/bottom_navigation_bar/bottom_navigationbar.dart';
 import 'package:petmate/Widget/custom_appbar.dart';
-import 'package:petmate/Widget/custom_container.dart';
-import 'package:petmate/Widget/custom_container2.dart';
-import 'package:petmate/Widget/custom_tabbar.dart';
+import 'package:petmate/Widget/custom_widget/custom_container.dart';
+import 'package:petmate/Widget/custom_widget/custom_container2.dart';
+import 'package:petmate/Widget/custom_widget/custom_tabbar.dart';
+import 'package:petmate/Widget/mypage/my_info.dart';
 import 'package:petmate/Widget/mypage/my_write/deal.dart';
 import 'package:petmate/Widget/mypage/my_write/info.dart';
 import 'package:petmate/Widget/mypage/my_write/meet.dart';
@@ -46,16 +47,7 @@ class _MyInfoState extends State<MyInfo> with SingleTickerProviderStateMixin {
                   image: AssetImage('assets/Main/Background.png'),
                   fit: BoxFit.fill)),
           child: Stack(
-            children: [
-              Positioned(
-                top: 296.h,
-                left: 8.w,
-                child: CustomContainer2(
-                  width: 344,
-                  height: 428,
-                ),
-              ),
-            ],
+            children: [MyInfomation()],
           )),
       bottomNavigationBar: CustomBottomNavigationBar(),
     );

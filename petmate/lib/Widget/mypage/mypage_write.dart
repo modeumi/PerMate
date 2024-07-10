@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/View/MyPage/my_like.dart';
 import 'package:petmate/View/MyPage/my_post.dart';
-import 'package:petmate/Widget/custom_container.dart';
+import 'package:petmate/Widget/custom_widget/custom_container.dart';
 
 class MypageWrite extends StatefulWidget {
   const MypageWrite({super.key});

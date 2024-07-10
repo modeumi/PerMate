@@ -25,7 +25,7 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   final BottomNavigationBarController _bottomNavigationBarController =
-      Get.put(BottomNavigationBarController());
+Get.put(BottomNavigationBarController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(

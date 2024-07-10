@@ -4,14 +4,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:glass_kit/glass_kit.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
+import 'package:petmate/Controller/navigation_controller.dart';
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/View/Invite/get_invite.dart';
 import 'package:petmate/View/Invite/invite.dart';
 import 'package:petmate/Widget/bottom_navigation_bar/bottom_navigationbar.dart';
 import 'package:petmate/Widget/button/delet_button.dart';
-import 'package:petmate/Widget/circle_container.dart';
+import 'package:petmate/Widget/custom_widget/circle_container.dart';
 import 'package:petmate/Widget/custom_appbar.dart';
-import 'package:petmate/Widget/custom_container.dart';
+import 'package:petmate/Widget/custom_widget/custom_container.dart';
 import 'package:petmate/Widget/mypage/mypage_info.dart';
 import 'package:petmate/Widget/mypage/mypage_profile.dart';
 import 'package:petmate/Widget/mypage/mypage_write.dart';
@@ -24,6 +25,8 @@ class Mypage extends StatefulWidget {
 }
 
 class _MypageState extends State<Mypage> {
+  final BottomNavigationBarController _bottomNavigationBarController =
+      Get.put(BottomNavigationBarController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(

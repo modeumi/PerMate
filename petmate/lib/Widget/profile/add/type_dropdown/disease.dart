@@ -12,6 +12,9 @@ class DiseaseList extends StatefulWidget {
 }
 
 class _DiseaseListState extends State<DiseaseList> {
+  TextEditingController _searchController = TextEditingController();
+  List<String> diseaseList = [];
+
   String _selectedType = '';
   final TypeList = [
     '강아지',
@@ -22,13 +25,34 @@ class _DiseaseListState extends State<DiseaseList> {
     '새',
     '직접 입력',
   ];
+
+  void _addDisease() {
+    if (_searchController.text.isNotEmpty) {
+      setState(() {
+        diseaseList.add(_searchController.text);
+        _searchController.clear();
+      });
+    }
+  }
+
+  void _removeDisease(int index) {
+    setState(() {
+      diseaseList.removeAt(index);
+    });
+  }
+
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Stack(children: [
+    return Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
       Container(
         width: 320.w,
         height: 40.h,
-        margin: EdgeInsets.all(4),
+        margin: EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: Colors.white,
           border: GradientBoxBorder(
@@ -75,6 +99,59 @@ class _DiseaseListState extends State<DiseaseList> {
           ),
         ),
       ),
+      Container(
+        width: 320.w,
+        height: 40.h,
+        margin: EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10.r),
+        ),
+        child: TextField(
+          controller: _searchController,
+          textAlign: TextAlign.center,
+          decoration: InputDecoration(
+            hintText: '염려 · 보유질환을 입력해주세요.',
+            hintStyle: Gray(14.sp, FontWeight.w500),
+            enabledBorder: UnderlineInputBorder(borderSide: BorderSide.none),
+            border: OutlineInputBorder(borderSide: BorderSide.none),
+            contentPadding: EdgeInsets.fromLTRB(10, 0, 0, 11),
+            focusedBorder: UnderlineInputBorder(borderSide: BorderSide.none),
+          ),
+          style: TextStyle(color: Colors.black, decorationThickness: 0),
+          cursorColor: Colors.black,
+          cursorWidth: 1.w,
+          onSubmitted: (value) {
+            _addDisease();
+          },
+        ),
+      ),
+      Container(
+          width: 344.w,
+          height: 30.h,
+          margin: EdgeInsets.all(4),
+          child: diseaseList.isNotEmpty
+              ? ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: diseaseList.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Chip(
+                        padding: EdgeInsets.all(2),
+                        side: BorderSide(color: Colors.transparent),
+                        backgroundColor: Colors.white,
+                        label: Text(diseaseList[index]),
+                        onDeleted: () {
+                          _removeDisease(index);
+                        },
+                        deleteIcon:
+                            Image.asset('assets/image_asset/edit/close.png'),
+                      ),
+                    );
+                  },
+                )
+              : SizedBox.shrink()),
     ]);
   }
 }

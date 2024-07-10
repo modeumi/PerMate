@@ -7,39 +7,35 @@ import 'package:gradient_borders/gradient_borders.dart';
 import 'package:petmate/Controller/navigation_controller.dart';
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/View/Community/community_main.dart';
+import 'package:petmate/View/Log/logmain.dart';
 import 'package:petmate/View/Map/naver_map.dart';
 import 'package:petmate/View/MyPage/mypage.dart';
-import 'package:petmate/View/mainpage.dart';
+import 'package:petmate/View/Main/mainpage.dart';
 
 class CustomBottomNavigationBar extends GetView<BottomNavigationBarController> {
   const CustomBottomNavigationBar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    bool state2 = false;
-
     return Obx(() => Stack(
           children: [
             Container(
               width: 360.w,
               height: 64.h,
               decoration: BoxDecoration(
-                color:
-                    state2 ? Colors.white.withOpacity(0.2) : Colors.transparent,
+                color: Colors.transparent,
                 border: Border(
                   top: BorderSide(
                       color: Colors.white.withOpacity(0.5), width: 1.w),
                 ),
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: state2
-                  ? Container()
-                  : BlurryContainer(
-                      blur: 12,
-                      elevation: 0,
-                      borderRadius: BorderRadius.circular(10.r),
-                      child: Container(),
-                    ),
+              child: BlurryContainer(
+                blur: 12,
+                elevation: 0,
+                borderRadius: BorderRadius.circular(10.r),
+                child: Container(),
+              ),
             ),
             Opacity(
               opacity: 0.4,
@@ -106,12 +102,12 @@ class CustomBottomNavigationBar extends GetView<BottomNavigationBarController> {
                     icon: controller.selectedIndex.value == 2
                         ? Image.asset(
                             'assets/gnbicon(map)/gnbicon (1).png',
-                            height: 35.h,
+                            height: 30.h,
                             width: 24.w,
                           )
                         : Image.asset(
                             'assets/gnbicon/map.png',
-                            height: 35.h,
+                            height: 30.h,
                             width: 24.w,
                           ),
                     label: "지도",
@@ -120,12 +116,12 @@ class CustomBottomNavigationBar extends GetView<BottomNavigationBarController> {
                       icon: controller.selectedIndex.value == 3
                           ? Image.asset(
                               'assets/gnbicon/chat (2).png',
-                              height: 35.h,
+                              height: 30.h,
                               width: 24.w,
                             )
                           : Image.asset(
                               'assets/gnbicon/chat (1).png',
-                              height: 35.h,
+                              height: 30.h,
                               width: 24.w,
                             ),
                       label: "커뮤니티"),
@@ -133,12 +129,12 @@ class CustomBottomNavigationBar extends GetView<BottomNavigationBarController> {
                       icon: controller.selectedIndex.value == 4
                           ? Image.asset(
                               'assets/gnbicon/user (2).png',
-                              height: 35.h,
+                              height: 30.h,
                               width: 24.w,
                             )
                           : Image.asset(
                               'assets/gnbicon/user (1).png',
-                              height: 35.h,
+                              height: 30.h,
                               width: 24.w,
                             ),
                       label: "마이페이지"),
@@ -150,7 +146,7 @@ class CustomBottomNavigationBar extends GetView<BottomNavigationBarController> {
                       Get.to(() => MainPage());
                       break;
                     case 1:
-                      // Get.to(() => Log());
+                      Get.to(() => LogMain());
                       break;
                     case 2:
                       Get.to(() => MNaverMap());

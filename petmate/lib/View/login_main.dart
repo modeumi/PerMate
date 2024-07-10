@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:petmate/Controller/login_controller.dart';
 import 'package:petmate/View/join_main.dart';
-import 'package:petmate/View/mainpage.dart';
+import 'package:petmate/View/Main/mainpage.dart';
 import 'package:petmate/View/password_search.dart';
 import 'package:petmate/Widget/push_button_a.dart';
 import 'package:petmate/Widget/question_to_push.dart';

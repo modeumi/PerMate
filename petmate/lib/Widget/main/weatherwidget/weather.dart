@@ -15,6 +15,7 @@ import 'package:petmate/Model/air_model.dart';
 import 'package:petmate/Model/weather_model.dart';
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/View/Map/naver_map.dart';
+import 'package:petmate/View/walk_log.dart';
 import 'package:petmate/Widget/main/weatherwidget/air.dart';
 import 'package:petmate/Widget/main/weatherwidget/area.dart';
 
@@ -81,17 +82,33 @@ class _WeatherWigdgetState extends State<WeatherWigdget> {
             return Stack(
               children: [
                 Positioned(
-                  left: 12,
-                  top: 10,
+                  left: 12.w,
+                  top: 10.h,
                   child: Container(
                     width: 320.w,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('날씨', style: White(12, FontWeight.w600)),
-                        Container(
-                          width: 50.w,
-                          child: AreaData(),
+                        Text('날씨', style: White(12.sp, FontWeight.w600)),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            AreaData(),
+                            GestureDetector(
+                              onTap: () {
+                                Get.find<WeatherController>()
+                                    .getWeather(forceRefresh: true)
+                                    .then((_) {
+                                  setState(() {
+                                    isLoading = false;
+                                  });
+                                });
+                              },
+                              child: Image.asset(
+                                'assets/Main/reset.png',
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),

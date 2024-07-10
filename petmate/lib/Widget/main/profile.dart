@@ -11,8 +11,8 @@ import 'package:get/get.dart';
 import 'package:glass_kit/glass_kit.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
-import 'package:petmate/View/Profile/edit_pet_list.dart';
-import 'package:petmate/View/Profile/upload_profile.dart';
+import 'package:petmate/View/Main/Profile/edit_pet_list.dart';
+import 'package:petmate/View/Main/Profile/upload_profile.dart';
 
 class ProfilePlus extends StatefulWidget {
   const ProfilePlus({super.key});

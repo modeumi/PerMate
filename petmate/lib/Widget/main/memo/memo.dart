@@ -7,8 +7,10 @@ import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:glass_kit/glass_kit.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
+import 'package:petmate/Model/memo_model.dart';
 import 'package:petmate/Util/textstyles.dart';
-import 'package:petmate/Widget/custom_container.dart';
+import 'package:petmate/Widget/custom_widget/custom_container.dart';
+import 'package:petmate/Widget/main/memo/memo_database.dart';
 import 'package:petmate/Widget/main/memo/memo_notice.dart';
 
 class MemoWriteWidget extends StatefulWidget {
@@ -19,17 +21,53 @@ class MemoWriteWidget extends StatefulWidget {
 }
 
 class _MemoWriteWidgetState extends State<MemoWriteWidget> {
+  final MemoDatabase memoDatabase = MemoDatabase();
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.to(() => MemoNotice());
+        Get.to(() => MemoNotice(
+          
+            ));
       },
       child: Stack(children: [
         CustomContainer(
           width: 344.w,
           height: 108.h,
         ),
+        // Positioned(
+        //   top: 12.h,
+        //   left: 12.h,
+        //   child: Column(
+        //     crossAxisAlignment: CrossAxisAlignment.start,
+        //     children: [
+        //       Text('메모', style: White(12.sp, FontWeight.w500)),
+        //       Container(
+        //         width: 124.w,
+        //         height: 40.h,
+        //         child: Row(
+        //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //           children: [
+        //             Container(
+        //               width: 4.w,
+        //               height: 4.h,
+        //               child: Image.asset(
+        //                 'assets/Main/Rectangle (1).png',
+        //                 color: Colors.white.withOpacity(0.6),
+        //               ),
+        //             ),
+        //             Opacity(
+        //                 opacity: 0.6,
+        //                 child: Text('메모 작성시 표시됩니다.',
+        //                     style: White(12.sp, FontWeight.w500))),
+        //           ],
+        //         ),
+        //       ),
+        //     ],
+        //   ),
+
+        // ),
         Positioned(
           top: 12.h,
           left: 12.h,
@@ -37,26 +75,32 @@ class _MemoWriteWidgetState extends State<MemoWriteWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text('메모', style: White(12.sp, FontWeight.w500)),
-              Container(
-                width: 124.w,
-                height: 40.h,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      width: 4.w,
-                      height: 4.h,
-                      child: Image.asset(
-                        'assets/Main/Rectangle (1).png',
-                        color: Colors.white.withOpacity(0.6),
-                      ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    width: 55,
+                    height: 25,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          width: 4.w,
+                          height: 4.h,
+                          child: Image.asset(
+                            'assets/Main/Rectangle (1).png',
+                          ),
+                        ),
+                        Text('약먹이기', style: White(12.sp, FontWeight.w500)),
+                      ],
                     ),
-                    Opacity(
-                        opacity: 0.6,
-                        child: Text('메모 작성시 표시됩니다.',
-                            style: White(12.sp, FontWeight.w500))),
-                  ],
-                ),
+                  ),
+                  Container(
+                    width: 310.w,
+                    height: 1,
+                    color: Colors.white.withOpacity(0.2),
+                  )
+                ],
               ),
             ],
           ),

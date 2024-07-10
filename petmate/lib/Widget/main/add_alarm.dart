@@ -13,7 +13,7 @@ import 'package:petmate/Widget/aralam/addAralm/add_widget.dart';
 import 'package:petmate/Widget/aralam/addAralm/aralm_timepicker.dart';
 import 'package:petmate/Widget/aralam/addAralm/weekselected.dart';
 import 'package:petmate/Widget/button/alarm_toggle.dart';
-import 'package:petmate/Widget/custom_container.dart';
+import 'package:petmate/Widget/custom_widget/custom_container.dart';
 
 class AlarmWidget extends StatefulWidget {
   const AlarmWidget({super.key});

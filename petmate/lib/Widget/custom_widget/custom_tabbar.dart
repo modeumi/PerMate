@@ -6,8 +6,14 @@ import 'package:petmate/Util/textstyles.dart';
 class CustomTabbar extends StatefulWidget {
   final TabController tabController;
   final List<Widget> tabView;
-  const CustomTabbar(
-      {super.key, required this.tabController, required this.tabView});
+  final String? bannerImage;
+
+  const CustomTabbar({
+    super.key,
+    required this.tabController,
+    required this.tabView,
+    this.bannerImage,
+  });
 
   @override
   State<CustomTabbar> createState() => _CustomTabbarState();
@@ -56,6 +62,10 @@ class _CustomTabbarState extends State<CustomTabbar> {
             ),
           ],
         ),
+        if (widget.bannerImage != null)
+          Image.asset(
+            widget.bannerImage!,
+          ),
         Expanded(
             child: TabBarView(
                 controller: widget.tabController, children: widget.tabView))
