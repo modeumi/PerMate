@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:petmate/DataTools/kakao.dart';
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/Widget/custom_widget/circle_container.dart';
-import 'package:petmate/Widget/custom_widget/custom_container2.dart';
+import 'package:petmate/lib/Widget/custom_widget/custom_container.dart';
 import 'package:petmate/Widget/login_button.dart';
 
 class AccountLinkWidget extends StatefulWidget {
@@ -46,7 +45,7 @@ class _AccountLinkWidgetState extends State<AccountLinkWidget> {
         Positioned(
           top: 296.h,
           left: 8.w,
-          child: CustomContainer2(
+          child: CustomContainer(
             width: 344.w,
             height: 428.h,
           ),

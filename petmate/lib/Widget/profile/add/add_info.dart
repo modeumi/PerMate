@@ -12,11 +12,9 @@ import 'package:petmate/Widget/profile/add/type_dropdown/first_meet.dart';
 import 'package:petmate/Widget/profile/add/type_dropdown/gender.dart';
 import 'package:petmate/Widget/profile/add/type_dropdown/neuter_or.dart';
 import 'package:petmate/Widget/profile/add/type_dropdown/neutering.dart';
-import 'package:petmate/Widget/profile/add/type_dropdown/petList.dart';
 import 'package:petmate/Widget/profile/add/type_dropdown/pets.dart';
 import 'package:petmate/Widget/profile/add/type_dropdown/petweight.dart';
 import 'package:petmate/Widget/profile/add/type_dropdown/surgery_record.dart';
-import 'package:petmate/Widget/profile/add/type_dropdown/typeList.dart';
 import 'package:petmate/Widget/profile/add/type_dropdown/vaccination_record.dart';
 
 class AddInfoWidget extends StatefulWidget {
@@ -31,20 +29,10 @@ class _AddInfoWidgetState extends State<AddInfoWidget> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-<<<<<<< HEAD
-        CustomContainer(
-            width: 344.w, height: 1099.h, shadow_color: Color(0x26000000)),
-        Container(
-          width: 344.w,
-          height: 1099.h,
-          padding: EdgeInsets.symmetric(
-            vertical: 12,
-=======
         Positioned(
           child: CustomContainer(
             width: 344.w,
             height: 1200.h,
->>>>>>> 4bb9017cad6411cd39f3fc0c7aecc5d1c6a59243
           ),
         ),
         Positioned(
