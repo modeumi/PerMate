@@ -214,55 +214,55 @@ class _MemoDeletedButtonState extends State<MemoDeletedButton> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          width: 344.w,
-          height: 60.h,
-          decoration: ShapeDecoration(
-            color: Colors.white.withOpacity(0.8),
-            shape: RoundedRectangleBorder(
-              side: BorderSide(
-                width: 1.w,
-                color: Colors.white.withOpacity(0.2),
-              ),
-              borderRadius: BorderRadius.circular(10.r),
-            ),
-            shadows: [
-              BoxShadow(
-                color: Color(0x33000000),
-                blurRadius: 12,
-                offset: Offset(0, 0),
-                spreadRadius: 5,
-              )
-            ],
-          ),
-        ),
-        Opacity(
-          opacity: 0.8,
-          child: Container(
+    return GestureDetector(
+      onTap: () {
+        Deletedoevrlay(context);
+      },
+      child: Stack(
+        children: [
+          Container(
             width: 344.w,
             height: 60.h,
-            decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: Color(0x33000000),
-                    blurRadius: 2,
-                    offset: Offset(2, 2),
-                    spreadRadius: 0,
-                  )
-                ],
-                color: Colors.white.withOpacity(0.8),
-                borderRadius: BorderRadius.circular(10.r)),
+            decoration: ShapeDecoration(
+              color: Colors.white.withOpacity(0.8),
+              shape: RoundedRectangleBorder(
+                side: BorderSide(
+                  width: 1.w,
+                  color: Colors.white.withOpacity(0.2),
+                ),
+                borderRadius: BorderRadius.circular(10.r),
+              ),
+              shadows: [
+                BoxShadow(
+                  color: Color(0x33000000),
+                  blurRadius: 12,
+                  offset: Offset(0, 0),
+                  spreadRadius: 5,
+                )
+              ],
+            ),
           ),
-        ),
-        Positioned(
-          left: 125,
-          bottom: 20,
-          child: GestureDetector(
-            onTap: () {
-              Deletedoevrlay(context);
-            },
+          Opacity(
+            opacity: 0.8,
+            child: Container(
+              width: 344.w,
+              height: 60.h,
+              decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: Color(0x33000000),
+                      blurRadius: 2,
+                      offset: Offset(2, 2),
+                      spreadRadius: 0,
+                    )
+                  ],
+                  color: Colors.white.withOpacity(0.8),
+                  borderRadius: BorderRadius.circular(10.r)),
+            ),
+          ),
+          Positioned(
+            left: 125,
+            bottom: 20,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -276,8 +276,8 @@ class _MemoDeletedButtonState extends State<MemoDeletedButton> {
               ],
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

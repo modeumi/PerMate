@@ -16,6 +16,7 @@ import 'package:petmate/Model/weather_model.dart';
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/View/Map/naver_map.dart';
 import 'package:petmate/Widget/main/weatherwidget/air.dart';
+import 'package:petmate/Widget/main/weatherwidget/area.dart';
 
 class WeatherWigdget extends StatefulWidget {
   const WeatherWigdget({
@@ -29,20 +30,6 @@ class WeatherWigdget extends StatefulWidget {
 class _WeatherWigdgetState extends State<WeatherWigdget> {
   final WeatherController weatherController = Get.put(WeatherController());
   bool isLoading = true;
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    fetchWeather();
-  }
-
-  Future<void> fetchWeather() async {
-    WeatherController weatherController = WeatherController();
-    setState(() {
-      isLoading = false;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -104,18 +91,7 @@ class _WeatherWigdgetState extends State<WeatherWigdget> {
                         Text('날씨', style: White(12, FontWeight.w600)),
                         Container(
                           width: 50.w,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Text('반송동', style: White(10, FontWeight.w600)),
-                              GestureDetector(
-                                onTap: () {},
-                                child: Image.asset(
-                                  'assets/Main/reset.png',
-                                ),
-                              ),
-                            ],
-                          ),
+                          child: AreaData(),
                         ),
                       ],
                     ),

@@ -18,7 +18,6 @@ class WalkWidget extends StatefulWidget {
 }
 
 class _WalkWidgetState extends State<WalkWidget> {
-  bool state = false;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

@@ -21,7 +21,6 @@ class LogWidget extends StatefulWidget {
 }
 
 class _LogWidgetState extends State<LogWidget> {
-  bool state = false;
 
   OverlayEntry? deletoverlay;
   var opactiyValue = 1.0;

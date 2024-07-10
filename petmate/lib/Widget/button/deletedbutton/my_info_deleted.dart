@@ -5,14 +5,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:petmate/Util/textstyles.dart';
 
-class NoticeDeletedButton extends StatefulWidget {
-  const NoticeDeletedButton({super.key});
+class MyInfoDeleted extends StatefulWidget {
+  const MyInfoDeleted({super.key});
 
   @override
-  State<NoticeDeletedButton> createState() => _NoticeDeletedButtonWidgetState();
+  State<MyInfoDeleted> createState() => _MyInfoDeletedState();
 }
 
-class _NoticeDeletedButtonWidgetState extends State<NoticeDeletedButton> {
+class _MyInfoDeletedState extends State<MyInfoDeleted> {
   List<bool> deletedCheck = [false, false, false];
   bool state = false;
 
@@ -101,7 +101,7 @@ class _NoticeDeletedButtonWidgetState extends State<NoticeDeletedButton> {
                           left: 20,
                           child: DefaultTextStyle(
                               style: Black(12.sp, FontWeight.w500),
-                              child: Text('알림을 삭제할까요?')),
+                              child: Text('게시글을 삭제할까요?')),
                         ),
                         Positioned(
                           top: 64,
@@ -110,7 +110,7 @@ class _NoticeDeletedButtonWidgetState extends State<NoticeDeletedButton> {
                             width: 195.w,
                             child: DefaultTextStyle(
                                 style: Black(12.sp, FontWeight.w500),
-                                child: Text('알림을 삭제한 후에는 복구할수 없어요.')),
+                                child: Text('게시글을 삭제한 후에는 복구할수 없어요.')),
                           ),
                         ),
                         Positioned(
@@ -216,7 +216,7 @@ class _NoticeDeletedButtonWidgetState extends State<NoticeDeletedButton> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-         Deletedoevrlay(context);
+        Deletedoevrlay(context);
       },
       child: Stack(
         children: [

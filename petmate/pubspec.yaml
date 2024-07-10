@@ -61,6 +61,7 @@ dependencies:
   glass_kit: ^4.0.1
   android_alarm_manager_plus: ^4.0.3
   get: ^4.6.6
+  alarm: ^3.1.4
   location_picker_flutter_map: ^1.1.0
   image_picker: ^1.1.1
   image_picker_widget: ^2.4.1
@@ -107,6 +108,15 @@ flutter:
     - assets/image_asset/record/
     - assets/image_asset/walk_log/
     - assets/image_asset/invite/
+    - assets/image_asset/artice_writing/
+    - assets/image_asset/information_screen/
+    - assets/image_asset/transaction_details/
+    - assets/image_asset/information_details/
+    - assets/image_asset/transaction_writing/
+    - assets/image_asset/trading_screen/
+    - assets/image_asset/meet_screen/
+    - assets/image_asset/meet_details/
+    - assets/image_asset/myarticle_like/
     - assets/text_file/dog.json
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see

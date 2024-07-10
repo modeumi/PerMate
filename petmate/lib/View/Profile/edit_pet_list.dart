@@ -53,31 +53,38 @@ class _EditPetListPageState extends State<EditPetListPage> {
               image: AssetImage('assets/Main/Background.png'),
               fit: BoxFit.fill),
         ),
-        child: Stack(
-          children: [
-            Positioned(
-              top: 98.h,
-              left: 58.w,
-              child: Opacity(
-                opacity: 0.6,
-                child: Text('순서를 수정하면 홈에서 노출되는 순서에 반영됩니다.',
-                    style: White(12.sp, FontWeight.w500)),
-              ),
+        child: SingleChildScrollView(
+          child: Container(
+            width: 360.w,
+            height: 850.h,
+            child: Stack(
+              children: [
+                Positioned(
+                  top: 98.h,
+                  left: 58.w,
+                  child: Opacity(
+                    opacity: 0.6,
+                    child: Text('순서를 수정하면 홈에서 노출되는 순서에 반영됩니다.',
+                        style: White(12.sp, FontWeight.w500)),
+                  ),
+                ),
+                Positioned(
+                  top: 132.h,
+                  left: 12.w,
+                  child: Text('내 반려동물',
+                      textAlign: TextAlign.center,
+                      style: White(16.sp, FontWeight.w600)),
+                ),
+                Positioned(top: 159.h, left: 8.w, child: MyPetEditWidget()),
+                Positioned(
+                    top: 435.h,
+                    left: 12.w,
+                    child: Text('공유받은 반려동물',
+                        style: White(16.sp, FontWeight.w600))),
+                Positioned(top: 462.h, left: 8.w, child: MyPetEditWidget()),
+              ],
             ),
-            Positioned(
-              top: 132.h,
-              left: 12.w,
-              child: Text('내 반려동물',
-                  textAlign: TextAlign.center,
-                  style: White(16.sp, FontWeight.w600)),
-            ),
-            Positioned(top: 159.h, left: 8.w, child: MyPetEditWidget()),
-            Positioned(
-                top: 435.h,
-                left: 12.w,
-                child: Text('공유받은 반려동물', style: White(16.sp, FontWeight.w600))),
-            Positioned(top: 462.h, left: 8.w, child: MyPetEditWidget()),
-          ],
+          ),
         ),
       ),
       bottomNavigationBar: CustomBottomNavigationBar(),

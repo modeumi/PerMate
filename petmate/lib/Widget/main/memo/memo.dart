@@ -19,8 +19,6 @@ class MemoWriteWidget extends StatefulWidget {
 }
 
 class _MemoWriteWidgetState extends State<MemoWriteWidget> {
-  bool state = false;
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:petmate/Model/air_model.dart';
+import 'package:petmate/Model/area_model.dart';
 import 'package:petmate/Model/weather_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:petmate/Util/textstyles.dart';
@@ -35,14 +36,6 @@ class WeatherController extends GetxController {
       return Icon(Icons.error);
     }
   }
-
-  // Widget buildPetIcon(String weatherMain) {
-  //   if (weatherMain == 'Rain' || weatherMain == 'Snow') {
-  //     return Image.asset('assets/Main/home.png');
-  //   } else {
-  //     return Image.asset('assets/Main/pet.png');
-  //   }
-  // }
 
   Widget buildPetIcon(String weatherMain) {
     String assetPath;
@@ -117,9 +110,9 @@ class WeatherController extends GetxController {
 
   Future<WeatherModel?> getWeather() async {
     Position position = await fetchLocationName();
+    //현재 위치 날씨 가져오기
     String WeatherData =
         'https://api.openweathermap.org/data/2.5/weather?lat=${position.latitude}&lon=${position.longitude}&limit&appid=fd8662804c1d7656890c88c001f601a7&units=metric';
-    // "https://api.openweathermap.org/data/2.5/weather?q=suwon&appid=fd8662804c1d7656890c88c001f601a7&units=metric";
     try {
       final response = await http.get(Uri.parse(WeatherData));
 
@@ -131,11 +124,11 @@ class WeatherController extends GetxController {
             data["rain"] != null ? data["rain"]["1h"]?.toDouble() : null;
 
         WeatherModel weather = WeatherModel(
-          temp: data["main"]["temp"],
-          weatherMain: data["weather"][0]["main"],
-          humidity: data["main"]["humidity"],
-          rain: rain,
-          code: data["weather"][0]["id"],
+          temp: data["main"]["temp"], //온도
+          weatherMain: data["weather"][0]["main"], //날씨 아이콘
+          humidity: data["main"]["humidity"], // 습도
+          rain: rain, // 강수량
+          code: data["weather"][0]["id"], //날씨 id값
         );
         return weather;
       } else {
@@ -149,9 +142,9 @@ class WeatherController extends GetxController {
 
   Future<AirModel?> getAir() async {
     Position position = await fetchLocationName();
+    // 현재 위치 미세먼지 데이터 가져오기
     String airData =
         "http://api.openweathermap.org/data/2.5/air_pollution?lat=${position.latitude}&lon=${position.longitude}&appid=fd8662804c1d7656890c88c001f601a7";
-    // "http://api.openweathermap.org/data/2.5/air_pollution?lat=37.2911&lon=127.0089&appid=fd8662804c1d7656890c88c001f601a7";
     try {
       final response = await http.get(Uri.parse(airData));
       if (response.statusCode == 200) {
@@ -171,6 +164,7 @@ class WeatherController extends GetxController {
     }
   }
 
+  // 현재 위치 데이터 가져오기
   Future<Position> fetchLocationName() async {
     bool serivceEnabled = true;
     LocationPermission permission;
@@ -192,5 +186,42 @@ class WeatherController extends GetxController {
     }
     return await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
+  }
+
+ 
+
+  Future<List<String>> getArea() async {
+    Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+    //현재위치를 position이라는 변수로 저장
+    String lat = position.latitude.toString();
+    String lon = position.longitude.toString();
+   
+
+    String url =
+        "https://naveropenapi.apigw.ntruss.com/map-reversegeocode/v2/gc?request=coordsToaddr&coords=${lon},${lat}&sourcecrs=epsg:4326&orders=admcode,legalcode,addr,roadaddr&output=json";
+
+    Map<String, String> headress = {
+      "X-NCP-APIGW-API-KEY-ID": "d0y4umwxnz",
+      "X-NCP-APIGW-API-KEY": "bsi0RmG7WrZST2SuVThDhGNXxyetw3tmx1dTjHUd"
+    };
+
+    final response = await http.get(Uri.parse(url), headers: headress);
+    if (response.statusCode == 200) {
+      String jsonData = response.body;
+      var data = jsonDecode(jsonData);
+      print('위치 표시${data}');
+      var myJson_dong =
+          jsonDecode(jsonData)["results"][1]['region']['area3']['name'];
+      var myJson_gu =
+          jsonDecode(jsonData)["results"][1]['region']['area2']['name'];
+      var myJson_si =
+          jsonDecode(jsonData)["results"][1]['region']['area1']['name'];
+
+      List<String> gusi = [myJson_si, myJson_gu, myJson_dong];
+      return gusi;
+    } else {
+      throw Exception('Failed to load location data');
+    }
   }
 }
