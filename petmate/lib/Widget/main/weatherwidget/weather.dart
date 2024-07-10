@@ -1,21 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:convert';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:glass_kit/glass_kit.dart';
-import 'package:gradient_borders/box_borders/gradient_box_border.dart';
-import 'package:http/http.dart' as http;
 import 'package:petmate/Controller/weather_controller.dart';
-import 'package:petmate/Model/air_model.dart';
 import 'package:petmate/Model/weather_model.dart';
 import 'package:petmate/Util/textstyles.dart';
-import 'package:petmate/View/Map/naver_map.dart';
-import 'package:petmate/View/walk_log.dart';
 import 'package:petmate/Widget/main/weatherwidget/air.dart';
 import 'package:petmate/Widget/main/weatherwidget/area.dart';
 

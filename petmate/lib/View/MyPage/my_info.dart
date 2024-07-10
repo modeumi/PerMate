@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:petmate/Widget/bottom_navigation_bar/bottom_navigationbar.dart';
 import 'package:petmate/Widget/custom_appbar.dart';
+import 'package:petmate/Widget/mypage/my_info.dart';
 
 class MyInfo extends StatefulWidget {
   const MyInfo({super.key});
@@ -11,14 +12,6 @@ class MyInfo extends StatefulWidget {
 }
 
 class _MyInfoState extends State<MyInfo> with SingleTickerProviderStateMixin {
-  late TabController _tabController;
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    _tabController = TabController(length: 3, vsync: this);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -3,14 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:get/get.dart';
-
 import 'package:petmate/Util/textstyles.dart';
-import 'package:petmate/View/Main/Profile/edit_detail.dart';
-import 'package:petmate/Widget/button/save_button.dart';
-import 'package:petmate/Widget/custom_widget/circle_container.dart';
 import 'package:petmate/Widget/custom_widget/custom_container.dart';
-import 'package:petmate/Widget/profile/deleted/co_pet_care.dart';
 
 class MemoNotcieWidget extends StatefulWidget {
   const MemoNotcieWidget({super.key});

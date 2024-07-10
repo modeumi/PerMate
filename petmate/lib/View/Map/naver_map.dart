@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_naver_map/flutter_naver_map.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:get/get.dart';
-import 'package:petmate/Controller/navigation_controller.dart';
 import 'package:petmate/Widget/bottom_navigation_bar/map_bottom_navigation.dart';
 import 'package:petmate/Widget/map/location_search.dart';
 import 'package:petmate/Widget/map/hairshop.dart';
@@ -23,8 +21,6 @@ class MNaverMap extends StatefulWidget {
 }
 
 class _MNaverMapState extends State<MNaverMap> {
-  final BottomNavigationBarController _bottomNavigationBarController =
-      Get.put(BottomNavigationBarController());
   late NaverMapController _mapController;
   late NOverlayImage markerIcon;
   late Position _currentPosition;

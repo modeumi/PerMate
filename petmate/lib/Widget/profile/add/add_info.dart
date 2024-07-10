@@ -33,6 +33,7 @@ class _AddInfoWidgetState extends State<AddInfoWidget> {
           child: CustomContainer(
             width: 344.w,
             height: 1200.h,
+            shadow_color: Color(0x4C000000),
           ),
         ),
         Positioned(

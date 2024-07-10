@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:glass_kit/glass_kit.dart';
-import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/Widget/bottom_navigation_bar/bottom_navigationbar.dart';
-import 'package:petmate/Widget/custom_widget/circle_container.dart';
 import 'package:petmate/Widget/custom_appbar.dart';
-import 'package:petmate/Widget/custom_widget/custom_container2.dart';
+
 import 'package:petmate/Widget/mypage/account_link_widget.dart';
-import 'package:petmate/Widget/mypage/my_info.dart';
 
 class AccountLink extends StatefulWidget {
   const AccountLink({super.key});

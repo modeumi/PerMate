@@ -1,12 +1,7 @@
-import 'dart:ffi';
-
 import 'package:blurrycontainer/blurrycontainer.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
-import 'package:petmate/Util/textstyles.dart';
 
 class CoPetCareWidget extends StatefulWidget {
   const CoPetCareWidget({super.key});
@@ -68,7 +63,8 @@ class _CoPetCareWidgetState extends State<CoPetCareWidget> {
                 borderRadius: BorderRadius.circular(20.r)),
           ),
         ),
-        Positioned(left: 7.w, top: 7.h, child: Image.asset('assets/edit/user.png')),
+        Positioned(
+            left: 7.w, top: 7.h, child: Image.asset('assets/edit/user.png')),
       ],
     );
   }

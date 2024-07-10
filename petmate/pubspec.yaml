@@ -39,8 +39,6 @@ dependencies:
   blurrycontainer: ^2.0.1+1
   cloud_firestore: ^5.1.0
   carousel_slider: ^4.2.1
-
-
   cupertino_icons: ^1.0.6
   firebase_auth: ^5.1.2
   firebase_core: ^3.2.0
@@ -62,15 +60,12 @@ dependencies:
   glass_kit: ^4.0.1
   google_fonts: ^6.2.1
   gradient_borders: ^1.0.0
-  image_picker: ^1.1.1
-  image_picker_widget: ^2.4.1
   intl: ^0.19.0
   kakao_flutter_sdk_auth: ^1.9.1+2
   kakao_flutter_sdk_user: ^1.9.1+2
   location_picker_flutter_map: ^1.1.0
   image_picker: ^1.1.1
   image_picker_widget: ^2.4.1
-  flutter_screenutil: ^5.9.3
   mailer: ^6.1.0
   path: ^1.9.0
   permission_handler: ^11.3.1

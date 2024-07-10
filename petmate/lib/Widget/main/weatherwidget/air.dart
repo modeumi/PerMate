@@ -1,11 +1,7 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:geolocator/geolocator.dart';
 
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:petmate/Controller/weather_controller.dart';
 import 'package:petmate/Model/air_model.dart';
 import 'package:petmate/Util/textstyles.dart';

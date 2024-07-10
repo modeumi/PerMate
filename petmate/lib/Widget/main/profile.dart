@@ -1,15 +1,7 @@
-import 'dart:async';
-
-import 'package:blurrycontainer/blurrycontainer.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:glass_kit/glass_kit.dart';
-import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/View/Main/Profile/edit_pet_list.dart';
 import 'package:petmate/View/Main/Profile/upload_profile.dart';

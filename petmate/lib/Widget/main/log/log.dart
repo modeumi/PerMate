@@ -1,17 +1,9 @@
-import 'package:blurrycontainer/blurrycontainer.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/get_navigation.dart';
-import 'package:glass_kit/glass_kit.dart';
-import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/Widget/custom_widget/custom_container.dart';
 import 'package:petmate/Widget/main/log/logcard.dart';
-import 'package:petmate/Widget/profile/add/profile_card.dart';
 
 class LogWidget extends StatefulWidget {
   const LogWidget({super.key});

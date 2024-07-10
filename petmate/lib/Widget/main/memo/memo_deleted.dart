@@ -1,14 +1,9 @@
-import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
-import 'package:petmate/Widget/custom_widget/circle_container.dart';
 import 'package:petmate/Widget/custom_widget/custom_container.dart';
-import 'package:petmate/Widget/profile/deleted/co_pet_care.dart';
 
 class MemoDeleted extends StatefulWidget {
   const MemoDeleted({super.key});

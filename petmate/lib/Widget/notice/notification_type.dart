@@ -1,11 +1,7 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:glass_kit/glass_kit.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
-import 'package:petmate/Widget/notice/notification_container.dart';
-import 'package:petmate/Widget/notice/notificationcontainer2.dart';
 
 class NotificationWidget extends StatefulWidget {
   const NotificationWidget({super.key});

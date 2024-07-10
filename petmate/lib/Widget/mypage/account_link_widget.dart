@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:petmate/DataTools/kakao.dart';
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/Widget/custom_widget/circle_container.dart';
-import 'package:petmate/lib/Widget/custom_widget/custom_container.dart';
+import 'package:petmate/Widget/custom_widget/custom_container.dart';
 import 'package:petmate/Widget/login_button.dart';
 
 class AccountLinkWidget extends StatefulWidget {
@@ -48,6 +48,7 @@ class _AccountLinkWidgetState extends State<AccountLinkWidget> {
           child: CustomContainer(
             width: 344.w,
             height: 428.h,
+            shadow_color: Color(0x4C000000),
           ),
         ),
         Positioned(

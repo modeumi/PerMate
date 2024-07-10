@@ -1,20 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:petmate/Model/memo_model.dart';
 import 'package:petmate/Util/textstyles.dart';
-
-import 'package:petmate/View/Main/Profile/upload_profile.dart';
-import 'package:petmate/View/Main/Profile/deleted_profile.dart';
 
 import 'package:petmate/Widget/bottom_navigation_bar/bottom_navigationbar.dart';
 import 'package:petmate/Widget/button/save_button.dart';
 import 'package:petmate/Widget/custom_appbar.dart';
 import 'package:petmate/Widget/custom_widget/custom_container.dart';
-import 'package:petmate/Widget/main/memo/memoModel.dart';
-import 'package:petmate/Widget/main/memo/memo_database.dart';
 import 'package:petmate/Widget/main/memo/memo_notcie_widget.dart';
 import 'package:petmate/Widget/main/memo/memo_notice_deleted.dart';
 

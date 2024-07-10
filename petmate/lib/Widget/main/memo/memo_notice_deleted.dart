@@ -1,25 +1,21 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/Widget/bottom_navigation_bar/bottom_navigationbar.dart';
 import 'package:petmate/Widget/button/deletedbutton/memo_deleted_button.dart';
 import 'package:petmate/Widget/custom_appbar.dart';
-import 'package:petmate/Widget/main/memo/memoModel.dart';
-import 'package:petmate/Widget/main/memo/memo_database.dart';
 import 'package:petmate/Widget/main/memo/memo_deleted.dart';
 
 class MemoNoticeDeleted extends StatefulWidget {
-  const MemoNoticeDeleted({super.key,});
+  const MemoNoticeDeleted({
+    super.key,
+  });
 
   @override
   State<MemoNoticeDeleted> createState() => _MemoNoticeDeletedState();
 }
 
 class _MemoNoticeDeletedState extends State<MemoNoticeDeleted> {
- 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,12 +70,7 @@ class _MemoNoticeDeletedState extends State<MemoNoticeDeleted> {
             //     ),
             //   ),
             // ),
-            Positioned(
-                bottom: 75,
-                left: 10,
-                child: MemoDeletedButton(
-                  
-                )),
+            Positioned(bottom: 75, left: 10, child: MemoDeletedButton()),
           ],
         ),
       ),
