@@ -1,32 +1,25 @@
-import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:get/get.dart';
-import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
-import 'package:petmate/View/Notice/noticedelete.dart';
-import 'package:petmate/View/mainpage.dart';
 import 'package:petmate/Widget/bottom_navigation_bar/bottom_navigationbar.dart';
 import 'package:petmate/Widget/button/deletedbutton/memo_deleted_button.dart';
-import 'package:petmate/Widget/button/deletedbutton/sharedeleted_button.dart';
 import 'package:petmate/Widget/custom_appbar.dart';
+import 'package:petmate/Widget/main/memo/memoModel.dart';
+import 'package:petmate/Widget/main/memo/memo_database.dart';
 import 'package:petmate/Widget/main/memo/memo_deleted.dart';
-import 'package:petmate/Widget/notice/notification_container.dart';
-import 'package:petmate/Widget/notice/notification_type.dart';
-import 'package:petmate/Widget/profile/deleted/mypet_deleted_widget.dart';
-import 'package:petmate/Widget/profile/deleted/mypet_edit_widget.dart';
 
 class MemoNoticeDeleted extends StatefulWidget {
-  const MemoNoticeDeleted({super.key});
+  const MemoNoticeDeleted({super.key,});
 
   @override
   State<MemoNoticeDeleted> createState() => _MemoNoticeDeletedState();
 }
 
 class _MemoNoticeDeletedState extends State<MemoNoticeDeleted> {
+ 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,7 +74,12 @@ class _MemoNoticeDeletedState extends State<MemoNoticeDeleted> {
             //     ),
             //   ),
             // ),
-            Positioned(bottom: 75, left: 10, child: MemoDeletedButton()),
+            Positioned(
+                bottom: 75,
+                left: 10,
+                child: MemoDeletedButton(
+                  
+                )),
           ],
         ),
       ),

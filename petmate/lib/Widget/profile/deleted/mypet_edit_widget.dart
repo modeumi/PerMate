@@ -7,9 +7,9 @@ import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
-import 'package:petmate/View/Profile/edit_detail.dart';
-import 'package:petmate/Widget/circle_container.dart';
-import 'package:petmate/Widget/custom_container.dart';
+import 'package:petmate/View/Main/Profile/edit_detail.dart';
+import 'package:petmate/Widget/custom_widget/circle_container.dart';
+import 'package:petmate/Widget/custom_widget/custom_container.dart';
 import 'package:petmate/Widget/profile/deleted/co_pet_care.dart';
 
 class MyPetEditWidget extends StatefulWidget {

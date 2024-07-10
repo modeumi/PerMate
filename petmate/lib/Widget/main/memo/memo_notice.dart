@@ -3,20 +3,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:petmate/Model/memo_model.dart';
 import 'package:petmate/Util/textstyles.dart';
 
-import 'package:petmate/View/Profile/upload_profile.dart';
-import 'package:petmate/View/Profile/deleted_profile.dart';
+import 'package:petmate/View/Main/Profile/upload_profile.dart';
+import 'package:petmate/View/Main/Profile/deleted_profile.dart';
 
 import 'package:petmate/Widget/bottom_navigation_bar/bottom_navigationbar.dart';
 import 'package:petmate/Widget/button/save_button.dart';
 import 'package:petmate/Widget/custom_appbar.dart';
-import 'package:petmate/Widget/custom_container.dart';
+import 'package:petmate/Widget/custom_widget/custom_container.dart';
+import 'package:petmate/Widget/main/memo/memoModel.dart';
+import 'package:petmate/Widget/main/memo/memo_database.dart';
 import 'package:petmate/Widget/main/memo/memo_notcie_widget.dart';
 import 'package:petmate/Widget/main/memo/memo_notice_deleted.dart';
 
 class MemoNotice extends StatefulWidget {
-  const MemoNotice({super.key});
+  const MemoNotice({
+    super.key,
+  });
 
   @override
   State<MemoNotice> createState() => _MemoNoticeState();
@@ -25,6 +30,8 @@ class MemoNotice extends StatefulWidget {
 class _MemoNoticeState extends State<MemoNotice> {
   OverlayEntry? deletoverlay;
   var opactiyValue = 1.0;
+
+  TextEditingController contentController = TextEditingController();
 
   void Deletedoevrlay(BuildContext context) {
     Future.delayed(Duration(milliseconds: 0), () {
@@ -71,9 +78,10 @@ class _MemoNoticeState extends State<MemoNotice> {
                           top: 30,
                           left: 12,
                           child: Container(
-                            width: 344.w,
+                            width: 330.w,
                             height: 380.h,
                             child: TextField(
+                              controller: contentController,
                               scrollPadding: EdgeInsets.only(
                                   bottom:
                                       MediaQuery.of(context).viewInsets.bottom),

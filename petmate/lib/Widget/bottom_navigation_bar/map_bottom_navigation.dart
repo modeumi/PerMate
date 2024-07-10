@@ -6,25 +6,24 @@ import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:gradient_borders/gradient_borders.dart';
 import 'package:petmate/Controller/navigation_controller.dart';
 import 'package:petmate/Util/textstyles.dart';
+import 'package:petmate/View/Community/community_main.dart';
+import 'package:petmate/View/Log/logmain.dart';
 import 'package:petmate/View/Map/naver_map.dart';
-import 'package:petmate/View/mainpage.dart';
+import 'package:petmate/View/MyPage/mypage.dart';
+import 'package:petmate/View/Main/mainpage.dart';
 
 class MapBottomNavigationBar extends GetView<BottomNavigationBarController> {
   const MapBottomNavigationBar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    bool state2 = false;
-
     return Obx(() => Stack(
           children: [
             Container(
               width: 360.w,
               height: 64.h,
               decoration: BoxDecoration(
-                color: state2
-                    ? Colors.white.withOpacity(0.2)
-                    : Colors.white.withOpacity(0.20000000298023224),
+                color: Colors.white.withOpacity(0.20000000298023224),
                 border: Border(
                   top: BorderSide(
                       color: Colors.white.withOpacity(0.20000000298023224),
@@ -32,14 +31,12 @@ class MapBottomNavigationBar extends GetView<BottomNavigationBarController> {
                 ),
                 borderRadius: BorderRadius.circular(10.r),
               ),
-              child: state2
-                  ? Container()
-                  : BlurryContainer(
-                      blur: 12,
-                      elevation: 0,
-                      borderRadius: BorderRadius.circular(10.r),
-                      child: Container(),
-                    ),
+              child: BlurryContainer(
+                blur: 12,
+                elevation: 0,
+                borderRadius: BorderRadius.circular(10.r),
+                child: Container(),
+              ),
             ),
             Opacity(
               opacity: 0.2,
@@ -149,16 +146,16 @@ class MapBottomNavigationBar extends GetView<BottomNavigationBarController> {
                       Get.to(() => MainPage());
                       break;
                     case 1:
-                      // Get.to(() => Log());
+                      Get.to(() => LogMain());
                       break;
                     case 2:
                       Get.to(() => MNaverMap());
                       break;
                     case 3:
-                      // Get.to(() => Community());
+                      Get.to(() => CommunityMain());
                       break;
                     case 4:
-                      // Get.to(() => MyPage());
+                      Get.to(() => Mypage());
                       break;
                     default:
                   }

@@ -8,9 +8,9 @@ import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/View/Invite/get_invite.dart';
 import 'package:petmate/View/Invite/invite.dart';
 import 'package:petmate/Widget/bottom_navigation_bar/bottom_navigationbar.dart';
-import 'package:petmate/Widget/circle_container.dart';
+import 'package:petmate/Widget/custom_widget/circle_container.dart';
 import 'package:petmate/Widget/custom_appbar.dart';
-import 'package:petmate/Widget/custom_container.dart';
+import 'package:petmate/Widget/custom_widget/custom_container.dart';
 
 class PublicMate extends StatefulWidget {
   const PublicMate({super.key});

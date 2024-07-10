@@ -8,7 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:petmate/Util/textstyles.dart';
-import 'package:petmate/Widget/circle_container.dart';
+import 'package:petmate/Widget/custom_widget/circle_container.dart';
 import 'package:petmate/Widget/profile/add/profile_card.dart';
 
 class MypageProfile extends StatefulWidget {
@@ -290,8 +290,6 @@ class _MypageProfileState extends State<MypageProfile> {
         _profileImage != null
             ? Image.file(
                 _profileImage!,
-                // width: 126.w,
-                // height: 126.h,
                 fit: BoxFit.cover,
               )
             : Image.asset(

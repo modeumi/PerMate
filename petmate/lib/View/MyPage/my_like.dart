@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/Widget/bottom_navigation_bar/bottom_navigationbar.dart';
 import 'package:petmate/Widget/custom_appbar.dart';
-import 'package:petmate/Widget/custom_tabbar.dart';
+import 'package:petmate/Widget/custom_widget/custom_tabbar.dart';
 import 'package:petmate/Widget/mypage/my_write/deal.dart';
 import 'package:petmate/Widget/mypage/my_write/info.dart';
 import 'package:petmate/Widget/mypage/my_write/meet.dart';
