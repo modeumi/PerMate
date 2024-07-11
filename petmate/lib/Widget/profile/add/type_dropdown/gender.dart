@@ -47,12 +47,6 @@ class _GenderTypeState extends State<GenderType> {
                     ),
                     borderRadius: BorderRadius.circular(10.r),
                   ),
-                  // child: BlurryContainer(
-                  //   blur: 12,
-                  //   elevation: 0,
-                  //   borderRadius: BorderRadius.circular(10),
-                  //   child: Container(),
-                  // ),
                 ),
                 Opacity(
                   opacity: 0.4,

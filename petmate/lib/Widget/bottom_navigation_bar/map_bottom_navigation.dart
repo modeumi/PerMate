@@ -166,7 +166,13 @@ class MapBottomNavigationBar extends GetView<BottomNavigationBarController> {
 }
 
 class BottomWidget extends StatelessWidget {
-  static List<Widget> tabPages = <Widget>[MainPage(), MNaverMap()];
+  static List<Widget> tabPages = <Widget>[
+    const MainPage(),
+    const LogMain(),
+    const MNaverMap(),
+    const CommunityMain(),
+    const Mypage()
+  ];
 
   @override
   Widget build(BuildContext context) {

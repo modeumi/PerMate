@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
@@ -12,19 +15,24 @@ class PetType extends StatefulWidget {
 }
 
 class _PetTypeState extends State<PetType> {
-  bool search = false;
-  final TextEditingController _petSearchController = TextEditingController();
-  String _selectedPet = '';
+  String _selectedType = '';
+  String _selectedDog = '';
   bool TextfildWidget = false;
-  final petList = {
-    '강아지': 'assets/image_asset/pet_upload/animal_list (1).png',
-    '고양이': 'assets/image_asset/pet_upload/animal_list (2).png',
-    '토끼': 'assets/image_asset/pet_upload/animal_list (3).png',
-    '거북이': 'assets/image_asset/pet_upload/animal_list (4).png',
-    '물고기': 'assets/image_asset/pet_upload/animal_list (5).png',
-    '새': 'assets/image_asset/pet_upload/animal_list (6).png',
-    '직접 입력': null,
-  };
+  Map<String, dynamic> petType = {};
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    loadPetType();
+  }
+
+  Future<void> loadPetType() async {
+    String data = await rootBundle.loadString('assets/pet_type.json');
+    setState(() {
+      petType = Map<String, dynamic>.from(json.decode(data));
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,84 +60,50 @@ class _PetTypeState extends State<PetType> {
           ),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: TextfildWidget
-                ? TextField(
-                    controller: _petSearchController,
+            child: DropdownButton<String>(
+              iconSize: 25,
+              dropdownColor: Colors.white,
+              focusColor: Color(0xffCCCCCC),
+              menuMaxHeight: 169,
+              iconEnabledColor: Color(0xffCCCCCC),
+              iconDisabledColor: Color(0xffCCCCCC),
+              borderRadius: BorderRadius.circular(10),
+              underline: SizedBox.shrink(),
+              style: Black(14, FontWeight.w500),
+              isExpanded: true,
+              value: _selectedType.isNotEmpty ? _selectedType : null,
+              hint: Container(
+                padding: const EdgeInsets.fromLTRB(48, 0, 8, 0),
+                width: 260.w,
+                child: Text('반려동물의 품종을 선택해주세요.',
                     textAlign: TextAlign.center,
-                    decoration: InputDecoration(
-                      hintText: '직접 입력해주세요.',
-                      hintStyle: Gray(14.sp, FontWeight.w500),
-                      enabledBorder:
-                          UnderlineInputBorder(borderSide: BorderSide.none),
-                      border: OutlineInputBorder(borderSide: BorderSide.none),
-                      contentPadding: EdgeInsets.fromLTRB(10, 0, 0, 11),
-                      focusedBorder:
-                          UnderlineInputBorder(borderSide: BorderSide.none),
-                    ),
-                    style:
-                        TextStyle(color: Colors.black, decorationThickness: 0),
-                    cursorColor: Colors.black,
-                    cursorWidth: 1.w,
-                  )
-                : DropdownButton<String>(
-                    iconSize: 25,
-                    dropdownColor: Colors.white,
-                    focusColor: Color(0xffCCCCCC),
-                    menuMaxHeight: 169,
-                    iconEnabledColor: Color(0xffCCCCCC),
-                    iconDisabledColor: Color(0xffCCCCCC),
-                    borderRadius: BorderRadius.circular(10),
-                    underline: SizedBox.shrink(),
-                    style: Black(14, FontWeight.w500),
-                    isExpanded: true,
-                    value: _selectedPet.isNotEmpty ? _selectedPet : null,
-                    hint: Container(
-                      padding: const EdgeInsets.fromLTRB(48, 0, 8, 0),
-                      width: 260.w,
-                      child: Text('반려동물의 종류를 선택해주세요.',
-                          textAlign: TextAlign.center,
-                          style: Gray(14.sp, FontWeight.w500)),
-                    ),
-                    items: petList.keys
-                        .map<DropdownMenuItem<String>>((String key) {
-                      return DropdownMenuItem<String>(
-                        value: key,
-                        child: Container(
-                          width: 286.w,
-                          height: 30.h,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              if (petList[key] != null)
-                                Image.asset(
-                                  petList[key]!,
-                                  width: 24.w,
-                                  height: 24.h,
-                                ),
-                              if (petList[key] != null)
-                                SizedBox(
-                                  width: 4.w,
-                                ),
-                              Text(key),
-                            ],
+                    style: Gray(14.sp, FontWeight.w500)),
+              ),
+              items: petType.keys.map<DropdownMenuItem<String>>((pettype) {
+                return DropdownMenuItem<String>(
+                  value: pettype[0],
+                  child: Container(
+                    width: 286.w,
+                    height: 30.h,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        if (pettype != null)
+                          SizedBox(
+                            width: 4.w,
                           ),
-                        ),
-                      );
-                    }).toList(),
-                    onChanged: (value) {
-                      if (value == '직접 입력') {
-                        setState(() {
-                          TextfildWidget = true;
-                          _selectedPet = '';
-                        });
-                      } else {
-                        setState(() {
-                          TextfildWidget = false;
-                          _selectedPet = value!;
-                        });
-                      }
-                    },
+                        Text(pettype[0]),
+                      ],
+                    ),
                   ),
+                );
+              }).toList(),
+              onChanged: (value) {
+                setState(() {
+                  _selectedType = '';
+                });
+              },
+            ),
           ),
         ),
       ),
