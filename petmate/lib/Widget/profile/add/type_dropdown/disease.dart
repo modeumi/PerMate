@@ -13,23 +13,15 @@ class DiseaseList extends StatefulWidget {
 
 class _DiseaseListState extends State<DiseaseList> {
   TextEditingController _searchController = TextEditingController();
-  List<String> diseaseList = [];
+  List<Map<String, String>> diseaseList = [];
 
-  String _selectedType = '';
-  final TypeList = [
-    '강아지',
-    '고양이',
-    '토끼',
-    '거북이',
-    '물고기',
-    '새',
-    '직접 입력',
-  ];
+  String _selectedDisease = '';
 
   void _addDisease() {
     if (_searchController.text.isNotEmpty) {
       setState(() {
-        diseaseList.add(_searchController.text);
+        diseaseList.add({'name': _searchController.text});
+        _selectedDisease = _searchController.text;
         _searchController.clear();
       });
     }
@@ -38,6 +30,9 @@ class _DiseaseListState extends State<DiseaseList> {
   void _removeDisease(int index) {
     setState(() {
       diseaseList.removeAt(index);
+      if (diseaseList.isEmpty) {
+        _selectedDisease = '';
+      }
     });
   }
 
@@ -77,7 +72,7 @@ class _DiseaseListState extends State<DiseaseList> {
             underline: SizedBox.shrink(),
             style: Black(14, FontWeight.w500),
             isExpanded: true,
-            value: _selectedType.isNotEmpty ? _selectedType : null,
+            value: _selectedDisease.isNotEmpty ? _selectedDisease : null,
             hint: Container(
               padding: const EdgeInsets.fromLTRB(45, 0, 8, 0),
               width: 400.w,
@@ -85,15 +80,15 @@ class _DiseaseListState extends State<DiseaseList> {
                   textAlign: TextAlign.center,
                   style: Gray(14, FontWeight.w500)),
             ),
-            items: TypeList.map<DropdownMenuItem<String>>((String value) {
+            items: diseaseList.map<DropdownMenuItem<String>>((selectdisease) {
               return DropdownMenuItem<String>(
-                value: value,
-                child: Center(child: Text(value)),
+                value: selectdisease['type'],
+                child: Center(child: Text(selectdisease['type'] ?? '')),
               );
             }).toList(),
             onChanged: (value) {
               setState(() {
-                _selectedType = value!;
+                _selectedDisease = value!;
               });
             },
           ),
@@ -141,7 +136,7 @@ class _DiseaseListState extends State<DiseaseList> {
                         padding: EdgeInsets.all(2),
                         side: BorderSide(color: Colors.transparent),
                         backgroundColor: Colors.white,
-                        label: Text(diseaseList[index]),
+                        label: Text(diseaseList[index]['type'] ?? ''),
                         onDeleted: () {
                           _removeDisease(index);
                         },

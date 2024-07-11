@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -22,10 +23,10 @@ class _MeMoWidgetState extends State<MeMoWidget> {
       setState(() {
         opactiyValue = 1.0;
         showModalBottomSheet(
+          isScrollControlled: true,
           backgroundColor: Colors.transparent,
           barrierColor: Color(0x66303030),
           context: context,
-          isScrollControlled: true,
           builder: (BuildContext context) {
             return Stack(
               children: [
@@ -54,8 +55,8 @@ class _MeMoWidgetState extends State<MeMoWidget> {
                           onTap: () {
                             Get.back();
                           },
-                          child:
-                              Image.asset('assets/image_asset/alarm/close.png'),
+                          child: Image.asset(
+                              'assets/image_asset/alarm/close.png'),
                         ),
                       ),
                       Positioned(
@@ -66,13 +67,15 @@ class _MeMoWidgetState extends State<MeMoWidget> {
                             height: 380.h,
                             child: TextField(
                               scrollPadding: EdgeInsets.only(
-                                  bottom:
-                                      MediaQuery.of(context).viewInsets.bottom),
+                                  bottom: MediaQuery.of(context)
+                                      .viewInsets
+                                      .bottom),
                               keyboardType: TextInputType.multiline,
                               maxLines: null,
                               decoration: InputDecoration(
                                 hintText: '내용 입력',
-                                hintStyle: whiteOpacity(14.sp, FontWeight.w500),
+                                hintStyle:
+                                    whiteOpacity(14.sp, FontWeight.w500),
                                 enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide.none),
                                 border: OutlineInputBorder(
@@ -84,7 +87,8 @@ class _MeMoWidgetState extends State<MeMoWidget> {
                                 setState(() {});
                               },
                               style: TextStyle(
-                                  color: Colors.white, decorationThickness: 0),
+                                  color: Colors.white,
+                                  decorationThickness: 0),
                               cursorColor: Colors.white,
                               cursorWidth: 1.w,
                             ),
@@ -99,7 +103,8 @@ class _MeMoWidgetState extends State<MeMoWidget> {
                                 border: Border(
                                     bottom: BorderSide(
                                         width: 2.w,
-                                        color: Colors.white.withOpacity(0.5)))),
+                                        color:
+                                            Colors.white.withOpacity(0.5)))),
                           )),
                       Positioned(
                           top: 307.h,
