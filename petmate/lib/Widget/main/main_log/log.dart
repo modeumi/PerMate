@@ -2,8 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:petmate/Util/textstyles.dart';
+import 'package:petmate/View/Log/beauty_log.dart';
+import 'package:petmate/View/Log/care_log.dart';
+import 'package:petmate/View/Log/meal_log.dart';
+import 'package:petmate/View/Log/medical_log.dart';
+import 'package:petmate/View/Log/play_log.dart';
+import 'package:petmate/View/Log/toilet_log.dart';
+import 'package:petmate/View/Log/weight_log.dart';
 import 'package:petmate/Widget/custom_widget/custom_container.dart';
-import 'package:petmate/Widget/main/log/logcard.dart';
+import 'package:petmate/Widget/main/main_log/logcard.dart';
+import 'package:petmate/View/Log/shower_log.dart';
 
 class LogWidget extends StatefulWidget {
   const LogWidget({super.key});
@@ -64,7 +72,9 @@ class _LogWidgetState extends State<LogWidget> {
                                         mainAxisSpacing: 40.0),
                                 children: [
                                   InkWell(
-                                    onTap: () {},
+                                    onTap: () {
+                                      Get.to(() => ShowerLog());
+                                    },
                                     child: LogCard(
                                       CardName: '목욕',
                                       Cardimg:
@@ -72,7 +82,9 @@ class _LogWidgetState extends State<LogWidget> {
                                     ),
                                   ),
                                   InkWell(
-                                    onTap: () {},
+                                    onTap: () {
+                                      Get.to(() => ToiletLog());
+                                    },
                                     child: LogCard(
                                       CardName: '용변',
                                       Cardimg:
@@ -80,7 +92,9 @@ class _LogWidgetState extends State<LogWidget> {
                                     ),
                                   ),
                                   InkWell(
-                                    onTap: () {},
+                                    onTap: () {
+                                       Get.to(() => MealLog());
+                                    },
                                     child: LogCard(
                                       CardName: '식사',
                                       Cardimg:
@@ -88,7 +102,9 @@ class _LogWidgetState extends State<LogWidget> {
                                     ),
                                   ),
                                   InkWell(
-                                    onTap: () {},
+                                    onTap: () {
+                                       Get.to(() => MedicalLog());
+                                    },
                                     child: LogCard(
                                       CardName: '진료',
                                       Cardimg:
@@ -96,7 +112,9 @@ class _LogWidgetState extends State<LogWidget> {
                                     ),
                                   ),
                                   InkWell(
-                                    onTap: () {},
+                                    onTap: () {
+                                       Get.to(() => PlayLog());
+                                    },
                                     child: LogCard(
                                       CardName: '놀이',
                                       Cardimg:
@@ -104,7 +122,9 @@ class _LogWidgetState extends State<LogWidget> {
                                     ),
                                   ),
                                   InkWell(
-                                    onTap: () {},
+                                    onTap: () {
+                                       Get.to(() => WeightLog());
+                                    },
                                     child: LogCard(
                                       CardName: '체중',
                                       Cardimg:
@@ -112,7 +132,9 @@ class _LogWidgetState extends State<LogWidget> {
                                     ),
                                   ),
                                   InkWell(
-                                    onTap: () {},
+                                    onTap: () {
+                                       Get.to(() => BeautyLog());
+                                    },
                                     child: LogCard(
                                       CardName: '미용',
                                       Cardimg:
@@ -120,7 +142,9 @@ class _LogWidgetState extends State<LogWidget> {
                                     ),
                                   ),
                                   InkWell(
-                                    onTap: () {},
+                                    onTap: () {
+                                       Get.to(() => CareLog());
+                                    },
                                     child: LogCard(
                                       CardName: '주의',
                                       Cardimg:

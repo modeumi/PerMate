@@ -88,10 +88,6 @@ class _PetTypeState extends State<PetType> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        if (pettype != null)
-                          SizedBox(
-                            width: 4.w,
-                          ),
                         Text(pettype[0]),
                       ],
                     ),
