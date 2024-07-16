@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
@@ -17,11 +20,24 @@ class _DiseaseListState extends State<DiseaseList> {
 
   String _selectedDisease = '';
 
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    loadDisease();
+  }
+
+  Future<void> loadDisease() async {
+    String data = await rootBundle.loadString('assets/diseaselist.json');
+    setState(() {
+      diseaseList = List<Map<String, String>>.from(json.decode(data));
+    });
+  }
+
   void _addDisease() {
     if (_searchController.text.isNotEmpty) {
       setState(() {
         diseaseList.add({'name': _searchController.text});
-        _selectedDisease = _searchController.text;
         _searchController.clear();
       });
     }
@@ -32,6 +48,9 @@ class _DiseaseListState extends State<DiseaseList> {
       diseaseList.removeAt(index);
       if (diseaseList.isEmpty) {
         _selectedDisease = '';
+      } else if (_selectedDisease == diseaseList[index]['type']) {
+        _selectedDisease =
+            diseaseList.isNotEmpty ? diseaseList[0]['type']! : '';
       }
     });
   }
@@ -63,7 +82,7 @@ class _DiseaseListState extends State<DiseaseList> {
         ),
         child: Padding(
           padding: const EdgeInsets.all(8),
-          child: DropdownButton(
+          child: DropdownButton<String>(
             iconSize: 25,
             menuMaxHeight: 168,
             dropdownColor: Colors.white,
@@ -82,7 +101,7 @@ class _DiseaseListState extends State<DiseaseList> {
             ),
             items: diseaseList.map<DropdownMenuItem<String>>((selectdisease) {
               return DropdownMenuItem<String>(
-                value: selectdisease['type'],
+                value: selectdisease['name'],
                 child: Center(child: Text(selectdisease['type'] ?? '')),
               );
             }).toList(),
@@ -123,7 +142,7 @@ class _DiseaseListState extends State<DiseaseList> {
       ),
       Container(
           width: 344.w,
-          height: 30.h,
+          // height: 30.h,
           margin: EdgeInsets.all(4),
           child: diseaseList.isNotEmpty
               ? ListView.builder(
@@ -131,17 +150,20 @@ class _DiseaseListState extends State<DiseaseList> {
                   itemCount: diseaseList.length,
                   itemBuilder: (context, index) {
                     return Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: Chip(
-                        padding: EdgeInsets.all(2),
-                        side: BorderSide(color: Colors.transparent),
-                        backgroundColor: Colors.white,
-                        label: Text(diseaseList[index]['type'] ?? ''),
-                        onDeleted: () {
-                          _removeDisease(index);
-                        },
-                        deleteIcon:
-                            Image.asset('assets/image_asset/edit/close.png'),
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
+                      child: Container(
+                        height: 30.h,
+                        child: Chip(
+                          padding: EdgeInsets.all(2),
+                          side: BorderSide(color: Colors.transparent),
+                          backgroundColor: Colors.white,
+                          label: Text(diseaseList[index]['name'] ?? ''),
+                          onDeleted: () {
+                            _removeDisease(index);
+                          },
+                          deleteIcon:
+                              Image.asset('assets/image_asset/edit/close.png'),
+                        ),
                       ),
                     );
                   },

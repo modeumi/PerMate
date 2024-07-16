@@ -31,45 +31,30 @@ class _UploadProfilePage extends State<UploadProfilePage> {
               image: AssetImage('assets/Main/Background.png'),
               fit: BoxFit.fill),
         ),
-        child: CustomScrollView(
-          slivers: [
-            SliverAppBar(
-              toolbarHeight: 100,
-              scrolledUnderElevation: 0,
-              automaticallyImplyLeading: false,
-              backgroundColor: Colors.transparent,
-              centerTitle: true,
-              leading: GestureDetector(
-                onTap: () {
-                  Get.back();
-                },
-                child: Image.asset(
-                  'assets/onboarding/icon_5.png',
+        child: Column(
+          children: [
+            CustomAppbar(title: '등록'),
+            Expanded(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Column(
+                  children: [
+                    AddProfileWidget(),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    AddName(),
+                    SizedBox(
+                      height: 40.h,
+                    ),
+                    AddInfoWidget(),
+                    SizedBox(
+                      height: 75.h,
+                    ),
+                  ],
                 ),
               ),
-              title: Text(
-                '등록',
-                style: White(20.sp, FontWeight.w600),
-              ),
             ),
-            SliverToBoxAdapter(
-              child: Column(
-                children: [
-                  AddProfileWidget(),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  AddName(),
-                  SizedBox(
-                    height: 40.h,
-                  ),
-                  AddInfoWidget(),
-                  SizedBox(
-                    height: 75,
-                  )
-                ],
-              ),
-            )
           ],
         ),
       ),

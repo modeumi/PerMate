@@ -18,7 +18,7 @@ class MypageProfile extends StatefulWidget {
 class _MypageProfileState extends State<MypageProfile> {
   final picker = ImagePicker();
   File? _profileImage;
-  String _profileImagePath = 'assets/image_asset/mypage/profile_select (1).png';
+  String _profileImagePath = 'assets/image_asset/mypage/profile.png';
 
   Future<void> _pickImage(ImageSource source) async {
     final pickedFile = await picker.pickImage(source: source);
@@ -122,8 +122,7 @@ class _MypageProfileState extends State<MypageProfile> {
                 child: GestureDetector(
                   onTap: () {
                     setState(() {
-                      _profileImagePath =
-                          'assets/image_asset/mypage/profile_select (1).png';
+                      _profileImagePath = 'assets/image_asset/mypage/woman.png';
                     });
                   },
                   child: Container(

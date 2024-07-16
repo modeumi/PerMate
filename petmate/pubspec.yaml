@@ -103,6 +103,7 @@ flutter:
     - assets/gnbicon/
     - assets/gnbicon(map)/
     - assets/edit/
+    - assets/image_asset/record_screen/
     - assets/image_asset/mypage/
     - assets/image_asset/edit/
     - assets/image_asset/pet_upload/

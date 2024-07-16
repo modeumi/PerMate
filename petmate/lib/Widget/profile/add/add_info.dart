@@ -118,6 +118,7 @@ class _AddInfoWidgetState extends State<AddInfoWidget> {
             ),
           ),
         ),
+       
       ],
     );
   }

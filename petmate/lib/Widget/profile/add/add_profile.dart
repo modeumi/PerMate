@@ -294,42 +294,38 @@ class _AddProfileWidgetState extends State<AddProfileWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Stack(
+      clipBehavior: Clip.none,
       children: [
-        Stack(
-          clipBehavior: Clip.none,
-          children: [
-            CircleContainer(
-              width: 96.w,
-              height: 96.h,
-            ),
-            Positioned(
-                left: 16.w,
-                top: 16.h,
-                child: _image != null
-                    ? Image.file(_image!)
-                    : Image.asset(_PetProfileImag)),
-            Positioned(
-              top: 72.h,
-              left: 72.w,
-              child: CircleContainer(
-                width: 24.w,
-                height: 24.h,
-              ),
-            ),
-            Positioned(
-                left: 76.w,
-                top: 78.h,
-                child: GestureDetector(
-                  onTap: () {
-                    _showModal(context);
-                  },
-                  child: Image.asset(
-                    'assets/image_asset/pet_upload/camera.png',
-                  ),
-                )),
-          ],
+        CircleContainer(
+          width: 96.w,
+          height: 96.h,
         ),
+        Positioned(
+            left: 16.w,
+            top: 16.h,
+            child: _image != null
+                ? Image.file(_image!)
+                : Image.asset(_PetProfileImag)),
+        Positioned(
+          top: 72.h,
+          left: 72.w,
+          child: CircleContainer(
+            width: 24.w,
+            height: 24.h,
+          ),
+        ),
+        Positioned(
+            left: 76.w,
+            top: 78.h,
+            child: GestureDetector(
+              onTap: () {
+                _showModal(context);
+              },
+              child: Image.asset(
+                'assets/image_asset/pet_upload/camera.png',
+              ),
+            )),
       ],
     );
   }

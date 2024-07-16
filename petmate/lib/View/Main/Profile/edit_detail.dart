@@ -4,21 +4,10 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:petmate/Util/textstyles.dart';
-import 'package:petmate/View/Main/Notice/noticedelete.dart';
-import 'package:petmate/View/Main/Profile/upload_profile.dart';
 import 'package:petmate/View/Main/Profile/deleted_profile.dart';
 import 'package:petmate/View/Main/Profile/editpage.dart';
-import 'package:petmate/View/Main/mainpage.dart';
-
 import 'package:petmate/Widget/bottom_navigation_bar/bottom_navigationbar.dart';
 import 'package:petmate/Widget/custom_widget/circle_container.dart';
-import 'package:petmate/Widget/custom_appbar.dart';
-import 'package:petmate/Widget/notice/notification_container.dart';
-import 'package:petmate/Widget/notice/notification_type.dart';
-import 'package:petmate/Widget/profile/add/add_info.dart';
-import 'package:petmate/Widget/profile/add/add_profile.dart';
-import 'package:petmate/Widget/profile/deleted/mypet_edit_widget.dart';
-
 import 'package:petmate/Widget/profile/details/details_type.dart';
 
 class EditdetailsPage extends StatefulWidget {
