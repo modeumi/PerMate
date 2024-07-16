@@ -20,8 +20,9 @@ class _PetsState extends State<Pets> {
   String _selectedPet = '';
   String _selectedType = '';
   bool textfieldWidget = false;
-  List<Map<String, dynamic>> petType = [];
-  Map<String, List<String>> petSelect = {};
+  Map<String, List<String>> petType = {};
+  List<Map<String, dynamic>> petSelect = [];
+ 
 
   @override
   void initState() {
@@ -34,7 +35,7 @@ class _PetsState extends State<Pets> {
   Future<void> loadPetType() async {
     String data = await rootBundle.loadString('assets/pet_type.json');
     setState(() {
-      petType = List<Map<String, dynamic>>.from(json.decode(data));
+      petType = Map<String, List<String>> .from(json.decode(data));
       print('type: $_selectedType');
     });
   }
@@ -42,7 +43,7 @@ class _PetsState extends State<Pets> {
   Future<void> loadPetSelect() async {
     String data = await rootBundle.loadString('assets/pet_select.json');
     setState(() {
-      petSelect = Map<String, List<String>>.from(json.decode(data));
+      petSelect =  List<Map<String, dynamic>>.from(json.decode(data));
       print('select: $_selectedType');
     });
   }
@@ -98,26 +99,26 @@ class _PetsState extends State<Pets> {
                       style: Gray(14.sp, FontWeight.w500),
                     ),
                   ),
-                  items: petType.map<DropdownMenuItem<String>>((petType) {
+                  items: petSelect.map<DropdownMenuItem<String>>((petselect) {
                     return DropdownMenuItem<String>(
-                      value: petType['type'],
+                      value: petselect['type'],
                       child: Container(
                         width: 286.w,
                         height: 30.h,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            if (petType['image'] != null)
+                            if (petselect['image'] != null)
                               Image.asset(
-                                petType['image'],
+                                petselect['image'],
                                 width: 24.w,
                                 height: 24.h,
                               ),
-                            if (petType['image'] != null)
+                            if (petselect['image'] != null)
                               SizedBox(
                                 width: 4.w,
                               ),
-                            Text(petType['type']),
+                            Text(petselect['type']),
                           ],
                         ),
                       ),
@@ -129,7 +130,7 @@ class _PetsState extends State<Pets> {
                     textfieldWidget = value == '직접입력';
                   },
                 ),
-                if (petSelect.containsKey(_selectedPet))
+                if (petType.containsKey(_selectedType))
                   DropdownButton<String>(
                     iconSize: 25,
                     dropdownColor: Colors.white,
@@ -151,7 +152,7 @@ class _PetsState extends State<Pets> {
                         style: Gray(14.sp, FontWeight.w500),
                       ),
                     ),
-                    items: petSelect[_selectedType]!
+                    items: petType[_selectedType]!
                         .map<DropdownMenuItem<String>>((String selecttype) {
                       return DropdownMenuItem<String>(
                         value: selecttype,
@@ -161,7 +162,6 @@ class _PetsState extends State<Pets> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              // You can add breed-specific icons here if needed
                               Text(selecttype),
                             ],
                           ),

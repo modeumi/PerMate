@@ -22,9 +22,5 @@
     {
         "id" : "새", 
         "image": "assets/image_asset/pet_upload/animal_list (6).png"
-        },
-    {
-        "id" : "직접 입력", 
-        "image": null
     }
 ]

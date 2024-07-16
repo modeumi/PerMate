@@ -12,9 +12,11 @@ import 'package:petmate/Widget/profile/add/type_dropdown/first_meet.dart';
 import 'package:petmate/Widget/profile/add/type_dropdown/gender.dart';
 import 'package:petmate/Widget/profile/add/type_dropdown/neuter_or.dart';
 import 'package:petmate/Widget/profile/add/type_dropdown/neutering.dart';
+import 'package:petmate/Widget/profile/add/type_dropdown/petList.dart';
 import 'package:petmate/Widget/profile/add/type_dropdown/pets.dart';
 import 'package:petmate/Widget/profile/add/type_dropdown/petweight.dart';
 import 'package:petmate/Widget/profile/add/type_dropdown/surgery_record.dart';
+import 'package:petmate/Widget/profile/add/type_dropdown/typeList.dart';
 import 'package:petmate/Widget/profile/add/type_dropdown/vaccination_record.dart';
 
 class AddInfoWidget extends StatefulWidget {
@@ -50,14 +52,12 @@ class _AddInfoWidgetState extends State<AddInfoWidget> {
                     width: 320.w,
                     height: 25,
                     child: Text('종류*', style: White(14.sp, FontWeight.w600))),
-                // PetList(),
-
-                Pets(),
-                // Container(
-                //     width: 320.w,
-                //     height: 25,
-                //     child: Text('품종*', style: White(14.sp, FontWeight.w600))),
-                // PetType(),
+                PetList(),
+                Container(
+                    width: 320.w,
+                    height: 25,
+                    child: Text('품종*', style: White(14.sp, FontWeight.w600))),
+                PetType(),
                 Container(
                     width: 320.w,
                     height: 25,
