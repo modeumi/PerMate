@@ -1,21 +1,12 @@
-import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:get/get.dart';
-import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
-import 'package:petmate/View/Main/Notice/noticedelete.dart';
-import 'package:petmate/View/Main/mainpage.dart';
 import 'package:petmate/Widget/bottom_navigation_bar/bottom_navigationbar.dart';
 import 'package:petmate/Widget/button/deletedbutton/sharedeleted_button.dart';
 import 'package:petmate/Widget/custom_appbar.dart';
-import 'package:petmate/Widget/notice/notification_container.dart';
-import 'package:petmate/Widget/notice/notification_type.dart';
 import 'package:petmate/Widget/profile/deleted/mypet_deleted_widget.dart';
-import 'package:petmate/Widget/profile/deleted/mypet_edit_widget.dart';
 
 class DeletedProfilePage extends StatefulWidget {
   const DeletedProfilePage({super.key});

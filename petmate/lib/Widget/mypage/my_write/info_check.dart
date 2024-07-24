@@ -173,7 +173,7 @@ class _InfoCheckState extends State<InfoCheck> {
                   top: 96.h,
                   left: 224.w,
                   child: SizedBox(
-                    width: 20,
+                    width: 20.w,
                     child: Center(
                       child: Text(
                         '999',
@@ -190,7 +190,7 @@ class _InfoCheckState extends State<InfoCheck> {
                   top: 96.h,
                   right: 56.w,
                   child: SizedBox(
-                    width: 20,
+                    width: 20.w,
                     child: Center(
                       child: Text(
                         '999',
@@ -207,7 +207,7 @@ class _InfoCheckState extends State<InfoCheck> {
                   top: 96.h,
                   right: 12.w,
                   child: SizedBox(
-                    width: 20,
+                    width: 20.w,
                     child: Center(
                       child: Text(
                         '999',

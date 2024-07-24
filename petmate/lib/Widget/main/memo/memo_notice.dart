@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -24,6 +25,9 @@ class _MemoNoticeState extends State<MemoNotice> {
   var opactiyValue = 1.0;
 
   TextEditingController contentController = TextEditingController();
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+  String Memocontent = '';
 
   void Deletedoevrlay(BuildContext context) {
     Future.delayed(Duration(milliseconds: 0), () {
@@ -89,8 +93,10 @@ class _MemoNoticeState extends State<MemoNotice> {
                                 focusedBorder: UnderlineInputBorder(
                                     borderSide: BorderSide.none),
                               ),
-                              onSubmitted: (value) {
-                                setState(() {});
+                              onChanged: (value) {
+                                setState(() {
+                                  Memocontent = value;
+                                });
                               },
                               style: TextStyle(
                                   color: Colors.white, decorationThickness: 0),
@@ -114,7 +120,17 @@ class _MemoNoticeState extends State<MemoNotice> {
                           top: 307.h,
                           left: 8.w,
                           right: 8.w,
-                          child: SaveButton(content: '저장', action: () {}))
+                          child: SaveButton(
+                              content: '저장',
+                              action: () {
+                                setState(() {
+                                  firestore.collection('Memo').doc().set({
+                                    "content": Memocontent,
+                                    "timestamp": FieldValue.serverTimestamp()
+                                  });
+                                  Get.back();
+                                });
+                              }))
                     ],
                   ),
                 ),

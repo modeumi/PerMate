@@ -35,32 +35,27 @@ class _MemoWriteWidgetState extends State<MemoWriteWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text('메모', style: White(12.sp, FontWeight.w500)),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    width: 55,
-                    height: 25,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          width: 4.w,
-                          height: 4.h,
-                          child: Image.asset(
-                            'assets/Main/Rectangle (1).png',
-                          ),
-                        ),
-                        Text('약먹이기', style: White(12.sp, FontWeight.w500)),
-                      ],
+              Container(
+                width: 55,
+                height: 25,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      width: 4.w,
+                      height: 4.h,
+                      child: Image.asset(
+                        'assets/Main/Rectangle (1).png',
+                      ),
                     ),
-                  ),
-                  Container(
-                    width: 310.w,
-                    height: 1,
-                    color: Colors.white.withOpacity(0.2),
-                  )
-                ],
+                    Text('약먹이기', style: White(12.sp, FontWeight.w500)),
+                  ],
+                ),
+              ),
+              Container(
+                width: 310.w,
+                height: 1,
+                color: Colors.white.withOpacity(0.2),
               ),
             ],
           ),

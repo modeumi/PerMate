@@ -2,6 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:petmate/Util/textstyles.dart';
+import 'package:petmate/Widget/button/big_save_button.dart';
+import 'package:petmate/Widget/button/save_button.dart';
+import 'package:petmate/Widget/custom_widget/circle_container.dart';
 import 'package:petmate/Widget/custom_widget/custom_container.dart';
 
 class ShowerContainer extends StatefulWidget {
@@ -54,7 +57,7 @@ class _ShowerContainerState extends State<ShowerContainer> {
             )),
         Positioned(
           left: 12.w,
-          top: 39.h,
+          top: 37.h,
           child: Container(
             width: 320.w,
             height: 40.h,
@@ -66,14 +69,14 @@ class _ShowerContainerState extends State<ShowerContainer> {
         ),
         Positioned(
             left: 12.w,
-            top: 99.h,
+            top: 97.h,
             child: Text(
               '소요시간',
               style: White(14.sp, FontWeight.w600),
             )),
         Positioned(
           left: 12.w,
-          top: 124.h,
+          top: 122.h,
           child: Container(
             width: 320.w,
             height: 40.h,
@@ -109,14 +112,14 @@ class _ShowerContainerState extends State<ShowerContainer> {
         ),
         Positioned(
             left: 12.w,
-            top: 184.h,
+            top: 182.h,
             child: Text(
               '메모',
               style: White(14.sp, FontWeight.w600),
             )),
         Positioned(
           left: 12.w,
-          top: 209.h,
+          top: 207.h,
           child: Container(
             width: 320.w,
             height: 76.h,
@@ -150,7 +153,7 @@ class _ShowerContainerState extends State<ShowerContainer> {
         ),
         Positioned(
             left: 12.w,
-            top: 305.h,
+            top: 303.h,
             child: Text(
               '사진 · 영상',
               style: White(14.sp, FontWeight.w600),
@@ -158,14 +161,19 @@ class _ShowerContainerState extends State<ShowerContainer> {
         Positioned(
           left: 12.w,
           top: 328.h,
-          child: Container(
-            width: 320.w,
-            height: 108.h,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
+          child: GestureDetector(
+            onTap: () {
+              
+            },
+            child: Container(
+              width: 320.w,
+              height: 108.h,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Image.asset('assets/image_asset/record/add Image.png'),
             ),
-            child: Image.asset('assets/image_asset/record/add Image.png'),
           ),
         ),
         Positioned(
@@ -175,6 +183,65 @@ class _ShowerContainerState extends State<ShowerContainer> {
               '대상 추가',
               style: White(14.sp, FontWeight.w600),
             )),
+        Positioned(
+          left: 12.w,
+          top: 481.h,
+          child: Container(
+            width: 320.w,
+            height: 96.h,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+        ),
+        Positioned(
+          left: 88.w,
+          top: 493.h,
+          child: Container(
+            width: 52.w,
+            height: 72.h,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Image.asset('assets/image_asset/record/add pet.png'),
+                Text(
+                  '추가하기',
+                  style: Black(10.sp, FontWeight.w500),
+                )
+              ],
+            ),
+          ),
+        ),
+        Positioned(
+          left: 24.w,
+          top: 493.h,
+          child: Container(
+            width: 52.w,
+            height: 72.h,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                CircleContainer(
+                  width: 52.w,
+                  height: 52.h,
+                ),
+                Text(
+                  '추가하기',
+                  style: Black(10.sp, FontWeight.w500),
+                )
+              ],
+            ),
+          ),
+        ),
+        Positioned(
+            left: 32.w,
+            top: 501.h,
+            child: Image.asset('assets/image_asset/record/Image.png')),
+        Positioned(
+            left: 12.w,
+            bottom: -2.h,
+            child: BigSaveButton(content: '저장', action: () {}))
       ],
     );
   }

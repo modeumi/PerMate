@@ -141,19 +141,19 @@ class CustomBottomNavigationBar extends GetView<BottomNavigationBarController> {
                   controller.changeIndex(index);
                   switch (index) {
                     case 0:
-                      Get.to(() => MainPage());
+                      Get.off(() => MainPage());
                       break;
                     case 1:
-                      Get.to(() => LogMain());
+                      Get.off(() => LogMain());
                       break;
                     case 2:
-                      Get.to(() => MNaverMap());
+                      Get.off(() => MNaverMap());
                       break;
                     case 3:
-                      Get.to(() => CommunityMain());
+                      Get.off(() => CommunityMain());
                       break;
                     case 4:
-                      Get.to(() => Mypage());
+                      Get.off(() => Mypage());
                       break;
                     default:
                   }

@@ -217,7 +217,7 @@ class _DealCheckState extends State<DealCheck> {
                   top: 229.h,
                   left: 60.w,
                   child: SizedBox(
-                    width: 20,
+                    width: 20.w,
                     child: Center(
                       child: Text(
                         '999',
@@ -234,7 +234,7 @@ class _DealCheckState extends State<DealCheck> {
                   top: 229.h,
                   left: 100.w,
                   child: SizedBox(
-                    width: 20,
+                    width: 20.w,
                     child: Center(
                       child: Text(
                         '999',
@@ -251,7 +251,7 @@ class _DealCheckState extends State<DealCheck> {
                   top: 229.h,
                   right: 8.w,
                   child: SizedBox(
-                    width: 20,
+                    width: 20.w,
                     child: Center(
                       child: Text(
                         '999',

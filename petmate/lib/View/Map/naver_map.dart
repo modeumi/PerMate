@@ -22,7 +22,7 @@ class MNaverMap extends StatefulWidget {
 
 class _MNaverMapState extends State<MNaverMap> {
   late NaverMapController _mapController;
-  // late NOverlayImage markerIcon;
+  late NOverlayImage markerIcon;
   late Position _currentPosition;
 
   bool _showLocationSearch = false;
@@ -38,7 +38,7 @@ class _MNaverMapState extends State<MNaverMap> {
   void initState() {
     super.initState();
     _getCurrentLocation();
-    // markerIcon = NOverlayImage.fromAssetImage('assets/mapimg/mylocation.png');
+    markerIcon = NOverlayImage.fromAssetImage('assets/mapimg/mylocation.png');
   }
 
   Future<void> _getCurrentLocation() async {

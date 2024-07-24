@@ -2,21 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 
-class GenderType extends StatefulWidget {
-  const GenderType({super.key});
+class OptionType extends StatefulWidget {
+  final List<String> options;
+  final width;
+  const OptionType({super.key, required this.options, this.width});
 
   @override
-  State<GenderType> createState() => _GenderTypeState();
+  State<OptionType> createState() => _OptionTypeState();
 }
 
-class _GenderTypeState extends State<GenderType> {
+class _OptionTypeState extends State<OptionType> {
   bool gendercheck = false;
   int button = -1;
-  final gender = ['남', '여'];
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 340.w,
+      width: widget.width,
       child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: List.generate(2, (int i) {
@@ -73,7 +74,7 @@ class _GenderTypeState extends State<GenderType> {
                   left: 75,
                   top: 12,
                   child: Text(
-                    gender[i],
+                    widget.options[i],
                     style: TextStyle(
                         fontSize: 14.sp,
                         fontWeight: FontWeight.w500,

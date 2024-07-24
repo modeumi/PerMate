@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -16,8 +18,6 @@ class PetType extends StatefulWidget {
 
 class _PetTypeState extends State<PetType> {
   String _selectedType = '';
-  String _selectedDog = '';
-  bool TextfildWidget = false;
   Map<String, dynamic> petType = {};
 
   @override
@@ -79,24 +79,68 @@ class _PetTypeState extends State<PetType> {
                     textAlign: TextAlign.center,
                     style: Gray(14.sp, FontWeight.w500)),
               ),
-              items: petType.keys.map<DropdownMenuItem<String>>((pettype) {
-                return DropdownMenuItem<String>(
-                  value: pettype[0],
-                  child: Container(
-                    width: 286.w,
-                    height: 30.h,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(pettype[0]),
-                      ],
-                    ),
-                  ),
-                );
-              }).toList(),
+              items: [
+                DropdownMenuItem<String>(
+                    value: '검색어를 입력해주세요.',
+                    child: Align(
+                      alignment: Alignment.bottomCenter,
+                      child: TextField(
+                        textAlign: TextAlign.center,
+                        decoration: InputDecoration(
+                          suffixIcon: Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                            child: Image.asset(
+                                'assets/image_asset/pet_upload/search.png'),
+                          ),
+                          hintText: '검색어를 입력해주세요.',
+                          hintStyle: TextStyle(
+                            color: Color(0xFF303030).withOpacity(0.6),
+                            fontSize: 14.sp,
+                            fontFamily: 'Pretendard',
+                            fontWeight: FontWeight.w500,
+                          ),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xFF303030).withOpacity(0.6),
+                            ),
+                          ),
+                          border: OutlineInputBorder(),
+                          contentPadding: EdgeInsets.fromLTRB(40, 20, 0, 0),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                                width: 1.w,
+                                color: Color(0xFF303030).withOpacity(0.6)),
+                          ),
+                        ),
+                        style: TextStyle(
+                            color: Color(0xFF303030).withOpacity(0.6),
+                            decorationThickness: 0),
+                        cursorColor: Color(0xFF303030).withOpacity(0.6),
+                        cursorWidth: 2,
+                      ),
+                    )),
+                ...petType.entries.expand<DropdownMenuItem<String>>((entry) {
+                  List<dynamic> typeName = entry.value;
+                  return typeName.map<DropdownMenuItem<String>>((pet) {
+                    return DropdownMenuItem<String>(
+                      value: pet['name'],
+                      child: Container(
+                        width: 286.w,
+                        height: 30.h,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(pet['name']),
+                          ],
+                        ),
+                      ),
+                    );
+                  }).toList();
+                })
+              ],
               onChanged: (value) {
                 setState(() {
-                  _selectedType = '';
+                  _selectedType = value ?? '';
                 });
               },
             ),

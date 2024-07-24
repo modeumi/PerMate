@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:glass_kit/glass_kit.dart';
+import 'package:petmate/View/Community/community_info.dart';
+import 'package:petmate/View/Community/community_write.dart';
 
 class CommunityButton extends StatefulWidget {
   const CommunityButton({super.key});
@@ -188,9 +191,7 @@ class _CommunityButtonState extends State<CommunityButton> {
             ),
           ),
           GestureDetector(
-            onTap: () {
-              
-            },
+            onTap: () {},
             child: GlassContainer(
               width: 44.w,
               height: 44.h,
@@ -223,7 +224,9 @@ class _CommunityButtonState extends State<CommunityButton> {
                 )
               ],
               child: GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Get.to(() => CommunityWrite());
+                },
                 child: Image.asset(
                   "assets/image_asset/information_screen/write.png",
                 ),

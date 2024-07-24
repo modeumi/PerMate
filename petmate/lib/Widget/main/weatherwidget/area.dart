@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -18,7 +19,12 @@ class AreaData extends StatelessWidget {
           );
         } else {
           List ll = snapshot.data as List;
-          return Text(ll[2], style: White(10.sp, FontWeight.w600));
+          return AutoSizeText(ll[2],
+              minFontSize: 10,
+              style: White(
+                10.sp,
+                FontWeight.w600,
+              ));
         }
       },
     );
