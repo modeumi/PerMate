@@ -2,7 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:petmate/Util/textstyles.dart';
+import 'package:petmate/Widget/button/big_save_button.dart';
+import 'package:petmate/Widget/custom_widget/circle_container.dart';
 import 'package:petmate/Widget/custom_widget/custom_container.dart';
+import 'package:petmate/Widget/custom_widget/selectedthree.dart';
 
 class MealConatiner extends StatefulWidget {
   const MealConatiner({super.key});
@@ -12,7 +15,29 @@ class MealConatiner extends StatefulWidget {
 }
 
 class _MealConatinerState extends State<MealConatiner> {
-    TextEditingController _textEditingController = TextEditingController();
+  TextEditingController _textEditingController = TextEditingController();
+  FocusNode _focusNode = FocusNode();
+  String min = 'ml';
+
+  @override
+  void initState() {
+    super.initState();
+    _focusNode.addListener(() {
+      if (_focusNode.hasFocus) {
+        setState(() {
+          _textEditingController.text = min;
+        });
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _textEditingController.dispose();
+    _focusNode.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -32,7 +57,26 @@ class _MealConatinerState extends State<MealConatiner> {
             )),
         Positioned(
           left: 12.w,
-          top: 39.h,
+          top: 37.h,
+          child: Container(
+            width: 320.w,
+            height: 40.h,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+        ),
+        Positioned(
+            left: 12.w,
+            top: 97.h,
+            child: Text(
+              '음수량',
+              style: White(14.sp, FontWeight.w600),
+            )),
+        Positioned(
+          left: 12.w,
+          top: 122.h,
           child: Container(
             width: 320.w,
             height: 40.h,
@@ -42,12 +86,15 @@ class _MealConatinerState extends State<MealConatiner> {
             ),
             child: TextField(
               controller: _textEditingController,
+              focusNode: _focusNode,
               textAlign: TextAlign.center,
               decoration: InputDecoration(
+                hintText: '-- ml',
+                hintStyle: Gray(14.sp, FontWeight.w500),
                 enabledBorder:
                     UnderlineInputBorder(borderSide: BorderSide.none),
                 border: OutlineInputBorder(borderSide: BorderSide.none),
-                contentPadding: EdgeInsets.fromLTRB(1, 0, 0, 10),
+                contentPadding: EdgeInsets.fromLTRB(0, 0, 0, 12),
                 focusedBorder:
                     UnderlineInputBorder(borderSide: BorderSide.none),
               ),
@@ -63,6 +110,109 @@ class _MealConatinerState extends State<MealConatiner> {
             ),
           ),
         ),
+        Positioned(
+            left: 12.w,
+            top: 182.h,
+            child: Text(
+              '종류',
+              style: White(14.sp, FontWeight.w600),
+            )),
+        Positioned(
+            left: 12.w,
+            top: 207.h,
+            child: Selectedthree(
+              width: 320.w,
+              selected: ['습식', '건식', '간식'],
+            )),
+        Positioned(
+            left: 12.w,
+            top: 303.h,
+            child: Text(
+              '사진 · 영상',
+              style: White(14.sp, FontWeight.w600),
+            )),
+        Positioned(
+          left: 12.w,
+          top: 328.h,
+          child: GestureDetector(
+            onTap: () {},
+            child: Container(
+              width: 320.w,
+              height: 108.h,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Image.asset('assets/image_asset/record/add Image.png'),
+            ),
+          ),
+        ),
+        Positioned(
+            left: 12.w,
+            top: 456.h,
+            child: Text(
+              '대상 추가',
+              style: White(14.sp, FontWeight.w600),
+            )),
+        Positioned(
+          left: 12.w,
+          top: 481.h,
+          child: Container(
+            width: 320.w,
+            height: 96.h,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+        ),
+        Positioned(
+          left: 88.w,
+          top: 493.h,
+          child: Container(
+            width: 52.w,
+            height: 72.h,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Image.asset('assets/image_asset/record/add pet.png'),
+                Text(
+                  '추가하기',
+                  style: Black(10.sp, FontWeight.w500),
+                )
+              ],
+            ),
+          ),
+        ),
+        Positioned(
+          left: 24.w,
+          top: 493.h,
+          child: Container(
+            width: 52.w,
+            height: 72.h,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                CircleContainer(
+                  width: 52.w,
+                  height: 52.h,
+                ),
+                Text(
+                  '추가하기',
+                  style: Black(10.sp, FontWeight.w500),
+                )
+              ],
+            ),
+          ),
+        ),
+        Positioned(
+            left: 32.w,
+            top: 501.h,
+            child: Image.asset('assets/image_asset/record/Image.png')),
+        Positioned(
+            left: 12.w,
+            bottom: -2.h,
+            child: BigSaveButton(content: '저장', action: () {}))
       ],
     );
   }

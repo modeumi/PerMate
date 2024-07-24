@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -14,48 +15,59 @@ class MemoNotcieWidget extends StatefulWidget {
 }
 
 class _MemoNotcieWidgetState extends State<MemoNotcieWidget> {
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
   final name = [
     '까먹지 말고 약먹이기 까먹지 말고 약먹이기 까먹지 말고 약먹까먹지 말고 약먹이기까먹지 말고 약먹이기까먹지 말고 약먹이'
   ];
+
+  Future<List<Map<String, dynamic>>> fetchMemos() async {
+    QuerySnapshot snapshot = await firestore.collection('Memo').get();
+    return snapshot.docs
+        .map((doc) => {
+              'content': doc['content'],
+              'timestamp': (doc['timestamp'] as Timestamp).toDate(),
+            })
+        .toList();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        for (int i = 0; i < 2; i++)
-          Stack(
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 4),
-                child: CustomContainer(
-                  width: 344.w,
-                  height: 80.h,
-                  shadow_color: Color(0x26000000),
-                ),
+        // for (int i = 0; i < 2; i++)
+        Stack(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 4),
+              child: CustomContainer(
+                width: 344.w,
+                height: 80.h,
+                shadow_color: Color(0x26000000),
               ),
-              Positioned(
-                  top: 35.h,
-                  left: 11.w,
-                  child: Image.asset('assets/edit/menu.png')),
-              Positioned(
-                left: 40.w,
+            ),
+            Positioned(
                 top: 35.h,
-                child: Container(
-                  width: 288.w,
-                  height: 38.h,
-                  child: Text(name[0],
-                      overflow: TextOverflow.ellipsis,
-                      style: White(12.sp, FontWeight.w500)),
-                ),
+                left: 11.w,
+                child: Image.asset('assets/edit/menu.png')),
+            Positioned(
+              left: 40.w,
+              top: 35.h,
+              child: Container(
+                width: 288.w,
+                height: 38.h,
+                child: Text(name[0],
+                    overflow: TextOverflow.ellipsis,
+                    style: White(12.sp, FontWeight.w500)),
               ),
-              Positioned(
-                right: 12.w,
-                bottom: 12.h,
-                child:
-                    Text('3/28 오후 05:30', style: White(10.sp, FontWeight.w500)),
-              )
-            ],
-          ),
+            ),
+            Positioned(
+              right: 12.w,
+              bottom: 12.h,
+              child:
+                  Text('3/28 오후 05:30', style: White(10.sp, FontWeight.w500)),
+            ),
+          ],
+        ),
       ],
     );
   }

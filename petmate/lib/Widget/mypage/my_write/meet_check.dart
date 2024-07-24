@@ -70,8 +70,14 @@ class _MeetCheckState extends State<MeetCheck> {
           child: Stack(
             children: [
               Positioned(
-                  child: Image.asset(
-                      'assets/image_asset/meet_screen/thumbnail (1).png')),
+                  child: Container(
+                width: 120.w,
+                height: 120.h,
+                child: Image.asset(
+                  'assets/image_asset/meet_screen/thumbnail (1).png',
+                  fit: BoxFit.cover,
+                ),
+              )),
               Positioned(
                   top: 10.h,
                   left: 10.w,
@@ -144,8 +150,8 @@ class _MeetCheckState extends State<MeetCheck> {
                       like
                           ? 'assets/image_asset/meet_details/like_clicked.png'
                           : 'assets/image_asset/meet_details/like_default.png',
-                      width: 25,
-                      height: 25,
+                      width: 25.w,
+                      height: 25.h,
                     ),
                   )),
               Positioned(

@@ -9,8 +9,8 @@ import 'package:petmate/Widget/profile/add/type_dropdown/allergy_type.dart';
 import 'package:petmate/Widget/profile/add/type_dropdown/bth.dart';
 import 'package:petmate/Widget/profile/add/type_dropdown/disease.dart';
 import 'package:petmate/Widget/profile/add/type_dropdown/first_meet.dart';
-import 'package:petmate/Widget/profile/add/type_dropdown/gender.dart';
-import 'package:petmate/Widget/profile/add/type_dropdown/neuter_or.dart';
+import 'package:petmate/Widget/custom_widget/optiontype.dart';
+import 'package:petmate/Widget/custom_widget/selectedthree.dart';
 import 'package:petmate/Widget/profile/add/type_dropdown/neutering.dart';
 import 'package:petmate/Widget/profile/add/type_dropdown/petList.dart';
 import 'package:petmate/Widget/profile/add/type_dropdown/pets.dart';
@@ -62,7 +62,10 @@ class _AddInfoWidgetState extends State<AddInfoWidget> {
                     width: 320.w,
                     height: 25,
                     child: Text('성별*', style: White(14.sp, FontWeight.w600))),
-                GenderType(),
+                OptionType(
+                  width: 340.w,
+                  options: ['남', '여'],
+                ),
                 Container(
                     width: 320.w,
                     height: 25,
@@ -84,7 +87,9 @@ class _AddInfoWidgetState extends State<AddInfoWidget> {
                     height: 25,
                     child:
                         Text('중성화 여부*', style: White(14.sp, FontWeight.w600))),
-                NeuterOr(),
+                Selectedthree(
+                  selected: ['했음', '안했음', '모르겠음'],
+                ),
                 Container(
                     width: 320.w,
                     height: 25,
@@ -96,7 +101,7 @@ class _AddInfoWidgetState extends State<AddInfoWidget> {
                     height: 25,
                     child: Text('염려 · 보유 질환',
                         style: White(14.sp, FontWeight.w600))),
-                DiseaseList(),
+                DiseaseType(),
                 Container(
                     width: 320.w,
                     height: 25,
@@ -118,7 +123,6 @@ class _AddInfoWidgetState extends State<AddInfoWidget> {
             ),
           ),
         ),
-       
       ],
     );
   }

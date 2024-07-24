@@ -116,8 +116,8 @@ class _DealState extends State<Deal> {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Container(
-                              width: 14,
-                              height: 12,
+                              width: 14.w,
+                              height: 12.h,
                               margin: EdgeInsets.only(top: 3),
                               child: Image.asset(
                                 'assets/image_asset/transaction_writing/sell_default.png',
@@ -203,7 +203,7 @@ class _DealState extends State<Deal> {
                   top: 229.h,
                   left: 60.w,
                   child: SizedBox(
-                    width: 20,
+                    width: 20.w,
                     child: Center(
                       child: Text(
                         '999',
@@ -220,7 +220,7 @@ class _DealState extends State<Deal> {
                   top: 229.h,
                   left: 100.w,
                   child: SizedBox(
-                    width: 20,
+                    width: 20.w,
                     child: Center(
                       child: Text(
                         '999',
@@ -237,7 +237,7 @@ class _DealState extends State<Deal> {
                   top: 229.h,
                   right: 8.w,
                   child: SizedBox(
-                    width: 20,
+                    width: 20.w,
                     child: Center(
                       child: Text(
                         '999',

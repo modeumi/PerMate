@@ -2,17 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 
-class NeuterOr extends StatefulWidget {
-  const NeuterOr({super.key});
+class Selectedthree extends StatefulWidget {
+  final List<String> selected;
+  final width;
+  const Selectedthree({super.key, required this.selected, this.width});
 
   @override
-  State<NeuterOr> createState() => _NeuterOrState();
+  State<Selectedthree> createState() => _SelectedthreeState();
 }
 
-class _NeuterOrState extends State<NeuterOr> {
+class _SelectedthreeState extends State<Selectedthree> {
   bool gendercheck = false;
   int button = -1;
-  final gender = ['했음', '안했음', '모르겠음'];
+ 
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -68,7 +70,7 @@ class _NeuterOrState extends State<NeuterOr> {
               Positioned.fill(
                 child: Center(
                   child: Text(
-                    gender[i],
+                    widget.selected[i],
                     style: TextStyle(
                         fontSize: 14.sp,
                         fontWeight: FontWeight.w500,

@@ -39,8 +39,8 @@ class _MypageProfileState extends State<MypageProfile> {
         builder: (context) {
           return Stack(children: [
             Container(
-              width: 360,
-              height: 160,
+              width: 360.w,
+              height: 160.h,
               margin: EdgeInsets.all(1),
               decoration: BoxDecoration(
                 color: Colors.white.withOpacity(0.8),
@@ -84,8 +84,8 @@ class _MypageProfileState extends State<MypageProfile> {
               ),
             ),
             Positioned(
-                left: 16,
-                top: 16,
+                left: 16.w,
+                top: 16.h,
                 child: GestureDetector(
                   onTap: () {
                     setState(() {
@@ -94,8 +94,8 @@ class _MypageProfileState extends State<MypageProfile> {
                     });
                   },
                   child: Container(
-                    width: 156,
-                    height: 128,
+                    width: 156.w,
+                    height: 128.h,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.white),
@@ -106,19 +106,19 @@ class _MypageProfileState extends State<MypageProfile> {
                           'assets/image_asset/mypage/profile_select (2).png',
                         ),
                         SizedBox(
-                          height: 8,
+                          height: 8.h,
                         ),
                         Text(
                           '남성',
-                          style: Black(16, FontWeight.w600),
+                          style: Black(16.sp, FontWeight.w600),
                         )
                       ],
                     ),
                   ),
                 )),
             Positioned(
-                right: 16,
-                top: 16,
+                right: 16.w,
+                top: 16.h,
                 child: GestureDetector(
                   onTap: () {
                     setState(() {
@@ -126,8 +126,8 @@ class _MypageProfileState extends State<MypageProfile> {
                     });
                   },
                   child: Container(
-                    width: 156,
-                    height: 128,
+                    width: 156.w,
+                    height: 128.h,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.white),
@@ -136,15 +136,15 @@ class _MypageProfileState extends State<MypageProfile> {
                       children: [
                         Image.asset(
                           'assets/image_asset/mypage/profile_select (1).png',
-                          width: 28,
-                          height: 42,
+                          width: 28.w,
+                          height: 42.h,
                         ),
                         SizedBox(
                           height: 8,
                         ),
                         Text(
                           '여성',
-                          style: Black(16, FontWeight.w600),
+                          style: Black(16.sp, FontWeight.w600),
                         )
                       ],
                     ),
@@ -163,8 +163,8 @@ class _MypageProfileState extends State<MypageProfile> {
         builder: (context) {
           return Stack(children: [
             Container(
-              width: 360,
-              height: 160,
+              width: 360.w,
+              height: 160.h,
               margin: EdgeInsets.all(1),
               decoration: BoxDecoration(
                 color: Colors.white.withOpacity(0.8),
@@ -208,15 +208,15 @@ class _MypageProfileState extends State<MypageProfile> {
               ),
             ),
             Positioned(
-                left: 16,
-                top: 16,
+                left: 16.w,
+                top: 16.h,
                 child: GestureDetector(
                   onTap: () {
                     _modalshow(context);
                   },
                   child: Container(
-                    width: 156,
-                    height: 128,
+                    width: 156.w,
+                    height: 128.h,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.white),
@@ -238,15 +238,15 @@ class _MypageProfileState extends State<MypageProfile> {
                   ),
                 )),
             Positioned(
-                right: 16,
-                top: 16,
+                right: 16.w,
+                top: 16.h,
                 child: GestureDetector(
                   onTap: () {
                     _pickImage(ImageSource.gallery);
                   },
                   child: Container(
-                    width: 156,
-                    height: 128,
+                    width: 156.w,
+                    height: 128.h,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.white),
@@ -255,15 +255,15 @@ class _MypageProfileState extends State<MypageProfile> {
                       children: [
                         Image.asset(
                           'assets/image_asset/pet_upload/gallery.png',
-                          width: 28,
-                          height: 42,
+                          width: 28.w,
+                          height: 42.h,
                         ),
                         SizedBox(
                           height: 8,
                         ),
                         Text(
                           '갤러리',
-                          style: Black(16, FontWeight.w600),
+                          style: Black(16.sp, FontWeight.w600),
                         )
                       ],
                     ),

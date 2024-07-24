@@ -19,15 +19,7 @@ class _NeuteringState extends State<Neutering> {
         margin: EdgeInsets.all(4),
         decoration: BoxDecoration(
           color: Colors.white,
-          // border: GradientBoxBorder(
-          //   width: 1,
-          //   gradient: LinearGradient(
-          //     colors: [
-          //       Colors.white.withOpacity(0.5),
-          //       Colors.white.withOpacity(0.2)
-          //     ],
-          //   ),
-          // ),
+          
           borderRadius: BorderRadius.circular(10),
         ),
         child: TextField(
@@ -44,32 +36,7 @@ class _NeuteringState extends State<Neutering> {
           cursorColor: Colors.black,
           cursorWidth: 1,
         ),
-        // child: BlurryContainer(
-        //   blur: 12,
-        //   elevation: 0,
-        //   borderRadius: BorderRadius.circular(10),
-        //   child: Container()
-        // ),
       ),
-      // Opacity(
-      //   opacity: 0.4,
-      //   child: Container(
-      //     margin: EdgeInsets.all(4),
-      //     width: 320,
-      //     height: 40,
-      //     decoration: BoxDecoration(
-      //         boxShadow: [
-      //           BoxShadow(
-      //             color: Color(0x4C000000),
-      //             blurRadius: 2,
-      //             offset: Offset(0, 0),
-      //             spreadRadius: 0,
-      //           )
-      //         ],
-      //         color: Colors.white,
-      //         borderRadius: BorderRadius.circular(10)),
-      //   ),
-      // ),
     ]);
   }
 }
