@@ -147,23 +147,6 @@ class _MemoNoticeState extends State<MemoNotice> {
     return Scaffold(
       extendBody: true,
       extendBodyBehindAppBar: true,
-      appBar: CustomAppbar(
-        title: '메모',
-        action: [
-          GestureDetector(
-            onTap: () {
-              Deletedoevrlay(context);
-            },
-            child: Image.asset('assets/edit/plus.png'),
-          ),
-          GestureDetector(
-            onTap: () {
-              Get.to(() => MemoNoticeDeleted());
-            },
-            child: Image.asset('assets/alert/delete(24).png'),
-          ),
-        ],
-      ),
       body: Container(
         width: 360.w,
         height: 850.h,
@@ -172,18 +155,41 @@ class _MemoNoticeState extends State<MemoNotice> {
               image: AssetImage('assets/Main/Background.png'),
               fit: BoxFit.fill),
         ),
-        child: Stack(
+        child: Column(
           children: [
-            Positioned(
-              top: 98.h,
-              left: 58.w,
-              child: Opacity(
-                opacity: 0.6,
-                child: Text('순서를 수정하면 홈에서 노출되는 순서에 반영됩니다',
-                    style: White(12.sp, FontWeight.w500)),
-              ),
+            CustomAppbar(
+              title: '메모',
+              action: [
+                GestureDetector(
+                  onTap: () {
+                    Deletedoevrlay(context);
+                  },
+                  child: Image.asset('assets/edit/plus.png'),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Get.to(() => MemoNoticeDeleted());
+                  },
+                  child: Image.asset('assets/alert/delete(24).png'),
+                ),
+              ],
             ),
-            Positioned(top: 124.h, left: 8.w, child: MemoNotcieWidget()),
+            Expanded(
+                child: SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: Column(
+                      children: [
+                        Opacity(
+                          opacity: 0.6,
+                          child: Text('순서를 수정하면 홈에서 노출되는 순서에 반영됩니다',
+                              style: White(12.sp, FontWeight.w500)),
+                        ),
+                        MemoNotcieWidget(),
+                      ],
+                    ))),
+            SizedBox(
+              height: 70.h,
+            )
           ],
         ),
       ),
