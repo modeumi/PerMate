@@ -84,6 +84,9 @@ class _WeatherWigdgetState extends State<WeatherWigdget> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             AreaData(),
+                            SizedBox(
+                              width: 4.w,
+                            ),
                             GestureDetector(
                               onTap: () {
                                 Get.find<WeatherController>()

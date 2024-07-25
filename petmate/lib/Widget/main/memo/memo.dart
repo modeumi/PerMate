@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/Widget/custom_widget/custom_container.dart';
-import 'package:petmate/Widget/main/memo/memo_database.dart';
 import 'package:petmate/Widget/main/memo/memo_notice.dart';
 
 class MemoWriteWidget extends StatefulWidget {
@@ -14,7 +13,6 @@ class MemoWriteWidget extends StatefulWidget {
 }
 
 class _MemoWriteWidgetState extends State<MemoWriteWidget> {
-  final MemoDatabase memoDatabase = MemoDatabase();
 
   @override
   Widget build(BuildContext context) {

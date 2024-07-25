@@ -24,8 +24,3 @@ class MemoModel {
   factory MemoModel.fromJson(String source) =>
       MemoModel.fromMap(json.decode(source) as Map<String, dynamic>);
 }
-
-
-class ClassName {
-  
-}

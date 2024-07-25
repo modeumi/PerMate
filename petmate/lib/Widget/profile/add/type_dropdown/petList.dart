@@ -6,11 +6,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
-import 'package:petmate/Widget/profile/add/type_dropdown/pets.dart';
-import 'package:petmate/Widget/profile/add/type_dropdown/typeList.dart';
 
 class PetList extends StatefulWidget {
-  const PetList({super.key});
+  final ValueChanged<String> onChanged;
+  const PetList({super.key, required this.onChanged});
 
   @override
   State<PetList> createState() => _PetListState();
@@ -40,11 +39,11 @@ class _PetListState extends State<PetList> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(children: [
-      Container(
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(0, 4, 0, 10),
+      child: Container(
           width: 320.w,
           height: 40.h,
-          margin: EdgeInsets.all(4),
           decoration: BoxDecoration(
             color: Colors.white,
             border: GradientBoxBorder(
@@ -80,7 +79,11 @@ class _PetListState extends State<PetList> {
                                 borderSide: BorderSide.none),
                           ),
                           style: TextStyle(
-                              color: Colors.black, decorationThickness: 0),
+                              color: Colors.black,
+                              fontSize: 14,
+                              fontFamily: 'Pretendard',
+                              fontWeight: FontWeight.w500,
+                              decorationThickness: 0),
                           cursorColor: Colors.black,
                           cursorWidth: 1.w,
                           onChanged: (value) {
@@ -98,7 +101,7 @@ class _PetListState extends State<PetList> {
                           iconDisabledColor: Color(0xffCCCCCC),
                           borderRadius: BorderRadius.circular(10),
                           underline: SizedBox.shrink(),
-                          style: Black(14, FontWeight.w500),
+                          style: Black(14.sp, FontWeight.w500),
                           isExpanded: true,
                           value: _selectedPet.isNotEmpty ? _selectedPet : null,
                           hint: Container(
@@ -129,7 +132,10 @@ class _PetListState extends State<PetList> {
                                         SizedBox(
                                           width: 4.w,
                                         ),
-                                      Text(petselect['id'] ?? '직접입력'),
+                                      Text(
+                                        petselect['id'] ?? '직접입력',
+                                        style: Black(14.sp, FontWeight.w500),
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -139,16 +145,19 @@ class _PetListState extends State<PetList> {
                                 value: '직접입력',
                                 child: Align(
                                     alignment: Alignment.center,
-                                    child: Text('직접입력')))
+                                    child: Text(
+                                      '직접입력',
+                                      style: Black(14.sp, FontWeight.w500),
+                                    )))
                           ],
                           onChanged: (value) {
                             setState(() {
                               _selectedPet = value!;
                               _showTextFiled = value == '직접입력';
-                              
                             });
+                            widget.onChanged;
                           },
-                        ))))
-    ]);
+                        )))),
+    );
   }
 }

@@ -123,6 +123,7 @@ class _MealConatinerState extends State<MealConatiner> {
             child: Selectedthree(
               width: 320.w,
               selected: ['습식', '건식', '간식'],
+              onChanged: (String value) {},
             )),
         Positioned(
             left: 12.w,

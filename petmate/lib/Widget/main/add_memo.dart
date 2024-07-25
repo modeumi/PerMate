@@ -84,7 +84,9 @@ class _MeMoWidgetState extends State<MeMoWidget> {
                                     borderSide: BorderSide.none),
                               ),
                               onSubmitted: (value) {
-                                setState(() {});
+                                setState(() {
+                                  
+                                });
                               },
                               style: TextStyle(
                                   color: Colors.white,
@@ -110,7 +112,9 @@ class _MeMoWidgetState extends State<MeMoWidget> {
                           top: 307.h,
                           left: 8.w,
                           right: 8.w,
-                          child: SaveButton(content: '저장', action: () {}))
+                          child: SaveButton(content: '저장', action: () {
+                            
+                          }))
                     ],
                   ),
                 ),
