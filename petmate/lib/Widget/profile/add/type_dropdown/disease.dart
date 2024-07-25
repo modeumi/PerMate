@@ -24,10 +24,10 @@ class _DiseaseTypeState extends State<DiseaseType> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _loadAllergy();
+    _loadDisease();
   }
 
-  Future<void> _loadAllergy() async {
+  Future<void> _loadDisease() async {
     try {
       String data = await rootBundle.loadString('assets/disease.json');
       List<dynamic> jsonData = json.decode(data);
@@ -42,8 +42,10 @@ class _DiseaseTypeState extends State<DiseaseType> {
 
   void _addDisease() {
     if (_searchController.text.isNotEmpty) {
-      DiseaseType.add(_searchController.text);
-      _searchController.clear();
+      setState(() {
+        addDisease.add(_searchController.text);
+        _searchController.clear();
+      });
     }
   }
 
@@ -54,111 +56,129 @@ class _DiseaseTypeState extends State<DiseaseType> {
   }
 
   @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          width: 320.w,
-          height: 40.h,
-          margin: EdgeInsets.all(4),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            border: GradientBoxBorder(
-              width: 1,
-              gradient: LinearGradient(
-                colors: [
-                  Colors.white.withOpacity(0.5),
-                  Colors.white.withOpacity(0.2)
-                ],
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(0, 4, 0, 10),
+      child: Column(
+        children: [
+          Container(
+            width: 320.w,
+            height: 40.h,
+            margin: EdgeInsets.fromLTRB(0, 0, 0, 8),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              border: GradientBoxBorder(
+                width: 1,
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.white.withOpacity(0.5),
+                    Colors.white.withOpacity(0.2)
+                  ],
+                ),
+              ),
+              borderRadius: BorderRadius.circular(10.r),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(8),
+              child: DropdownButton(
+                iconSize: 25,
+                menuMaxHeight: 168,
+                dropdownColor: Colors.white,
+                iconEnabledColor: Color(0xffCCCCCC),
+                borderRadius: BorderRadius.circular(10.r),
+                underline: SizedBox.shrink(),
+                style: Black(14.sp, FontWeight.w500),
+                isExpanded: true,
+                value: _selectDisease.isNotEmpty ? _selectDisease : null,
+                hint: Container(
+                  width: 280.w,
+                  padding: const EdgeInsets.fromLTRB(48, 0, 8, 0),
+                  child: Text('분류를 선택해주세요.',
+                      textAlign: TextAlign.center,
+                      style: Gray(14.sp, FontWeight.w600)),
+                ),
+                items: DiseaseType.map<DropdownMenuItem<String>>((disease) {
+                  return DropdownMenuItem<String>(
+                    value: disease,
+                    child: Center(child: Text(disease)),
+                  );
+                }).toList(),
+                onChanged: (value) {
+                  setState(() {
+                    _selectDisease = value!;
+                    if (!addDisease.contains(_selectDisease)) {
+                      addDisease.add(_selectDisease);
+                    }
+                  });
+                },
               ),
             ),
-            borderRadius: BorderRadius.circular(10.r),
           ),
-          child: Padding(
-            padding: const EdgeInsets.all(4),
-            child: DropdownButton(
-              iconSize: 25,
-              menuMaxHeight: 168,
-              dropdownColor: Colors.white,
-              iconEnabledColor: Color(0xffCCCCCC),
+          Container(
+            width: 320.w,
+            height: 40.h,
+            margin: EdgeInsets.fromLTRB(0, 0, 0, 8),
+            decoration: BoxDecoration(
+              color: Colors.white,
               borderRadius: BorderRadius.circular(10.r),
-              underline: SizedBox.shrink(),
-              style: Black(14.sp, FontWeight.w500),
-              isExpanded: true,
-              value: _selectDisease.isNotEmpty ? _selectDisease : null,
-              hint: Container(
-                width: 280.w,
-                padding: const EdgeInsets.fromLTRB(48, 0, 8, 0),
-                child: Text('보유 알러지를 선택해주세요.',
-                    textAlign: TextAlign.center,
-                    style: Gray(14.sp, FontWeight.w600)),
+            ),
+            child: TextField(
+              controller: _searchController,
+              textAlign: TextAlign.center,
+              decoration: InputDecoration(
+                hintText: '염려 · 보유질환을 입력해주세요.',
+                hintStyle: Gray(14.sp, FontWeight.w500),
+                enabledBorder:
+                    UnderlineInputBorder(borderSide: BorderSide.none),
+                border: OutlineInputBorder(borderSide: BorderSide.none),
+                contentPadding: EdgeInsets.fromLTRB(12, 0, 0, 11),
+                focusedBorder:
+                    UnderlineInputBorder(borderSide: BorderSide.none),
               ),
-              items: DiseaseType.map<DropdownMenuItem<String>>((disease) {
-                return DropdownMenuItem<String>(
-                  value: disease,
-                  child: Center(child: Text(disease)),
-                );
-              }).toList(),
-              onChanged: (value) {
-                setState(() {
-                  _selectDisease = value!;
-                });
+              style: TextStyle(color: Colors.black, decorationThickness: 0),
+              cursorColor: Colors.black,
+              cursorWidth: 1.w,
+              onSubmitted: (value) {
+                _addDisease();
               },
             ),
           ),
-        ),
-        Container(
-          width: 320.w,
-          height: 40.h,
-          margin: EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10.r),
-          ),
-          child: TextField(
-            controller: _searchController,
-            textAlign: TextAlign.center,
-            decoration: InputDecoration(
-              hintText: '염려 · 보유질환을 입력해주세요.',
-              hintStyle: Gray(14.sp, FontWeight.w500),
-              enabledBorder: UnderlineInputBorder(borderSide: BorderSide.none),
-              border: OutlineInputBorder(borderSide: BorderSide.none),
-              contentPadding: EdgeInsets.fromLTRB(10, 0, 0, 11),
-              focusedBorder: UnderlineInputBorder(borderSide: BorderSide.none),
-            ),
-            style: TextStyle(color: Colors.black, decorationThickness: 0),
-            cursorColor: Colors.black,
-            cursorWidth: 1.w,
-            onSubmitted: (value) {
-              _addDisease();
-            },
-          ),
-        ),
-        Container(
-          width: 344.w,
-          height: 30,
-          margin: EdgeInsets.all(4),
-          child: addDisease.isNotEmpty
-              ? Wrap(
-                  spacing: 4.0,
-                  runSpacing: 4.0,
-                  children: List.generate(addDisease.length, (index) {
-                    return Chip(
-                      padding: EdgeInsets.all(2),
-                      side: BorderSide(color: Colors.transparent),
-                      backgroundColor: Colors.white,
-                      label: Text(addDisease[index]),
-                      onDeleted: () {
-                        _removeDisease(index);
+          Container(
+              width: 340.w,
+              height: addDisease.isNotEmpty ? 36.h : 0,
+              margin: EdgeInsets.fromLTRB(12, 0, 12, 0),
+              child: DiseaseType.isNotEmpty
+                  ? ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: addDisease.length,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 0, 8, 0),
+                          child: Chip(
+                            labelStyle: Black(12.sp, FontWeight.w500),
+                            side: BorderSide(color: Colors.transparent),
+                            backgroundColor: Colors.white,
+                            label: Text(
+                              addDisease[index],
+                            ),
+                            onDeleted: () {
+                              _removeDisease(index);
+                            },
+                            deleteIcon: Image.asset(
+                                'assets/image_asset/edit/close.png'),
+                          ),
+                        );
                       },
-                      deleteIcon:
-                          Image.asset('assets/image_asset/edit/close.png'),
-                    );
-                  }),
-                )
-              : SizedBox.shrink(),
-        ),
-      ],
+                    )
+                  : SizedBox.shrink()),
+        ],
+      ),
     );
   }
 }

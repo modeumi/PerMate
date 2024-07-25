@@ -2,24 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:petmate/Util/textstyles.dart';
 
-class Neutering extends StatefulWidget {
-  const Neutering({super.key});
+class NeuterDate extends StatefulWidget {
+  const NeuterDate({super.key});
 
   @override
-  State<Neutering> createState() => _NeuteringState();
+  State<NeuterDate> createState() => _NeuterDateState();
 }
 
-class _NeuteringState extends State<Neutering> {
+class _NeuterDateState extends State<NeuterDate> {
   @override
   Widget build(BuildContext context) {
-    return Stack(children: [
-      Container(
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(0, 4, 0, 10),
+      child: Container(
         width: 320.w,
         height: 40.h,
-        margin: EdgeInsets.all(4),
         decoration: BoxDecoration(
           color: Colors.white,
-          
           borderRadius: BorderRadius.circular(10),
         ),
         child: TextField(
@@ -37,6 +36,6 @@ class _NeuteringState extends State<Neutering> {
           cursorWidth: 1,
         ),
       ),
-    ]);
+    );
   }
 }

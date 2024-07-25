@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:petmate/Util/textstyles.dart';
 
 class Brithday extends StatefulWidget {
-  const Brithday({super.key});
+  final ValueChanged<String> onChanged;
+
+  const Brithday({super.key, required this.onChanged});
 
   @override
   State<Brithday> createState() => _BrithdayState();
@@ -14,11 +17,11 @@ class _BrithdayState extends State<Brithday> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(children: [
-      Container(
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(0, 4, 0, 10),
+      child: Container(
         width: 320.w,
         height: 40.h,
-        margin: EdgeInsets.all(4),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
@@ -45,6 +48,6 @@ class _BrithdayState extends State<Brithday> {
           cursorWidth: 1.w,
         ),
       ),
-    ]);
+    );
   }
 }

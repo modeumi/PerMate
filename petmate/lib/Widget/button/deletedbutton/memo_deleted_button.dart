@@ -5,8 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:petmate/Model/memo_model.dart';
 import 'package:petmate/Util/textstyles.dart';
-import 'package:petmate/Widget/main/memo/memoModel.dart';
-import 'package:petmate/Widget/main/memo/memo_database.dart';
+
 
 class MemoDeletedButton extends StatefulWidget {
   // final MemoDatabase memoDatabase;
@@ -29,7 +28,7 @@ class _MemoDeletedButtonState extends State<MemoDeletedButton> {
   //   memo = widget.memoDatabase.getMemo();
   // }
 
-  void Deletedoevrlay(BuildContext context, Memo memo) {
+  void Deletedoevrlay(BuildContext context, memo) {
     Future.delayed(Duration(milliseconds: 0), () {
       setState(() {
         opactiyValue = 1.0;

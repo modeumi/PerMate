@@ -12,11 +12,11 @@ class FirstMeetDay extends StatefulWidget {
 class _FirstMeetDayState extends State<FirstMeetDay> {
   @override
   Widget build(BuildContext context) {
-    return Stack(children: [
-      Container(
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(0, 4, 0, 10),
+      child: Container(
         width: 320.w,
         height: 40.h,
-        margin: EdgeInsets.all(4),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10.r),
@@ -36,6 +36,6 @@ class _FirstMeetDayState extends State<FirstMeetDay> {
           cursorWidth: 1.w,
         ),
       ),
-    ]);
+    );
   }
 }

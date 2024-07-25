@@ -58,7 +58,11 @@ class _ToiletContainerState extends State<ToiletContainer> {
         Positioned(
             left: 2.w,
             top: 122.h,
-            child: OptionType(width: 340.w, options: ['소변', '대변'])),
+            child: OptionType(
+              width: 340.w,
+              options: ['소변', '대변'],
+              onChanged: (value) {},
+            )),
         Positioned(
             left: 12.w,
             top: 182.h,

@@ -5,18 +5,21 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
 
 class PetType extends StatefulWidget {
-  const PetType({super.key});
+  final ValueChanged<String> onChanged;
+  const PetType({super.key, required this.onChanged});
 
   @override
   State<PetType> createState() => _PetTypeState();
 }
 
 class _PetTypeState extends State<PetType> {
+  TextEditingController searchtext = TextEditingController();
   String _selectedType = '';
   Map<String, dynamic> petType = {};
 
@@ -36,11 +39,11 @@ class _PetTypeState extends State<PetType> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(children: [
-      Container(
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(0, 4, 0, 10),
+      child: Container(
         width: 320.w,
         height: 40.h,
-        margin: EdgeInsets.all(4),
         decoration: BoxDecoration(
           color: Colors.white,
           border: GradientBoxBorder(
@@ -73,7 +76,7 @@ class _PetTypeState extends State<PetType> {
               isExpanded: true,
               value: _selectedType.isNotEmpty ? _selectedType : null,
               hint: Container(
-                padding: const EdgeInsets.fromLTRB(48, 0, 8, 0),
+                padding: const EdgeInsets.fromLTRB(48, 0, 0, 0),
                 width: 260.w,
                 child: Text('반려동물의 품종을 선택해주세요.',
                     textAlign: TextAlign.center,
@@ -81,10 +84,12 @@ class _PetTypeState extends State<PetType> {
               ),
               items: [
                 DropdownMenuItem<String>(
+                    alignment: Alignment.center,
                     value: '검색어를 입력해주세요.',
                     child: Align(
                       alignment: Alignment.bottomCenter,
                       child: TextField(
+                        controller: searchtext,
                         textAlign: TextAlign.center,
                         decoration: InputDecoration(
                           suffixIcon: Padding(
@@ -113,7 +118,10 @@ class _PetTypeState extends State<PetType> {
                           ),
                         ),
                         style: TextStyle(
-                            color: Color(0xFF303030).withOpacity(0.6),
+                            color: Color(0xFF303030),
+                            fontSize: 14,
+                            fontFamily: 'Pretendard',
+                            fontWeight: FontWeight.w500,
                             decorationThickness: 0),
                         cursorColor: Color(0xFF303030).withOpacity(0.6),
                         cursorWidth: 2,
@@ -130,7 +138,7 @@ class _PetTypeState extends State<PetType> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(pet['name']),
+                            Text(pet['name'] ?? ''),
                           ],
                         ),
                       ),
@@ -142,11 +150,12 @@ class _PetTypeState extends State<PetType> {
                 setState(() {
                   _selectedType = value ?? '';
                 });
+                widget.onChanged;
               },
             ),
           ),
         ),
       ),
-    ]);
+    );
   }
 }
