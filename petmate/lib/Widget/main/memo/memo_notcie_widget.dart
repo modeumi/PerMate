@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:petmate/Controller/memo_controller.dart';
 
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/Widget/custom_widget/custom_container.dart';
@@ -15,25 +17,17 @@ class MemoNotcieWidget extends StatefulWidget {
 }
 
 class _MemoNotcieWidgetState extends State<MemoNotcieWidget> {
-  FirebaseFirestore firestore = FirebaseFirestore.instance;
-
-  Future<List<Map<String, dynamic>>> fetchMemos() async {
-    QuerySnapshot snapshot = await firestore.collection('Memo').get();
-    return snapshot.docs
-        .map((doc) => {
-              'content': doc['content'],
-              'timestamp': (doc['timestamp'] as Timestamp).toDate(),
-            })
-        .toList();
-  }
+  MemoController memoController = Get.put(MemoController());
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Map<String, dynamic>>>(
-        future: fetchMemos(),
+        future: memoController.fetchMemos(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return CircularProgressIndicator();
+            return CircularProgressIndicator(
+              color: Colors.white,
+            );
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
             return Text('no memos');
           } else {
@@ -69,7 +63,7 @@ class _MemoNotcieWidgetState extends State<MemoNotcieWidget> {
                     bottom: 12.h,
                     child: Text(
                         memo['timestamp'] != null
-                            ? '${memo['timestamp'].month}/${memo['timestamp'].day} ${memo['timestamp'].hour}${memo['timestamp'].minute}'
+                            ? '${memo['timestamp'].month}/${memo['timestamp'].day}${memo['timestamp'].hour}${memo['timestamp'].minute}'
                             : '',
                         style: White(10.sp, FontWeight.w500)),
                   ),
