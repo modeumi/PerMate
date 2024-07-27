@@ -38,7 +38,7 @@ class _BrithdayState extends State<Brithday> {
             focusedBorder: UnderlineInputBorder(borderSide: BorderSide.none),
           ),
           style: TextStyle(
-            color: Colors.black,
+            color: Color(0xFF303030),
             decorationThickness: 0,
             fontSize: 14.sp,
             fontWeight: FontWeight.w500,
@@ -46,6 +46,9 @@ class _BrithdayState extends State<Brithday> {
           ),
           cursorColor: Colors.black,
           cursorWidth: 1.w,
+          onChanged: (value) {
+            widget.onChanged;
+          },
         ),
       ),
     );

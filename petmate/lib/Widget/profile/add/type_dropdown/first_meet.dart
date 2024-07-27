@@ -3,7 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:petmate/Util/textstyles.dart';
 
 class FirstMeetDay extends StatefulWidget {
-  const FirstMeetDay({super.key});
+  final ValueChanged<String> onChanged;
+  const FirstMeetDay({super.key, required this.onChanged});
 
   @override
   State<FirstMeetDay> createState() => _FirstMeetDayState();
@@ -31,9 +32,18 @@ class _FirstMeetDayState extends State<FirstMeetDay> {
             contentPadding: EdgeInsets.fromLTRB(1, 0, 0, 10),
             focusedBorder: UnderlineInputBorder(borderSide: BorderSide.none),
           ),
-          style: TextStyle(color: Colors.black, decorationThickness: 0),
+          style: TextStyle(
+            color: Color(0xFF303030),
+            decorationThickness: 0,
+            fontSize: 14.sp,
+            fontWeight: FontWeight.w500,
+            fontFamily: 'Pretendard',
+          ),
           cursorColor: Colors.black,
           cursorWidth: 1.w,
+          onChanged: (value) {
+            widget.onChanged;
+          },
         ),
       ),
     );

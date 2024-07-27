@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 
-class PetprofileController extends GetxController{
+class PetprofileController extends GetxController {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   String petList = '';
@@ -10,6 +10,7 @@ class PetprofileController extends GetxController{
   String petBirthday = '';
   String firstMeetday = '';
   String petWeight = '';
+  String petNeuter = '';
   String petNeuterDate = '';
   List<String> petDisease = [];
   List<String> petAllergy = [];
@@ -17,19 +18,26 @@ class PetprofileController extends GetxController{
   List<String> surgeryRecord = [];
 
   void petInfo() async {
-    Map<String, dynamic> petinfo = {
-      'petList': petList,
-      'petType': petType,
-      'petGender': petGender,
-      'petBirthday': petBirthday,
-      'firstMeetday': firstMeetday,
-      'petWeight': petWeight,
-      'petNeuterDate': petNeuterDate,
-      'petDisease': petDisease,
-      'petAllergy': petAllergy,
-      'vaccinationRecord': vaccinationRecord,
-      'surgeryRecord': surgeryRecord,
-    };
-    await firestore.collection('petinfo').add(petinfo);
+    try {
+      await firestore.collection('petinfo').add({
+        'petList': petList,
+        'petType': petType,
+        'petGender': petGender,
+        'petBirthday': petBirthday,
+        'firstMeetday': firstMeetday,
+        'petWeight': petWeight,
+        'petNeuterDate': petNeuterDate,
+        'petDisease': petDisease,
+        'petAllergy': petAllergy,
+        'vaccinationRecord': vaccinationRecord,
+        'surgeryRecord': surgeryRecord,
+      });
+
+      Get.snackbar('sucess', '성공!');
+    } catch (e) {
+      Get.snackbar('Erorr', '실패!');
+    }
   }
 }
+
+

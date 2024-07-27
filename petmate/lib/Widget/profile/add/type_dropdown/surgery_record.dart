@@ -3,7 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:petmate/Util/textstyles.dart';
 
 class SurgeryRecord extends StatefulWidget {
-  const SurgeryRecord({super.key});
+  final ValueChanged<String> onChanged;
+  const SurgeryRecord({super.key, required this.onChanged});
 
   @override
   State<SurgeryRecord> createState() => _SurgeryRecordState();
@@ -34,6 +35,9 @@ class _SurgeryRecordState extends State<SurgeryRecord> {
           style: TextStyle(color: Colors.black, decorationThickness: 0),
           cursorColor: Colors.black,
           cursorWidth: 1.w,
+          onChanged: (value) {
+            widget.onChanged;
+          },
         ),
       ),
     );

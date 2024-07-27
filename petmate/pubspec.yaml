@@ -69,6 +69,7 @@ dependencies:
   mailer: ^6.1.0
   path: ^1.9.0
   permission_handler: ^11.3.1
+  flutter_color_picker_plus: ^2.0.1
   refreshed: ^2.8.0
   sqflite: ^2.3.3+1
   path_provider: ^2.1.3

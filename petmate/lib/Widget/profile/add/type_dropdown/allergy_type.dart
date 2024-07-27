@@ -8,7 +8,8 @@ import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
 
 class AllergyType extends StatefulWidget {
-  const AllergyType({super.key});
+  final ValueChanged<List<String>> onChanged;
+  const AllergyType({super.key, required this.onChanged});
 
   @override
   State<AllergyType> createState() => _AllergyTypeState();
@@ -17,7 +18,7 @@ class AllergyType extends StatefulWidget {
 class _AllergyTypeState extends State<AllergyType> {
   String _selectAllergy = '';
   List<String> allergyType = [];
-  List<String> SelectAllergy = [];
+  List<String> selectAllergy = [];
 
   @override
   void initState() {
@@ -39,15 +40,11 @@ class _AllergyTypeState extends State<AllergyType> {
     }
   }
 
-  void _removeDisease(int index) {
+  void _removeAllergy(int index) {
     setState(() {
-      SelectAllergy.removeAt(index);
+      selectAllergy.removeAt(index);
+      widget.onChanged(selectAllergy);
     });
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
   }
 
   @override
@@ -101,8 +98,9 @@ class _AllergyTypeState extends State<AllergyType> {
                 onChanged: (value) {
                   setState(() {
                     _selectAllergy = value!;
-                    if (!SelectAllergy.contains(_selectAllergy)) {
-                      SelectAllergy.add(_selectAllergy);
+                    if (!selectAllergy.contains(_selectAllergy)) {
+                      selectAllergy.add(_selectAllergy);
+                      widget.onChanged(selectAllergy);
                     }
                   });
                 },
@@ -111,12 +109,12 @@ class _AllergyTypeState extends State<AllergyType> {
           ),
           Container(
               width: 344.w,
-              height: SelectAllergy.isNotEmpty ? 36.h : 0,
+              height: selectAllergy.isNotEmpty ? 36.h : 0,
               margin: EdgeInsets.fromLTRB(12, 0, 12, 0),
               child: allergyType.isNotEmpty
                   ? ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: SelectAllergy.length,
+                      itemCount: selectAllergy.length,
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.fromLTRB(0, 0, 8, 0),
@@ -125,10 +123,10 @@ class _AllergyTypeState extends State<AllergyType> {
                             side: BorderSide(color: Colors.transparent),
                             backgroundColor: Colors.white,
                             label: Text(
-                              SelectAllergy[index],
+                              selectAllergy[index],
                             ),
                             onDeleted: () {
-                              _removeDisease(index);
+                              _removeAllergy(index);
                             },
                             deleteIcon: Image.asset(
                                 'assets/image_asset/edit/close.png'),

@@ -3,7 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:petmate/Util/textstyles.dart';
 
 class PetWeight extends StatefulWidget {
-  const PetWeight({super.key});
+  final ValueChanged<String> onChanged;
+  const PetWeight({super.key, required this.onChanged});
 
   @override
   State<PetWeight> createState() => _PetWeightState();
@@ -22,6 +23,7 @@ class _PetWeightState extends State<PetWeight> {
         if (_focusNode.hasFocus) {
           setState(() {
             _textEditingController.text = initialText;
+            widget.onChanged;
           });
         }
       },
@@ -59,7 +61,7 @@ class _PetWeightState extends State<PetWeight> {
             focusedBorder: UnderlineInputBorder(borderSide: BorderSide.none),
           ),
           style: TextStyle(
-            color: Colors.black,
+            color: Color(0xFF303030),
             decorationThickness: 0,
             fontSize: 14.sp,
             fontWeight: FontWeight.w500,
@@ -67,6 +69,9 @@ class _PetWeightState extends State<PetWeight> {
           ),
           cursorColor: Colors.black,
           cursorWidth: 1,
+          onChanged: (value) {
+            widget.onChanged;
+          },
         ),
       ),
     );

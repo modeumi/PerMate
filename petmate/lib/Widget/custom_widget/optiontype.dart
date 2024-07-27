@@ -34,12 +34,10 @@ class _OptionTypeState extends State<OptionType> {
               return GestureDetector(
                 onTap: () {
                   setState(() {
-                    if (button == i) {
-                    } else {
-                      button = i;
-                    }
+                    button = i;
                   });
                   widget.onChanged(widget.options[i]);
+                 
                 },
                 child: Stack(children: [
                   Container(
