@@ -4,20 +4,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:petmate/Controller/memo_controller.dart';
 
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/Widget/custom_widget/custom_container.dart';
 
-class MemoNotcieWidget extends StatefulWidget {
-  const MemoNotcieWidget({super.key});
+class MemoNoticeWidgett extends StatefulWidget {
+  const MemoNoticeWidgett({super.key});
 
   @override
-  State<MemoNotcieWidget> createState() => _MemoNotcieWidgetState();
+  State<MemoNoticeWidgett> createState() => _MemoNoticeWidgettState();
 }
 
-class _MemoNotcieWidgetState extends State<MemoNotcieWidget> {
-  MemoController memoController = Get.put(MemoController());
+class _MemoNoticeWidgettState extends State<MemoNoticeWidgett> {
+MemoController memoController = Get.put(MemoController());
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +26,13 @@ class _MemoNotcieWidgetState extends State<MemoNotcieWidget> {
         future: memoController.fetchMemos(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return CircularProgressIndicator(
-              color: Colors.white,
+            return Center(
+              child: CircularProgressIndicator(
+                color: Colors.white,
+              ),
             );
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return Text('no memos');
+            return const Text('no memos');
           } else {
             return Column(
                 children: snapshot.data!.map((memo) {
@@ -63,7 +66,7 @@ class _MemoNotcieWidgetState extends State<MemoNotcieWidget> {
                     bottom: 12.h,
                     child: Text(
                         memo['timestamp'] != null
-                            ? '${memo['timestamp'].month}/${memo['timestamp'].day}${memo['timestamp'].hour}${memo['timestamp'].minute}'
+                            ? '${memo['timestamp'].month}/${memo['timestamp'].day} ${memo['timestamp'].hour}${memo['timestamp'].minute}'
                             : '',
                         style: White(10.sp, FontWeight.w500)),
                   ),

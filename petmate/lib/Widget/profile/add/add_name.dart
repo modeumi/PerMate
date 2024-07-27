@@ -4,7 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:petmate/Util/textstyles.dart';
 
 class AddName extends StatefulWidget {
-  const AddName({super.key});
+  final ValueChanged<String> onChanged;
+  const AddName({super.key, required this.onChanged});
 
   @override
   State<AddName> createState() => _AddNameState();
@@ -36,6 +37,9 @@ class _AddNameState extends State<AddName> {
               style: TextStyle(color: Colors.white, decorationThickness: 0),
               cursorColor: Colors.white,
               cursorWidth: 2,
+              onChanged: (value) {
+                widget.onChanged(value);
+              },
             ),
           ),
         ),

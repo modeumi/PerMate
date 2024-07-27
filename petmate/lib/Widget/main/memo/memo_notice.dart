@@ -184,7 +184,7 @@ class _MemoNoticeState extends State<MemoNotice> {
                           child: Text('순서를 수정하면 홈에서 노출되는 순서에 반영됩니다',
                               style: White(12.sp, FontWeight.w500)),
                         ),
-                        MemoNotcieWidget(),
+                        MemoNoticeWidgett(),
                       ],
                     ))),
             SizedBox(

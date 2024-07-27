@@ -5,10 +5,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:petmate/Util/textstyles.dart';
 
-
 class MemoDeletedButton extends StatefulWidget {
   // final MemoDatabase memoDatabase;
-  const MemoDeletedButton({super.key,});
+  const MemoDeletedButton({
+    super.key,
+  });
 
   @override
   State<MemoDeletedButton> createState() => _MemoDeletedButtonState();
@@ -16,18 +17,20 @@ class MemoDeletedButton extends StatefulWidget {
 
 class _MemoDeletedButtonState extends State<MemoDeletedButton> {
   List<bool> deletedCheck = [false, false, false];
-  // late Future<List<Memo>> memo;
   OverlayEntry? deletoverlay;
   var opactiyValue = 1.0;
 
-  // @override
-  // void initState() {
-  //   // TODO: implement initState
-  //   super.initState();
-  //   memo = widget.memoDatabase.getMemo();
-  // }
+  void deletedItems() {
+    setState(() {
+      deletedCheck.asMap().forEach((index, isSelected) {
+        if (isSelected) {
+          deletedCheck[index] = false;
+        }
+      });
+    });
+  }
 
-  void Deletedoevrlay(BuildContext context, memo) {
+  void memoDelete(BuildContext context) {
     Future.delayed(Duration(milliseconds: 0), () {
       setState(() {
         opactiyValue = 1.0;
@@ -202,11 +205,8 @@ class _MemoDeletedButtonState extends State<MemoDeletedButton> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () async {
-        // List<Memo> memoList = await memo;
-        // if (memoList.isNotEmpty) {
-        //    Deletedoevrlay(context, memoList[0]);
-        // }
+      onTap: () {
+        memoDelete(context);
       },
       child: Stack(
         children: [

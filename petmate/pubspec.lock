@@ -375,6 +375,14 @@ packages:
       url: "https://github.com/Mayb3Nots/flutter_audio_query.git"
     source: git
     version: "0.3.5+6"
+  flutter_color_picker_plus:
+    dependency: "direct main"
+    description:
+      name: flutter_color_picker_plus
+      sha256: "693d632e394c882ec305a46bf3cd2932ef3d47660632e12ed965580b007907dd"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.1"
   flutter_fgbg:
     dependency: transitive
     description:

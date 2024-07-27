@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -29,6 +31,7 @@ class AddInfoWidget extends StatefulWidget {
 
 class _AddInfoWidgetState extends State<AddInfoWidget> {
   PetprofileController petprofileController = Get.put(PetprofileController());
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -46,10 +49,7 @@ class _AddInfoWidgetState extends State<AddInfoWidget> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                  width: 320.w,
-                  height: 17.h,
-                  child: Text('종류*', style: White(14.sp, FontWeight.w600))),
+              _buildLabel('종류*'),
               PetList(
                 onChanged: (value) {
                   setState(() {
@@ -57,10 +57,7 @@ class _AddInfoWidgetState extends State<AddInfoWidget> {
                   });
                 },
               ),
-              Container(
-                  width: 320.w,
-                  height: 17.h,
-                  child: Text('품종*', style: White(14.sp, FontWeight.w600))),
+              _buildLabel('품종*'),
               PetType(
                 onChanged: (value) {
                   setState(() {
@@ -68,76 +65,83 @@ class _AddInfoWidgetState extends State<AddInfoWidget> {
                   });
                 },
               ),
-              Container(
-                  width: 320.w,
-                  height: 17.h,
-                  child: Text('성별*', style: White(14.sp, FontWeight.w600))),
+              _buildLabel('성별*'),
               OptionType(
                 width: 340.w,
                 options: ['남', '여'],
-                onChanged: (value) {},
+                onChanged: (value) {
+                  petprofileController.petGender = value;
+                },
               ),
-              Container(
-                  width: 320.w,
-                  height: 17.h,
-                  child: Text('생일*', style: White(14.sp, FontWeight.w600))),
+              _buildLabel('생일*'),
               Brithday(
                 onChanged: (value) {
                   petprofileController.petBirthday = value;
                 },
               ),
-              Container(
-                  width: 320.w,
-                  height: 17.h,
-                  child: Text('처음 만난 날', style: White(14.sp, FontWeight.w600))),
-              FirstMeetDay(),
-              Container(
-                  width: 320.w,
-                  height: 17.h,
-                  child: Text('몸무게', style: White(14.sp, FontWeight.w600))),
-              PetWeight(),
-              Container(
-                  width: 320.w,
-                  height: 17.h,
-                  child: Text('중성화 여부*', style: White(14.sp, FontWeight.w600))),
+              _buildLabel('처음 만난 날'),
+              FirstMeetDay(
+                onChanged: (value) {
+                  petprofileController.petBirthday = value;
+                },
+              ),
+              _buildLabel('몸무게'),
+              PetWeight(
+                onChanged: (value) {
+                  petprofileController.firstMeetday = value;
+                },
+              ),
+              _buildLabel('중성화 여부*'),
               Selectedthree(
                 selected: ['했음', '안했음', '모르겠음'],
                 onChanged: (value) {
-                  
+                  petprofileController.petNeuter = value;
                 },
               ),
-              Container(
-                  width: 320.w,
-                  height: 17.h,
-                  child:
-                      Text('중성화 날짜 *', style: White(14.sp, FontWeight.w600))),
-              NeuterDate(),
-              Container(
-                  width: 320.w,
-                  height: 17.h,
-                  child:
-                      Text('염려 · 보유 질환', style: White(14.sp, FontWeight.w600))),
-              DiseaseType(),
-              Container(
-                  width: 320.w,
-                  height: 17.h,
-                  child: Text('보유 알러지', style: White(14.sp, FontWeight.w600))),
-              AllergyType(),
-              Container(
-                  width: 320.w,
-                  height: 17.h,
-                  child: Text('접종 기록', style: White(14.sp, FontWeight.w600))),
-              VaccinationRecord(),
-              Container(
-                  width: 320.w,
-                  height: 17.h,
-                  child: Text('수술 기록', style: White(14.sp, FontWeight.w600))),
-              SurgeryRecord(),
-              BigSaveButton(content: '저장', action: () {}),
+              _buildLabel('중성화 날짜 *'),
+              NeuterDate(
+                onChanged: (value) {
+                  petprofileController.petNeuterDate = value;
+                },
+              ),
+              _buildLabel('염려 · 보유 질환'),
+              DiseaseType(
+                onChanged: (value) {
+                  petprofileController.petDisease = value;
+                },
+              ),
+              _buildLabel('보유 알러지'),
+              AllergyType(
+                onChanged: (value) {
+                  petprofileController.petAllergy;
+                },
+              ),
+              _buildLabel('접종 기록'),
+              VaccinationRecord(
+                onChanged: (value) {
+                  petprofileController.vaccinationRecord;
+                },
+              ),
+              _buildLabel('수술기록'),
+              SurgeryRecord(
+                onChanged: (value) {
+                  petprofileController.surgeryRecord;
+                },
+              ),
+              BigSaveButton(
+                  content: '저장', action: petprofileController.petInfo),
             ],
           ),
         ),
       ],
     );
   }
+}
+
+Widget _buildLabel(String text) {
+  return Container(
+    width: 320.w,
+    height: 17.h,
+    child: Text(text, style: White(14.sp, FontWeight.w600)),
+  );
 }

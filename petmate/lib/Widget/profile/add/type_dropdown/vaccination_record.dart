@@ -3,7 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:petmate/Util/textstyles.dart';
 
 class VaccinationRecord extends StatefulWidget {
-  const VaccinationRecord({super.key});
+  final ValueChanged<String> onChanged;
+  const VaccinationRecord({super.key, required this.onChanged});
 
   @override
   State<VaccinationRecord> createState() => _VaccinationRecordState();
@@ -34,6 +35,9 @@ class _VaccinationRecordState extends State<VaccinationRecord> {
           style: TextStyle(color: Colors.black, decorationThickness: 0),
           cursorColor: Colors.black,
           cursorWidth: 1.w,
+          onChanged: (value) {
+            widget.onChanged;
+          },
         ),
       ),
     );

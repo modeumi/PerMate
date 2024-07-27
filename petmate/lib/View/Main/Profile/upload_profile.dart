@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:petmate/Controller/petprofile_controller.dart';
 import 'package:petmate/Widget/bottom_navigation_bar/bottom_navigationbar.dart';
 import 'package:petmate/Widget/custom_appbar.dart';
 import 'package:petmate/Widget/profile/add/add_info.dart';
@@ -16,6 +18,7 @@ class UploadProfilePage extends StatefulWidget {
 }
 
 class _UploadProfilePage extends State<UploadProfilePage> {
+  PetprofileController petprofileController = Get.put(PetprofileController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +44,11 @@ class _UploadProfilePage extends State<UploadProfilePage> {
                     SizedBox(
                       height: 10.h,
                     ),
-                    AddName(),
+                    AddName(
+                      onChanged: (value) {
+                      
+                      },
+                    ),
                     SizedBox(
                       height: 40.h,
                     ),
