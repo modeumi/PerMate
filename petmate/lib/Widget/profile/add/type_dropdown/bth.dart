@@ -47,7 +47,7 @@ class _BrithdayState extends State<Brithday> {
           cursorColor: Colors.black,
           cursorWidth: 1.w,
           onChanged: (value) {
-            widget.onChanged;
+            widget.onChanged(value);
           },
         ),
       ),

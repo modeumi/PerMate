@@ -45,9 +45,7 @@ class _UploadProfilePage extends State<UploadProfilePage> {
                       height: 10.h,
                     ),
                     AddName(
-                      onChanged: (value) {
-                      
-                      },
+                     
                     ),
                     SizedBox(
                       height: 40.h,

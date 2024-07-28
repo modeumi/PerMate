@@ -65,7 +65,9 @@ class _MemoNoticeDeletedState extends State<MemoNoticeDeleted> {
             SizedBox(
               height: 10.h,
             ),
-            MemoDeletedButton(),
+            MemoDeletedButton(
+              
+            ),
             SizedBox(
               height: 70.h,
             ),

@@ -6,7 +6,10 @@ class MemoController extends GetxController {
 
   Future<List<Map<String, dynamic>>> fetchMemos() async {
     try {
-      QuerySnapshot snapshot = await firestore.collection('Memo').orderBy('timestamp', descending: true).get();
+      QuerySnapshot snapshot = await firestore
+          .collection('Memo')
+          .orderBy('timestamp', descending: true)
+          .get();
       List<Map<String, dynamic>> memos = snapshot.docs.map((doc) {
         Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
         print('Fetched memo: $data'); // Logging the fetched memo
@@ -22,4 +25,20 @@ class MemoController extends GetxController {
       return [];
     }
   }
+
+  // Stream<List<Map<String, dynamic>>> getMomo() {
+  //   return firestore
+  //       .collection('Memo')
+  //       .orderBy('timestamp', descending: true)
+  //       .snapshots()
+  //       .map((snapshot) {
+  //     return snapshot.docs.map((doc) {
+  //       final data = doc.data() as Map<String, dynamic>;
+  //       return {
+  //         'content': data['content'],
+  //         'timestamp': (data['timestamp'] as Timestamp).toDate(),
+  //       };
+  //     }).toList();
+  //   });
+  // }
 }

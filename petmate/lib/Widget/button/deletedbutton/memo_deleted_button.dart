@@ -1,8 +1,10 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:petmate/Controller/memo_controller.dart';
 import 'package:petmate/Util/textstyles.dart';
 
 class MemoDeletedButton extends StatefulWidget {
@@ -16,6 +18,7 @@ class MemoDeletedButton extends StatefulWidget {
 }
 
 class _MemoDeletedButtonState extends State<MemoDeletedButton> {
+  MemoController memoController = Get.put(MemoController());
   List<bool> deletedCheck = [false, false, false];
   OverlayEntry? deletoverlay;
   var opactiyValue = 1.0;
@@ -150,14 +153,9 @@ class _MemoDeletedButtonState extends State<MemoDeletedButton> {
                                 width: 8,
                               ),
                               GestureDetector(
-                                // onTap: () async {
-                                //   await widget.memoDatabase
-                                //       .deletedMemo(memo.id!);
-                                //   Get.back();
-                                //   setState(() {
-                                //     this.memo = widget.memoDatabase.getMemo();
-                                //   });
-                                // },
+                                onTap: () {
+                                  
+                                },
                                 child: Container(
                                   width: 156.w,
                                   height: 48.h,

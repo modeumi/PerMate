@@ -13,7 +13,6 @@ class MemoWriteWidget extends StatefulWidget {
 }
 
 class _MemoWriteWidgetState extends State<MemoWriteWidget> {
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -33,28 +32,37 @@ class _MemoWriteWidgetState extends State<MemoWriteWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text('메모', style: White(12.sp, FontWeight.w500)),
-              Container(
-                width: 55,
-                height: 25,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      width: 4.w,
-                      height: 4.h,
-                      child: Image.asset(
-                        'assets/Main/Rectangle (1).png',
+              for (int i = 0; i < 10; i++)
+                SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        width: 55.w,
+                        height: 25.h,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              width: 4.w,
+                              height: 4.h,
+                              child: Image.asset(
+                                'assets/Main/Rectangle (1).png',
+                              ),
+                            ),
+                            Text('약먹이기', style: White(12.sp, FontWeight.w500)),
+                          ],
+                        ),
                       ),
-                    ),
-                    Text('약먹이기', style: White(12.sp, FontWeight.w500)),
-                  ],
+                      Container(
+                        width: 310.w,
+                        height: 1,
+                        color: Colors.white.withOpacity(0.2),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              Container(
-                width: 310.w,
-                height: 1,
-                color: Colors.white.withOpacity(0.2),
-              ),
             ],
           ),
         ),

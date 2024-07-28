@@ -20,8 +20,8 @@ class MemoDeleted extends StatefulWidget {
 class _MemoDeletedState extends State<MemoDeleted> {
   MemoController memoController = Get.put(MemoController());
 
+  bool deletedCheck = false;
   // List<bool> deletedCheck = List.generate(3, (index) => false);
-  List<bool> deletedCheck = [];
 
   @override
   Widget build(BuildContext context) {
@@ -58,10 +58,10 @@ class _MemoDeletedState extends State<MemoDeleted> {
                       child: GestureDetector(
                           onTap: () {
                             setState(() {
-                              deletedCheck[0] = !deletedCheck[0];
+                              deletedCheck = !deletedCheck;
                             });
                           },
-                          child: Image.asset(deletedCheck[0]
+                          child: Image.asset(deletedCheck
                               ? 'assets/alert/check_selected.png'
                               : 'assets/alert/check_default.png')),
                     ),
@@ -81,8 +81,10 @@ class _MemoDeletedState extends State<MemoDeleted> {
                     right: 12.w,
                     bottom: 12.h,
                     child: Text(
+                      
                         memo['timestamp'] != null
                             ? '${memo['timestamp'].month}/${memo['timestamp'].day} ${memo['timestamp'].hour}${memo['timestamp'].minute}'
+
                             : '',
                         style: White(10.sp, FontWeight.w500)),
                   ),

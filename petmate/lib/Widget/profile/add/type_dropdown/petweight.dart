@@ -23,7 +23,7 @@ class _PetWeightState extends State<PetWeight> {
         if (_focusNode.hasFocus) {
           setState(() {
             _textEditingController.text = initialText;
-            widget.onChanged;
+            
           });
         }
       },
@@ -70,7 +70,7 @@ class _PetWeightState extends State<PetWeight> {
           cursorColor: Colors.black,
           cursorWidth: 1,
           onChanged: (value) {
-            widget.onChanged;
+            widget.onChanged(value);
           },
         ),
       ),
