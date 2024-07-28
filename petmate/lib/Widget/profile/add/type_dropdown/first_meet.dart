@@ -42,7 +42,7 @@ class _FirstMeetDayState extends State<FirstMeetDay> {
           cursorColor: Colors.black,
           cursorWidth: 1.w,
           onChanged: (value) {
-            widget.onChanged;
+            widget.onChanged(value);
           },
         ),
       ),

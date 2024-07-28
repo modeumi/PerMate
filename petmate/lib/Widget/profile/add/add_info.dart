@@ -31,7 +31,6 @@ class AddInfoWidget extends StatefulWidget {
 
 class _AddInfoWidgetState extends State<AddInfoWidget> {
   PetprofileController petprofileController = Get.put(PetprofileController());
-  FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -82,13 +81,13 @@ class _AddInfoWidgetState extends State<AddInfoWidget> {
               _buildLabel('처음 만난 날'),
               FirstMeetDay(
                 onChanged: (value) {
-                  petprofileController.petBirthday = value;
+                  petprofileController.firstMeetday = value;
                 },
               ),
               _buildLabel('몸무게'),
               PetWeight(
                 onChanged: (value) {
-                  petprofileController.firstMeetday = value;
+                  petprofileController.petWeight = value;
                 },
               ),
               _buildLabel('중성화 여부*'),
@@ -113,19 +112,19 @@ class _AddInfoWidgetState extends State<AddInfoWidget> {
               _buildLabel('보유 알러지'),
               AllergyType(
                 onChanged: (value) {
-                  petprofileController.petAllergy;
+                  petprofileController.petAllergy = value;
                 },
               ),
               _buildLabel('접종 기록'),
               VaccinationRecord(
                 onChanged: (value) {
-                  petprofileController.vaccinationRecord;
+                  petprofileController.vaccinationRecord = value;
                 },
               ),
               _buildLabel('수술기록'),
               SurgeryRecord(
                 onChanged: (value) {
-                  petprofileController.surgeryRecord;
+                  petprofileController.surgeryRecord = value;
                 },
               ),
               BigSaveButton(

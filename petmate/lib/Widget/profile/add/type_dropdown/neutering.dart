@@ -42,7 +42,7 @@ class _NeuterDateState extends State<NeuterDate> {
           cursorColor: Colors.black,
           cursorWidth: 1,
           onChanged: (value) {
-            widget.onChanged;
+            widget.onChanged(value);
           },
         ),
       ),

@@ -14,8 +14,8 @@ class PetprofileController extends GetxController {
   String petNeuterDate = '';
   List<String> petDisease = [];
   List<String> petAllergy = [];
-  List<String> vaccinationRecord = [];
-  List<String> surgeryRecord = [];
+  String vaccinationRecord = '';
+  String surgeryRecord = '';
 
   void petInfo() async {
     try {
@@ -39,5 +39,3 @@ class PetprofileController extends GetxController {
     }
   }
 }
-
-
