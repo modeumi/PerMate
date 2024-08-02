@@ -4,7 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
+import 'package:petmate/Controller/petprofile_controller.dart';
 import 'package:petmate/Util/textstyles.dart';
 
 class PetType extends StatefulWidget {
@@ -16,25 +18,7 @@ class PetType extends StatefulWidget {
 }
 
 class _PetTypeState extends State<PetType> {
-  TextEditingController _searchtext = TextEditingController();
-  bool _showTextField = false;
-  String _selectedType = '';
-  Map<String, dynamic> petType = {};
-
-  List<Map<String, dynamic>> petSelect = [];
-
-  @override
-  void initState() {
-    super.initState();
-    loadPetType();
-  }
-
-  Future<void> loadPetType() async {
-    String data = await rootBundle.loadString('assets/pet_type.json');
-    setState(() {
-      petType = Map<String, dynamic>.from(json.decode(data));
-    });
-  }
+  PetprofileController petprofileController = Get.put(PetprofileController());
 
   @override
   Widget build(BuildContext context) {
@@ -62,9 +46,10 @@ class _PetTypeState extends State<PetType> {
               ),
               child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: _showTextField || _selectedType == '직접입력'
+                  child: petprofileController.showTextField ||
+                          petprofileController.selectedType == '직접입력'
                       ? TextField(
-                          controller: _searchtext,
+                          controller: petprofileController.typeSearchController,
                           textAlign: TextAlign.center,
                           decoration: InputDecoration(
                             hintText: '검색어를 입력해주세요.',
@@ -101,8 +86,9 @@ class _PetTypeState extends State<PetType> {
                           underline: SizedBox.shrink(),
                           style: Black(14.sp, FontWeight.w500),
                           isExpanded: true,
-                          value:
-                              _selectedType.isNotEmpty ? _selectedType : null,
+                          value: petprofileController.selectedType.isNotEmpty
+                              ? petprofileController.selectedType
+                              : null,
                           hint: Container(
                             padding: const EdgeInsets.fromLTRB(48, 0, 8, 0),
                             width: 260.w,
@@ -113,11 +99,13 @@ class _PetTypeState extends State<PetType> {
                           items: [
                             DropdownMenuItem<String>(
                               alignment: Alignment.center,
-                              value: _searchtext.text,
+                              value: petprofileController
+                                  .typeSearchController.text,
                               child: Align(
                                 alignment: Alignment.bottomCenter,
                                 child: TextField(
-                                  controller: _searchtext,
+                                  controller:
+                                      petprofileController.typeSearchController,
                                   textAlign: TextAlign.center,
                                   decoration: InputDecoration(
                                     suffixIcon: GestureDetector(
@@ -162,15 +150,15 @@ class _PetTypeState extends State<PetType> {
                                   cursorWidth: 2.w,
                                   onChanged: (value) {
                                     setState(() {
-                                      _selectedType = value;
-                                      _showTextField = true;
+                                      petprofileController.selectedType = value;
+                                      petprofileController.showTextField = true;
                                       widget.onChanged(value);
                                     });
                                   },
                                 ),
                               ),
                             ),
-                            ...petType.entries
+                            ...petprofileController.typeselect.entries
                                 .expand<DropdownMenuItem<String>>((entry) {
                               List<dynamic> typeName = entry.value;
                               return typeName
@@ -190,9 +178,9 @@ class _PetTypeState extends State<PetType> {
                           ],
                           onChanged: (value) {
                             setState(() {
-                              _selectedType = value!;
+                              petprofileController.selectedType = value!;
 
-                              _showTextField = value == '';
+                              petprofileController.showTextField = value == '';
                               widget.onChanged(value);
                             });
                           },

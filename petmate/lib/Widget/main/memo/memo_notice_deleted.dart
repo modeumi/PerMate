@@ -34,7 +34,7 @@ class _MemoNoticeDeletedState extends State<MemoNoticeDeleted> {
         child: Column(
           children: [
             CustomAppbar(
-              title: '수정하기',
+              title: '메모',
               action: [
                 GestureDetector(
                   onTap: () {},
@@ -59,6 +59,9 @@ class _MemoNoticeDeletedState extends State<MemoNoticeDeleted> {
                           child: Text('순서를 수정하면 홈에서 노출되는 순서에 반영됩니다',
                               style: White(12.sp, FontWeight.w500)),
                         ),
+                        SizedBox(
+                          height: 12.h,
+                        ),
                         MemoDeleted(),
                       ],
                     ))),
@@ -66,7 +69,7 @@ class _MemoNoticeDeletedState extends State<MemoNoticeDeleted> {
               height: 10.h,
             ),
             MemoDeletedButton(
-              
+              memoId: '',
             ),
             SizedBox(
               height: 70.h,

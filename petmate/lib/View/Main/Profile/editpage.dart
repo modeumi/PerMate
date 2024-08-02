@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:petmate/Widget/bottom_navigation_bar/bottom_navigationbar.dart';
 import 'package:petmate/Widget/custom_appbar.dart';
 import 'package:petmate/Widget/profile/add/add_info.dart';
+import 'package:petmate/Widget/profile/add/add_name.dart';
 import 'package:petmate/Widget/profile/add/add_profile.dart';
 
 class EditPage extends StatefulWidget {
@@ -38,7 +39,17 @@ class _AddProfilePageState extends State<EditPage> {
                 child: Column(
                   children: [
                     AddProfileWidget(),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    AddName(),
+                    SizedBox(
+                      height: 40.h,
+                    ),
                     AddInfoWidget(),
+                    SizedBox(
+                      height: 75.h,
+                    ),
                   ],
                 ),
               ),
