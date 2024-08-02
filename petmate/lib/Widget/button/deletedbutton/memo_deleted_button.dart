@@ -1,4 +1,3 @@
-import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -6,11 +5,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:petmate/Controller/memo_controller.dart';
 import 'package:petmate/Util/textstyles.dart';
+import 'package:petmate/Widget/button/deletedbutton/content_deleted_button.dart';
 
 class MemoDeletedButton extends StatefulWidget {
-  // final MemoDatabase memoDatabase;
+  final String memoId;
+
   const MemoDeletedButton({
     super.key,
+    required this.memoId,
   });
 
   @override
@@ -18,186 +20,38 @@ class MemoDeletedButton extends StatefulWidget {
 }
 
 class _MemoDeletedButtonState extends State<MemoDeletedButton> {
-  MemoController memoController = Get.put(MemoController());
-  List<bool> deletedCheck = [false, false, false];
-  OverlayEntry? deletoverlay;
-  var opactiyValue = 1.0;
-
-  void deletedItems() {
-    setState(() {
-      deletedCheck.asMap().forEach((index, isSelected) {
-        if (isSelected) {
-          deletedCheck[index] = false;
-        }
-      });
-    });
-  }
+  final MemoController memoController = Get.put(MemoController());
 
   void memoDelete(BuildContext context) {
-    Future.delayed(Duration(milliseconds: 0), () {
-      setState(() {
-        opactiyValue = 1.0;
-        showModalBottomSheet(
-          backgroundColor: Colors.transparent,
-          context: context,
-          isScrollControlled: true,
-          builder: (BuildContext context) {
-            return AnimatedContainer(
-              duration: Duration(milliseconds: 0),
-              curve: Curves.easeIn,
-              child: Stack(
-                children: [
-                  Container(
-                    width: 360.w,
-                    height: 160.h,
-                    decoration: BoxDecoration(
-                      color: Colors.transparent,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: BlurryContainer(
-                      blur: 12,
-                      elevation: 0,
-                      borderRadius: BorderRadius.circular(10.r),
-                      child: Container(),
-                    ),
-                  ),
-                  Container(
-                    width: 360.w,
-                    height: 160.h,
-                    decoration: ShapeDecoration(
-                      color: Colors.white.withOpacity(0.8),
-                      shape: RoundedRectangleBorder(
-                        side: BorderSide(
-                          width: 1,
-                          color: Colors.white.withOpacity(0.2),
-                        ),
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(10.r),
-                          topRight: Radius.circular(10.r),
-                        ),
-                      ),
-                    ),
-                    child: Stack(
-                      children: [
-                        Container(
-                          width: 100.w,
-                          height: 48.w,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              SizedBox(
-                                width: 5.w,
-                              ),
-                              Image.asset('assets/alert/delete(14).png'),
-                              DefaultTextStyle(
-                                style: Black(14.sp, FontWeight.w600),
-                                child: Text('삭제하기'),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Positioned(
-                          top: 45,
-                          left: 20,
-                          child: DefaultTextStyle(
-                              style: Black(12.sp, FontWeight.w500),
-                              child: Text('메모를 삭제할까요?')),
-                        ),
-                        Positioned(
-                          top: 64,
-                          left: 20,
-                          child: Container(
-                            width: 195.w,
-                            child: DefaultTextStyle(
-                                style: Black(12.sp, FontWeight.w500),
-                                child: Text('메모를 삭제한 후에는 복구할수 없어요.')),
-                          ),
-                        ),
-                        Positioned(
-                          bottom: 20,
-                          left: 20,
-                          child: Row(
-                            children: [
-                              GestureDetector(
-                                onTap: () {
-                                  Get.back();
-                                },
-                                child: Container(
-                                  width: 156.w,
-                                  height: 48.h,
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 16, vertical: 12),
-                                  decoration: ShapeDecoration(
-                                    color: Colors.white
-                                        .withOpacity(0.800000011920929),
-                                    shape: RoundedRectangleBorder(
-                                      side: BorderSide(
-                                          width: 1.w, color: Color(0x332B80FF)),
-                                      borderRadius: BorderRadius.circular(10.r),
-                                    ),
-                                  ),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      DefaultTextStyle(
-                                          style: Blue(15.sp, FontWeight.w600),
-                                          child: Text('취소')),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                width: 8,
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  
-                                },
-                                child: Container(
-                                  width: 156.w,
-                                  height: 48.h,
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 16, vertical: 12),
-                                  decoration: ShapeDecoration(
-                                    color: Color(0xFF2B80FF),
-                                    shape: RoundedRectangleBorder(
-                                      side: BorderSide(
-                                        width: 1.w,
-                                        color: Colors.white
-                                            .withOpacity(0.20000000298023224),
-                                      ),
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                  ),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      DefaultTextStyle(
-                                          style: White(15.sp, FontWeight.w600),
-                                          child: Text('삭제하기')),
-                                    ],
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            );
+    showModalBottomSheet(
+      backgroundColor: Colors.transparent,
+      context: context,
+      isScrollControlled: true,
+      builder: (BuildContext context) {
+        return ContentDeletedButton(
+          title: '메모를 삭제할까요?',
+          content: '메모를 삭제한 후에는 복구할 수 없어요.',
+          sharecontent: '',
+          action: () async {
+            await deletedMemo();
+            Navigator.of(context).pop(); // Close the bottom sheet
           },
         );
-      });
-    });
+      },
+    );
+  }
+
+  Future<void> deletedMemo() async {
+    try {
+      await FirebaseFirestore.instance
+          .collection('Memo') // Adjust to your actual collection name
+          .doc('id,')
+          .delete();
+      Get.snackbar('삭제 성공', '메모가 성공적으로 삭제되었습니다.');
+    } catch (e) {
+      print('Error deleting memo: $e');
+      Get.snackbar('삭제 실패', '메모를 삭제하는 중 오류가 발생했습니다.');
+    }
   }
 
   @override
@@ -226,7 +80,7 @@ class _MemoDeletedButtonState extends State<MemoDeletedButton> {
                   blurRadius: 12,
                   offset: Offset(0, 0),
                   spreadRadius: 5,
-                )
+                ),
               ],
             ),
           ),
@@ -236,16 +90,17 @@ class _MemoDeletedButtonState extends State<MemoDeletedButton> {
               width: 344.w,
               height: 60.h,
               decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0x33000000),
-                      blurRadius: 2,
-                      offset: Offset(2, 2),
-                      spreadRadius: 0,
-                    )
-                  ],
-                  color: Colors.white.withOpacity(0.8),
-                  borderRadius: BorderRadius.circular(10.r)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Color(0x33000000),
+                    blurRadius: 2,
+                    offset: Offset(2, 2),
+                    spreadRadius: 0,
+                  ),
+                ],
+                color: Colors.white.withOpacity(0.8),
+                borderRadius: BorderRadius.circular(10.r),
+              ),
             ),
           ),
           Positioned(
@@ -258,9 +113,11 @@ class _MemoDeletedButtonState extends State<MemoDeletedButton> {
                 SizedBox(
                   width: 8.w,
                 ),
-                Text('삭제하기',
-                    textAlign: TextAlign.center,
-                    style: Black(16.sp, FontWeight.w600)),
+                Text(
+                  '삭제하기',
+                  textAlign: TextAlign.center,
+                  style: Black(16.sp, FontWeight.w600),
+                ),
               ],
             ),
           ),

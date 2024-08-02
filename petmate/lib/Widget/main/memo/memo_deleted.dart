@@ -19,14 +19,12 @@ class MemoDeleted extends StatefulWidget {
 
 class _MemoDeletedState extends State<MemoDeleted> {
   MemoController memoController = Get.put(MemoController());
-
-  bool deletedCheck = false;
-  // List<bool> deletedCheck = List.generate(3, (index) => false);
+  Map<String, bool> selectedMemoIds = {};
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Map<String, dynamic>>>(
-        future: memoController.fetchMemos(),
+        future: memoController.getMemos(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(
@@ -39,6 +37,9 @@ class _MemoDeletedState extends State<MemoDeleted> {
           } else {
             return Column(
                 children: snapshot.data!.map((memo) {
+              String memoId = memo['id'];
+              bool isSelected = selectedMemoIds[memoId] ?? false;
+
               return Stack(
                 children: [
                   Padding(
@@ -58,10 +59,10 @@ class _MemoDeletedState extends State<MemoDeleted> {
                       child: GestureDetector(
                           onTap: () {
                             setState(() {
-                              deletedCheck = !deletedCheck;
+                              selectedMemoIds[memoId] = !isSelected;
                             });
                           },
-                          child: Image.asset(deletedCheck
+                          child: Image.asset(isSelected
                               ? 'assets/alert/check_selected.png'
                               : 'assets/alert/check_default.png')),
                     ),
@@ -81,10 +82,8 @@ class _MemoDeletedState extends State<MemoDeleted> {
                     right: 12.w,
                     bottom: 12.h,
                     child: Text(
-                      
                         memo['timestamp'] != null
                             ? '${memo['timestamp'].month}/${memo['timestamp'].day} ${memo['timestamp'].hour}${memo['timestamp'].minute}'
-
                             : '',
                         style: White(10.sp, FontWeight.w500)),
                   ),

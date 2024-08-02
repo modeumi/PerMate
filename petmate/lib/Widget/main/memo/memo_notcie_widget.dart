@@ -18,12 +18,12 @@ class MemoNoticeWidgett extends StatefulWidget {
 }
 
 class _MemoNoticeWidgettState extends State<MemoNoticeWidgett> {
-MemoController memoController = Get.put(MemoController());
+  MemoController memoController = Get.put(MemoController());
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Map<String, dynamic>>>(
-        future: memoController.fetchMemos(),
+        future: memoController.getMemos(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(
@@ -32,7 +32,7 @@ MemoController memoController = Get.put(MemoController());
               ),
             );
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return const Text('no memos');
+            return const Text('');
           } else {
             return Column(
                 children: snapshot.data!.map((memo) {

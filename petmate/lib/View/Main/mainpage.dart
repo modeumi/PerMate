@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 import 'package:petmate/Widget/bottom_navigation_bar/bottom_navigationbar.dart';
 import 'package:petmate/Widget/main/add_alarm.dart';
@@ -7,6 +8,7 @@ import 'package:petmate/Widget/main/add_memo.dart';
 import 'package:petmate/Widget/main/main_log/log.dart';
 import 'package:petmate/Widget/main/main_alram.dart';
 import 'package:petmate/Widget/main/memo/memo.dart';
+import 'package:petmate/Widget/main/memo/memo_notice.dart';
 import 'package:petmate/Widget/main/profile.dart';
 import 'package:petmate/Widget/main/profile_info.dart';
 
@@ -21,7 +23,6 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,7 +55,11 @@ class _MainPageState extends State<MainPage> {
               SizedBox(
                 height: 12.h,
               ),
-              MemoWriteWidget(),
+              GestureDetector(
+                  onTap: () {
+                    Get.to(MemoNotice());
+                  },
+                  child: MemoWriteWidget()),
               SizedBox(
                 height: 12.h,
               ),

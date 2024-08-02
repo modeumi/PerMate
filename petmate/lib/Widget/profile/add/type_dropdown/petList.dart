@@ -4,7 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
+import 'package:petmate/Controller/petprofile_controller.dart';
 import 'package:petmate/Util/textstyles.dart';
 
 class PetList extends StatefulWidget {
@@ -16,26 +18,7 @@ class PetList extends StatefulWidget {
 }
 
 class _PetListState extends State<PetList> {
-  bool search = false;
-  final TextEditingController _petSearchController = TextEditingController();
-  String _selectedPet = '';
-  bool _showTextFiled = false;
-
-  List<Map<String, dynamic>> petSelect = [];
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    loadPetSelect();
-  }
-
-  Future<void> loadPetSelect() async {
-    String data = await rootBundle.loadString('assets/pet_select.json');
-    setState(() {
-      petSelect = List<Map<String, dynamic>>.from(json.decode(data));
-    });
-  }
+  PetprofileController petprofileController = Get.put(PetprofileController());
 
   @override
   Widget build(BuildContext context) {
@@ -61,9 +44,10 @@ class _PetListState extends State<PetList> {
               data: Theme.of(context).copyWith(
                 splashColor: Colors.grey,
               ),
-              child: _showTextFiled || _selectedPet == '직접입력'
+              child: petprofileController.showTextFiled ||
+                      petprofileController.selectedPet == '직접입력'
                   ? TextField(
-                      controller: _petSearchController,
+                      controller: petprofileController.petSearchController,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
                         hintText: '직접 입력해주세요.',
@@ -85,7 +69,7 @@ class _PetListState extends State<PetList> {
                       cursorWidth: 1.w,
                       onChanged: (value) {
                         setState(() {
-                          _selectedPet = value;
+                          petprofileController.selectedPet = value;
                           widget.onChanged(value);
                         });
                       },
@@ -101,7 +85,9 @@ class _PetListState extends State<PetList> {
                       underline: SizedBox.shrink(),
                       style: Black(14.sp, FontWeight.w500),
                       isExpanded: true,
-                      value: _selectedPet.isNotEmpty ? _selectedPet : null,
+                      value: petprofileController.selectedPet.isNotEmpty
+                          ? petprofileController.selectedPet
+                          : null,
                       hint: Container(
                         padding: const EdgeInsets.fromLTRB(48, 0, 8, 0),
                         width: 260.w,
@@ -110,7 +96,8 @@ class _PetListState extends State<PetList> {
                             style: Gray(14.sp, FontWeight.w500)),
                       ),
                       items: [
-                        ...petSelect.map<DropdownMenuItem<String>>((petselect) {
+                        ...petprofileController.petSelect
+                            .map<DropdownMenuItem<String>>((petselect) {
                           return DropdownMenuItem<String>(
                             value: petselect['id'],
                             child: Container(
@@ -150,8 +137,8 @@ class _PetListState extends State<PetList> {
                       ],
                       onChanged: (value) {
                         setState(() {
-                          _selectedPet = value!;
-                          _showTextFiled = value == '직접입력';
+                          petprofileController.selectedPet = value!;
+                          petprofileController.showTextFiled = value == '직접입력';
                           widget.onChanged(value);
                         });
                       },
