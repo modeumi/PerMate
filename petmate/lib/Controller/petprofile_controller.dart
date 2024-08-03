@@ -4,25 +4,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:petmate/Widget/profile/add/type_dropdown/petList.dart';
-import 'package:petmate/Widget/profile/add/type_dropdown/typeList.dart';
 
 class PetprofileController extends GetxController {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
-  TextEditingController petSearchController = TextEditingController();
-  TextEditingController typeSearchController = TextEditingController();
+
   bool showTextFiled = false;
   bool showTextField = false;
   bool search = false;
-
-  String selectedPet = '';
-  String selectedType = '';
-
-
-  
-    
-  
- 
 
   String petList = '';
   String petType = '';
@@ -59,9 +47,10 @@ class PetprofileController extends GetxController {
     }
   }
 
- 
+  //종류
 
-  List<Map<String, dynamic>> petselect = [];
+  String selectedPet = '';
+  List<Map<String, dynamic>> petSelect = [];
 
   void Pet_List() {
     super.onInit();
@@ -77,27 +66,77 @@ class PetprofileController extends GetxController {
     }
   }
 
+  //품종
   Map<String, dynamic> typeselect = {};
-  List<Map<String, dynamic>> petSelect = [];
+  String selectedType = '';
 
   void Pet_Type() {
     super.onInit();
     loadPetType();
   }
+
   Future<void> loadPetType() async {
     try {
       String data = await rootBundle.loadString('assets/pet_type.json');
-       typeselect = Map<String, dynamic>.from(json.decode(data));
+      typeselect = Map<String, dynamic>.from(json.decode(data));
     } catch (e) {
-       print('Erorr type data: $e');
+      print('Erorr type data: $e');
     }
-    
-   
   }
 
+  Future<void> getPetInfo() async {
+    try {
+      QuerySnapshot snapshot = await firestore.collection('petinfo').get();
+    } catch (e) {}
+  }
 
-  
- 
+// 질병
 
+//몸무게
+  // FocusNode focusNode = FocusNode();
+  // String initialText = "KG";
 
+  // void pet_weight() {
+  //   super.onInit();
+  //   focusNode.addListener(
+  //     () {
+  //       if (focusNode.hasFocus) {
+  //         PetWeightController.text = initialText;
+  //       }
+  //     },
+  //   );
+  // }
+
+  // void weight_dispose() {
+  //   PetWeightController.dispose();
+  //   focusNode.dispose();
+  //   super.dispose();
+  // }
+
+  String select_Allergy = '';
+  List<String> allergyType = [];
+  List<String> selectAllergy = [];
+
+  void Pet_Allergy() {
+    // TODO: implement initState
+    super.onInit();
+    _loadAllergy();
+  }
+
+  Future<void> _loadAllergy() async {
+    try {
+      String data = await rootBundle.loadString('assets/allergy.json');
+      List<dynamic> jsonData = json.decode(data);
+
+      allergyType =
+          jsonData.map<String>((item) => item['type'] as String).toList();
+    } catch (e) {
+      print("Error loading allergy data: $e");
+    }
+  }
+
+  // void removeAllergy(int index) {
+  //   selectAllergy.removeAt(index);
+  //   onChanged(selectAllergy);
+  // }
 }

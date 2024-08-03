@@ -195,7 +195,7 @@ class WeatherController extends GetxController {
     return await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
   }
-
+   //현재위치 읍면리 데이터로 바꾸기
   Future<List<String>> getArea() async {
     Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);

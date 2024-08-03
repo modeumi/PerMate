@@ -15,10 +15,10 @@ class DiseaseType extends StatefulWidget {
 }
 
 class _DiseaseTypeState extends State<DiseaseType> {
-  TextEditingController _searchController = TextEditingController();
+  TextEditingController _DiseaseController = TextEditingController();
   String _selectDisease = '';
   List<String> DiseaseType = [];
-  List<String> addDisease = [];
+  List<String> addDiseaseType = [];
 
   @override
   void initState() {
@@ -31,7 +31,8 @@ class _DiseaseTypeState extends State<DiseaseType> {
       String data = await rootBundle.loadString('assets/disease.json');
       List<dynamic> jsonData = json.decode(data);
       setState(() {
-        DiseaseType = jsonData.map<String>((item) => item['type'] as String).toList();
+        DiseaseType =
+            jsonData.map<String>((item) => item['type'] as String).toList();
       });
     } catch (e) {
       print("Error loading disease data: $e");
@@ -39,25 +40,25 @@ class _DiseaseTypeState extends State<DiseaseType> {
   }
 
   void _addDisease() {
-    if (_searchController.text.isNotEmpty) {
+    if (_DiseaseController.text.isNotEmpty) {
       setState(() {
-        addDisease.add(_searchController.text);
-        widget.onChanged(addDisease);
-        _searchController.clear();
+        addDiseaseType.add(_DiseaseController.text);
+        widget.onChanged(addDiseaseType);
+        _DiseaseController.clear();
       });
     }
   }
 
   void _removeDisease(int index) {
     setState(() {
-      addDisease.removeAt(index);
-      widget.onChanged(addDisease);
+      addDiseaseType.removeAt(index);
+      widget.onChanged(addDiseaseType);
     });
   }
 
   @override
   void dispose() {
-    _searchController.dispose();
+    _DiseaseController.dispose();
     super.dispose();
   }
 
@@ -112,9 +113,9 @@ class _DiseaseTypeState extends State<DiseaseType> {
                 onChanged: (value) {
                   setState(() {
                     _selectDisease = value!;
-                    if (!addDisease.contains(_selectDisease)) {
-                      addDisease.add(_selectDisease);
-                      widget.onChanged(addDisease);
+                    if (!addDiseaseType.contains(_selectDisease)) {
+                      addDiseaseType.add(_selectDisease);
+                      widget.onChanged(addDiseaseType);
                     }
                   });
                 },
@@ -130,15 +131,17 @@ class _DiseaseTypeState extends State<DiseaseType> {
               borderRadius: BorderRadius.circular(10.r),
             ),
             child: TextField(
-              controller: _searchController,
+              controller: _DiseaseController,
               textAlign: TextAlign.center,
               decoration: InputDecoration(
                 hintText: '염려 · 보유질환을 입력해주세요.',
                 hintStyle: Gray(14.sp, FontWeight.w500),
-                enabledBorder: const UnderlineInputBorder(borderSide: BorderSide.none),
+                enabledBorder:
+                    const UnderlineInputBorder(borderSide: BorderSide.none),
                 border: const OutlineInputBorder(borderSide: BorderSide.none),
                 contentPadding: const EdgeInsets.fromLTRB(12, 0, 0, 11),
-                focusedBorder: const UnderlineInputBorder(borderSide: BorderSide.none),
+                focusedBorder:
+                    const UnderlineInputBorder(borderSide: BorderSide.none),
               ),
               style: TextStyle(color: Colors.black, decorationThickness: 0),
               cursorColor: Colors.black,
@@ -150,12 +153,12 @@ class _DiseaseTypeState extends State<DiseaseType> {
           ),
           Container(
             width: 340.w,
-            height: addDisease.isNotEmpty ? 36.h : 0,
+            height: addDiseaseType.isNotEmpty ? 36.h : 0,
             margin: const EdgeInsets.fromLTRB(12, 0, 12, 0),
-            child: addDisease.isNotEmpty
+            child: addDiseaseType.isNotEmpty
                 ? ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: addDisease.length,
+                    itemCount: addDiseaseType.length,
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.fromLTRB(0, 0, 8, 0),
@@ -163,11 +166,12 @@ class _DiseaseTypeState extends State<DiseaseType> {
                           labelStyle: Black(12.sp, FontWeight.w500),
                           side: const BorderSide(color: Colors.transparent),
                           backgroundColor: Colors.white,
-                          label: Text(addDisease[index]),
+                          label: Text(addDiseaseType[index]),
                           onDeleted: () {
                             _removeDisease(index);
                           },
-                          deleteIcon: Image.asset('assets/image_asset/edit/close.png'),
+                          deleteIcon:
+                              Image.asset('assets/image_asset/edit/close.png'),
                         ),
                       );
                     },
