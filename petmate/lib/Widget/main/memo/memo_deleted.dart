@@ -19,7 +19,6 @@ class MemoDeleted extends StatefulWidget {
 
 class _MemoDeletedState extends State<MemoDeleted> {
   MemoController memoController = Get.put(MemoController());
-  Map<String, bool> selectedMemoIds = {};
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +37,7 @@ class _MemoDeletedState extends State<MemoDeleted> {
             return Column(
                 children: snapshot.data!.map((memo) {
               String memoId = memo['id'];
-              bool isSelected = selectedMemoIds[memoId] ?? false;
+              bool isSelected = memoController.selectedMemoIds[memoId] ?? false;
 
               return Stack(
                 children: [
@@ -59,7 +58,8 @@ class _MemoDeletedState extends State<MemoDeleted> {
                       child: GestureDetector(
                           onTap: () {
                             setState(() {
-                              selectedMemoIds[memoId] = !isSelected;
+                              memoController.selectedMemoIds[memoId] =
+                                  !isSelected;
                             });
                           },
                           child: Image.asset(isSelected

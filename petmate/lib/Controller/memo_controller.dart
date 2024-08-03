@@ -6,9 +6,8 @@ class MemoController extends GetxController {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   TextEditingController contentController = TextEditingController();
   String Memocontent = '';
- 
+  Map<String, bool> selectedMemoIds = {};
 
- 
 
   Future<List<Map<String, dynamic>>> getMemos() async {
     try {
@@ -28,12 +27,16 @@ class MemoController extends GetxController {
       print('Fetched memos: $memos');
       return memos;
     } catch (e) {
-      print('Error fetching memos: $e');
+      // print('Error fetching memos: $e');
       return [];
     }
   }
 
-  Future<void> deletedMemo(docId) async {
+  Future<void> deletedMemo(String docId) async {
+    if (docId.isEmpty) {
+      Get.snackbar('삭제 실패', '문서 ID가 비어 있습니다.');
+      return;
+    }
     try {
       await firestore.collection('Memo').doc(docId).delete();
       Get.back();
@@ -45,4 +48,5 @@ class MemoController extends GetxController {
   }
 
 
+ 
 }

@@ -22,7 +22,7 @@ class MemoDeletedButton extends StatefulWidget {
 class _MemoDeletedButtonState extends State<MemoDeletedButton> {
   final MemoController memoController = Get.put(MemoController());
 
-  void memoDelete(BuildContext context) {
+  void memoDelete(BuildContext context, String docId) {
     showModalBottomSheet(
       backgroundColor: Colors.transparent,
       context: context,
@@ -33,32 +33,18 @@ class _MemoDeletedButtonState extends State<MemoDeletedButton> {
           content: '메모를 삭제한 후에는 복구할 수 없어요.',
           sharecontent: '',
           action: () async {
-            await deletedMemo();
-            Navigator.of(context).pop(); // Close the bottom sheet
+            await memoController.deletedMemo('qu32PyziyxpOJSkByRa1');
           },
         );
       },
     );
   }
 
-  Future<void> deletedMemo() async {
-    try {
-      await FirebaseFirestore.instance
-          .collection('Memo') // Adjust to your actual collection name
-          .doc('id,')
-          .delete();
-      Get.snackbar('삭제 성공', '메모가 성공적으로 삭제되었습니다.');
-    } catch (e) {
-      print('Error deleting memo: $e');
-      Get.snackbar('삭제 실패', '메모를 삭제하는 중 오류가 발생했습니다.');
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        memoDelete(context);
+        memoDelete(context, widget.memoId);
       },
       child: Stack(
         children: [

@@ -61,8 +61,9 @@ class _AddInfoWidgetState extends State<AddInfoWidget> {
                 onChanged: (value) {
                   setState(() {
                     petprofileController.petType = value;
+                    
                   });
-                },
+                }, 
               ),
               _buildLabel('성별*'),
               OptionType(
