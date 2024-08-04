@@ -8,27 +8,31 @@ class MemoController extends GetxController {
   String Memocontent = '';
   Map<String, bool> selectedMemoIds = {};
 
+  Stream<List<Map<String, dynamic>>> getMemos() {
+    return firestore
+        .collection('Memo')
+        .orderBy('timestamp', descending: true)
+        .snapshots()
+        .map((snapshot) => snapshot.docs.map((doc) {
+              Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+              return {
+                'id': doc.id,
+                'content': data['content'],
+                'timestamp': (data['timestamp'] as Timestamp).toDate(),
+              };
+            }).toList());
+  }
 
-  Future<List<Map<String, dynamic>>> getMemos() async {
+  Future<void> addMemo(String content) async {
     try {
-      QuerySnapshot snapshot = await firestore
-          .collection('Memo')
-          .orderBy('timestamp', descending: true)
-          .get();
-      List<Map<String, dynamic>> memos = snapshot.docs.map((doc) {
-        Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
-        print('Fetched memo: $data');
-        return {
-          'id': doc.id,
-          'content': data['content'],
-          'timestamp': (data['timestamp'] as Timestamp).toDate(),
-        };
-      }).toList();
-      print('Fetched memos: $memos');
-      return memos;
+      DocumentReference docRef = await firestore.collection('Memo').add({
+        'content': content,
+        'timestamp': FieldValue.serverTimestamp(),
+      });
+      String docId = docRef.id;
+      print('Added memo with ID: $docId');
     } catch (e) {
-      // print('Error fetching memos: $e');
-      return [];
+      print('Error adding memo: $e');
     }
   }
 
@@ -46,7 +50,4 @@ class MemoController extends GetxController {
       Get.snackbar('삭제 실패', '메모를 삭제하는 중 오류가 발생했습니다.');
     }
   }
-
-
- 
 }

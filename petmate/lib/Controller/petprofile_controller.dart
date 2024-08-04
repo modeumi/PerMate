@@ -12,6 +12,8 @@ class PetprofileController extends GetxController {
   bool showTextField = false;
   bool search = false;
 
+  String petImage = '';
+  String addName = '';
   String petList = '';
   String petType = '';
   String petGender = '';
@@ -28,6 +30,8 @@ class PetprofileController extends GetxController {
   void petInfo() async {
     try {
       await firestore.collection('petinfo').add({
+        'petImage': petImage,
+        'addName' : addName,
         'petList': petList,
         'petType': petType,
         'petGender': petGender,

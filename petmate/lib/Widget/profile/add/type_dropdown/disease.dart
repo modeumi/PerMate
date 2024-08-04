@@ -143,7 +143,12 @@ class _DiseaseTypeState extends State<DiseaseType> {
                 focusedBorder:
                     const UnderlineInputBorder(borderSide: BorderSide.none),
               ),
-              style: TextStyle(color: Colors.black, decorationThickness: 0),
+              style: TextStyle(
+                  color: Color(0xFF303030),
+                  fontSize: 14,
+                  fontFamily: 'Pretendard',
+                  fontWeight: FontWeight.w500,
+                  decorationThickness: 0),
               cursorColor: Colors.black,
               cursorWidth: 1.w,
               onSubmitted: (value) {

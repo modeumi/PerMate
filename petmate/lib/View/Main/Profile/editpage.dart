@@ -2,6 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:petmate/Controller/petprofile_controller.dart';
 import 'package:petmate/Widget/bottom_navigation_bar/bottom_navigationbar.dart';
 import 'package:petmate/Widget/custom_appbar.dart';
 import 'package:petmate/Widget/profile/add/add_info.dart';
@@ -16,6 +19,7 @@ class EditPage extends StatefulWidget {
 }
 
 class _AddProfilePageState extends State<EditPage> {
+  PetprofileController petprofileController = Get.put(PetprofileController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,11 +42,15 @@ class _AddProfilePageState extends State<EditPage> {
                 scrollDirection: Axis.vertical,
                 child: Column(
                   children: [
-                    AddProfileWidget(),
+                    AddProfileWidget(
+                      onChanged: (String value) {},
+                    ),
                     SizedBox(
                       height: 20.h,
                     ),
-                    AddName(),
+                    AddName(
+                      onChanged: (String value) {},
+                    ),
                     SizedBox(
                       height: 40.h,
                     ),

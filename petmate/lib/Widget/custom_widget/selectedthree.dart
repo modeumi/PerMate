@@ -6,7 +6,8 @@ class Selectedthree extends StatefulWidget {
   final List<String> selected;
   final ValueChanged<String> onChanged;
   final width;
-  const Selectedthree({super.key, required this.selected, this.width, required this.onChanged});
+  const Selectedthree(
+      {super.key, required this.selected, this.width, required this.onChanged});
 
   @override
   State<Selectedthree> createState() => _SelectedthreeState();
@@ -37,6 +38,7 @@ class _SelectedthreeState extends State<Selectedthree> {
                 Container(
                   width: 100.w,
                   height: 40.h,
+                  margin: EdgeInsets.fromLTRB(4, 0, 4, 0),
                   decoration: BoxDecoration(
                     color: button == i ? Colors.white : Colors.transparent,
                     border: GradientBoxBorder(
@@ -54,6 +56,7 @@ class _SelectedthreeState extends State<Selectedthree> {
                 Opacity(
                   opacity: 0.4,
                   child: Container(
+                    margin: EdgeInsets.fromLTRB(4, 0, 4, 0),
                     width: 100.w,
                     height: 40.h,
                     decoration: BoxDecoration(

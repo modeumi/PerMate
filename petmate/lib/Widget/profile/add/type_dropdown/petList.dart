@@ -154,8 +154,8 @@ class _PetListState extends State<PetList> {
                             setState(() {
                               _selectedPet = value!;
                               _showTextFiled = value == '직접입력';
+                              widget.onChanged(value);
                             });
-                            widget.onChanged;
                           },
                         )))),
     );

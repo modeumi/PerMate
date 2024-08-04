@@ -127,14 +127,48 @@ class _MealConatinerState extends State<MealConatiner> {
             )),
         Positioned(
             left: 12.w,
-            top: 303.h,
+            top: 267.h,
             child: Text(
-              '사진 · 영상',
+              '제품',
               style: White(14.sp, FontWeight.w600),
             )),
         Positioned(
+            left: 12.w,
+            top: 292.h,
+            child: Container(
+              width: 320.w,
+              height: 40.h,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: TextField(
+                textAlign: TextAlign.center,
+                controller: _textEditingController,
+                decoration: InputDecoration(
+                  hintText: '제품명을 입력해주세요',
+                  hintStyle: Gray(14.sp, FontWeight.w500),
+                  enabledBorder:
+                      UnderlineInputBorder(borderSide: BorderSide.none),
+                  border: OutlineInputBorder(borderSide: BorderSide.none),
+                  contentPadding: EdgeInsets.fromLTRB(12, 0, 0, 12),
+                  focusedBorder:
+                      UnderlineInputBorder(borderSide: BorderSide.none),
+                ),
+                style: TextStyle(
+                  color: Colors.black,
+                  decorationThickness: 0,
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w500,
+                  fontFamily: 'Pretendard',
+                ),
+                cursorColor: Colors.black,
+                cursorWidth: 1.w,
+              ),
+            )),
+        Positioned(
           left: 12.w,
-          top: 328.h,
+          top: 340.h,
           child: GestureDetector(
             onTap: () {},
             child: Container(

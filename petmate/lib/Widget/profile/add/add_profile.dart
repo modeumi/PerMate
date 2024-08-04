@@ -1,8 +1,12 @@
 import 'dart:io';
 
 import 'package:blurrycontainer/blurrycontainer.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:petmate/Util/textstyles.dart';
@@ -10,16 +14,18 @@ import 'package:petmate/Widget/custom_widget/circle_container.dart';
 import 'package:petmate/Widget/profile/add/profile_card.dart';
 
 class AddProfileWidget extends StatefulWidget {
-  const AddProfileWidget({super.key});
+  final ValueChanged<String> onChanged;
+  const AddProfileWidget({super.key, required this.onChanged});
 
   @override
   State<AddProfileWidget> createState() => _AddProfileWidgetState();
 }
 
 class _AddProfileWidgetState extends State<AddProfileWidget> {
-  List pet = [];
-  final picker = ImagePicker();
+  FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+  // List pet = [];
   File? _image;
+  final ImagePicker picker = ImagePicker();
   String _PetProfileImag =
       'assets/image_asset/pet_upload/animal_profile (2).png';
 
@@ -29,11 +35,29 @@ class _AddProfileWidgetState extends State<AddProfileWidget> {
       setState(() {
         _image = File(pickedFile.path);
       });
+      //스토리지에 먼저 사진 업로드 하는 부분
+      final storageRef = FirebaseStorage.instance
+          .ref() //시작점
+          .child('pet_images/${DateTime.now().toIso8601String()}');
+      final uploadTask = storageRef.putFile(_image!);
+
+      uploadTask.whenComplete(() async {
+        try {
+          final imageUrl = await storageRef.getDownloadURL();
+          // 이미지 저장!
+          await FirebaseFirestore.instance.collection('pet_profiles').add({
+            'image_url': imageUrl,
+          });
+          widget.onChanged(imageUrl);
+        } catch (e) {
+          print('Error uploading image: $e');
+        }
+      });
     }
   }
 
   void _modalshow(BuildContext context) {
-    Navigator.pop(context);
+    Get.back();
     showModalBottomSheet(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         backgroundColor: Colors.transparent,
@@ -93,6 +117,7 @@ class _AddProfileWidgetState extends State<AddProfileWidget> {
                       setState(() {
                         _PetProfileImag =
                             'assets/image_asset/pet_upload/animal_profile (2).png';
+                        widget.onChanged(_PetProfileImag);
                       });
                     },
                     child: ProfileCard(
@@ -106,6 +131,7 @@ class _AddProfileWidgetState extends State<AddProfileWidget> {
                       setState(() {
                         _PetProfileImag =
                             'assets/image_asset/pet_upload/animal_profile (5).png';
+                        widget.onChanged(_PetProfileImag);
                       });
                     },
                     child: ProfileCard(
@@ -119,6 +145,7 @@ class _AddProfileWidgetState extends State<AddProfileWidget> {
                       setState(() {
                         _PetProfileImag =
                             'assets/image_asset/pet_upload/animal_profile (6).png';
+                        widget.onChanged(_PetProfileImag);
                       });
                     },
                     child: ProfileCard(
@@ -132,6 +159,7 @@ class _AddProfileWidgetState extends State<AddProfileWidget> {
                       setState(() {
                         _PetProfileImag =
                             'assets/image_asset/pet_upload/animal_profile (3).png';
+                        widget.onChanged(_PetProfileImag);
                       });
                     },
                     child: ProfileCard(
@@ -145,6 +173,7 @@ class _AddProfileWidgetState extends State<AddProfileWidget> {
                       setState(() {
                         _PetProfileImag =
                             'assets/image_asset/pet_upload/animal_profile (4).png';
+                        widget.onChanged(_PetProfileImag);
                       });
                     },
                     child: ProfileCard(
@@ -158,6 +187,7 @@ class _AddProfileWidgetState extends State<AddProfileWidget> {
                       setState(() {
                         _PetProfileImag =
                             'assets/image_asset/pet_upload/animal_profile (1).png';
+                        widget.onChanged;
                       });
                     },
                     child: ProfileCard(
