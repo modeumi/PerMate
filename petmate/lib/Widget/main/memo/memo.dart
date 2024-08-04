@@ -34,8 +34,8 @@ class _MemoWriteWidgetState extends State<MemoWriteWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text('메모', style: White(12.sp, FontWeight.w500)),
-              FutureBuilder<List<Map<String, dynamic>>>(
-                  future: memoController.getMemos(),
+              StreamBuilder<List<Map<String, dynamic>>>(
+                  stream: memoController.getMemos(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return Center(

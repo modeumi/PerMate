@@ -40,11 +40,23 @@ class _UploadProfilePage extends State<UploadProfilePage> {
                 scrollDirection: Axis.vertical,
                 child: Column(
                   children: [
-                    AddProfileWidget(),
+                    AddProfileWidget(
+                      onChanged: (String value) {
+                        setState(() {
+                          petprofileController.petImage = value;
+                        });
+                      },
+                    ),
                     SizedBox(
                       height: 10.h,
                     ),
-                    AddName(),
+                    AddName(
+                      onChanged: (String value) {
+                        setState(() {
+                          petprofileController.addName = value;
+                        });
+                      },
+                    ),
                     SizedBox(
                       height: 40.h,
                     ),

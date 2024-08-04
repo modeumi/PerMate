@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/Widget/bottom_navigation_bar/bottom_navigationbar.dart';
-import 'package:petmate/Widget/custom_appbar.dart';
 import 'package:petmate/Widget/main/main_log/meal/meal_circle.dart';
 import 'package:petmate/Widget/main/main_log/meal/meal_conatiner.dart';
 
@@ -70,3 +69,4 @@ class _MealLogState extends State<MealLog> {
         bottomNavigationBar: CustomBottomNavigationBar());
   }
 }
+

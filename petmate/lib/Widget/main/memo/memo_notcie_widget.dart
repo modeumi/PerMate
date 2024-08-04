@@ -1,12 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:petmate/Controller/memo_controller.dart';
-
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/Widget/custom_widget/custom_container.dart';
 
@@ -22,8 +19,8 @@ class _MemoNoticeWidgettState extends State<MemoNoticeWidgett> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<Map<String, dynamic>>>(
-        future: memoController.getMemos(),
+    return StreamBuilder<List<Map<String, dynamic>>>(
+        stream: memoController.getMemos(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(
@@ -36,6 +33,21 @@ class _MemoNoticeWidgettState extends State<MemoNoticeWidgett> {
           } else {
             return Column(
                 children: snapshot.data!.map((memo) {
+              // 타임스탬프 필드 가져오기
+              var timestamp = memo['timestamp'];
+
+              // 타임스탬프를 DateTime으로 변환하기
+              DateTime? dateTime;
+              if (timestamp is Timestamp) {
+                dateTime = timestamp.toDate();
+              } else if (timestamp is DateTime) {
+                dateTime = timestamp;
+              }
+
+              // 날짜 포맷팅 (12시간 형식으로 오전/오후 포함)
+              String formattedDate =
+                  dateTime != null ? _formatDateTime(dateTime) : '';
+
               return Stack(
                 children: [
                   Padding(
@@ -64,10 +76,7 @@ class _MemoNoticeWidgettState extends State<MemoNoticeWidgett> {
                   Positioned(
                     right: 12.w,
                     bottom: 12.h,
-                    child: Text(
-                        memo['timestamp'] != null
-                            ? '${memo['timestamp'].month}/${memo['timestamp'].day} ${memo['timestamp'].hour}${memo['timestamp'].minute}'
-                            : '',
+                    child: Text(formattedDate,
                         style: White(10.sp, FontWeight.w500)),
                   ),
                 ],
@@ -75,5 +84,21 @@ class _MemoNoticeWidgettState extends State<MemoNoticeWidgett> {
             }).toList());
           }
         });
+  }
+
+  // 날짜 및 시간 포맷팅 함수
+  String _formatDateTime(DateTime dateTime) {
+    // 오전/오후 구분
+    String amPm = dateTime.hour < 12 ? '오전' : '오후';
+    // 12시간 형식의 시간
+    int hour = dateTime.hour % 12;
+    hour = hour == 0 ? 12 : hour; // 12시 경우 처리
+
+    // 포맷팅 문자열
+    String formattedDate = DateFormat('MM/dd').format(dateTime);
+    formattedDate +=
+        ' $amPm ${hour.toString().padLeft(2, '0')}:${dateTime.minute.toString().padLeft(2, '0')}';
+
+    return formattedDate;
   }
 }

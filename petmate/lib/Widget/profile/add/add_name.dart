@@ -4,8 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:petmate/Util/textstyles.dart';
 
 class AddName extends StatefulWidget {
-  
-  const AddName({super.key,});
+  final ValueChanged<String> onChanged;
+  const AddName({
+    super.key,
+    required this.onChanged,
+  });
 
   @override
   State<AddName> createState() => _AddNameState();
@@ -21,7 +24,6 @@ class _AddNameState extends State<AddName> {
           child: Container(
             width: 263.w,
             child: TextField(
-             
               textAlign: TextAlign.center,
               decoration: InputDecoration(
                 hintText: '이름을 알려주세요.*',
@@ -39,7 +41,7 @@ class _AddNameState extends State<AddName> {
               cursorColor: Colors.white,
               cursorWidth: 2,
               onChanged: (value) {
-              
+                widget.onChanged(value);
               },
             ),
           ),
