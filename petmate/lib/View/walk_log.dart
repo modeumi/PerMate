@@ -1,8 +1,12 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_naver_map/flutter_naver_map.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
+import 'package:glass_kit/glass_kit.dart';
+import 'package:petmate/Widget/main/walk/walk_timer.dart';
+import 'package:petmate/Widget/small_container.dart';
 
 class WalkLog extends StatefulWidget {
   const WalkLog({super.key});
@@ -67,6 +71,7 @@ class _WalkLogState extends State<WalkLog> {
                       },
                       child:
                           Image.asset('assets/image_asset/walk_log/Left.png'))),
+              Positioned(bottom: 0.h, left: 0.w, child: WalkTimer())
             ],
           ),
         ),

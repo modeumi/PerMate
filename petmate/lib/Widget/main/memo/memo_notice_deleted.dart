@@ -7,6 +7,7 @@ import 'package:petmate/Widget/bottom_navigation_bar/bottom_navigationbar.dart';
 import 'package:petmate/Widget/button/deletedbutton/memo_deleted_button.dart';
 import 'package:petmate/Widget/custom_appbar.dart';
 import 'package:petmate/Widget/main/memo/memo_deleted.dart';
+import 'package:petmate/Widget/main/memo/test.dart';
 
 class MemoNoticeDeleted extends StatefulWidget {
   const MemoNoticeDeleted({
@@ -37,7 +38,9 @@ class _MemoNoticeDeletedState extends State<MemoNoticeDeleted> {
               title: '메모',
               action: [
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Get.to(() => MemoList());
+                  },
                   child: Image.asset('assets/edit/plus.png'),
                 ),
                 SizedBox(

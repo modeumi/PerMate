@@ -21,7 +21,9 @@ class _MemoDeletedState extends State<MemoDeleted> {
   MemoController memoController = Get.put(MemoController());
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(
+    BuildContext context,
+  ) {
     return StreamBuilder<List<Map<String, dynamic>>>(
         stream: memoController.getMemos(),
         builder: (context, snapshot) {
@@ -32,7 +34,7 @@ class _MemoDeletedState extends State<MemoDeleted> {
               ),
             );
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return const Text('no memos');
+            return const Text('');
           } else {
             return Column(
                 children: snapshot.data!.map((memo) {
@@ -71,6 +73,7 @@ class _MemoDeletedState extends State<MemoDeleted> {
                       child: GestureDetector(
                           onTap: () {
                             setState(() {
+                              //
                               memoController.selectedMemoIds[memoId] =
                                   !isSelected;
                             });

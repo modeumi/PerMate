@@ -108,15 +108,14 @@ class WeatherController extends GetxController {
     }
   }
 
-   @override
+  @override
   void onInit() {
     // TODO: implement onInit
     super.onInit();
     getWeather();
   }
-  
-  Future<WeatherModel?> getWeather({bool forceRefresh = false}) async {
 
+  Future<WeatherModel?> getWeather({bool forceRefresh = false}) async {
     Position position = await fetchLocationName();
     //현재 위치 날씨 가져오기
     String WeatherData =
@@ -126,7 +125,7 @@ class WeatherController extends GetxController {
 
       if (response.statusCode == 200) {
         var data = json.decode(response.body);
-        // print("데이터 확인: $data");
+        print("날씨 데이터 확인: $data");
 
         double? rain =
             data["rain"] != null ? data["rain"]["1h"]?.toDouble() : null;
@@ -157,7 +156,7 @@ class WeatherController extends GetxController {
       final response = await http.get(Uri.parse(airData));
       if (response.statusCode == 200) {
         var data = json.decode(response.body);
-        // print("미세먼지확인: $data");
+        print("미세먼지 데이터 확인: $data");
         AirModel airdata = AirModel(
           pm2_5: data['list'][0]['components']['pm2_5'],
           pm10: data['list'][0]['components']['pm10'],
@@ -195,7 +194,8 @@ class WeatherController extends GetxController {
     return await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
   }
-   //현재위치 읍면리 데이터로 바꾸기
+
+  //현재위치 읍면리 데이터로 바꾸기
   Future<List<String>> getArea() async {
     Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
@@ -229,8 +229,4 @@ class WeatherController extends GetxController {
       throw Exception('Failed to load location data');
     }
   }
-
-  
-
-
 }

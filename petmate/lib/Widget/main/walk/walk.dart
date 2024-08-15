@@ -38,6 +38,7 @@ class _WalkWidgetState extends State<WalkWidget> {
                   Text('산책 하기',
                       textAlign: TextAlign.center,
                       style: White(12.sp, FontWeight.w500)),
+                 
                 ],
               ),
             ),
