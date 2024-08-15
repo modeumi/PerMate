@@ -7,6 +7,7 @@ class MemoController extends GetxController {
   TextEditingController contentController = TextEditingController();
   String Memocontent = '';
   Map<String, bool> selectedMemoIds = {};
+  // final selectedMemoIds = <String, bool>{}.obs;
 
   Stream<List<Map<String, dynamic>>> getMemos() {
     return firestore
@@ -36,13 +37,13 @@ class MemoController extends GetxController {
     }
   }
 
-  Future<void> deletedMemo(String docId) async {
-    if (docId.isEmpty) {
+  Future<void> deletedMemo(String memoId) async {
+    if (memoId.isEmpty) {
       Get.snackbar('삭제 실패', '문서 ID가 비어 있습니다.');
       return;
     }
     try {
-      await firestore.collection('Memo').doc(docId).delete();
+      await firestore.collection('Memo').doc(memoId).delete();
       Get.back();
       Get.snackbar('삭제 성공', '메모가 삭제되었습니다.');
     } catch (e) {
@@ -50,4 +51,29 @@ class MemoController extends GetxController {
       Get.snackbar('삭제 실패', '메모를 삭제하는 중 오류가 발생했습니다.');
     }
   }
+
+  // Future<void> deletedselectMemo() async {
+  //   final selectedId = selectedMemoIds.keys
+  //       .where((id) => selectedMemoIds[id] == true)
+  //       .toList();
+  //   if (selectedId.isEmpty) {
+  //     Get.snackbar('삭제 실패', '선택된 메모가 없습니다.');
+  //     return;
+  //   }
+
+  //   try {
+  //     final batch = FirebaseFirestore.instance.batch();
+  //     for (String id in selectedId) {
+  //       final docRef = FirebaseFirestore.instance.collection('Memo').doc('id');
+  //       batch.delete(docRef);
+  //     }
+  //     await batch.commit();
+
+  //     selectedId.clear();
+  //     Get.snackbar('삭제 성공', '메모가 삭제되었습니다.');
+  //   } catch (e) {
+  //     print('Error memos: $e');
+  //     Get.snackbar('삭제 실패', '메모를 삭제하는 중 오류가 발생했습니다');
+  //   }
+  // }
 }

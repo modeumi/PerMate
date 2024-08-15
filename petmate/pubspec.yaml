@@ -32,18 +32,19 @@ dependencies:
   android_alarm_manager_plus: ^4.0.3
   auto_size_text: ^3.0.0
   blurrycontainer: ^2.0.1+1
-  carousel_slider: ^4.2.1
+  carousel_slider: ^5.0.0
   cloud_firestore: ^5.1.0
   firebase_storage: ^12.1.2
   cupertino_icons: ^1.0.6
   dots_indicator: ^3.0.0
   dropdown_model_list: ^2.1.1
+  firebase_database: ^11.0.4
   firebase_auth: ^5.1.2
   firebase_core: ^3.2.0
   firebase_core_platform_interface: ^5.0.0
   flutter:
     sdk: flutter
-
+  bumble_scrollbar: ^0.0.2
   flutter_advanced_switch: ^3.1.0
   flutter_audio_query:
     git: https://github.com/Mayb3Nots/flutter_audio_query.git
@@ -71,6 +72,7 @@ dependencies:
   permission_handler: ^11.3.1
   refreshed: ^2.8.0
   sqflite: ^2.3.3+1
+  stop_watch_timer: ^3.2.0
   timer_builder: ^2.0.0
 
 dev_dependencies:
@@ -126,6 +128,7 @@ flutter:
     - assets/pet_type.json
     - assets/allergy.json
     - assets/disease.json
+   
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

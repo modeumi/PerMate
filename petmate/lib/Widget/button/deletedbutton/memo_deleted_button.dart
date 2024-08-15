@@ -22,7 +22,7 @@ class MemoDeletedButton extends StatefulWidget {
 class _MemoDeletedButtonState extends State<MemoDeletedButton> {
   final MemoController memoController = Get.put(MemoController());
 
-  void memoDelete(BuildContext context, String docId) {
+  void memoDelete(BuildContext context, String memoId) {
     showModalBottomSheet(
       backgroundColor: Colors.transparent,
       context: context,
@@ -33,7 +33,7 @@ class _MemoDeletedButtonState extends State<MemoDeletedButton> {
           content: '메모를 삭제한 후에는 복구할 수 없어요.',
           sharecontent: '',
           action: () async {
-            await memoController.deletedMemo('mhH5mVCCWhC1xb50VhZu');
+            await memoController.deletedMemo('');
           },
         );
       },
