@@ -9,16 +9,16 @@ import 'package:petmate/Widget/custom_appbar.dart';
 import 'package:petmate/Widget/main/memo/memo_deleted.dart';
 import 'package:petmate/Widget/main/memo/test.dart';
 
-class MemoNoticeDeleted extends StatefulWidget {
-  const MemoNoticeDeleted({
+class MemoDeletedPage extends StatefulWidget {
+  const MemoDeletedPage({
     super.key,
   });
 
   @override
-  State<MemoNoticeDeleted> createState() => _MemoNoticeDeletedState();
+  State<MemoDeletedPage> createState() => _MemoDeletedPageState();
 }
 
-class _MemoNoticeDeletedState extends State<MemoNoticeDeleted> {
+class _MemoDeletedPageState extends State<MemoDeletedPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,9 +38,7 @@ class _MemoNoticeDeletedState extends State<MemoNoticeDeleted> {
               title: '메모',
               action: [
                 GestureDetector(
-                  onTap: () {
-                    Get.to(() => MemoList());
-                  },
+                  onTap: () {},
                   child: Image.asset('assets/edit/plus.png'),
                 ),
                 SizedBox(
@@ -65,7 +63,7 @@ class _MemoNoticeDeletedState extends State<MemoNoticeDeleted> {
                         SizedBox(
                           height: 12.h,
                         ),
-                        MemoDeleted(),
+                        MemoDeleted()
                       ],
                     ))),
             SizedBox(

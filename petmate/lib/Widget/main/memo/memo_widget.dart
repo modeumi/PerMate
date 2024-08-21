@@ -7,14 +7,14 @@ import 'package:petmate/Controller/memo_controller.dart';
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/Widget/custom_widget/custom_container.dart';
 
-class MemoNoticeWidgett extends StatefulWidget {
-  const MemoNoticeWidgett({super.key});
+class MemoWidgett extends StatefulWidget {
+  const MemoWidgett({super.key});
 
   @override
-  State<MemoNoticeWidgett> createState() => _MemoNoticeWidgettState();
+  State<MemoWidgett> createState() => _MemoWidgettState();
 }
 
-class _MemoNoticeWidgettState extends State<MemoNoticeWidgett> {
+class _MemoWidgettState extends State<MemoWidgett> {
   MemoController memoController = Get.put(MemoController());
 
   @override

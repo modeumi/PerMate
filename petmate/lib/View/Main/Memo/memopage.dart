@@ -8,20 +8,20 @@ import 'package:petmate/Widget/bottom_navigation_bar/bottom_navigationbar.dart';
 import 'package:petmate/Widget/button/save_button.dart';
 import 'package:petmate/Widget/custom_appbar.dart';
 import 'package:petmate/Widget/custom_widget/custom_container.dart';
-import 'package:petmate/Widget/main/memo/memo_notcie_widget.dart';
-import 'package:petmate/Widget/main/memo/memo_notice_deleted.dart';
+import 'package:petmate/Widget/main/memo/memo_widget.dart';
+import 'package:petmate/View/Main/Memo/memo_deleted_page.dart';
 import 'package:petmate/Widget/main/memo/memo_overlay.dart';
 
-class MemoNotice extends StatefulWidget {
-  const MemoNotice({
+class MemoPage extends StatefulWidget {
+  const MemoPage({
     super.key,
   });
 
   @override
-  State<MemoNotice> createState() => _MemoNoticeState();
+  State<MemoPage> createState() => _MemoPageState();
 }
 
-class _MemoNoticeState extends State<MemoNotice> {
+class _MemoPageState extends State<MemoPage> {
   var opactiyValue = 1.0;
   void Deletedoevrlay(BuildContext context) {
     Future.delayed(Duration(milliseconds: 0), () {
@@ -66,7 +66,7 @@ class _MemoNoticeState extends State<MemoNotice> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Get.to(() => MemoNoticeDeleted());
+                    Get.to(() => MemoDeletedPage());
                   },
                   child: Image.asset('assets/alert/delete(24).png'),
                 ),
@@ -85,7 +85,7 @@ class _MemoNoticeState extends State<MemoNotice> {
                         SizedBox(
                           height: 12.h,
                         ),
-                        MemoNoticeWidgett(),
+                        MemoWidgett(),
                       ],
                     ))),
             SizedBox(

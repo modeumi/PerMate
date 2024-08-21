@@ -8,7 +8,7 @@ import 'package:petmate/Widget/main/add_memo.dart';
 import 'package:petmate/Widget/main/main_log/log.dart';
 import 'package:petmate/Widget/main/main_alram.dart';
 import 'package:petmate/Widget/main/memo/memo.dart';
-import 'package:petmate/Widget/main/memo/memo_notice.dart';
+import 'package:petmate/View/Main/Memo/memopage.dart';
 import 'package:petmate/Widget/main/profile.dart';
 import 'package:petmate/Widget/main/profile_info.dart';
 
@@ -57,7 +57,7 @@ class _MainPageState extends State<MainPage> {
               ),
               GestureDetector(
                   onTap: () {
-                    Get.to(MemoNotice());
+                    Get.to(MemoPage());
                   },
                   child: MemoWriteWidget()),
               SizedBox(
