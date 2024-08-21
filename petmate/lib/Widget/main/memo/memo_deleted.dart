@@ -6,7 +6,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:petmate/Controller/memo_controller.dart';
-
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/Widget/custom_widget/custom_container.dart';
 
@@ -73,9 +72,9 @@ class _MemoDeletedState extends State<MemoDeleted> {
                       child: GestureDetector(
                           onTap: () {
                             setState(() {
-                              //
-                              memoController.selectedMemoIds[memoId] =
-                                  !isSelected;
+                             
+                              memoController.toggleMemoSeleced(memoId);
+                              print('확인메세지 : $memoId');
                             });
                           },
                           child: Image.asset(isSelected

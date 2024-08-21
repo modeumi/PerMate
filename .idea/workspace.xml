@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="95230657-97d1-4ce5-9035-833ab1e31076" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/petmate/lib/Controller/memo_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/petmate/lib/Controller/memo_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/petmate/lib/View/Main/mainpage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/petmate/lib/View/Main/mainpage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/petmate/lib/Widget/button/deletedbutton/memo_deleted_button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/petmate/lib/Widget/button/deletedbutton/memo_deleted_button.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/petmate/lib/Widget/main/memo/memo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/petmate/lib/Widget/main/memo/memo.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/petmate/lib/Widget/main/memo/memo_deleted.dart" beforeDir="false" afterPath="$PROJECT_DIR$/petmate/lib/Widget/main/memo/memo_deleted.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/petmate/lib/Widget/main/memo/memo_notcie_widget.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petmate/lib/Widget/main/memo/memo_notice.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petmate/lib/Widget/main/memo/memo_notice_deleted.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petmate/lib/Widget/main/memo/test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/petmate/lib/Widget/main/memo/test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/petmate/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/petmate/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/petmate/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/petmate/pubspec.yaml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 1
+}]]></component>
+  <component name="ProjectId" id="2ksa31WKADYF39ioWvpZ4al0kJE" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "jeonghyun/develop",
+    "kotlin-language-version-configured": "true",
+    "settings.editor.selected.configurable": "advanced.settings",
+    "show.migrate.to.gradle.popup": "false"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="95230657-97d1-4ce5-9035-833ab1e31076" name="Changes" comment="" />
+      <created>1724074535303</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1724074535303</updated>
+    </task>
+    <servers />
+  </component>
+</project>
