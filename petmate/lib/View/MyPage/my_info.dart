@@ -18,7 +18,7 @@ class _MyInfoState extends State<MyInfo> with SingleTickerProviderStateMixin {
       extendBody: true,
       extendBodyBehindAppBar: true,
       appBar: CustomAppbar(
-        title: '내 정보',
+        title: '내 정보'
       ),
       body: Container(
           width: 360.w,

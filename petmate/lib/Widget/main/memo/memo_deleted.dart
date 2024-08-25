@@ -60,6 +60,7 @@ class _MemoDeletedState extends State<MemoDeleted> {
                     child: CustomContainer(
                       width: 344.w,
                       height: 80.h,
+                      color: Color(0x3300287C),
                       shadow_color: Color(0x26000000),
                     ),
                   ),
@@ -72,8 +73,7 @@ class _MemoDeletedState extends State<MemoDeleted> {
                       child: GestureDetector(
                           onTap: () {
                             setState(() {
-                             
-                              memoController.toggleMemoSeleced(memoId);
+                              memoController.memoCheckSeleced(memoId);
                               print('확인메세지 : $memoId');
                             });
                           },

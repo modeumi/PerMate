@@ -3,14 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/View/Main/Notice/noticedelete.dart';
-import 'package:petmate/View/Main/mainpage.dart';
 import 'package:petmate/Widget/bottom_navigation_bar/bottom_navigationbar.dart';
 import 'package:petmate/Widget/custom_appbar.dart';
 import 'package:petmate/Widget/notice/notification_container.dart';
 import 'package:petmate/Widget/notice/notification_type.dart';
-import 'package:petmate/Widget/notice/notificationcontainer2.dart';
 
 class NoticePage extends StatefulWidget {
   const NoticePage({super.key});
@@ -27,6 +24,7 @@ class _NoticePageState extends State<NoticePage> {
       extendBodyBehindAppBar: true,
       appBar: CustomAppbar(
         title: '알림',
+       
         action: [
           Spacer(),
           GestureDetector(

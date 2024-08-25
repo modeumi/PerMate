@@ -28,7 +28,7 @@ class _JoinMainState extends State<JoinMain> {
       return Scaffold(
         backgroundColor: Colors.transparent,
         extendBodyBehindAppBar: true,
-        appBar: CustomAppbar(title: '회원가입'),
+        appBar: CustomAppbar(title: '회원가입',),
         body: GestureDetector(
           onTap: () {
             FocusScope.of(context).unfocus();

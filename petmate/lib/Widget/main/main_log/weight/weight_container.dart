@@ -44,6 +44,7 @@ class _WeightContainerState extends State<WeightContainer> {
         CustomContainer(
           width: 344.w,
           height: 494.h,
+          color: Color(0x3300287C),
           shadow_color: Color(0x4C000000),
         ),
         Positioned(

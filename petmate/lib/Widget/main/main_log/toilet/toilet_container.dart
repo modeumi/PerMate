@@ -27,6 +27,7 @@ class _ToiletContainerState extends State<ToiletContainer> {
         CustomContainer(
           width: 344.w,
           height: 700.h,
+          color: Color(0x3300287C),
           shadow_color: Color(0x4C000000),
         ),
         Positioned(

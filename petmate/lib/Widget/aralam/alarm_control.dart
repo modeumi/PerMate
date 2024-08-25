@@ -41,7 +41,7 @@ class _AlarmControlWidgetState extends State<AlarmControlWidget> {
           left: 8.w,
           top: 124.h,
           child: CustomContainer(
-              width: 344.w, height: 96.h, shadow_color: Color(0x26000000)),
+              width: 344.w, height: 96.h,color: Color(0x3300287C), shadow_color: Color(0x26000000)),
         ),
         Positioned(
             left: 24.w,

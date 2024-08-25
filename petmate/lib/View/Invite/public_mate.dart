@@ -24,6 +24,7 @@ class _PublicMateState extends State<PublicMate> {
       extendBodyBehindAppBar: true,
       appBar: CustomAppbar(
         title: '공동메이트',
+       
       ),
       body: Container(
         width: 360.w,
@@ -57,6 +58,7 @@ class _PublicMateState extends State<PublicMate> {
                   child: CustomContainer(
                       width: 344.w,
                       height: 200.h,
+                      color: Color(0x3300287C),
                       shadow_color: Color(0x26000000))),
             ),
             Positioned(
@@ -90,6 +92,7 @@ class _PublicMateState extends State<PublicMate> {
                   child: CustomContainer(
                       width: 344.w,
                       height: 200.h,
+                      color: Color(0x3300287C),
                       shadow_color: Color(0x26000000))),
             ),
             Positioned(

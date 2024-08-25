@@ -44,6 +44,7 @@ class _MedicalContainerState extends State<MedicalContainer> {
         CustomContainer(
           width: 344.w,
           height: 665.h,
+          color: Color(0x3300287C),
           shadow_color: Color(0x4C000000),
         ),
         Positioned(

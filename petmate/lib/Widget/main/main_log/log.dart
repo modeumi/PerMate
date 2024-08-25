@@ -47,6 +47,7 @@ class _LogWidgetState extends State<LogWidget> {
                           CustomContainer(
                               width: 344.w,
                               height: 380.h,
+                              color: Color(0x3300287C),
                               shadow_color: Color(0x26000000)),
                           Positioned(
                             top: 12,
@@ -187,7 +188,7 @@ class _LogWidgetState extends State<LogWidget> {
         clipBehavior: Clip.none,
         children: [
           CustomContainer(
-              width: 168.w, height: 64.h, shadow_color: Color(0x26000000)),
+              width: 168.w, height: 64.h,color: Color(0x3300287C), shadow_color: Color(0x26000000)),
           Positioned(
             left: 30,
             bottom: 18,

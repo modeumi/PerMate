@@ -24,6 +24,7 @@ class _GetInviteState extends State<GetInvite> {
       extendBodyBehindAppBar: true,
       appBar: CustomAppbar(
         title: '초대받기',
+       
       ),
       body: Container(
         width: 360.w,
@@ -52,7 +53,7 @@ class _GetInviteState extends State<GetInvite> {
               top: 312.h,
               left: 8.w,
               child: CustomContainer(
-                  width: 344.w, height: 412.h, shadow_color: Color(0x26000000)),
+                  width: 344.w, height: 412.h,color: Color(0x3300287C), shadow_color: Color(0x26000000)),
             ),
             Positioned(
               top: 324.h,

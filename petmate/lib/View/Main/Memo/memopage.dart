@@ -33,7 +33,10 @@ class _MemoPageState extends State<MemoPage> {
           context: context,
           isScrollControlled: true,
           builder: (BuildContext context) {
-            return MemoOverlay();
+            return MemoOverlay(
+              color: Color(0x3300287C),
+              shadowcolor: Color(0x26000000),
+            );
           },
         );
       });

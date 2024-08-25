@@ -1,10 +1,7 @@
-import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
-import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Controller/toggle_controller.dart';
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/Widget/button/deletedbutton/content_deleted_button.dart';
@@ -20,7 +17,6 @@ class _AlarmDeletedButtonState extends State<AlarmDeletedButton> {
   final ToggleButtonController controller = Get.put(ToggleButtonController());
   var opactiyValue = 1.0;
 
-
   void Deletedoevrlay(BuildContext context) {
     Future.delayed(Duration(milliseconds: 0), () {
       setState(() {
@@ -33,9 +29,8 @@ class _AlarmDeletedButtonState extends State<AlarmDeletedButton> {
             return ContentDeletedButton(
               title: '알람을 삭제할까요?',
               content: '알람을 삭제한 후에는 복구할 수 없어요.',
-              sharecontent: '', 
-              action: () {  },
-              
+              sharecontent: '',
+              action: () {},
             );
           },
         );

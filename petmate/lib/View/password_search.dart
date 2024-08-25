@@ -25,7 +25,7 @@ class _PasswordResetState extends State<PasswordReset> {
     return Scaffold(
       backgroundColor: Colors.transparent,
       extendBodyBehindAppBar: true,
-      appBar: const CustomAppbar(title: '비밀번호 찾기'),
+      appBar: const CustomAppbar(title: '비밀번호 찾기',),
       body: GetBuilder<PasswordController>(
         builder: (controller) {
           return Container(

@@ -14,10 +14,10 @@ class UploadProfilePage extends StatefulWidget {
   const UploadProfilePage({super.key});
 
   @override
-  State<UploadProfilePage> createState() => _UploadProfilePage();
+  State<UploadProfilePage> createState() => _UploadProfilePageState();
 }
 
-class _UploadProfilePage extends State<UploadProfilePage> {
+class _UploadProfilePageState extends State<UploadProfilePage> {
   PetprofileController petprofileController = Get.put(PetprofileController());
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class _UploadProfilePage extends State<UploadProfilePage> {
         ),
         child: Column(
           children: [
-            CustomAppbar(title: '등록'),
+            CustomAppbar(title: '등록',),
             Expanded(
               child: SingleChildScrollView(
                 scrollDirection: Axis.vertical,

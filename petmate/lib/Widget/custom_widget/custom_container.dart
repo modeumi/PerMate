@@ -5,15 +5,16 @@ class CustomContainer extends StatelessWidget {
   final double? width;
   final double? height;
   final Color shadow_color;
+  final Color color;
   const CustomContainer(
-      {super.key, this.width, this.height, required this.shadow_color});
+      {super.key, this.width, this.height, required this.shadow_color, required this.color});
 
   @override
   Widget build(BuildContext context) {
     return GlassContainer(
       width: width ?? double.infinity,
       height: height ?? double.infinity,
-      color: const Color(0x3300287C),
+      color: color,
       gradient: LinearGradient(
         colors: [
           Colors.transparent,

@@ -66,7 +66,7 @@ class _MainPageState extends State<MainPage> {
               Center(
                 child: Container(
                   width: 344.w,
-                  height: 135.h,
+                  height: 137.h,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
