@@ -52,6 +52,7 @@ class _MyInfomationState extends State<MyInfomation> {
           child: CustomContainer(
             width: 344.w,
             height: 428.h,
+            color: Color(0x3300287C),
             shadow_color: Color(0x4C000000),
           ),
         ),

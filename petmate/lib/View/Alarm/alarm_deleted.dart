@@ -1,18 +1,12 @@
-import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_advanced_switch/flutter_advanced_switch.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/View/Alarm/alarm_add.dart';
-import 'package:petmate/Widget/aralam/alarm_control.dart';
 import 'package:petmate/Widget/aralam/alarm_deleted.dart';
-import 'package:petmate/Widget/button/alarm_toggle.dart';
 import 'package:petmate/Widget/bottom_navigation_bar/bottom_navigationbar.dart';
 import 'package:petmate/Widget/button/deletedbutton/alarm_deleted_button.dart';
 import 'package:petmate/Widget/custom_appbar.dart';
@@ -34,6 +28,7 @@ class _AlarmDeletedPageState extends State<AlarmDeletedPage> {
       extendBodyBehindAppBar: true,
       appBar: CustomAppbar(
         title: '알람',
+     
         action: [
           GestureDetector(
               onTap: () {

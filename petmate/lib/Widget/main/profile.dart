@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:glass_kit/glass_kit.dart';
 import 'package:petmate/Util/textstyles.dart';
-import 'package:petmate/View/Main/Profile/edit_pet_list.dart';
+import 'package:petmate/View/Main/Profile/edit_petList.dart';
 import 'package:petmate/View/Main/Profile/upload_profile.dart';
 
 class ProfilePlus extends StatefulWidget {

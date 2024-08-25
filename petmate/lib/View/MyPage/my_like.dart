@@ -30,6 +30,7 @@ class _MyLikeState extends State<MyLike> with SingleTickerProviderStateMixin {
       extendBodyBehindAppBar: true,
       appBar: CustomAppbar(
         title: '좋아요 한 글',
+        
       ),
       body: Container(
           width: 360.w,

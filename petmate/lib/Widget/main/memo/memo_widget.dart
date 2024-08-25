@@ -55,6 +55,7 @@ class _MemoWidgettState extends State<MemoWidgett> {
                     child: CustomContainer(
                       width: 344.w,
                       height: 80.h,
+                      color: Color(0x3300287C),
                       shadow_color: Color(0x26000000),
                     ),
                   ),

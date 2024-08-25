@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:petmate/Controller/petprofile_controller.dart';
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/View/Main/Profile/edit_detail.dart';
 import 'package:petmate/Widget/custom_widget/circle_container.dart';
@@ -17,6 +18,7 @@ class MyPetEditWidget extends StatefulWidget {
 }
 
 class _MyPetEditWidgetState extends State<MyPetEditWidget> {
+  PetprofileController petprofileController = Get.put(PetprofileController());
   final Profileimage = [
     'assets/edit/animal (1).png',
     'assets/edit/animal (2).png',
@@ -44,6 +46,7 @@ class _MyPetEditWidgetState extends State<MyPetEditWidget> {
                   child: CustomContainer(
                       width: 344.w,
                       height: 80.h,
+                      color: Color(0x3300287C),
                       shadow_color: Color(0x26000000)),
                 ),
                 Positioned(

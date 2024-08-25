@@ -118,6 +118,7 @@ class _AddProfileWidgetState extends State<AddProfileWidget> {
                         _PetProfileImag =
                             'assets/image_asset/pet_upload/animal_profile (2).png';
                         widget.onChanged(_PetProfileImag);
+                        Get.back();
                       });
                     },
                     child: ProfileCard(
@@ -132,6 +133,7 @@ class _AddProfileWidgetState extends State<AddProfileWidget> {
                         _PetProfileImag =
                             'assets/image_asset/pet_upload/animal_profile (5).png';
                         widget.onChanged(_PetProfileImag);
+                        Get.back();
                       });
                     },
                     child: ProfileCard(
@@ -146,6 +148,7 @@ class _AddProfileWidgetState extends State<AddProfileWidget> {
                         _PetProfileImag =
                             'assets/image_asset/pet_upload/animal_profile (6).png';
                         widget.onChanged(_PetProfileImag);
+                        Get.back();
                       });
                     },
                     child: ProfileCard(
@@ -160,6 +163,7 @@ class _AddProfileWidgetState extends State<AddProfileWidget> {
                         _PetProfileImag =
                             'assets/image_asset/pet_upload/animal_profile (3).png';
                         widget.onChanged(_PetProfileImag);
+                        Get.back();
                       });
                     },
                     child: ProfileCard(
@@ -174,6 +178,7 @@ class _AddProfileWidgetState extends State<AddProfileWidget> {
                         _PetProfileImag =
                             'assets/image_asset/pet_upload/animal_profile (4).png';
                         widget.onChanged(_PetProfileImag);
+                        Get.back();
                       });
                     },
                     child: ProfileCard(
@@ -188,6 +193,7 @@ class _AddProfileWidgetState extends State<AddProfileWidget> {
                         _PetProfileImag =
                             'assets/image_asset/pet_upload/animal_profile (1).png';
                         widget.onChanged;
+                        Get.back();
                       });
                     },
                     child: ProfileCard(

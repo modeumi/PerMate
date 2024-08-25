@@ -29,6 +29,7 @@ class _NoticeDeletedState extends State<NoticeDeleted> {
       extendBodyBehindAppBar: true,
       appBar: CustomAppbar(
         title: '알림',
+       
         action: [
           Spacer(),
           GestureDetector(

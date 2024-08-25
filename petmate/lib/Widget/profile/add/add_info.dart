@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -39,6 +38,7 @@ class _AddInfoWidgetState extends State<AddInfoWidget> {
         CustomContainer(
           width: 344.w,
           height: 1150.h,
+          color: Color(0x3300287C),
           shadow_color: Color(0x4C000000),
         ),
         Container(

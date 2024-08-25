@@ -33,6 +33,15 @@ TextStyle Gray(double size, FontWeight weight) {
   );
 }
 
+TextStyle DarkGray(double size, FontWeight weight) {
+  return TextStyle(
+    color: Color(0xFF303030).withOpacity(0.40),
+    fontSize: size,
+    fontFamily: 'Pretendard',
+    fontWeight: weight,
+  );
+}
+
 TextStyle whiteOpacity(double size, FontWeight weight) {
   return TextStyle(
       fontSize: size,

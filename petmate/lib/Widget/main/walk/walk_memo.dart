@@ -7,14 +7,14 @@ import 'package:petmate/Widget/custom_widget/custom_container.dart';
 
 import 'package:petmate/View/Main/Memo/memopage.dart';
 
-class MemoWriteWidget extends StatefulWidget {
-  const MemoWriteWidget({super.key});
+class WalkMemoWidget extends StatefulWidget {
+  const WalkMemoWidget({super.key});
 
   @override
-  State<MemoWriteWidget> createState() => _MemoWriteWidgetState();
+  State<WalkMemoWidget> createState() => _WalkMemoWidgetState();
 }
 
-class _MemoWriteWidgetState extends State<MemoWriteWidget> {
+class _WalkMemoWidgetState extends State<WalkMemoWidget> {
   MemoController memoController = Get.put(MemoController());
 
   @override

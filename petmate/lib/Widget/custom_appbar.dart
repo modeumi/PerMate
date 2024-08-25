@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class CustomAppbar extends StatefulWidget implements PreferredSizeWidget {
   final String title;
   final List<Widget>? action;
-  const CustomAppbar({super.key, required this.title, this.action});
+  const CustomAppbar({super.key, required this.title, this.action,});
 
   @override
   State<CustomAppbar> createState() => _CustomAppbarState();
@@ -17,7 +17,7 @@ class _CustomAppbarState extends State<CustomAppbar> {
   Widget build(BuildContext context) {
     return AppBar(
       scrolledUnderElevation: 0,
-      toolbarHeight: 100,
+      toolbarHeight: 80,
       automaticallyImplyLeading: false,
       elevation: 0,
       backgroundColor: Colors.transparent,

@@ -1,7 +1,5 @@
 import 'dart:convert';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
@@ -27,11 +25,11 @@ class PetprofileController extends GetxController {
   String vaccinationRecord = '';
   String surgeryRecord = '';
 
-  void petInfo() async {
+  Future<void> petInfo() async {
     try {
       await firestore.collection('petinfo').add({
         'petImage': petImage,
-        'addName' : addName,
+        'addName': addName,
         'petList': petList,
         'petType': petType,
         'petGender': petGender,
@@ -51,8 +49,33 @@ class PetprofileController extends GetxController {
     }
   }
 
-  //종류
+  Stream<List<Map<String, dynamic>>> getPetInfo() {
+    return firestore
+        .collection('petInfo')
+        .snapshots()
+        .map((snapshot) => snapshot.docs.map((doc) {
+              Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+              return {
+                'id': doc.id,
+                'petImage': data['petImage'] ?? '',
+                'petList': data['petList'] ?? '',
+                'petType': data['petType'] ?? '',
+                'addName': data['addName'] ?? '',
+                'petGender': data['petGender'] ?? '',
+                'petBirthday': data['petBirthday'] ?? '',
+                'firstMeetday': data['firstMeetday'] ?? '',
+                'petWeight': data['petWeight'] ?? '',
+                'petNeuterDate': data['petNeuterDate'] ?? '',
+                'petDisease': List<String>.from(data['petDisease'] ?? []),
+                'petAllergy': List<String>.from(data['petAllergy'] ?? []),
+                'vaccinationRecord': data['vaccinationRecord'] ?? '',
+                'surgeryRecord': data['surgeryRecord'] ?? '',
+              };
+            }).toList());
+            
+  }
 
+  //종류
   String selectedPet = '';
   List<Map<String, dynamic>> petSelect = [];
 
@@ -88,35 +111,6 @@ class PetprofileController extends GetxController {
     }
   }
 
-  Future<void> getPetInfo() async {
-    try {
-      QuerySnapshot snapshot = await firestore.collection('petinfo').get();
-    } catch (e) {}
-  }
-
-// 질병
-
-//몸무게
-  // FocusNode focusNode = FocusNode();
-  // String initialText = "KG";
-
-  // void pet_weight() {
-  //   super.onInit();
-  //   focusNode.addListener(
-  //     () {
-  //       if (focusNode.hasFocus) {
-  //         PetWeightController.text = initialText;
-  //       }
-  //     },
-  //   );
-  // }
-
-  // void weight_dispose() {
-  //   PetWeightController.dispose();
-  //   focusNode.dispose();
-  //   super.dispose();
-  // }
-
   String select_Allergy = '';
   List<String> allergyType = [];
   List<String> selectAllergy = [];
@@ -138,9 +132,4 @@ class PetprofileController extends GetxController {
       print("Error loading allergy data: $e");
     }
   }
-
-  // void removeAllergy(int index) {
-  //   selectAllergy.removeAt(index);
-  //   onChanged(selectAllergy);
-  // }
 }

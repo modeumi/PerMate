@@ -34,6 +34,7 @@ class _MemoDeletedButtonState extends State<MemoDeletedButton> {
           sharecontent: '',
           action: () async {
             await memoController.deletedselectMemo();
+            Get.back();
           },
         );
       },

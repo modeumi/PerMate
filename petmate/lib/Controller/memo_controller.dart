@@ -8,10 +8,26 @@ class MemoController extends GetxController {
   ScrollController scrollController = ScrollController();
   String Memocontent = '';
   Map<String, bool> selectedMemoIds = {};
-  // RxMap<String, bool> selectedMemoIds = <String, bool>{}.obs;
+ 
 
-  void toggleMemoSeleced(String memoId) {
+
+ // 삭제할 메모 체크
+  void memoCheckSeleced(String memoId) {
     selectedMemoIds[memoId] = !(selectedMemoIds[memoId] ?? false);
+  }
+
+
+  Future<void> addMemo(String content) async {
+    try {
+      DocumentReference docRef = await firestore.collection('Memo').add({
+        'content': content,
+        'timestamp': FieldValue.serverTimestamp(),
+      });
+      String docId = docRef.id;
+      print('Added memo with ID: $docId');
+    } catch (e) {
+      print('Error adding memo: $e');
+    }
   }
 
   Stream<List<Map<String, dynamic>>> getMemos() {
@@ -29,40 +45,12 @@ class MemoController extends GetxController {
             }).toList());
   }
 
-  Future<void> addMemo(String content) async {
-    try {
-      DocumentReference docRef = await firestore.collection('Memo').add({
-        'content': content,
-        'timestamp': FieldValue.serverTimestamp(),
-      });
-      String docId = docRef.id;
-      print('Added memo with ID: $docId');
-    } catch (e) {
-      print('Error adding memo: $e');
-    }
-  }
-
-  // Future<void> deletedMemo(String memoId) async {
-  //   if (memoId.isEmpty) {
-  //     Get.snackbar('삭제 실패', '문서 ID가 비어 있습니다.');
-  //     return;
-  //   }
-  //   try {
-  //     await firestore.collection('Memo').doc(memoId).delete();
-  //     Get.back();
-  //     Get.snackbar('삭제 성공', '메모가 삭제되었습니다.');
-  //   } catch (e) {
-  //     print('Error deleting memo: $e');
-  //     Get.snackbar('삭제 실패', '메모를 삭제하는 중 오류가 발생했습니다.');
-  //   }
-  // }
-
   Future<void> deletedselectMemo() async {
     final selectedId = selectedMemoIds.keys
         .where((id) => selectedMemoIds[id] == true)
         .toList();
     if (selectedId.isEmpty) {
-      Get.snackbar('삭제 실패', '선택된 메모가 없습니다.');
+      // Get.snackbar('삭제 실패', '선택된 메모가 없습니다.');
       return;
     }
 
@@ -74,10 +62,10 @@ class MemoController extends GetxController {
       }
       await batch.commit();
       selectedMemoIds.clear();
-      Get.snackbar('삭제 성공', '메모가 삭제되었습니다.');
+      // Get.snackbar('삭제 성공', '메모가 삭제되었습니다.');
     } catch (e) {
       print('Error memos: $e');
-      Get.snackbar('삭제 실패', '메모를 삭제하는 중 오류가 발생했습니다');
+      // Get.snackbar('삭제 실패', '메모를 삭제하는 중 오류가 발생했습니다');
     }
   }
 }

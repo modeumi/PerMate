@@ -36,6 +36,7 @@ class _MemoDeletedPageState extends State<MemoDeletedPage> {
           children: [
             CustomAppbar(
               title: '메모',
+             
               action: [
                 GestureDetector(
                   onTap: () {},

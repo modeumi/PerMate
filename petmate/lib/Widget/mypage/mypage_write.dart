@@ -20,7 +20,10 @@ class _MypageWriteState extends State<MypageWrite> {
     return Stack(
       children: [
         CustomContainer(
-            width: 344.w, height: 72.h, shadow_color: Color(0x26000000)),
+            width: 344.w,
+            height: 72.h,
+            color: Color(0x3300287C),
+            shadow_color: Color(0x26000000)),
         Positioned(
           top: 13.h,
           left: 36.w,

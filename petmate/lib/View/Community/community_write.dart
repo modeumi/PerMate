@@ -19,6 +19,7 @@ class _CommunityWriteState extends State<CommunityWrite> {
         extendBodyBehindAppBar: true,
         appBar: CustomAppbar(
           title: '',
+         
         ),
         body: Column(
           children: [

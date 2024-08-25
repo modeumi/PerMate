@@ -32,6 +32,7 @@ class _MyPostDeleteState extends State<MyPostDelete>
       extendBodyBehindAppBar: true,
       appBar: CustomAppbar(
         title: '내 게시글',
+        
         action: [
           Container(),
           GestureDetector(

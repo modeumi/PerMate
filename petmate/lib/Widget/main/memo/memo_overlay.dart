@@ -11,8 +11,10 @@ import 'package:petmate/Widget/button/save_button.dart';
 import 'package:petmate/Widget/custom_widget/custom_container.dart';
 
 class MemoOverlay extends StatefulWidget {
+  final Color color;
+  final Color shadowcolor;
   MemoOverlay({
-    Key? key,
+    Key? key, required this.color, required this.shadowcolor,
   }) : super(key: key);
 
   @override
@@ -32,7 +34,10 @@ class _MemoOverlayState extends State<MemoOverlay> {
           child: Stack(
             children: [
               CustomContainer(
-                  width: 344.w, height: 380.h, shadow_color: Color(0x26000000)),
+                  width: 344.w,
+                  height: 380.h,
+                  color: widget.color,
+                  shadow_color: widget.shadowcolor),
               Positioned(
                 top: 12,
                 left: 12,

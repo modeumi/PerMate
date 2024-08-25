@@ -30,6 +30,7 @@ class _AlarmPageState extends State<AlarmPage> {
       extendBodyBehindAppBar: true,
       appBar: CustomAppbar(
         title: '알람',
+       
         action: [
           GestureDetector(
               onTap: () {

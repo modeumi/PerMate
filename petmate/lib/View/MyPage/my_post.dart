@@ -32,6 +32,7 @@ class _MyPostState extends State<MyPost> with SingleTickerProviderStateMixin {
       extendBodyBehindAppBar: true,
       appBar: CustomAppbar(
         title: '내 게시글',
+
         action: [
           Container(),
           GestureDetector(
