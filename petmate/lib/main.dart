@@ -22,7 +22,6 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  WidgetsFlutterBinding.ensureInitialized();
   await NaverMapSdk.instance.initialize(
     clientId: naver_clientId,
     onAuthFailed: (ex) {

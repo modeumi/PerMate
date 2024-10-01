@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:petmate/Widget/bottom_navigation_bar/bottom_navigationbar.dart';
+import 'package:petmate/Widget/custom_widget/custom_container.dart';
 import 'package:petmate/Widget/log/calender.dart';
 import 'package:petmate/Widget/main/main_alram.dart';
 import 'package:petmate/Widget/main/profile.dart';
@@ -38,7 +39,19 @@ class _LogMainState extends State<LogMain> {
               SizedBox(
                 height: 12.h,
               ),
-              Calender(),
+              Stack(
+                children: [
+                  Center(
+                    child: CustomContainer(
+                      width: 344.w,
+                      height: 402.h,
+                      color: Color(0x3300287C),
+                      shadow_color: Color(0x26000000),
+                    ),
+                  ),
+                  Calender(),
+                ],
+              )
             ],
           ),
         ),

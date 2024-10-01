@@ -1,11 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:petmate/Util/textstyles.dart';
+import 'package:petmate/View/Main/Profile/upload_profile.dart';
 import 'package:petmate/Widget/button/big_save_button.dart';
-import 'package:petmate/Widget/button/save_button.dart';
 import 'package:petmate/Widget/custom_widget/circle_container.dart';
 import 'package:petmate/Widget/custom_widget/custom_container.dart';
+import 'package:petmate/Widget/main/main_log/shower/shower_picker.dart';
 
 class ShowerContainer extends StatefulWidget {
   const ShowerContainer({super.key});
@@ -59,12 +62,17 @@ class _ShowerContainerState extends State<ShowerContainer> {
         Positioned(
           left: 12.w,
           top: 37.h,
-          child: Container(
-            width: 320.w,
-            height: 40.h,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
+          child: InkWell(
+            onTap: () {
+              Get.to(() => ShowerPicker());
+            },
+            child: Container(
+              width: 320.w,
+              height: 40.h,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+              ),
             ),
           ),
         ),
@@ -163,9 +171,7 @@ class _ShowerContainerState extends State<ShowerContainer> {
           left: 12.w,
           top: 328.h,
           child: GestureDetector(
-            onTap: () {
-              
-            },
+            onTap: () {},
             child: Container(
               width: 320.w,
               height: 108.h,
