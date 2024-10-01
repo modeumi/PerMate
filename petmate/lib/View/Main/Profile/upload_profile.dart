@@ -34,7 +34,9 @@ class _UploadProfilePageState extends State<UploadProfilePage> {
         ),
         child: Column(
           children: [
-            CustomAppbar(title: '등록',),
+            CustomAppbar(
+              title: '등록',
+            ),
             Expanded(
               child: SingleChildScrollView(
                 scrollDirection: Axis.vertical,

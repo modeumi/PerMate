@@ -7,7 +7,11 @@ class CustomContainer extends StatelessWidget {
   final Color shadow_color;
   final Color color;
   const CustomContainer(
-      {super.key, this.width, this.height, required this.shadow_color, required this.color});
+      {super.key,
+      this.width,
+      this.height,
+      required this.shadow_color,
+      required this.color});
 
   @override
   Widget build(BuildContext context) {
