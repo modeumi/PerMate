@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:petmate/Widget/bottom_navigation_bar/bottom_navigationbar.dart';
+import 'package:petmate/Widget/button/calender_button.dart';
 import 'package:petmate/Widget/custom_widget/custom_container.dart';
 import 'package:petmate/Widget/log/calender.dart';
 import 'package:petmate/Widget/main/main_alram.dart';
@@ -40,6 +41,7 @@ class _LogMainState extends State<LogMain> {
                 height: 12.h,
               ),
               Stack(
+                clipBehavior: Clip.none,
                 children: [
                   Center(
                     child: CustomContainer(
@@ -50,8 +52,13 @@ class _LogMainState extends State<LogMain> {
                     ),
                   ),
                   Calender(),
+                  // Positioned(bottom: -102, child: CommunityButton()),
                 ],
-              )
+              ),
+              SizedBox(
+                height: 88,
+              ),
+              CalenderButton()
             ],
           ),
         ),

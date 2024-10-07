@@ -14,6 +14,18 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
+    <!-- alarm -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK"/>
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM"/>
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
     <application
         android:label="petmate"
         android:name="${applicationName}"
@@ -21,7 +33,6 @@
         android:debuggable="false"
         android:enableOnBackInvokedCallback="true"
         >
-        
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -29,6 +40,8 @@
             android:theme="@style/LaunchTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:hardwareAccelerated="true"
+            android:showWhenLocked="true"
+            android:turnScreenOn="true"
             android:windowSoftInputMode="adjustResize">
             <!-- Specifies an Android theme to apply to this Activity as soon as
                  the Android process has started. This theme is visible to the user
@@ -48,12 +61,10 @@
 	        	<action android:name="android.intent.action.VIEW" />
 	        	<category android:name="android.intent.category.DEFAULT" />
 	        	<category android:name="android.intent.category.BROWSABLE" />
-    
 		<!-- Redirect URI, "kakao${YOUR_NATIVE_APP_KEY}://oauth" 형식 -->
         		<data android:scheme="kakao6aff6a6a32983c77785cb5df7c9dd27a" android:host="oauth"/>
         	</intent-filter>
         </activity>
-    
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
         <meta-data
@@ -62,6 +73,7 @@
         <meta-data
             android:name="com.naver.maps.map.d0y4umwxnz"
             android:value="d0y4umwxnz" />
+        <service android:name="com.gdelataillade.alarm.services.NotificationOnKillService" />
     </application>
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package="com.adjusting.petmate">
@@ -74,7 +86,6 @@
             <data android:mimeType="text/plain"/>
         </intent>
     </queries>
-    
 </manifest>
 
 

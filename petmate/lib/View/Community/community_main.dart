@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:petmate/Controller/community_controller.dart';
 import 'package:petmate/Widget/bottom_navigation_bar/bottom_navigationbar.dart';
-import 'package:petmate/Widget/cummity/community_button.dart';
+import 'package:petmate/Widget/button/community_button.dart';
 import 'package:petmate/Widget/cummity/coummunity_searchbar.dart';
 import 'package:petmate/Widget/custom_widget/custom_tabbar.dart';
 import 'package:petmate/Widget/mypage/my_write/deal.dart';

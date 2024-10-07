@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:glass_kit/glass_kit.dart';
-import 'package:petmate/View/Community/community_info.dart';
 import 'package:petmate/View/Community/community_write.dart';
 
 class CommunityButton extends StatefulWidget {

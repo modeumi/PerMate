@@ -118,7 +118,7 @@ class _MemoWriteWidgetState extends State<MemoWriteWidget> {
                               }
                             }),
                         SizedBox(
-                          height: 22.h,
+                          height: 52.h,
                         )
                       ],
                     ),

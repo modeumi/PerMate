@@ -4,21 +4,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
-import 'package:petmate/DataTools/alarm_database.dart';
-import 'package:petmate/Model/alarm_model.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/Widget/button/save_button.dart';
 import 'package:petmate/Widget/aralam/addAralm/aralm_timepicker.dart';
 import 'package:petmate/Widget/aralam/addAralm/weekselected.dart';
 import 'package:petmate/Widget/button/alarm_toggle.dart';
 
-import 'package:petmate/Widget/push_button_a.dart';
-
 class AddAlarmWidget extends StatefulWidget {
-  const AddAlarmWidget({super.key});
+  const AddAlarmWidget({super.key, this.alarmSettings});
+
+  final AlarmSettings? alarmSettings;
 
   @override
   State<AddAlarmWidget> createState() => _AddAlarmWidgetState();
@@ -26,21 +24,55 @@ class AddAlarmWidget extends StatefulWidget {
 
 class _AddAlarmWidgetState extends State<AddAlarmWidget> {
   final _controllerbutton = ValueNotifier<bool>(false);
-  void main() {
-    final alarm = AlarmModel(
-        id: 1,
-        title: '아침 알람',
-        time: "7:00",
-        days: ["월", "수", "금"],
-        isVibrationOn: true,
-        isSoundOn: true);
+  
+  late DateTime selectedDateTime;
+  late bool loopAudio;
+  late bool vibrate;
+  late double? volume;
+  late String assetAudio;
 
-    final jsonString = alarm.toJson();
-    print(jsonString);
-
-    final newAlarm = AlarmModel.fromJson(jsonString);
-    print(newAlarm.title);
+  Future<void> checkAndroidScheduleExactAlarmPermission() async {
+    final status = await Permission.scheduleExactAlarm.status;
+    print('Schedule exact alarm permission: $status.');
+    if (status.isDenied) {
+      print('Requesting schedule exact alarm permission...');
+      final res = await Permission.scheduleExactAlarm.request();
+      print(
+          'Schedule exact alarm permission ${res.isGranted ? '' : 'not'} granted.');
+    }
   }
+
+//   final alarmSettings = AlarmSettings(
+//   id: 42,
+//   dateTime: ,
+//   assetAudioPath: 'assets/alarm.mp3',
+//   loopAudio: true,
+//   vibrate: true,
+//   volume: 0.8,
+//   fadeDuration: 3.0,
+//  notificationSettings: const NotificationActionSettings(
+//     title: 'This is the title',
+//     body: 'This is the body',
+//     stopButton: true,
+//     icon: 'notification_icon',
+//   ),
+//   warningNotificationOnKill: Platform.isAndroid,
+// );
+  // void main() {
+  //   final alarm = AlarmModel(
+  //       id: 1,
+  //       title: '아침 알람',
+  //       time: "7:00",
+  //       days: ["월", "수", "금"],
+  //       isVibrationOn: true,
+  //       isSoundOn: true);
+
+  //   final jsonString = alarm.toJson();
+  //   print(jsonString);
+
+  //   final newAlarm = AlarmModel.fromJson(jsonString);
+  //   print(newAlarm.title);
+  // }
 
   @override
   Widget build(BuildContext context) {
