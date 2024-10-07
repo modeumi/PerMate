@@ -1,3 +1,4 @@
+import 'package:alarm/alarm.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
@@ -5,6 +6,7 @@ import 'package:flutter_naver_map/flutter_naver_map.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:petmate/Controller/navigation_controller.dart';
 import 'package:petmate/Controller/start_controller.dart';
 import 'package:petmate/Util/route.dart';
@@ -14,6 +16,7 @@ import 'package:petmate/key.dart';
 import 'package:kakao_flutter_sdk_auth/kakao_flutter_sdk_auth.dart';
 
 void main() async {
+
   WidgetsFlutterBinding.ensureInitialized();
   KakaoSdk.init(
       nativeAppKey: kakao_nativeAppKey,
@@ -29,9 +32,8 @@ void main() async {
     },
   );
 
-  // WidgetsFlutterBinding.ensureInitialized();
-  // await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-  // await Alarm.init(); //알람초기화
+  await Alarm.init(showDebugLogs: true); 
+  await initializeDateFormatting('ko');
 
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive, overlays: []);
   Geolocator.requestPermission(); //권한설정

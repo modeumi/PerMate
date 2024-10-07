@@ -6,7 +6,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:glass_kit/glass_kit.dart';
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/View/Main/Notice/notice.dart';
-import 'package:petmate/Widget/cummity/community_button.dart';
+import 'package:petmate/Widget/button/community_button.dart';
 
 class CoummunitySearchbar extends StatefulWidget {
   const CoummunitySearchbar({

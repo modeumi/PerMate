@@ -3,18 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:petmate/Controller/calender_controller.dart';
 import 'package:petmate/Util/textstyles.dart';
 import 'package:table_calendar/table_calendar.dart';
-
-class CalendarController extends GetxController {
-  var focusedDay = DateTime.now().obs;
-  var selectedDay = DateTime.now().obs;
-
-  void onDaySelected(DateTime selectDay, DateTime focusDay) {
-    selectedDay.value = selectDay;
-    focusedDay.value = focusDay;
-  }
-}
 
 class Calender extends StatefulWidget {
   const Calender({super.key});
@@ -24,13 +15,14 @@ class Calender extends StatefulWidget {
 }
 
 class _CalenderState extends State<Calender> {
+  final CalendarController calendarController = Get.put(CalendarController());
+  CalendarFormat _calendarFormat = CalendarFormat.month;
+
   @override
   Widget build(BuildContext context) {
-    final CalendarController controller = Get.put(CalendarController());
-    CalendarFormat _calendarFormat = CalendarFormat.month;
-
     return Obx(
       () => TableCalendar(
+          locale: 'ko_KR',
           calendarBuilders: CalendarBuilders(
             dowBuilder: (context, day) {
               switch (day.weekday) {
@@ -69,10 +61,14 @@ class _CalenderState extends State<Calender> {
             },
           ),
           headerStyle: HeaderStyle(
-              leftChevronPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
-              rightChevronPadding: EdgeInsets.fromLTRB(0, 12, 20, 0),
-              leftChevronMargin: EdgeInsets.fromLTRB(12, 6, 0, 0),
-              rightChevronMargin: EdgeInsets.fromLTRB(0, 6, 12, 0),
+              leftChevronIcon:
+                  Image.asset('assets/image_asset/record_screen/left.png'),
+              rightChevronIcon:
+                  Image.asset('assets/image_asset/record_screen/right.png'),
+              leftChevronPadding: EdgeInsets.fromLTRB(12, 0, 0, 0),
+              rightChevronPadding: EdgeInsets.fromLTRB(0, 0, 10, 0),
+              leftChevronMargin: EdgeInsets.fromLTRB(12, 0, 0, 0),
+              rightChevronMargin: EdgeInsets.fromLTRB(0, 0, 12, 0),
               formatButtonVisible: false,
               titleTextStyle: White(20.sp, FontWeight.w600),
               titleTextFormatter: (date, locale) =>
@@ -80,13 +76,14 @@ class _CalenderState extends State<Calender> {
               titleCentered: true,
               leftChevronVisible: true,
               rightChevronVisible: true),
-          focusedDay: controller.focusedDay.value, // 관찰 가능한 변수 사용
+          focusedDay: calendarController.focusedDay.value, // 관찰 가능한 변수 사용
           onDaySelected: (selectedDay, focusedDay) {
-            controller.focusedDay.value = focusedDay; //날짜 선택 시 focusedDay 업데이트
+            calendarController.focusedDay.value =
+                focusedDay; //날짜 선택 시 focusedDay 업데이트
           },
           selectedDayPredicate: (day) {
             // 선택된 날짜와 일치하는지 확인
-            return isSameDay(controller.selectedDay.value, day);
+            return isSameDay(calendarController.selectedDay.value, day);
           },
           calendarFormat: _calendarFormat,
           availableCalendarFormats: const {
@@ -99,12 +96,13 @@ class _CalenderState extends State<Calender> {
             });
           },
           calendarStyle: CalendarStyle(
-              tablePadding: EdgeInsets.fromLTRB(12, 8, 12, 0),
-              cellPadding: EdgeInsets.fromLTRB(0, 8, 0, 0),
+              tablePadding: EdgeInsets.fromLTRB(12, 15, 12, 0),
               outsideTextStyle: whiteOpacity(20.sp, FontWeight.w600),
               weekendTextStyle: White(20.sp, FontWeight.w600),
               selectedTextStyle: Black(20.sp, FontWeight.w600),
-              rangeHighlightColor: Colors.black,
+              rangeHighlightColor: Colors.white,
+              selectedDecoration:
+                  BoxDecoration(shape: BoxShape.circle, color: Colors.white),
               defaultTextStyle: White(20.sp, FontWeight.w600)),
           firstDay: DateTime.utc(1900, 1, 1),
           lastDay: DateTime(2300, 12, 31)),
