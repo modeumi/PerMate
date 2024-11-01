@@ -818,7 +818,7 @@ packages:
     source: hosted
     version: "1.9.3"
   latlong2:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: latlong2
       sha256: "98227922caf49e6056f91b6c56945ea1c7b166f28ffcd5fb8e72fc0b453cc8fe"
@@ -1242,10 +1242,10 @@ packages:
     dependency: "direct main"
     description:
       name: stop_watch_timer
-      sha256: "5542df39147a997e90e310fec58f733b0313f8f019711ff0b2421343bb0307f7"
+      sha256: "86482d05a58bba03909781cd97683b91def80273e071a8cde6f9f423f59e291d"
       url: "https://pub.dev"
     source: hosted
-    version: "3.2.0"
+    version: "3.2.1"
   stream_channel:
     dependency: transitive
     description:
@@ -1294,14 +1294,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.2"
-  timer_builder:
-    dependency: "direct main"
-    description:
-      name: timer_builder
-      sha256: "67c5653a8d9f6ce62fe9121e520736e9da74418a919fe1c0e181b5d2627dbc4a"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.0"
   typed_data:
     dependency: transitive
     description:

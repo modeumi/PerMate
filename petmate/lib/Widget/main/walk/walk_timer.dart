@@ -4,12 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:glass_kit/glass_kit.dart';
 import 'package:petmate/Util/textstyles.dart';
+import 'package:petmate/Widget/button/deletedbutton/content_deleted_button.dart';
 import 'package:petmate/Widget/custom_widget/blue_container.dart';
 import 'package:petmate/Widget/custom_widget/circle_container.dart';
-import 'package:petmate/Widget/custom_widget/custom_container.dart';
 import 'package:petmate/Widget/main/memo/memo_overlay.dart';
-import 'package:petmate/Widget/main/walk/walk_memo.dart';
-import 'package:petmate/Widget/small_container.dart';
+import 'package:stop_watch_timer/stop_watch_timer.dart';
 
 class WalkTimer extends StatefulWidget {
   const WalkTimer({super.key});
@@ -19,9 +18,12 @@ class WalkTimer extends StatefulWidget {
 }
 
 class _WalkTimerState extends State<WalkTimer> {
-  var opactiyValue = 1.0;
+  var memoValue = 1.0;
+  var startButton = false;
+  var _isHours = true;
+  var isPaused = false;
 
-  void Deletedoevrlay(BuildContext context) {
+  void WalkmemoOevrlay(BuildContext context) {
     Future.delayed(Duration(milliseconds: 0), () {
       setState(() {
         opactiyValue = 1.0;
@@ -39,6 +41,67 @@ class _WalkTimerState extends State<WalkTimer> {
         );
       });
     });
+  }
+
+  var opactiyValue = 1.0;
+
+  void Deletedoevrlay(BuildContext context) {
+    Future.delayed(Duration(milliseconds: 0), () {
+      setState(() {
+        opactiyValue = 1.0;
+        showModalBottomSheet(
+          backgroundColor: Colors.transparent,
+          context: context,
+          builder: (BuildContext context) {
+            return ContentDeletedButton(
+              title: '종료하기',
+              content: '산책을 종료할까요?',
+              text: '산책을 종료한 후에는 수정할수 없어요.',
+              sharecontent: '',
+              blueText: '종료하기',
+              image:
+                  Image.asset('assets/image_asset/walk_log/Rounded Square.png'),
+              action: () {
+                // 종료 버튼 눌렀을 때만 종료 팝업 뜨게 하기
+                Navigator.of(context).pop();
+                _stopWatchTimer.onStartTimer();
+              },
+              active: () {
+                _stopWatchTimer.onStartTimer();
+              },
+            );
+          },
+        );
+      });
+    });
+  }
+
+  final StopWatchTimer _stopWatchTimer = StopWatchTimer(
+    onChange: (value) => debugPrint('onChange $value'),
+    onChangeRawSecond: (value) => debugPrint('onChangeRawSecond $value'),
+    onChangeRawMinute: (value) => debugPrint('onChangeRawMinute $value'),
+    onStopped: () {
+      debugPrint('onStop');
+    },
+    onEnded: () {
+      debugPrint('onEnded');
+    },
+  );
+
+  @override
+  void initState() {
+    super.initState();
+    _stopWatchTimer.rawTime.listen(
+      (value) =>
+          debugPrint('rawTime $value ${StopWatchTimer.getDisplayTime(value)}'),
+    );
+  }
+
+  @override
+  Future<void> dispose() async {
+    // TODO: implement dispose
+    super.dispose();
+    await _stopWatchTimer.dispose();
   }
 
   @override
@@ -85,17 +148,33 @@ class _WalkTimerState extends State<WalkTimer> {
                   )
                 ],
               ),
-              Positioned(
-                top: 19.h,
-                left: 70.w,
-                child: SizedBox(
-                  width: 224.w,
-                  child: Text(
-                    '00 : 00 : 00',
-                    style: DarkGray(40.sp, FontWeight.w600),
-                  ),
-                ),
-              ),
+              StreamBuilder<int>(
+                  stream: _stopWatchTimer.rawTime,
+                  initialData: _stopWatchTimer.rawTime.value,
+                  builder: (context, snap) {
+                    final value = snap.data!;
+                    final displayTime =
+                        StopWatchTimer.getDisplayTime(value, hours: _isHours);
+
+                    // 소수점을 제거한 초 단위 표시
+                    final parts = displayTime.split('.');
+                    final timeWithoutMilliseconds = parts[0]; // 소수점 앞부분만 가져옴
+                    return Positioned(
+                      top: 19.h,
+                      left: 85.w,
+                      child: Text(
+                        timeWithoutMilliseconds, // 소수점 제거된 시간 표시
+                        style: TextStyle(
+                          color: startButton
+                              ? Color(0xFF303030)
+                              : Color(0xFF303030).withOpacity(0.40),
+                          fontSize: 40,
+                          fontFamily: 'Pretendard',
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    );
+                  }),
               Positioned(
                 top: 76.h,
                 left: 50.5.w,
@@ -166,19 +245,64 @@ class _WalkTimerState extends State<WalkTimer> {
                   )
                 ],
               ),
-              Positioned(
-                  left: 8.w,
-                  top: 12.h,
-                  child: BlueContainer(
-                    width: 168.w,
-                    height: 52.h,
-                  )),
+              Column(
+                children: [
+                  Container(
+                    margin: EdgeInsets.fromLTRB(8, 12, 8, 0),
+                    width: 344,
+                    height: 52,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Flexible(
+                          flex: 2,
+                          child: BlueContainer(
+                            width: 168.w,
+                            height: 52.h,
+                          ),
+                        ),
+                        Flexible(
+                          flex: 2,
+                          child: BlueContainer(
+                            width: 168.w,
+                            height: 52.h,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(8, 8, 8, 20),
+                    width: 344,
+                    height: 68,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Flexible(
+                          flex: 2,
+                          child: BlueContainer(
+                            width: 168.w,
+                            height: 68.h,
+                          ),
+                        ),
+                        Flexible(
+                          flex: 2,
+                          child: BlueContainer(
+                            width: 168.w,
+                            height: 68.h,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
               Positioned(
                   left: 50.w,
                   top: 24.h,
                   child: InkWell(
                     onTap: () {
-                      Deletedoevrlay(context);
+                      WalkmemoOevrlay(context);
                     },
                     child: SizedBox(
                       width: 84.w,
@@ -193,13 +317,6 @@ class _WalkTimerState extends State<WalkTimer> {
                         ],
                       ),
                     ),
-                  )),
-              Positioned(
-                  right: 8.w,
-                  top: 12.h,
-                  child: BlueContainer(
-                    width: 168.w,
-                    height: 52.h,
                   )),
               Positioned(
                   left: 226.w,
@@ -221,25 +338,42 @@ class _WalkTimerState extends State<WalkTimer> {
                     ),
                   )),
               Positioned(
-                  left: 8.w,
-                  bottom: 20.h,
-                  child: BlueContainer(
-                    width: 168.w,
-                    height: 68.h,
-                  )),
-              Positioned(
                   left: 39.w,
-                  top: 90.h,
+                  top: 86.h,
                   child: InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      setState(() {
+                        if (!startButton) {
+                          startButton = true;
+                          isPaused = false; //타이머가 시작되면 일시정지 상태가 아님
+                          _stopWatchTimer.onStartTimer();
+                        } else if (isPaused) {
+                          // 타이머가 일시정지 상태일 때 종료하기 버튼 클릭 시 타이밍 종료
+                          startButton = true;
+                          isPaused = true;
+                          _stopWatchTimer.onStopTimer();
+                          Deletedoevrlay(context);
+                        } else {
+                          // 타이머 진행 중에 종료하기 버튼 클릭 시 타이머 종료
+                          // startButton = true;
+                          // isPaused = true;
+                          // _stopWatchTimer.onStopTimer();
+                          // Deletedoevrlay(context);
+                        }
+                      });
+                    },
                     child: SizedBox(
                       width: 106.w,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Image.asset('assets/image_asset/walk_log/stop.png'),
+                          startButton && isPaused
+                              ? Image.asset(
+                                  'assets/image_asset/walk_log/stop.png')
+                              : Image.asset(
+                                  'assets/image_asset/walk_log/start.png'),
                           Text(
-                            '종료하기',
+                            startButton && isPaused ? '종료하기' : '시작하기',
                             style: White(16.sp, FontWeight.w600),
                           ),
                         ],
@@ -247,17 +381,23 @@ class _WalkTimerState extends State<WalkTimer> {
                     ),
                   )),
               Positioned(
-                  right: 8.w,
-                  bottom: 20.h,
-                  child: BlueContainer(
-                    width: 168.w,
-                    height: 68.h,
-                  )),
-              Positioned(
                   left: 217.w,
-                  top: 90.h,
+                  top: 86.h,
                   child: InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      setState(() {
+                        if (startButton && !isPaused) {
+                          // 타이머가 실행 중일 때 일시정지 버튼을 누르면 타이머 일시정지
+                          isPaused = true;
+                          _stopWatchTimer.onStopTimer();
+                          // } else if (startButton && isPaused) {
+                          //   // 타이머가 일시정지 상태일때 일시정지 버튼을 누르면 타이머 재개
+                          //   isPaused = false;
+                          //   _stopWatchTimer.onStartTimer();
+                          // }
+                        }
+                      });
+                    },
                     child: SizedBox(
                       width: 106.w,
                       child: Row(
