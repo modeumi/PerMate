@@ -1,0 +1,89 @@
+import 'package:blurrycontainer/blurrycontainer.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_advanced_switch/flutter_advanced_switch.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:gradient_borders/box_borders/gradient_box_border.dart';
+import 'package:petmate/Controller/toggle_controller.dart';
+
+class ToggleButtonWidget extends StatefulWidget {
+  const ToggleButtonWidget({
+    super.key,
+  });
+
+  @override
+  State<ToggleButtonWidget> createState() => _ToggleButtonWidgetState();
+}
+
+class _ToggleButtonWidgetState extends State<ToggleButtonWidget> {
+  final _controllerbutton = ValueNotifier<bool>(false);
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _controllerbutton.addListener(() {
+      setState(() {});
+    });
+  }
+
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Opacity(
+          opacity: 0.9,
+          child: Container(
+            decoration: BoxDecoration(
+              color: Color(0x3300287C),
+              border: GradientBoxBorder(
+                width: 1.w,
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.white.withOpacity(0.5),
+                    Colors.white.withOpacity(0.2)
+                  ],
+                ),
+              ),
+              borderRadius: BorderRadius.circular(20.r),
+            ),
+            child: AdvancedSwitch(
+              width: 48.w,
+              height: 24.h,
+              thumb: Container(
+                width: 20.w,
+                height: 20.h,
+                decoration: ShapeDecoration(
+                    color: _controllerbutton.value
+                        ? Color(0xFF2B80FF)
+                        : Color(0xFFC9C9C9),
+                    shape: OvalBorder(),
+                    shadows: [
+                      BoxShadow(
+                        color: Color(0x4C000000),
+                        blurRadius: 3,
+                        offset: Offset(0, 0),
+                        spreadRadius: 0,
+                      )
+                    ]),
+              ),
+              activeColor: Color(0x3300287C),
+              inactiveColor: Color(0xff00297C33),
+              controller: _controllerbutton,
+              onChanged: (value) {
+                setState(() {
+                  _controllerbutton.value != _controllerbutton.value;
+                });
+                print(_controllerbutton.value);
+              },
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}

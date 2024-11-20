@@ -1,7 +1,6 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:petmate/View/onboarding.dart';
+import 'package:get/get.dart';
+import 'package:petmate/Controller/start_controller.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});
@@ -12,26 +11,10 @@ class Splash extends StatefulWidget {
 
 class _SplashState extends State<Splash> {
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    Timer(
-      const Duration(seconds: 3),
-      () {
-        Navigator.pop(context);
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const Onboarding(),
-            ));
-      },
-    );
-  }
-
-  @override
   Widget build(BuildContext context) {
+    Get.put(StartController());
     return Scaffold(
-      body: Container(
+      body: Container( 
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         decoration: const BoxDecoration(

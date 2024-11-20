@@ -1,9 +1,38 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 네이버 맵에서 현 위치 탐색 기능을 사용할 때만, 해당 권한 2개를 선언합니다 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    
+     <uses-permission android:name="android.permission.INTERNET" />  <!-- 인터넷 허용 동의 -->
+      <!-- android_alarm_manager_plus packgae -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <!-- For apps with targetSDK 31 (Android 12) and newer -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
+    <!-- image_picke -->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <!-- alarm -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK"/>
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM"/>
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
     <application
         android:label="petmate"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
-        android:debuggable="false">
+        android:debuggable="false"
+        android:enableOnBackInvokedCallback="true"
+        >
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -11,6 +40,8 @@
             android:theme="@style/LaunchTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:hardwareAccelerated="true"
+            android:showWhenLocked="true"
+            android:turnScreenOn="true"
             android:windowSoftInputMode="adjustResize">
             <!-- Specifies an Android theme to apply to this Activity as soon as
                  the Android process has started. This theme is visible to the user
@@ -20,37 +51,29 @@
               android:name="io.flutter.embedding.android.NormalTheme"
               android:resource="@style/NormalTheme"
               />
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-                <data android:scheme="kakao450d7be04d013af4c3e316fa83cfe428" android:host="oauth"/>
-            </intent-filter>
-            
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
-    <activity 
-        android:name="com.kakao.sdk.flutter.AuthCodeCustomTabsActivity"
-        android:exported="true">
-        <intent-filter android:label="flutter_web_auth">
-            <action android:name="android.intent.action.VIEW" />
-            <category android:name="android.intent.category.DEFAULT" />
-            <category android:name="android.intent.category.BROWSABLE" />
-
-            <!-- "kakao${YOUR_NATIVE_APP_KEY}://oauth" 형식의 앱 실행 스킴 설정 -->
-            <!-- 카카오 로그인 Redirect URI -->
-            <data android:scheme="kakao450d7be04d013af4c3e316fa83cfe428" android:host="oauth"/>
-        </intent-filter>
-    </activity>
+        <activity android:name="com.kakao.sdk.flutter.AuthCodeCustomTabsActivity">
+	        <intent-filter android:label="flutter_web_auth">
+	        	<action android:name="android.intent.action.VIEW" />
+	        	<category android:name="android.intent.category.DEFAULT" />
+	        	<category android:name="android.intent.category.BROWSABLE" />
+		<!-- Redirect URI, "kakao${YOUR_NATIVE_APP_KEY}://oauth" 형식 -->
+        		<data android:scheme="kakao6aff6a6a32983c77785cb5df7c9dd27a" android:host="oauth"/>
+        	</intent-filter>
+        </activity>
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        <meta-data
+            android:name="com.naver.maps.map.d0y4umwxnz"
+            android:value="d0y4umwxnz" />
+        <service android:name="com.gdelataillade.alarm.services.NotificationOnKillService" />
     </application>
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package="com.adjusting.petmate">
@@ -64,3 +87,16 @@
         </intent>
     </queries>
 </manifest>
+
+
+<!-- class MainActivity: flutterActivity() {
+    override fun configureFlutterEngine(@NonNull FlutterEngine) {
+        GeneratedPluginRegistrant.registerWith(FlutterEngine);
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if(checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+               requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 0);
+            }
+        }
+    }
+} -->
