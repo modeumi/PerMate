@@ -28,21 +28,36 @@ class _CalenderState extends State<Calender> {
             if (events.isEmpty) {
               List iconEvents = events;
               return ListView.builder(
-                shrinkWrap: true,
-                itemCount: events.length,
-                itemBuilder: (context, index) {
-                  Map key = iconEvents[index];
-                  if (key['iconIndex'] == 1) {
-                    return Container(
-                      child: Icon(
-                        Icons.pets_outlined,
-                        size: 20,
-                        color: Colors.purple,
-                      ),
-                    );
-                  }
-                },
-              );
+                  shrinkWrap: true,
+                  itemCount: events.length,
+                  itemBuilder: (context, index) {
+                    Map key = iconEvents[index];
+                    if (key['iconIndex'] == 1) {
+                      return Container(
+                        child: Icon(
+                          Icons.pets_outlined,
+                          size: 20,
+                          color: Colors.purple,
+                        ),
+                      );
+                    } else if (key['iconIndex'] == 2) {
+                      return Container(
+                        child: Icon(
+                          Icons.rice_bowl,
+                          size: 20,
+                          color: Colors.red,
+                        ),
+                      );
+                    } else if (key['iconIndex'] == 2) {
+                      return Container(
+                        child: Icon(
+                          Icons.water_drop_outlined,
+                          size: 20,
+                          color: Colors.blue,
+                        ),
+                      );
+                    }
+                  });
             } else {}
           },
           dowBuilder: (context, day) {
