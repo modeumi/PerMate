@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:petmate/Util/textstyles.dart';
 import 'package:petmate/Widget/button/deletedbutton/content_deleted_button.dart';
 
@@ -25,12 +27,16 @@ class _ShareDeletedButtonWidgetState extends State<ShareDeletedButtonWidget> {
           isScrollControlled: true,
           builder: (BuildContext context) {
             return ContentDeletedButton(
-              title: '반려동물을 목록에서 삭제할까요?',
-              content: '목록에서 삭제한 후에는 복구할수 없어요.',
+              title: '삭제하기',
+              content: '반려동물을 삭제할까요?',
+              text: '목록에서 삭제한 후에는 복구할수 없어요.',
+              image: Image.asset('assets/alert/delete(14).png'),
               sharecontent: '*공유받은 반려동물 삭제는 공유 상태가 해제됩니다.',
-             action: () {
-               
-             },
+              blueText: '삭제하기',
+              action: () {},
+               active: () {
+                Get.back();
+              },
             );
           },
         );

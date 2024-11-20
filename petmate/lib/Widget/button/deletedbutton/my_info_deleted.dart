@@ -26,10 +26,16 @@ class _MyInfoDeletedState extends State<MyInfoDeleted> {
           isScrollControlled: true,
           builder: (BuildContext context) {
             return ContentDeletedButton(
-              title: '게시글을 삭제할까요?',
-              content: '게시글을 삭제한 후에는 복구할수 없어요.',
+              title: '삭제하기',
+              content: '게시글을 삭제할까요?',
+              text: '게시글을 삭제한 후에는 복구할 수 없어요.',
               sharecontent: '',
+              blueText: '삭제하기',
+              image: Image.asset('assets/alert/delete(14).png'),
               action: () {},
+               active: () {
+                Get.back();
+              },
             );
           },
         );

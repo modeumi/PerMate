@@ -8,16 +8,23 @@ import 'package:petmate/Util/textstyles.dart';
 class ContentDeletedButton extends StatefulWidget {
   final String title;
   final String content;
+  final String text;
   final String sharecontent;
+  final String blueText;
   final VoidCallback action;
-  final bool? active;
-  const ContentDeletedButton(
-      {super.key,
-      required this.title,
-      required this.content,
-      required this.sharecontent,
-      this.active,
-      required this.action});
+  final VoidCallback active;
+  final Widget? image;
+  const ContentDeletedButton({
+    super.key,
+    required this.title,
+    required this.content,
+    required this.sharecontent,
+    required this.action,
+    this.image,
+    required this.text,
+    required this.blueText,
+    required this.active,
+  });
 
   @override
   State<ContentDeletedButton> createState() => _ContentDeletedButtonState();
@@ -69,10 +76,10 @@ class _ContentDeletedButtonState extends State<ContentDeletedButton> {
                     SizedBox(
                       width: 5.w,
                     ),
-                    Image.asset('assets/alert/delete(14).png'),
+                    widget.image ?? SizedBox(),
                     DefaultTextStyle(
                         style: Black(14.sp, FontWeight.w600),
-                        child: Text('삭제하기')),
+                        child: Text(widget.title)),
                   ],
                 ),
               ),
@@ -81,7 +88,7 @@ class _ContentDeletedButtonState extends State<ContentDeletedButton> {
                 left: 20,
                 child: DefaultTextStyle(
                     style: Black(12.sp, FontWeight.w500),
-                    child: Text(widget.title)),
+                    child: Text(widget.content)),
               ),
               Positioned(
                 top: 64,
@@ -90,7 +97,7 @@ class _ContentDeletedButtonState extends State<ContentDeletedButton> {
                   width: 195.w,
                   child: DefaultTextStyle(
                       style: Black(12.sp, FontWeight.w500),
-                      child: Text(widget.content)),
+                      child: Text(widget.text)),
                 ),
               ),
               Positioned(
@@ -171,7 +178,7 @@ class _ContentDeletedButtonState extends State<ContentDeletedButton> {
                           children: [
                             DefaultTextStyle(
                                 style: White(15.sp, FontWeight.w600),
-                                child: Text('삭제하기')),
+                                child: Text(widget.blueText)),
                           ],
                         ),
                       ),

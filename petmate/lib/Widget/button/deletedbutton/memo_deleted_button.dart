@@ -29,13 +29,19 @@ class _MemoDeletedButtonState extends State<MemoDeletedButton> {
       isScrollControlled: true,
       builder: (BuildContext context) {
         return ContentDeletedButton(
-          title: '메모를 삭제할까요?',
-          content: '메모를 삭제한 후에는 복구할 수 없어요.',
+          title: '삭제하기',
+          content: '메모를 삭제할까요?',
+          text: '메모를 삭제한 후에는 복구할 수 없어요.',
           sharecontent: '',
+          blueText: '삭제하기',
+          image: Image.asset('assets/alert/delete(14).png'),
           action: () async {
             await memoController.deletedselectMemo();
             Get.back();
           },
+           active: () {
+                Get.back();
+              },
         );
       },
     );

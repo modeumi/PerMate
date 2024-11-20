@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:petmate/Controller/weather_controller.dart';
 import 'package:petmate/Widget/main/walk/walk_timer.dart';
-import 'package:petmate/main.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 
 class WalkLog extends StatefulWidget {
